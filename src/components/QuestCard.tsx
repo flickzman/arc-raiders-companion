@@ -45,7 +45,7 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest }) => {
               </span>
               {quest.requiredLevel && (
                 <span className="text-[10px] font-mono text-neutral-400">
-                  Nv. {quest.requiredLevel}
+                  {language === 'es' ? 'Nv.' : 'Lv.'} {quest.requiredLevel}
                 </span>
               )}
             </div>
@@ -91,7 +91,7 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest }) => {
                       <MapPin className="w-3 h-3 text-cyan-400" />
                       <span>{getLocalized(poi.name, language)}</span>
                       {poi.dangerLevel === 'high' && (
-                        <span className="text-red-400 font-bold" title="Alto Peligro">!</span>
+                        <span className="text-red-400 font-bold" title={language === 'es' ? 'Alto Peligro' : 'High Hazard'}>!</span>
                       )}
                     </span>
                   ) : map ? (
@@ -138,7 +138,9 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest }) => {
             <Award className="w-3.5 h-3.5 text-amber-400" />
             <span>+{quest.rewards.xp} XP</span>
             <span>•</span>
-            <span className="text-amber-300 font-bold">{quest.rewards.currency} Créditos</span>
+            <span className="text-amber-300 font-bold">
+              {quest.rewards.currency} {language === 'es' ? 'Créditos' : 'Credits'}
+            </span>
           </div>
           {quest.rewards.items && quest.rewards.items.length > 0 && (
             <span className="text-[10px] text-neutral-400 truncate max-w-[140px]">

@@ -296,7 +296,13 @@ export const RaidPlannerView: React.FC = () => {
                               : 'bg-neutral-800 text-neutral-300'
                           }`}
                         >
-                          {isSpawn ? 'Infiltración' : isExtract ? 'Extracción' : `Peligro ${step.poi.dangerLevel}`}
+                          {isSpawn
+                            ? (language === 'es' ? 'Infiltración' : 'Infiltration')
+                            : isExtract
+                            ? (language === 'es' ? 'Extracción' : 'Extraction')
+                            : (language === 'es'
+                                ? `Peligro ${step.poi.dangerLevel === 'high' ? 'Alto' : step.poi.dangerLevel === 'medium' ? 'Medio' : 'Bajo'}`
+                                : `Hazard ${step.poi.dangerLevel === 'high' ? 'High' : step.poi.dangerLevel === 'medium' ? 'Medium' : 'Low'}`)}
                         </span>
                       </div>
 

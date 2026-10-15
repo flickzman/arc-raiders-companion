@@ -227,7 +227,9 @@ export const LoadoutChecklist: React.FC = () => {
                   <div key={idx} className="flex items-center justify-between text-[11px] font-mono text-neutral-400">
                     <span className="flex items-center gap-1">
                       <ChevronRight className="w-3 h-3 text-amber-500" />
-                      <span>{getLocalized(upg.stationName, language)} (Nv. {upg.level})</span>
+                      <span>
+                        {getLocalized(upg.stationName, language)} ({language === 'es' ? 'Nv.' : 'Lv.'} {upg.level})
+                      </span>
                     </span>
                     <span className="font-bold text-amber-300">x{upg.count}</span>
                   </div>

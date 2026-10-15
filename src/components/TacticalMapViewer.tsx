@@ -174,10 +174,12 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
                 <div className="font-bold">{getLocalized(poi.name, language)}</div>
                 <div className="text-[9px] text-neutral-400">
                   {poi.isSpawnPoint
-                    ? 'Infiltración'
+                    ? (language === 'es' ? 'Punto de Infiltración' : 'Infiltration Point')
                     : poi.isExtractionPoint
-                    ? 'Punto de Extracción'
-                    : `Peligro: ${poi.dangerLevel.toUpperCase()}`}
+                    ? (language === 'es' ? 'Punto de Extracción' : 'Extraction Site')
+                    : (language === 'es'
+                        ? `Peligro: ${poi.dangerLevel === 'high' ? 'ALTO' : poi.dangerLevel === 'medium' ? 'MEDIO' : 'BAJO'}`
+                        : `Hazard: ${poi.dangerLevel.toUpperCase()}`)}
                 </div>
               </div>
             </div>
@@ -207,7 +209,11 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
                   : 'text-emerald-400'
               }`}
             >
-              {route.dangerRating}
+              {route.dangerRating === 'high'
+                ? (language === 'es' ? 'Alto' : 'High')
+                : route.dangerRating === 'medium'
+                ? (language === 'es' ? 'Medio' : 'Moderate')
+                : (language === 'es' ? 'Bajo' : 'Low')}
             </strong>
           </span>
         </div>
