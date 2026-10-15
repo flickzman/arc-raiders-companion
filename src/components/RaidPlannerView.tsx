@@ -1,9 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { usePlayerStore } from '../store/usePlayerStore';
 import { allMaps, allQuests, getLocalized } from '../data/db';
-import { type POI } from '../data/schemas';
+import { type POI, type Quest } from '../data/types';
 import { optimizeRaidRoute } from '../services/optimizer/raidOptimizer';
-import { TacticalMapViewer } from './TacticalMapViewer';
+import { InteractiveMap } from './map/InteractiveMap';
+import { QuestTypeLogo } from './map/QuestTypeLogo';
 import {
   MapPin,
   Navigation,
@@ -19,6 +20,8 @@ import {
   ChevronRight,
   ChevronLeft,
   AlertOctagon,
+  Target,
+  ExternalLink,
 } from 'lucide-react';
 
 export const RaidPlannerView: React.FC = () => {
@@ -37,6 +40,7 @@ export const RaidPlannerView: React.FC = () => {
   } = usePlayerStore();
 
   const [selectedPoi, setSelectedPoi] = useState<POI | null>(null);
+  const [highlightedPoiId, setHighlightedPoiId] = useState<string | null>(null);
   const [disabledExtractionIds, setDisabledExtractionIds] = useState<string[]>([]);
   const [inRaidMode, setInRaidMode] = useState<boolean>(false);
   const [currentStepIndex, setCurrentStepIndex] = useState<number>(1);
@@ -47,13 +51,16 @@ export const RaidPlannerView: React.FC = () => {
     [allAvailableQuests, activeQuestIds]
   );
 
-  // Map clustering: contar objetivos activos por sector
+  // Map clustering: contar objetivos activos pendientes por sector
   const mapCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     allMaps.forEach((m) => (counts[m.id] = 0));
 
     activeQuests.forEach((q) => {
       q.objectives.forEach((obj) => {
+        // Only count if not yet completed
+        if (completedObjectiveIds.includes(obj.id)) return;
+
         if (obj.mapId === 'any') {
           allMaps.forEach((m) => (counts[m.id] = (counts[m.id] || 0) + 1));
         } else if (counts[obj.mapId] !== undefined) {
@@ -62,7 +69,7 @@ export const RaidPlannerView: React.FC = () => {
       });
     });
     return counts;
-  }, [activeQuests]);
+  }, [activeQuests, completedObjectiveIds]);
 
   const selectedMap = allMaps.find((m) => m.id === selectedMapId) || allMaps[0];
   const spawnPoints = selectedMap.pois.filter((p) => p.isSpawnPoint);
@@ -91,6 +98,34 @@ export const RaidPlannerView: React.FC = () => {
       Math.min(currentStepIndex, Math.max(0, optimizedRoute.steps.length - 1))
     ] || optimizedRoute.steps[0];
 
+  // Active quests relevant to current map (or any map)
+  const currentMapActiveQuests = useMemo(() => {
+    return activeQuests.filter((q) =>
+      q.objectives.some((obj) => obj.mapId === selectedMap.id || obj.mapId === 'any')
+    );
+  }, [activeQuests, selectedMap.id]);
+
+  // Bidirectional sync: clicking a quest focuses its map and highlights its POI
+  const handleQuestFocus = (quest: Quest) => {
+    const firstObj = quest.objectives[0];
+    if (firstObj) {
+      if (firstObj.mapId && firstObj.mapId !== 'any' && firstObj.mapId !== selectedMap.id) {
+        setSelectedMapId(firstObj.mapId);
+      }
+      const targetPoiId = firstObj.poiId || (firstObj.alternativePoiIds && firstObj.alternativePoiIds[0]);
+      if (targetPoiId) {
+        setHighlightedPoiId(targetPoiId);
+        const mapToSearch = allMaps.find((m) => m.id === (firstObj.mapId !== 'any' ? firstObj.mapId : selectedMap.id)) || selectedMap;
+        const foundPoi = mapToSearch.pois.find((p) => p.id === targetPoiId);
+        if (foundPoi) {
+          setSelectedPoi(foundPoi);
+        }
+        // Auto-clear highlight ring after 4 seconds
+        setTimeout(() => setHighlightedPoiId(null), 4000);
+      }
+    }
+  };
+
   return (
     <div className="space-y-6">
       {/* Header Bar with In-Raid HUD toggle */}
@@ -102,8 +137,8 @@ export const RaidPlannerView: React.FC = () => {
           </h2>
           <p className="text-[11px] font-mono text-neutral-400">
             {language === 'es'
-              ? 'Ruta adaptativa con cálculo de rumbos, descarte de riesgos y radar interactivo.'
-              : 'Adaptive routing with bearings, hazard pruning, and interactive radar.'}
+              ? 'Visor de mapas interactivo con escalado inverso, logos tácticos por misión y cálculo de rutas.'
+              : 'Interactive map viewer with inverse scaling, mission-type tactical logos, and route calculation.'}
           </p>
         </div>
 
@@ -166,7 +201,7 @@ export const RaidPlannerView: React.FC = () => {
                 >
                   {language === 'es'
                     ? `Peligro ${activeStep.poi.dangerLevel === 'high' ? 'Alto' : activeStep.poi.dangerLevel === 'medium' ? 'Medio' : 'Bajo'}`
-                    : `Hazard ${activeStep.poi.dangerLevel === 'high' ? 'High' : activeStep.poi.dangerLevel === 'medium' ? 'Medium' : 'Low'}`}
+                    : `Hazard ${activeStep.poi.dangerLevel.toUpperCase()}`}
                 </span>
               </div>
 
@@ -238,7 +273,7 @@ export const RaidPlannerView: React.FC = () => {
                 {language === 'es' ? 'Objetivos a completar en este punto:' : 'Objectives to complete at this waypoint:'}
               </span>
               <div className="space-y-2">
-                {activeStep.objectives.map(({ quest, objective, chosenPoi, alternativePois }) => {
+                {activeStep.objectives.map(({ quest, objective }) => {
                   const isDone = completedObjectiveIds.includes(objective.id);
 
                   return (
@@ -258,33 +293,19 @@ export const RaidPlannerView: React.FC = () => {
                           <Circle className="w-5 h-5 text-neutral-500 hover:text-amber-400" />
                         )}
                       </button>
+
                       <div className="flex-1">
-                        <div className="text-[11px] font-mono text-amber-400 font-bold uppercase">
-                          [{quest.vendor}] {getLocalized(quest.title, language)}
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-mono font-bold text-amber-400 bg-amber-950 px-2 py-0.5 rounded border border-amber-800">
+                            {quest.vendor}
+                          </span>
+                          <span className={`text-xs font-bold ${isDone ? 'line-through text-neutral-500' : 'text-neutral-200'}`}>
+                            {getLocalized(quest.title, language)}
+                          </span>
                         </div>
-                        <div className={`text-xs font-medium ${isDone ? 'line-through text-neutral-400' : 'text-neutral-100'}`}>
+                        <p className={`text-xs mt-1 ${isDone ? 'line-through text-neutral-500' : 'text-neutral-300'}`}>
                           {getLocalized(objective.description, language)}
-                        </div>
-                        {alternativePois && alternativePois.length > 0 && (
-                          <div className="text-[10px] font-mono text-amber-300 mt-1 flex items-center gap-1 bg-amber-950/40 px-2 py-0.5 rounded border border-amber-800/40 w-fit">
-                            <span>⚡</span>
-                            <span>
-                              {language === 'es'
-                                ? `Alternativa elegida: ${getLocalized(chosenPoi.name, language)}`
-                                : `Chosen site: ${getLocalized(chosenPoi.name, language)}`}
-                            </span>
-                          </div>
-                        )}
-                        {objective.dependsOnObjectiveId && (
-                          <div className="text-[10px] font-mono text-rose-300 mt-1 flex items-center gap-1 bg-rose-950/40 px-2 py-0.5 rounded border border-rose-800/40 w-fit">
-                            <span>🔒</span>
-                            <span>
-                              {language === 'es'
-                                ? 'Paso secuencial ordenado'
-                                : 'Sequential step in order'}
-                            </span>
-                          </div>
-                        )}
+                        </p>
                       </div>
                     </div>
                   );
@@ -295,7 +316,7 @@ export const RaidPlannerView: React.FC = () => {
         </div>
       )}
 
-      {/* 1. Selector de Sector y Sinergia */}
+      {/* 1. Selector Superior de Todos los 8 Mapas Oficiales con Contadores [N] */}
       <div className="bg-neutral-900/80 border border-neutral-800 rounded-xl p-4">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
@@ -305,11 +326,12 @@ export const RaidPlannerView: React.FC = () => {
             </h2>
           </div>
           <span className="text-[11px] font-mono text-neutral-400">
-            {language === 'es' ? 'Clustering de Sinergia' : 'Synergy Clustering'}
+            {language === 'es' ? '8 Sectores Oficiales' : '8 Official Sectors'}
           </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        {/* Responsive Grid for all 8 maps */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5">
           {allMaps.map((map) => {
             const count = mapCounts[map.id] || 0;
             const isSelected = selectedMap.id === map.id;
@@ -321,29 +343,36 @@ export const RaidPlannerView: React.FC = () => {
                   setSelectedMapId(map.id);
                   setDisabledExtractionIds([]);
                   setSelectedPoi(null);
+                  setHighlightedPoiId(null);
                   setCurrentStepIndex(1);
                 }}
-                className={`text-left p-3.5 rounded-xl border transition-all ${
+                className={`text-left p-3 rounded-xl border transition-all flex flex-col justify-between ${
                   isSelected
-                    ? 'bg-amber-500/15 border-amber-500/80 ring-1 ring-amber-500/40 shadow-sm'
-                    : 'bg-neutral-950/80 border-neutral-800 hover:border-neutral-700 hover:bg-neutral-900/50'
+                    ? 'bg-amber-500/20 border-amber-500 text-neutral-100 ring-2 ring-amber-500/40 shadow-lg shadow-amber-500/10'
+                    : 'bg-neutral-950/80 border-neutral-800 hover:border-neutral-700 hover:bg-neutral-900/60'
                 }`}
               >
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className={`font-bold text-xs uppercase ${isSelected ? 'text-amber-300' : 'text-neutral-200'}`}>
-                    {getLocalized(map.name, language)}
-                  </span>
-                  <span
-                    className={`text-xs font-mono font-bold px-2 py-0.5 rounded-full ${
-                      count > 0 ? 'bg-amber-500 text-neutral-950' : 'bg-neutral-800 text-neutral-500'
+                <div>
+                  <div className="flex items-center justify-between gap-1 mb-1.5">
+                    <span
+                      className={`text-[9px] font-mono font-black px-1.5 py-0.5 rounded-full ${
+                        count > 0
+                          ? 'bg-amber-500 text-neutral-950'
+                          : 'bg-neutral-800 text-neutral-500'
+                      }`}
+                      title={`${count} objetivos activos`}
+                    >
+                      [{count}]
+                    </span>
+                  </div>
+                  <h4
+                    className={`font-black text-xs leading-tight uppercase line-clamp-2 ${
+                      isSelected ? 'text-amber-300' : 'text-neutral-200'
                     }`}
                   >
-                    {count} {language === 'es' ? 'objs' : 'objs'}
-                  </span>
+                    {getLocalized(map.name, language)}
+                  </h4>
                 </div>
-                <p className="text-[11px] text-neutral-400 line-clamp-2 leading-relaxed">
-                  {getLocalized(map.description, language)}
-                </p>
               </button>
             );
           })}
@@ -352,7 +381,7 @@ export const RaidPlannerView: React.FC = () => {
 
       {/* 2. Configuración Táctica: Spawn y Perfil de Incursión */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {/* Spawn Point Selector ("He aparecido aquí") */}
+        {/* Spawn Point Selector */}
         <div className="bg-neutral-900/80 border border-neutral-800 rounded-xl p-4">
           <div className="flex items-center gap-2 mb-2">
             <MapPin className="w-4 h-4 text-cyan-400" />
@@ -366,7 +395,7 @@ export const RaidPlannerView: React.FC = () => {
               : 'Select your spawn point to route directly from where you drop:'}
           </p>
 
-          <div className="space-y-2">
+          <div className="space-y-2 max-h-48 overflow-y-auto pr-1">
             {spawnPoints.map((spawn) => {
               const isSpawnSelected = (spawnPoiId || spawnPoints[0]?.id) === spawn.id;
 
@@ -374,7 +403,7 @@ export const RaidPlannerView: React.FC = () => {
                 <button
                   key={spawn.id}
                   onClick={() => setSpawnPoiId(spawn.id)}
-                  className={`w-full text-left px-3 py-2.5 rounded-lg border text-xs font-mono flex items-center justify-between transition-all ${
+                  className={`w-full text-left px-3 py-2 rounded-lg border text-xs font-mono flex items-center justify-between transition-all ${
                     isSpawnSelected
                       ? 'bg-cyan-500/20 border-cyan-500 text-cyan-200 font-bold shadow-sm shadow-cyan-500/20'
                       : 'bg-neutral-950/60 border-neutral-800 text-neutral-300 hover:border-neutral-700'
@@ -462,19 +491,107 @@ export const RaidPlannerView: React.FC = () => {
         </div>
       </div>
 
-      {/* 3. Mapa Radar Táctico Interactivo */}
-      <TacticalMapViewer
-        map={selectedMap}
-        route={optimizedRoute}
-        selectedPoi={selectedPoi}
-        onSelectPoi={setSelectedPoi}
-        disabledExtractionIds={disabledExtractionIds}
-        onToggleExtraction={handleToggleExtraction}
-        onSetSpawn={(poiId) => {
-          setSpawnPoiId(poiId);
-          setSelectedPoi(null);
-        }}
-      />
+      {/* 3. Visor de Mapas Interactivo con Sincronización Bidireccional */}
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+        {/* Left Column: Interactive Map Component (8 cols on XL) */}
+        <div className="xl:col-span-8 space-y-3">
+          <InteractiveMap
+            currentMap={selectedMap}
+            route={optimizedRoute}
+            activeQuests={activeQuests}
+            completedObjectiveIds={completedObjectiveIds}
+            onToggleCompletedObjective={toggleCompletedObjective}
+            selectedPoi={selectedPoi}
+            onSelectPoi={setSelectedPoi}
+            highlightedPoiId={highlightedPoiId}
+            disabledExtractionIds={disabledExtractionIds}
+            onToggleExtraction={handleToggleExtraction}
+            onSetSpawn={(poiId) => {
+              setSpawnPoiId(poiId);
+              setSelectedPoi(null);
+            }}
+          />
+        </div>
+
+        {/* Right Column: Active Quests in this Sector (4 cols on XL) */}
+        <div className="xl:col-span-4 bg-neutral-950 border border-neutral-800 rounded-2xl p-4 space-y-3">
+          <div className="flex items-center justify-between pb-2 border-b border-neutral-800">
+            <div className="flex items-center gap-2">
+              <Target className="w-4 h-4 text-amber-400" />
+              <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-100">
+                {language === 'es' ? 'Misiones en este Sector' : 'Sector Quests'} ({currentMapActiveQuests.length})
+              </h3>
+            </div>
+            <span className="text-[10px] font-mono text-neutral-400">
+              {language === 'es' ? 'Clic para centrar en mapa' : 'Click to focus on map'}
+            </span>
+          </div>
+
+          {currentMapActiveQuests.length === 0 ? (
+            <div className="p-6 text-center text-xs font-mono text-neutral-500 bg-neutral-900/30 rounded-xl border border-neutral-800/60">
+              {language === 'es'
+                ? 'No tienes misiones activas para este sector. Puedes activarlas en la pestaña "Misiones".'
+                : 'No active quests for this sector. Select some in the "Quests" tab.'}
+            </div>
+          ) : (
+            <div className="space-y-2.5 max-h-[580px] overflow-y-auto pr-1">
+              {currentMapActiveQuests.map((quest) => (
+                <div
+                  key={quest.id}
+                  onClick={() => handleQuestFocus(quest)}
+                  className="p-3 rounded-xl bg-neutral-900/80 border border-neutral-800 hover:border-amber-500/70 cursor-pointer transition-all hover:bg-neutral-900 group"
+                >
+                  <div className="flex items-start justify-between gap-2 mb-1.5">
+                    <div>
+                      <span className="text-[10px] font-mono font-bold text-amber-400 bg-amber-950/70 border border-amber-800 px-1.5 py-0.2 rounded mr-1.5">
+                        {quest.vendor}
+                      </span>
+                      <span className="font-bold text-xs text-neutral-200 group-hover:text-amber-300 transition-colors">
+                        {getLocalized(quest.title, language)}
+                      </span>
+                    </div>
+                    <ExternalLink className="w-3.5 h-3.5 text-neutral-500 group-hover:text-amber-400 transition-colors flex-shrink-0" />
+                  </div>
+
+                  {/* Objectives Checklist within quest card */}
+                  <div className="space-y-1.5 mt-2 pt-2 border-t border-neutral-800/80">
+                    {quest.objectives.map((obj) => {
+                      const isDone = completedObjectiveIds.includes(obj.id);
+
+                      return (
+                        <div
+                          key={obj.id}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleCompletedObjective(obj.id);
+                          }}
+                          className={`flex items-start gap-2 text-[11px] p-1.5 rounded transition-colors ${
+                            isDone ? 'opacity-40 line-through text-neutral-500' : 'text-neutral-300 hover:bg-neutral-800/60'
+                          }`}
+                        >
+                          <div className="flex items-center gap-1.5 flex-shrink-0 mt-0.5">
+                            <button>
+                              {isDone ? (
+                                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                              ) : (
+                                <Circle className="w-3.5 h-3.5 text-neutral-500 group-hover:text-amber-400" />
+                              )}
+                            </button>
+                            <QuestTypeLogo type={obj.type || 'recon'} size={18} isCompleted={isDone} />
+                          </div>
+                          <span className="flex-1 leading-snug">
+                            {getLocalized(obj.description, language)}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
 
       {/* 4. Plan de Vuelo Táctico (Ruta Paso a Paso) */}
       <div className="bg-neutral-900/80 border border-neutral-800 rounded-xl p-4">
@@ -544,7 +661,7 @@ export const RaidPlannerView: React.FC = () => {
                             ? (language === 'es' ? 'Extracción' : 'Extraction')
                             : (language === 'es'
                                 ? `Peligro ${step.poi.dangerLevel === 'high' ? 'Alto' : step.poi.dangerLevel === 'medium' ? 'Medio' : 'Bajo'}`
-                                : `Hazard ${step.poi.dangerLevel === 'high' ? 'High' : step.poi.dangerLevel === 'medium' ? 'Medium' : 'Low'}`)}
+                                : `Hazard ${step.poi.dangerLevel.toUpperCase()}`)}
                         </span>
                       </div>
 

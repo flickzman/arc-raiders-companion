@@ -13,6 +13,7 @@ export const MapIdSchema = z.enum([
   'stella_montis',
   'pendola_pass',
   'riven_tides',
+  'practice_range',
   'any',
 ]);
 
@@ -26,9 +27,19 @@ export const VendorSchema = z.enum([
   'Other',
 ]);
 
+export const QuestTypeSchema = z.enum([
+  'combat',
+  'extraction',
+  'recon',
+  'sabotage',
+  'delivery',
+  'locked_room',
+]);
+
 export const ObjectiveSchema = z.object({
   id: z.string(),
   description: LocalizedStringSchema,
+  type: QuestTypeSchema.default('recon'),
   mapId: MapIdSchema.default('any'),
   poiId: z.string().optional(),
   alternativePoiIds: z.array(z.string()).default([]), // [OR / Alternativa]: cualquiera de estos POIs es válido (uno u otro)
@@ -37,6 +48,7 @@ export const ObjectiveSchema = z.object({
   requiredItemId: z.string().optional(),
   targetItemId: z.string().optional(),
   count: z.number().default(1),
+  completed: z.boolean().default(false),
 });
 
 export const QuestSchema = z.object({
@@ -74,6 +86,7 @@ export const GameMapSchema = z.object({
   id: MapIdSchema,
   name: LocalizedStringSchema,
   description: LocalizedStringSchema.optional(),
+  imageUrl: z.string().optional(),
   pois: z.array(POISchema),
 });
 
@@ -96,6 +109,7 @@ export const GameItemSchema = z.object({
 export type LocalizedString = z.infer<typeof LocalizedStringSchema>;
 export type MapId = z.infer<typeof MapIdSchema>;
 export type Vendor = z.infer<typeof VendorSchema>;
+export type QuestType = z.infer<typeof QuestTypeSchema>;
 export type Objective = z.infer<typeof ObjectiveSchema>;
 export type Quest = z.infer<typeof QuestSchema>;
 export type POI = z.infer<typeof POISchema>;

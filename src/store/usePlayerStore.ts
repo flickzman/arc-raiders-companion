@@ -89,6 +89,8 @@ export const usePlayerStore = create<PlayerState>()(
                 en: cleanTitle,
                 es: cleanTitle,
               },
+              type: 'recon',
+              completed: false,
               mapId: mapId || 'any',
               alternativePoiIds: [],
               inOneRound: false,

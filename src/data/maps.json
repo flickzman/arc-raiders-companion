@@ -9,6 +9,7 @@
       "en": "Flooded industrial valleys surrounding the massive Alcantara Power Station.",
       "es": "Valles industriales inundados que rodean la colosal Central Eléctrica de Alcántara."
     },
+    "imageUrl": "/maps/dam_battlegrounds.png",
     "pois": [
       {
         "id": "dam_power_plant",
@@ -94,6 +95,7 @@
       "en": "Dense urban ruins half-submerged in arid sands, filled with vertical apartment complexes and dark sub-levels.",
       "es": "Ruinas urbanas densas semienterradas en arena árida, con complejos de apartamentos y oscuros túneles subterráneos."
     },
+    "imageUrl": "/maps/buried_city.png",
     "pois": [
       {
         "id": "city_piazza_roma",
@@ -179,6 +181,7 @@
       "en": "Vast aerospace terminal with launch towers, radar domes and hangars patrolled by heavy ARC machines.",
       "es": "Vasta terminal aeroespacial con torres de lanzamiento y hangares patrullados por máquinas ARC pesadas."
     },
+    "imageUrl": "/maps/the_spaceport.png",
     "pois": [
       {
         "id": "spaceport_launchpad",
@@ -222,6 +225,427 @@
         "mapId": "the_spaceport",
         "coordinates": { "x": 50, "y": 80 },
         "dangerLevel": "high",
+        "isExtractionPoint": true,
+        "isSpawnPoint": false
+      }
+    ]
+  },
+  {
+    "id": "the_blue_gate",
+    "name": {
+      "en": "The Blue Gate",
+      "es": "La Puerta Azul"
+    },
+    "description": {
+      "en": "Fortified alpine mountain pass guarding deep subterranean ARC research archives.",
+      "es": "Paso de montaña fortificado que custodia archivos subterráneos de investigación ARC."
+    },
+    "imageUrl": "/maps/the_blue_gate.png",
+    "pois": [
+      {
+        "id": "blue_gate_central_bastion",
+        "name": { "en": "Central Blast Door Bastion", "es": "Bastión de la Puerta Blindada" },
+        "mapId": "the_blue_gate",
+        "coordinates": { "x": 50, "y": 48 },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "blue_gate_upper_quarry",
+        "name": { "en": "Upper Mining Quarry", "es": "Cantera Superior" },
+        "mapId": "the_blue_gate",
+        "coordinates": { "x": 28, "y": 25 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "blue_gate_security_checkpoint",
+        "name": { "en": "Security Checkpoint Alpha", "es": "Puesto de Control Alfa" },
+        "mapId": "the_blue_gate",
+        "coordinates": { "x": 45, "y": 70 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "blue_gate_lower_tunnels",
+        "name": { "en": "Subterranean Tunnel Grid", "es": "Red de Túneles Subterráneos" },
+        "mapId": "the_blue_gate",
+        "coordinates": { "x": 72, "y": 60 },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "blue_gate_mountain_watchtower",
+        "name": { "en": "Mountain Ridge Watchtower", "es": "Torre Vigía de la Cresta" },
+        "mapId": "the_blue_gate",
+        "coordinates": { "x": 75, "y": 20 },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": true
+      },
+      {
+        "id": "blue_gate_south_approach",
+        "name": { "en": "South Canyon Ingress", "es": "Acceso Cañón Sur" },
+        "mapId": "the_blue_gate",
+        "coordinates": { "x": 20, "y": 82 },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": true
+      },
+      {
+        "id": "blue_gate_extract_helipad",
+        "name": { "en": "Fortress Helipad Extraction", "es": "Extracción Helipuerto de la Fortaleza" },
+        "mapId": "the_blue_gate",
+        "coordinates": { "x": 82, "y": 35 },
+        "dangerLevel": "high",
+        "isExtractionPoint": true,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "blue_gate_extract_canyon",
+        "name": { "en": "Lower Gorge Extraction Flare", "es": "Extracción Garganta Inferior" },
+        "mapId": "the_blue_gate",
+        "coordinates": { "x": 35, "y": 88 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": true,
+        "isSpawnPoint": false
+      }
+    ]
+  },
+  {
+    "id": "riven_tides",
+    "name": {
+      "en": "Riven Tides",
+      "es": "Mareas Hendidas"
+    },
+    "description": {
+      "en": "Sunk maritime shipyard and coastal archipelago caught in hazardous tidal fluctuations.",
+      "es": "Astillero marítimo hundido y archipiélago costero azotado por mareas peligrosas."
+    },
+    "imageUrl": "/maps/riven_tides.png",
+    "pois": [
+      {
+        "id": "riven_submarine_drydock",
+        "name": { "en": "Submarine Drydock", "es": "Dique Seco de Submarinos" },
+        "mapId": "riven_tides",
+        "coordinates": { "x": 52, "y": 42 },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "riven_lighthouse_promontory",
+        "name": { "en": "Lighthouse Promontory", "es": "Promontorio del Faro" },
+        "mapId": "riven_tides",
+        "coordinates": { "x": 80, "y": 25 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "riven_sunken_freighter",
+        "name": { "en": "Wrecked Cargo Freighter", "es": "Carguero Naufragado" },
+        "mapId": "riven_tides",
+        "coordinates": { "x": 32, "y": 65 },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "riven_harbor_control",
+        "name": { "en": "Harbor Authority Tower", "es": "Torre de Control Portuario" },
+        "mapId": "riven_tides",
+        "coordinates": { "x": 48, "y": 28 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "riven_beachhead_spawn",
+        "name": { "en": "Southern Shoals Ingress", "es": "Acceso Bajíos del Sur" },
+        "mapId": "riven_tides",
+        "coordinates": { "x": 18, "y": 80 },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": true
+      },
+      {
+        "id": "riven_north_cliffs_spawn",
+        "name": { "en": "Northern Sea Cliffs Ingress", "es": "Acceso Acantilados Norte" },
+        "mapId": "riven_tides",
+        "coordinates": { "x": 25, "y": 18 },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": true
+      },
+      {
+        "id": "riven_extract_causeway",
+        "name": { "en": "High Tide Causeway Extract", "es": "Extracción Calzada de Marea Alta" },
+        "mapId": "riven_tides",
+        "coordinates": { "x": 75, "y": 78 },
+        "dangerLevel": "high",
+        "isExtractionPoint": true,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "riven_extract_pier",
+        "name": { "en": "Breakwater Pier Extract", "es": "Extracción Muelle Escollera" },
+        "mapId": "riven_tides",
+        "coordinates": { "x": 62, "y": 15 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": true,
+        "isSpawnPoint": false
+      }
+    ]
+  },
+  {
+    "id": "stella_montis",
+    "name": {
+      "en": "Stella Montis",
+      "es": "Stella Montis"
+    },
+    "description": {
+      "en": "Perched scientific astronomical observatory complex engulfed in eternal blizzard conditions.",
+      "es": "Complejo de observatorios astronómicos en la cumbre nevada, envuelto en ventiscas eternas."
+    },
+    "imageUrl": "/maps/stella_montis.png",
+    "pois": [
+      {
+        "id": "stella_primary_telescope",
+        "name": { "en": "Primary Telescope Dome", "es": "Cúpula del Telescopio Principal" },
+        "mapId": "stella_montis",
+        "coordinates": { "x": 50, "y": 38 },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "stella_cryo_facility",
+        "name": { "en": "Sub-zero Cryo Lab", "es": "Laboratorio Criogénico" },
+        "mapId": "stella_montis",
+        "coordinates": { "x": 32, "y": 48 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "stella_living_quarters",
+        "name": { "en": "Crew Habitation Quarters", "es": "Módulos Residenciales de Tripulación" },
+        "mapId": "stella_montis",
+        "coordinates": { "x": 68, "y": 52 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "stella_solar_array",
+        "name": { "en": "High-altitude Solar Array", "es": "Matriz Solar de Gran Altitud" },
+        "mapId": "stella_montis",
+        "coordinates": { "x": 25, "y": 28 },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "stella_funicular_terminal",
+        "name": { "en": "Mountain Funicular Terminal", "es": "Terminal Funicular de Montaña" },
+        "mapId": "stella_montis",
+        "coordinates": { "x": 52, "y": 75 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "stella_alpine_pass_spawn",
+        "name": { "en": "Alpine Pass Ingress", "es": "Acceso Paso Alpino" },
+        "mapId": "stella_montis",
+        "coordinates": { "x": 15, "y": 82 },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": true
+      },
+      {
+        "id": "stella_ridge_spawn",
+        "name": { "en": "Glacial Ridge Ingress", "es": "Acceso Cresta Glaciar" },
+        "mapId": "stella_montis",
+        "coordinates": { "x": 82, "y": 22 },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": true
+      },
+      {
+        "id": "stella_extract_summit_pad",
+        "name": { "en": "Summit Helipad Extraction", "es": "Extracción Helipuerto Cumbre" },
+        "mapId": "stella_montis",
+        "coordinates": { "x": 48, "y": 18 },
+        "dangerLevel": "high",
+        "isExtractionPoint": true,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "stella_extract_lower_depot",
+        "name": { "en": "Lower Cargo Lift Extract", "es": "Extracción Elevador de Carga Inferior" },
+        "mapId": "stella_montis",
+        "coordinates": { "x": 78, "y": 80 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": true,
+        "isSpawnPoint": false
+      }
+    ]
+  },
+  {
+    "id": "pendola_pass",
+    "name": {
+      "en": "Pendola Pass",
+      "es": "Paso de Péndola"
+    },
+    "description": {
+      "en": "Hazardous mountain bottleneck flanked by sheer drop-offs and artillery fortifications.",
+      "es": "Paso de montaña estrecho flanqueado por precipicios y fortificaciones de artillería."
+    },
+    "imageUrl": "/maps/pendola_pass.png",
+    "pois": [
+      {
+        "id": "pendola_fortress_bastion",
+        "name": { "en": "Pendola Fortress Bastion", "es": "Bastión de la Fortaleza Péndola" },
+        "mapId": "pendola_pass",
+        "coordinates": { "x": 50, "y": 50 },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "pendola_switchback_viaduct",
+        "name": { "en": "Switchback Railway Viaduct", "es": "Viaducto Ferroviario de Curvas" },
+        "mapId": "pendola_pass",
+        "coordinates": { "x": 35, "y": 35 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "pendola_relay_post",
+        "name": { "en": "Signal Relay Communications Post", "es": "Puesto de Relevo de Señal" },
+        "mapId": "pendola_pass",
+        "coordinates": { "x": 65, "y": 30 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "pendola_avalanche_bunker",
+        "name": { "en": "Avalanche Shelter Bunker", "es": "Búnker Refugio de Avalanchas" },
+        "mapId": "pendola_pass",
+        "coordinates": { "x": 30, "y": 68 },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "pendola_gorge_approach_spawn",
+        "name": { "en": "South Gorge Ingress", "es": "Acceso Garganta Sur" },
+        "mapId": "pendola_pass",
+        "coordinates": { "x": 15, "y": 75 },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": true
+      },
+      {
+        "id": "pendola_north_tunnel_spawn",
+        "name": { "en": "North Tunnel Mouth Ingress", "es": "Acceso Boca del Túnel Norte" },
+        "mapId": "pendola_pass",
+        "coordinates": { "x": 70, "y": 15 },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": true
+      },
+      {
+        "id": "pendola_extract_pass",
+        "name": { "en": "High Pass Extraction Beacon", "es": "Extracción Baliza de Paso Alto" },
+        "mapId": "pendola_pass",
+        "coordinates": { "x": 85, "y": 60 },
+        "dangerLevel": "high",
+        "isExtractionPoint": true,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "pendola_extract_ravine",
+        "name": { "en": "Dry Ravine Extraction Flare", "es": "Extracción Barranco Seco" },
+        "mapId": "pendola_pass",
+        "coordinates": { "x": 40, "y": 85 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": true,
+        "isSpawnPoint": false
+      }
+    ]
+  },
+  {
+    "id": "practice_range",
+    "name": {
+      "en": "Practice Range",
+      "es": "Campo de Tiro y Prácticas"
+    },
+    "description": {
+      "en": "Speranza's tactical proving grounds for live-fire calibration and simulated ARC combat scenarios.",
+      "es": "Campos de prueba de Speranza para calibración balística y simulaciones de combate ARC."
+    },
+    "imageUrl": "/maps/practice_range.png",
+    "pois": [
+      {
+        "id": "practice_ballistic_range",
+        "name": { "en": "Ballistic Target Range A", "es": "Campo de Tiro Balístico A" },
+        "mapId": "practice_range",
+        "coordinates": { "x": 45, "y": 40 },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "practice_combat_simulator",
+        "name": { "en": "ARC Tactical Combat Simulator", "es": "Simulador Táctico de Combate ARC" },
+        "mapId": "practice_range",
+        "coordinates": { "x": 60, "y": 55 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "practice_obstacle_course",
+        "name": { "en": "Raider Obstacle Course", "es": "Pista de Obstáculos de Raider" },
+        "mapId": "practice_range",
+        "coordinates": { "x": 30, "y": 65 },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "practice_armory_workshop",
+        "name": { "en": "Armory & Munitions Depot", "es": "Depósito de Municiones y Armería" },
+        "mapId": "practice_range",
+        "coordinates": { "x": 35, "y": 30 },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "practice_control_booth",
+        "name": { "en": "Master Range Control Booth", "es": "Cabina de Control Maestro" },
+        "mapId": "practice_range",
+        "coordinates": { "x": 50, "y": 20 },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": true
+      },
+      {
+        "id": "practice_exit_airlock",
+        "name": { "en": "Speranza Departure Airlock", "es": "Esclusa de Salida a Speranza" },
+        "mapId": "practice_range",
+        "coordinates": { "x": 50, "y": 85 },
+        "dangerLevel": "low",
         "isExtractionPoint": true,
         "isSpawnPoint": false
       }
