@@ -6,6 +6,10 @@ export interface RouteStep {
   objectives: { quest: Quest; objective: Objective }[];
   distanceFromPrevious: number;
   cumulativeDistance: number;
+  bearing?: {
+    degrees: number;
+    cardinal: 'N' | 'NE' | 'E' | 'SE' | 'S' | 'SW' | 'W' | 'NW';
+  };
 }
 
 export interface SkippedObjective {
@@ -31,6 +35,26 @@ function calculateDistance(a: { x: number; y: number }, b: { x: number; y: numbe
   return Math.sqrt(dx * dx + dy * dy);
 }
 
+function calculateBearing(
+  from: { x: number; y: number },
+  to: { x: number; y: number }
+): { degrees: number; cardinal: 'N' | 'NE' | 'E' | 'SE' | 'S' | 'SW' | 'W' | 'NW' } {
+  const dx = to.x - from.x;
+  const dy = to.y - from.y; // En pantalla +y va hacia el sur
+
+  // atan2(dx, -dy) da 0 en el norte (+y invertido)
+  let rad = Math.atan2(dx, -dy);
+  let deg = Math.round((rad * 180) / Math.PI);
+  if (deg < 0) deg += 360;
+
+  const cardinals: ('N' | 'NE' | 'E' | 'SE' | 'S' | 'SW' | 'W' | 'NW')[] = [
+    'N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW',
+  ];
+  const idx = Math.round(deg / 45) % 8;
+
+  return { degrees: deg, cardinal: cardinals[idx] };
+}
+
 const dangerScoreMap = {
   low: 5,
   medium: 25,
@@ -41,7 +65,8 @@ export function optimizeRaidRoute(
   map: GameMap,
   activeQuests: Quest[],
   spawnPoiId: string | null,
-  mode: 'rat' | 'sweep'
+  mode: 'rat' | 'sweep',
+  disabledExtractionIds: string[] = []
 ): OptimizedRoute {
   // 1. Encuentra punto de spawn
   const spawnPoi =
@@ -49,7 +74,15 @@ export function optimizeRaidRoute(
     map.pois.find((p) => p.isSpawnPoint) ||
     map.pois[0];
 
-  const extractions = map.pois.filter((p) => p.isExtractionPoint);
+  // Filtrar extracciones activas (excluyendo las deshabilitadas)
+  const availableExtractions = map.pois
+    .filter((p) => p.isExtractionPoint)
+    .filter((p) => !disabledExtractionIds.includes(p.id));
+
+  // Fallback si todas están deshabilitadas
+  const extractions = availableExtractions.length > 0
+    ? availableExtractions
+    : map.pois.filter((p) => p.isExtractionPoint);
 
   // 2. Filtrar objetivos de este mapa
   const relevantObjectives: { quest: Quest; objective: Objective; poi?: POI }[] = [];
@@ -108,7 +141,6 @@ export function optimizeRaidRoute(
     const scoredPois = targetPois.map((item) => {
       const dist = calculateDistance(spawnPoi.coordinates, item.poi.coordinates);
       const danger = dangerScoreMap[item.poi.dangerLevel];
-      // Fórmula Modo Rata: peso brutal al peligro
       const cost = dist * 0.4 + danger * 1.5;
       return { ...item, dist, cost };
     });
@@ -116,13 +148,12 @@ export function optimizeRaidRoute(
     // Ordenar por menor coste
     scoredPois.sort((a, b) => a.cost - b.cost);
 
-    // Tomar máximo 2 POIs que no sean 'high' salvo que no haya alternativa
     const selectedForRat = scoredPois.slice(0, 2);
     const excludedForRat = scoredPois.slice(2);
 
-    // Si alguno seleccionado es 'high' y hay más de 1, advertir o filtrar
     selectedForRat.forEach((entry) => {
       const dist = calculateDistance(currentPos, entry.poi.coordinates);
+      const bearing = calculateBearing(currentPos, entry.poi.coordinates);
       cumulativeDist += dist;
       steps.push({
         poi: entry.poi,
@@ -130,6 +161,7 @@ export function optimizeRaidRoute(
         objectives: entry.objectives,
         distanceFromPrevious: Math.round(dist),
         cumulativeDistance: Math.round(cumulativeDist),
+        bearing,
       });
       currentPos = entry.poi.coordinates;
     });
@@ -165,7 +197,6 @@ export function optimizeRaidRoute(
         const item = unvisited[i];
         const dist = calculateDistance(currentPos, item.poi.coordinates);
         const danger = dangerScoreMap[item.poi.dangerLevel];
-        // En Modo Barrido prima la distancia para minimizar caminata
         const cost = dist * 1.0 + danger * 0.15;
 
         if (cost < minCost) {
@@ -176,6 +207,7 @@ export function optimizeRaidRoute(
 
       const next = unvisited.splice(bestIndex, 1)[0];
       const dist = calculateDistance(currentPos, next.poi.coordinates);
+      const bearing = calculateBearing(currentPos, next.poi.coordinates);
       cumulativeDist += dist;
 
       steps.push({
@@ -184,6 +216,7 @@ export function optimizeRaidRoute(
         objectives: next.objectives,
         distanceFromPrevious: Math.round(dist),
         cumulativeDistance: Math.round(cumulativeDist),
+        bearing,
       });
 
       currentPos = next.poi.coordinates;
@@ -198,7 +231,6 @@ export function optimizeRaidRoute(
     extractions.forEach((ext) => {
       const dist = calculateDistance(currentPos, ext.coordinates);
       const danger = dangerScoreMap[ext.dangerLevel];
-      // En Modo Rata busca la extracción más segura
       const cost = mode === 'rat' ? dist * 0.5 + danger * 1.0 : dist;
 
       if (cost < minExtractCost) {
@@ -208,6 +240,7 @@ export function optimizeRaidRoute(
     });
 
     const distToExtract = calculateDistance(currentPos, bestExtract.coordinates);
+    const bearing = calculateBearing(currentPos, bestExtract.coordinates);
     cumulativeDist += distToExtract;
 
     steps.push({
@@ -216,14 +249,12 @@ export function optimizeRaidRoute(
       objectives: [],
       distanceFromPrevious: Math.round(distToExtract),
       cumulativeDistance: Math.round(cumulativeDist),
+      bearing,
     });
   }
 
-  // Peligro general de la ruta
   const hasHighDanger = steps.some((s) => s.poi.dangerLevel === 'high');
   const dangerRating = mode === 'rat' ? (hasHighDanger ? 'medium' : 'low') : hasHighDanger ? 'high' : 'medium';
-
-  // Duración estimada (ej: 100m ~ 3 min de combate y sigilo)
   const estimatedDurationMinutes = Math.max(5, Math.round(cumulativeDist * 0.12) + steps.length * 2);
 
   return {

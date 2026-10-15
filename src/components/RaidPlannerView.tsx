@@ -14,6 +14,11 @@ import {
   AlertTriangle,
   LogOut,
   Info,
+  Compass,
+  Radio,
+  ChevronRight,
+  ChevronLeft,
+  AlertOctagon,
 } from 'lucide-react';
 
 export const RaidPlannerView: React.FC = () => {
@@ -31,6 +36,9 @@ export const RaidPlannerView: React.FC = () => {
   } = usePlayerStore();
 
   const [selectedPoi, setSelectedPoi] = useState<POI | null>(null);
+  const [disabledExtractionIds, setDisabledExtractionIds] = useState<string[]>([]);
+  const [inRaidMode, setInRaidMode] = useState<boolean>(false);
+  const [currentStepIndex, setCurrentStepIndex] = useState<number>(1);
 
   const activeQuests = useMemo(
     () => allQuests.filter((q) => activeQuestIds.includes(q.id)),
@@ -57,13 +65,214 @@ export const RaidPlannerView: React.FC = () => {
   const selectedMap = allMaps.find((m) => m.id === selectedMapId) || allMaps[0];
   const spawnPoints = selectedMap.pois.filter((p) => p.isSpawnPoint);
 
+  // Toggle de extracciones bloqueadas
+  const handleToggleExtraction = (poiId: string) => {
+    setDisabledExtractionIds((prev) =>
+      prev.includes(poiId) ? prev.filter((id) => id !== poiId) : [...prev, poiId]
+    );
+  };
+
   // Calcular ruta táctica optimizada
   const optimizedRoute = useMemo(() => {
-    return optimizeRaidRoute(selectedMap, activeQuests, spawnPoiId, routeMode);
-  }, [selectedMap, activeQuests, spawnPoiId, routeMode]);
+    return optimizeRaidRoute(
+      selectedMap,
+      activeQuests,
+      spawnPoiId,
+      routeMode,
+      disabledExtractionIds
+    );
+  }, [selectedMap, activeQuests, spawnPoiId, routeMode, disabledExtractionIds]);
+
+  // Step activo en In-Raid Focus HUD
+  const activeStep =
+    optimizedRoute.steps[
+      Math.min(currentStepIndex, Math.max(0, optimizedRoute.steps.length - 1))
+    ] || optimizedRoute.steps[0];
 
   return (
     <div className="space-y-6">
+      {/* Header Bar with In-Raid HUD toggle */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-neutral-900/60 border border-neutral-800 p-4 rounded-xl">
+        <div>
+          <h2 className="text-sm font-bold uppercase tracking-wider text-neutral-100 flex items-center gap-2">
+            <Radio className="w-4 h-4 text-amber-400 animate-pulse" />
+            <span>{language === 'es' ? 'Terminal de Planificación Táctica' : 'Tactical Mission Computer'}</span>
+          </h2>
+          <p className="text-[11px] font-mono text-neutral-400">
+            {language === 'es'
+              ? 'Ruta adaptativa con cálculo de rumbos, descarte de riesgos y radar interactivo.'
+              : 'Adaptive routing with bearings, hazard pruning, and interactive radar.'}
+          </p>
+        </div>
+
+        {/* In-Raid Focus HUD Toggle Button */}
+        <button
+          onClick={() => setInRaidMode(!inRaidMode)}
+          className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-mono font-bold tracking-wider uppercase transition-all ${
+            inRaidMode
+              ? 'bg-amber-500 text-neutral-950 shadow-lg shadow-amber-500/25 ring-2 ring-amber-400'
+              : 'bg-neutral-950 border border-neutral-700 text-neutral-300 hover:border-amber-500/60'
+          }`}
+        >
+          <Zap className="w-4 h-4" />
+          <span>
+            {inRaidMode
+              ? (language === 'es' ? 'Desactivar Modo In-Raid' : 'Exit In-Raid HUD')
+              : (language === 'es' ? '⚡ Activar Modo In-Raid' : '⚡ Enter In-Raid HUD')}
+          </span>
+        </button>
+      </div>
+
+      {/* IN-RAID FOCUS HUD (When active) */}
+      {inRaidMode && activeStep && (
+        <div className="bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-900 border-2 border-amber-500/80 rounded-2xl p-5 shadow-2xl space-y-4 animate-in slide-in-from-top-4">
+          <div className="flex items-center justify-between border-b border-neutral-800 pb-3">
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-emerald-400 animate-ping" />
+              <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest">
+                {language === 'es' ? 'EN RAID • COPILOTO ACTIVO' : 'LIVE RAID • ACTIVE COPILOT'}
+              </span>
+            </div>
+
+            <div className="text-xs font-mono text-neutral-400 flex items-center gap-2">
+              <span>
+                {language === 'es' ? 'Punto de Ruta:' : 'Waypoint:'}{' '}
+                <strong className="text-neutral-100 font-bold">
+                  {currentStepIndex + 1} / {optimizedRoute.steps.length}
+                </strong>
+              </span>
+            </div>
+          </div>
+
+          {/* Current Target Banner */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+            <div className="md:col-span-8 space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono px-2 py-0.5 rounded bg-amber-500 text-neutral-950 font-bold uppercase">
+                  {activeStep.type === 'spawn'
+                    ? (language === 'es' ? 'Infiltración' : 'Infiltration')
+                    : activeStep.type === 'extraction'
+                    ? (language === 'es' ? 'Extracción' : 'Extraction')
+                    : (language === 'es' ? `Paso ${currentStepIndex}` : `Step ${currentStepIndex}`)}
+                </span>
+                <span
+                  className={`text-[10px] font-mono px-2 py-0.5 rounded uppercase font-semibold ${
+                    activeStep.poi.dangerLevel === 'high'
+                      ? 'bg-red-950 text-red-300 border border-red-800'
+                      : 'bg-neutral-800 text-neutral-300'
+                  }`}
+                >
+                  {language === 'es'
+                    ? `Peligro ${activeStep.poi.dangerLevel === 'high' ? 'Alto' : activeStep.poi.dangerLevel === 'medium' ? 'Medio' : 'Bajo'}`
+                    : `Hazard ${activeStep.poi.dangerLevel === 'high' ? 'High' : activeStep.poi.dangerLevel === 'medium' ? 'Medium' : 'Low'}`}
+                </span>
+              </div>
+
+              <h2 className="text-xl sm:text-2xl font-black uppercase text-neutral-100 tracking-wider">
+                {getLocalized(activeStep.poi.name, language)}
+              </h2>
+
+              {activeStep.bearing && (
+                <div className="flex items-center gap-3 text-sm font-mono text-cyan-300 font-bold pt-1">
+                  <span className="flex items-center gap-1.5 bg-cyan-950/80 border border-cyan-800/80 px-2.5 py-1 rounded-lg">
+                    <Compass className="w-4 h-4 text-cyan-400" />
+                    <span>
+                      {language === 'es' ? 'Rumbo:' : 'Bearing:'} {activeStep.bearing.cardinal} ({activeStep.bearing.degrees}°)
+                    </span>
+                  </span>
+                  <span className="bg-neutral-900 border border-neutral-800 px-2.5 py-1 rounded-lg text-neutral-200">
+                    +{activeStep.distanceFromPrevious}m
+                  </span>
+                </div>
+              )}
+            </div>
+
+            {/* Navigation Buttons */}
+            <div className="md:col-span-4 flex flex-col gap-2">
+              <div className="flex items-center gap-2">
+                <button
+                  disabled={currentStepIndex <= 0}
+                  onClick={() => setCurrentStepIndex((prev) => Math.max(0, prev - 1))}
+                  className="flex-1 py-2 rounded-lg bg-neutral-900 border border-neutral-800 hover:border-neutral-700 disabled:opacity-40 text-neutral-200 text-xs font-mono font-bold flex items-center justify-center gap-1"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                  <span>{language === 'es' ? 'Anterior' : 'Previous'}</span>
+                </button>
+
+                <button
+                  disabled={currentStepIndex >= optimizedRoute.steps.length - 1}
+                  onClick={() =>
+                    setCurrentStepIndex((prev) =>
+                      Math.min(optimizedRoute.steps.length - 1, prev + 1)
+                    )
+                  }
+                  className="flex-1 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold text-xs font-mono flex items-center justify-center gap-1 shadow-md shadow-amber-500/20"
+                >
+                  <span>{language === 'es' ? 'Siguiente' : 'Next'}</span>
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Emergency Extraction Button */}
+              {activeStep.type !== 'extraction' && (
+                <button
+                  onClick={() => {
+                    const extractIdx = optimizedRoute.steps.findIndex((s) => s.type === 'extraction');
+                    if (extractIdx !== -1) setCurrentStepIndex(extractIdx);
+                  }}
+                  className="w-full py-1.5 rounded-lg bg-red-950/80 border border-red-800 hover:bg-red-900 text-red-200 text-xs font-mono flex items-center justify-center gap-1.5 transition-colors"
+                >
+                  <AlertOctagon className="w-3.5 h-3.5 text-red-400" />
+                  <span>{language === 'es' ? '¡Abortar e Ir a Extracción!' : 'Abort to Extraction Flare!'}</span>
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Current Step Objectives List with big checkable items */}
+          {activeStep.objectives.length > 0 && (
+            <div className="bg-neutral-950/80 rounded-xl p-3.5 border border-neutral-800 space-y-2">
+              <span className="text-[11px] font-mono uppercase text-amber-400 font-bold block">
+                {language === 'es' ? 'Objetivos a completar en este punto:' : 'Objectives to complete at this waypoint:'}
+              </span>
+              <div className="space-y-2">
+                {activeStep.objectives.map(({ quest, objective }) => {
+                  const isDone = completedObjectiveIds.includes(objective.id);
+
+                  return (
+                    <div
+                      key={objective.id}
+                      onClick={() => toggleCompletedObjective(objective.id)}
+                      className={`flex items-start gap-3 p-3 rounded-lg border cursor-pointer transition-all ${
+                        isDone
+                          ? 'bg-neutral-900/40 border-neutral-800/60 opacity-60'
+                          : 'bg-neutral-900/90 border-neutral-700/80 hover:border-amber-500/60'
+                      }`}
+                    >
+                      <button className="mt-0.5">
+                        {isDone ? (
+                          <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                        ) : (
+                          <Circle className="w-5 h-5 text-neutral-500 hover:text-amber-400" />
+                        )}
+                      </button>
+                      <div>
+                        <div className="text-[11px] font-mono text-amber-400 font-bold uppercase">
+                          [{quest.vendor}] {getLocalized(quest.title, language)}
+                        </div>
+                        <div className={`text-xs font-medium ${isDone ? 'line-through text-neutral-400' : 'text-neutral-100'}`}>
+                          {getLocalized(objective.description, language)}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* 1. Selector de Sector y Sinergia */}
       <div className="bg-neutral-900/80 border border-neutral-800 rounded-xl p-4">
         <div className="flex items-center justify-between mb-3">
@@ -86,7 +295,12 @@ export const RaidPlannerView: React.FC = () => {
             return (
               <button
                 key={map.id}
-                onClick={() => setSelectedMapId(map.id)}
+                onClick={() => {
+                  setSelectedMapId(map.id);
+                  setDisabledExtractionIds([]);
+                  setSelectedPoi(null);
+                  setCurrentStepIndex(1);
+                }}
                 className={`text-left p-3.5 rounded-xl border transition-all ${
                   isSelected
                     ? 'bg-amber-500/15 border-amber-500/80 ring-1 ring-amber-500/40 shadow-sm'
@@ -230,8 +444,14 @@ export const RaidPlannerView: React.FC = () => {
       <TacticalMapViewer
         map={selectedMap}
         route={optimizedRoute}
-        selectedPoiId={selectedPoi?.id}
+        selectedPoi={selectedPoi}
         onSelectPoi={setSelectedPoi}
+        disabledExtractionIds={disabledExtractionIds}
+        onToggleExtraction={handleToggleExtraction}
+        onSetSpawn={(poiId) => {
+          setSpawnPoiId(poiId);
+          setSelectedPoi(null);
+        }}
       />
 
       {/* 4. Plan de Vuelo Táctico (Ruta Paso a Paso) */}
@@ -306,12 +526,23 @@ export const RaidPlannerView: React.FC = () => {
                         </span>
                       </div>
 
-                      {/* Distance telemetry */}
-                      <p className="text-[11px] font-mono text-neutral-400 mt-0.5">
-                        {idx === 0
-                          ? (language === 'es' ? 'Punto de partida' : 'Starting infiltration')
-                          : `+${step.distanceFromPrevious}m (${language === 'es' ? 'Acumulado:' : 'Total:'} ${step.cumulativeDistance}m)`}
-                      </p>
+                      {/* Distance & Compass Bearing Telemetry */}
+                      <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono text-neutral-400 mt-1">
+                        <span>
+                          {idx === 0
+                            ? (language === 'es' ? 'Punto de partida' : 'Starting infiltration')
+                            : `+${step.distanceFromPrevious}m (${language === 'es' ? 'Acumulado:' : 'Total:'} ${step.cumulativeDistance}m)`}
+                        </span>
+
+                        {step.bearing && (
+                          <span className="flex items-center gap-1 text-cyan-300 font-semibold bg-neutral-900 px-1.5 py-0.2 rounded border border-neutral-800">
+                            <Compass className="w-3 h-3 text-cyan-400" />
+                            <span>
+                              {language === 'es' ? 'Rumbo' : 'Heading'} {step.bearing.cardinal} ({step.bearing.degrees}°)
+                            </span>
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
 
@@ -363,7 +594,7 @@ export const RaidPlannerView: React.FC = () => {
         </div>
       </div>
 
-      {/* 5. Objetivos Omitidos por Seguridad en Modo Rata (DIFFERENTIATOR) */}
+      {/* 5. Objetivos Omitidos por Seguridad en Modo Rata */}
       {routeMode === 'rat' && optimizedRoute.skippedObjectives.length > 0 && (
         <div className="bg-neutral-900/80 border border-amber-900/50 rounded-xl p-4">
           <div className="flex items-center gap-2 pb-2.5 border-b border-neutral-800">
