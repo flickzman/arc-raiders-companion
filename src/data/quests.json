@@ -48,7 +48,10 @@
     "rewards": {
       "xp": 1200,
       "currency": 4500,
-      "items": ["Advanced Combat Vest", "5.56 AP Ammo x60"]
+      "items": [
+        "Advanced Combat Vest",
+        "5.56 AP Ammo x60"
+      ]
     }
   },
   {
@@ -68,7 +71,9 @@
         },
         "mapId": "dam_battlegrounds",
         "poiId": "dam_south_swamp",
-        "alternativePoiIds": ["dam_north_ridge"],
+        "alternativePoiIds": [
+          "dam_north_ridge"
+        ],
         "inOneRound": true,
         "count": 1
       }
@@ -77,7 +82,10 @@
     "rewards": {
       "xp": 800,
       "currency": 2600,
-      "items": ["Defibrillator x2", "Origin Field Outfit"]
+      "items": [
+        "Defibrillator x2",
+        "Origin Field Outfit"
+      ]
     }
   },
   {
@@ -117,7 +125,10 @@
     "rewards": {
       "xp": 1050,
       "currency": 3400,
-      "items": ["Welding Kit", "Armor Repair Plate x3"]
+      "items": [
+        "Welding Kit",
+        "Armor Repair Plate x3"
+      ]
     }
   },
   {
@@ -137,7 +148,9 @@
         },
         "mapId": "buried_city",
         "poiId": "city_piazza_roma",
-        "alternativePoiIds": ["city_galleria"],
+        "alternativePoiIds": [
+          "city_galleria"
+        ],
         "targetItemId": "item_esr_analyzer",
         "count": 1
       }
@@ -146,7 +159,10 @@
     "rewards": {
       "xp": 1150,
       "currency": 4100,
-      "items": ["Advanced Stim Shot x2", "Tactical Helmet"]
+      "items": [
+        "Advanced Stim Shot x2",
+        "Tactical Helmet"
+      ]
     }
   },
   {
@@ -184,7 +200,10 @@
     "rewards": {
       "xp": 850,
       "currency": 2800,
-      "items": ["Tactical Backpack", "Smoke Grenade x2"]
+      "items": [
+        "Tactical Backpack",
+        "Smoke Grenade x2"
+      ]
     }
   },
   {
@@ -229,7 +248,10 @@
     "rewards": {
       "xp": 950,
       "currency": 3200,
-      "items": ["Raider Hood (Cosmetic)", "Frag Grenade x3"]
+      "items": [
+        "Raider Hood (Cosmetic)",
+        "Frag Grenade x3"
+      ]
     }
   },
   {
@@ -266,7 +288,10 @@
     "rewards": {
       "xp": 1100,
       "currency": 3800,
-      "items": ["Heavy Assault Rifle", "Energy Drink x4"]
+      "items": [
+        "Heavy Assault Rifle",
+        "Energy Drink x4"
+      ]
     }
   },
   {
@@ -293,7 +318,10 @@
     "rewards": {
       "xp": 1800,
       "currency": 6000,
-      "items": ["High-Power Sniper Rifle", "Heavy Shield Mod"]
+      "items": [
+        "High-Power Sniper Rifle",
+        "Heavy Shield Mod"
+      ]
     }
   },
   {
@@ -330,7 +358,4663 @@
     "rewards": {
       "xp": 750,
       "currency": 2400,
-      "items": ["Compact SMG", "Light Medkit x3"]
+      "items": [
+        "Compact SMG",
+        "Light Medkit x3"
+      ]
+    }
+  },
+  {
+    "id": "quest_picking_up_the_pieces",
+    "title": {
+      "en": "Picking Up The Pieces",
+      "es": "Recogiendo los Pedazos"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_picking_up_the__0",
+        "description": {
+          "en": "Complete mission deployment for Shani in Any",
+          "es": "Completar despliegue de misión para Shani en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 700,
+      "currency": 2000,
+      "items": [
+        "1× Rattler III",
+        "0× Medium Ammo"
+      ]
+    }
+  },
+  {
+    "id": "quest_clearer_skies",
+    "title": {
+      "en": "Clearer Skies",
+      "es": "Cielos Más Claros"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_clearer_skies_1",
+        "description": {
+          "en": "Deliver required items: 3× ARC Alloy to Shani in Any",
+          "es": "Entregar suministros requeridos: 3× ARC Alloy a Shani en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 800,
+      "currency": 2250,
+      "items": [
+        "Black (Hiker Color)",
+        "1× Light Shield",
+        "3× Sterilized Bandage"
+      ]
+    }
+  },
+  {
+    "id": "quest_trash_into_treasure",
+    "title": {
+      "en": "Trash Into Treasure",
+      "es": "Basura en Tesoro"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_trash_into_trea_2",
+        "description": {
+          "en": "Deliver required items: 1× Battery 6× Wires to Shani in Any",
+          "es": "Entregar suministros requeridos: 1× Battery 6× Wires a Shani en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 900,
+      "currency": 2500,
+      "items": [
+        "1× Tactical Mk. 1",
+        "3× Adrenaline Shot"
+      ]
+    }
+  },
+  {
+    "id": "quest_a_bad_feeling",
+    "title": {
+      "en": "A Bad Feeling",
+      "es": "Un Mal Presentimiento"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_a_bad_feeling_4",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Any",
+          "es": "Completar despliegue de misión para Celeste en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1100,
+      "currency": 3000,
+      "items": [
+        "5× Duct Tape",
+        "5× Steel Spring",
+        "0× Metal Parts"
+      ]
+    }
+  },
+  {
+    "id": "quest_the_right_tool",
+    "title": {
+      "en": "The Right Tool",
+      "es": "La Herramienta Adecuada"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_the_right_tool_6",
+        "description": {
+          "en": "Complete mission deployment for Tian Wen in Any",
+          "es": "Completar despliegue de misión para Tian Wen en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1300,
+      "currency": 3500,
+      "items": [
+        "Cheer Emote",
+        "1× Extended Light Mag I",
+        "1× Stitcher II"
+      ]
+    }
+  },
+  {
+    "id": "quest_down_to_earth",
+    "title": {
+      "en": "Down To Earth",
+      "es": "Con los Pies en la Tierra"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_down_to_earth_7",
+        "description": {
+          "en": "Complete mission deployment for Shani in Any",
+          "es": "Completar despliegue de misión para Shani en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1400,
+      "currency": 3750,
+      "items": [
+        "1× Combat Mk. 1",
+        "1× Medium Shield"
+      ]
+    }
+  },
+  {
+    "id": "quest_a_better_use",
+    "title": {
+      "en": "A Better Use",
+      "es": "Un Mejor Uso"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_a_better_use_8",
+        "description": {
+          "en": "Complete mission deployment for Tian Wen in Dam Battlegrounds Buried City Spaceport The Blue Gate",
+          "es": "Completar despliegue de misión para Tian Wen en Dam Battlegrounds Buried City Spaceport The Blue Gate"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1500,
+      "currency": 4000,
+      "items": [
+        "1× Extended Light Mag I",
+        "1× Muzzle Brake II",
+        "1× Stable Stock I"
+      ]
+    }
+  },
+  {
+    "id": "quest_the_trifecta",
+    "title": {
+      "en": "The Trifecta",
+      "es": "La Trifecta"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_the_trifecta_9",
+        "description": {
+          "en": "Deliver required items: 2× Hornet Driver 2× Snitch Scanner 2× Wasp Driver to Shani in Any",
+          "es": "Entregar suministros requeridos: 2× Hornet Driver 2× Snitch Scanner 2× Wasp Driver a Shani en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1600,
+      "currency": 4250,
+      "items": [
+        "1× Dam Control Tower Key Origin Outfit (Orange Camo Color)",
+        "1× Raider Hatch Key",
+        "2× Defibrillator"
+      ]
+    }
+  },
+  {
+    "id": "quest_greasing_her_palms",
+    "title": {
+      "en": "Greasing Her Palms",
+      "es": "Engrasando sus Palmas"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_greasing_her_pa_10",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Dam Battlegrounds Buried City Spaceport",
+          "es": "Completar despliegue de misión para Celeste en Dam Battlegrounds Buried City Spaceport"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1700,
+      "currency": 4500,
+      "items": [
+        "1× Lure Grenade Blueprint",
+        "3× Electrical Components",
+        "3× Speaker Component"
+      ]
+    }
+  },
+  {
+    "id": "quest_dormant_barons",
+    "title": {
+      "en": "Dormant Barons",
+      "es": "Barones Durmientes"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_dormant_barons_11",
+        "description": {
+          "en": "Complete mission deployment for Shani in Dam Battlegrounds Spaceport The Blue Gate",
+          "es": "Completar despliegue de misión para Shani en Dam Battlegrounds Spaceport The Blue Gate"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1800,
+      "currency": 4750,
+      "items": [
+        "3× Door Blocker",
+        "3× Li'l Smoke Grenade"
+      ]
+    }
+  },
+  {
+    "id": "quest_doctor_s_orders",
+    "title": {
+      "en": "Doctor's Orders",
+      "es": "Órdenes del Médico"
+    },
+    "vendor": "Lance",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_doctor_s_orders_13",
+        "description": {
+          "en": "Deliver required items: 1× Durable Cloth 1× Great Mullein 1× Syringe 2× Antiseptic to Lance in Any",
+          "es": "Entregar suministros requeridos: 1× Durable Cloth 1× Great Mullein 1× Syringe 2× Antiseptic a Lance en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 800,
+      "currency": 5250,
+      "items": [
+        "1× Surge Shield Recharger",
+        "3× Adrenaline Shot",
+        "3× Sterilized Bandage"
+      ]
+    }
+  },
+  {
+    "id": "quest_broken_monument",
+    "title": {
+      "en": "Broken Monument",
+      "es": "Monumento Roto"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_broken_monument_14",
+        "description": {
+          "en": "Deliver required items: 1× First Wave Compass 1× First Wave Rations 1× First Wave Tape to Tian Wen in Dam Battlegrounds",
+          "es": "Entregar suministros requeridos: 1× First Wave Compass 1× First Wave Rations 1× First Wave Tape a Tian Wen en Dam Battlegrounds"
+        },
+        "mapId": "dam_battlegrounds",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 900,
+      "currency": 5500,
+      "items": [
+        "1× Arpeggio I",
+        "1× Compensator II",
+        "0× Medium Ammo"
+      ]
+    }
+  },
+  {
+    "id": "quest_medical_merchandise",
+    "title": {
+      "en": "Medical Merchandise",
+      "es": "Mercancía Médica"
+    },
+    "vendor": "Lance",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_medical_merchan_15",
+        "description": {
+          "en": "Complete mission deployment for Lance in Dam Battlegrounds Buried City Spaceport",
+          "es": "Completar despliegue de misión para Lance en Dam Battlegrounds Buried City Spaceport"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1000,
+      "currency": 2000,
+      "items": [
+        "Backpack Charm (Banana)",
+        "3× Defibrillator",
+        "3× Vita Shot"
+      ]
+    }
+  },
+  {
+    "id": "quest_marked_for_death",
+    "title": {
+      "en": "Marked For Death",
+      "es": "Marcado para Morir"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_marked_for_deat_16",
+        "description": {
+          "en": "Complete mission deployment for Tian Wen in Buried City",
+          "es": "Completar despliegue de misión para Tian Wen en Buried City"
+        },
+        "mapId": "buried_city",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1100,
+      "currency": 2250,
+      "items": [
+        "1× Angled Grip II",
+        "1× Shotgun Choke II"
+      ]
+    }
+  },
+  {
+    "id": "quest_straight_record",
+    "title": {
+      "en": "Straight Record",
+      "es": "Registro Limpio"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_straight_record_17",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Dam Battlegrounds",
+          "es": "Completar despliegue de misión para Celeste en Dam Battlegrounds"
+        },
+        "mapId": "dam_battlegrounds",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1200,
+      "currency": 2500,
+      "items": [
+        "3× Advanced Mechanical Components",
+        "5× Medium Gun Parts"
+      ]
+    }
+  },
+  {
+    "id": "quest_market_correction",
+    "title": {
+      "en": "Market Correction",
+      "es": "Corrección de Mercado"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_market_correcti_19",
+        "description": {
+          "en": "Complete mission deployment for Tian Wen in Buried City",
+          "es": "Completar despliegue de misión para Tian Wen en Buried City"
+        },
+        "mapId": "buried_city",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1400,
+      "currency": 3000,
+      "items": [
+        "1× Compensator I",
+        "1× Extended Light Mag II",
+        "1× Silencer II"
+      ]
+    }
+  },
+  {
+    "id": "quest_keeping_the_memory",
+    "title": {
+      "en": "Keeping The Memory",
+      "es": "Keeping The Memory"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_keeping_the_mem_20",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Dam Battlegrounds",
+          "es": "Completar despliegue de misión para Celeste en Dam Battlegrounds"
+        },
+        "mapId": "dam_battlegrounds",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1500,
+      "currency": 3250,
+      "items": [
+        "5× Duct Tape",
+        "5× Magnet",
+        "5× Simple Gun Parts"
+      ]
+    }
+  },
+  {
+    "id": "quest_a_lay_of_the_land",
+    "title": {
+      "en": "A Lay Of The Land",
+      "es": "A Lay Of The Land"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_a_lay_of_the_la_21",
+        "description": {
+          "en": "Deliver required items: 1× LiDAR Scanner to Shani in Spaceport",
+          "es": "Entregar suministros requeridos: 1× LiDAR Scanner a Shani en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1600,
+      "currency": 3500,
+      "items": [
+        "1× Dam Testing Annex Key",
+        "2× Smoke Grenade",
+        "3× Zipline"
+      ]
+    }
+  },
+  {
+    "id": "quest_eyes_on_the_prize",
+    "title": {
+      "en": "Eyes On The Prize",
+      "es": "Eyes On The Prize"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_eyes_on_the_pri_22",
+        "description": {
+          "en": "Deliver required items: 3× Wires to Tian Wen in Buried City",
+          "es": "Entregar suministros requeridos: 3× Wires a Tian Wen en Buried City"
+        },
+        "mapId": "buried_city",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1700,
+      "currency": 3750,
+      "items": [
+        "1× Extended Medium Mag II",
+        "1× Extended Shotgun Mag II"
+      ]
+    }
+  },
+  {
+    "id": "quest_echoes_of_victory_ridge",
+    "title": {
+      "en": "Echoes Of Victory Ridge",
+      "es": "Echoes Of Victory Ridge"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_echoes_of_victo_23",
+        "description": {
+          "en": "Deliver required items: 1× Major Aiva's Patch to Celeste in Dam Battlegrounds",
+          "es": "Entregar suministros requeridos: 1× Major Aiva's Patch a Celeste en Dam Battlegrounds"
+        },
+        "mapId": "dam_battlegrounds",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1800,
+      "currency": 4000,
+      "items": [
+        "1× Music Box",
+        "2× Processor",
+        "6× Crude Explosives"
+      ]
+    }
+  },
+  {
+    "id": "quest_eyes_in_the_sky",
+    "title": {
+      "en": "Eyes In The Sky",
+      "es": "Eyes In The Sky"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_eyes_in_the_sky_24",
+        "description": {
+          "en": "Complete mission deployment for Shani in Dam Battlegrounds Buried City Spaceport",
+          "es": "Completar despliegue de misión para Shani en Dam Battlegrounds Buried City Spaceport"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 700,
+      "currency": 4250,
+      "items": [
+        "1× Vita Spray",
+        "3× Tagging Grenade",
+        "5× Yellow Light Stick"
+      ]
+    }
+  },
+  {
+    "id": "quest_industrial_espionage",
+    "title": {
+      "en": "Industrial Espionage",
+      "es": "Espionaje Industrial"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_industrial_espi_25",
+        "description": {
+          "en": "Complete mission deployment for Tian Wen in Buried City",
+          "es": "Completar despliegue de misión para Tian Wen en Buried City"
+        },
+        "mapId": "buried_city",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 800,
+      "currency": 4500,
+      "items": [
+        "1× Burletta Blueprint",
+        "3× Mechanical Components",
+        "3× Simple Gun Parts"
+      ]
+    }
+  },
+  {
+    "id": "quest_a_balanced_harvest",
+    "title": {
+      "en": "A Balanced Harvest",
+      "es": "A Balanced Harvest"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_a_balanced_harv_26",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Dam Battlegrounds",
+          "es": "Completar despliegue de misión para Celeste en Dam Battlegrounds"
+        },
+        "mapId": "dam_battlegrounds",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 900,
+      "currency": 4750,
+      "items": [
+        "3× Advanced Mechanical Components",
+        "3× Medium Gun Parts",
+        "0× Steel Spring"
+      ]
+    }
+  },
+  {
+    "id": "quest_unexpected_initiative",
+    "title": {
+      "en": "Unexpected Initiative",
+      "es": "Unexpected Initiative"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_unexpected_init_27",
+        "description": {
+          "en": "Deliver required items: 1× Moisture Meter 1× Nutrient Meter to Tian Wen in Buried City",
+          "es": "Entregar suministros requeridos: 1× Moisture Meter 1× Nutrient Meter a Tian Wen en Buried City"
+        },
+        "mapId": "buried_city",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1000,
+      "currency": 5000,
+      "items": [
+        "1× Il Toro I",
+        "1× Shotgun Choke II",
+        "0× Shotgun Ammo"
+      ]
+    }
+  },
+  {
+    "id": "quest_untended_garden",
+    "title": {
+      "en": "Untended Garden",
+      "es": "Untended Garden"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_untended_garden_28",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Dam Battlegrounds",
+          "es": "Completar despliegue de misión para Celeste en Dam Battlegrounds"
+        },
+        "mapId": "dam_battlegrounds",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1100,
+      "currency": 5250,
+      "items": [
+        "3× Advanced Mechanical Components",
+        "3× Heavy Gun Parts",
+        "5× Canister"
+      ]
+    }
+  },
+  {
+    "id": "quest_a_symbol_of_unification",
+    "title": {
+      "en": "A Symbol Of Unification",
+      "es": "A Symbol Of Unification"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_a_symbol_of_uni_29",
+        "description": {
+          "en": "Deliver required items: 1× Raider Flag to Celeste in Dam Battlegrounds",
+          "es": "Entregar suministros requeridos: 1× Raider Flag a Celeste en Dam Battlegrounds"
+        },
+        "mapId": "dam_battlegrounds",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1200,
+      "currency": 5500,
+      "items": [
+        "Aviator Outfit (Dusted Cream Color)",
+        "3× Mod Components",
+        "5× Duct Tape"
+      ]
+    }
+  },
+  {
+    "id": "quest_after_rain_comes",
+    "title": {
+      "en": "After Rain Comes",
+      "es": "After Rain Comes"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_after_rain_come_30",
+        "description": {
+          "en": "Deliver required items: 2× Battery 5× Wires to Celeste in Buried City",
+          "es": "Entregar suministros requeridos: 2× Battery 5× Wires a Celeste en Buried City"
+        },
+        "mapId": "buried_city",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1300,
+      "currency": 2000,
+      "items": [
+        "3× Antiseptic",
+        "5× Blue Light Stick",
+        "5× Durable Cloth"
+      ]
+    }
+  },
+  {
+    "id": "quest_the_root_of_the_matter",
+    "title": {
+      "en": "The Root Of The Matter",
+      "es": "The Root Of The Matter"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_the_root_of_the_31",
+        "description": {
+          "en": "Deliver required items: 1× Experimental Seed Sample to Celeste in Buried City",
+          "es": "Entregar suministros requeridos: 1× Experimental Seed Sample a Celeste en Buried City"
+        },
+        "mapId": "buried_city",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1400,
+      "currency": 2250,
+      "items": [
+        "Backpack Charm (Succulent)",
+        "0× Coins"
+      ]
+    }
+  },
+  {
+    "id": "quest_celeste_s_journals",
+    "title": {
+      "en": "Celeste's Journals",
+      "es": "Celeste's Journals"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_celeste_s_journ_32",
+        "description": {
+          "en": "Deliver required items: 2× Celeste's Journal to Celeste in Dam Battlegrounds",
+          "es": "Entregar suministros requeridos: 2× Celeste's Journal a Celeste en Dam Battlegrounds"
+        },
+        "mapId": "dam_battlegrounds",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1500,
+      "currency": 2500,
+      "items": [
+        "1× Exodus Modules",
+        "1× Magnetic Accelerator",
+        "3× Heavy Gun Parts"
+      ]
+    }
+  },
+  {
+    "id": "quest_the_major_s_footlocker",
+    "title": {
+      "en": "The Major's Footlocker",
+      "es": "El Baúl del Mayor"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_the_major_s_foo_33",
+        "description": {
+          "en": "Deliver required items: 1× Major Aiva's Mementos to Tian Wen in Dam Battlegrounds",
+          "es": "Entregar suministros requeridos: 1× Major Aiva's Mementos a Tian Wen en Dam Battlegrounds"
+        },
+        "mapId": "dam_battlegrounds",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1600,
+      "currency": 2750,
+      "items": [
+        "1× Hullcracker Blueprint"
+      ]
+    }
+  },
+  {
+    "id": "quest_water_troubles",
+    "title": {
+      "en": "Water Troubles",
+      "es": "Water Troubles"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_water_troubles_34",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Dam Battlegrounds",
+          "es": "Completar despliegue de misión para Celeste en Dam Battlegrounds"
+        },
+        "mapId": "dam_battlegrounds",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1700,
+      "currency": 3000,
+      "items": [
+        "3× Mechanical Components",
+        "3× Simple Gun Parts",
+        "3× Steel Spring"
+      ]
+    }
+  },
+  {
+    "id": "quest_source_of_the_contamination",
+    "title": {
+      "en": "Source Of The Contamination",
+      "es": "Source Of The Contamination"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_source_of_the_c_36",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Dam Battlegrounds",
+          "es": "Completar despliegue de misión para Celeste en Dam Battlegrounds"
+        },
+        "mapId": "dam_battlegrounds",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 700,
+      "currency": 3500,
+      "items": [
+        "1× Mod Components",
+        "5× Duct Tape",
+        "5× Steel Spring"
+      ]
+    }
+  },
+  {
+    "id": "quest_our_presence_up_there",
+    "title": {
+      "en": "Our Presence up There",
+      "es": "Our Presence up There"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_our_presence_up_37",
+        "description": {
+          "en": "Complete mission deployment for Shani in Dam Battlegrounds",
+          "es": "Completar despliegue de misión para Shani en Dam Battlegrounds"
+        },
+        "mapId": "dam_battlegrounds",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 800,
+      "currency": 3750,
+      "items": [
+        "1× Buried City Town Hall Key",
+        "1× Raider Hatch Key",
+        "3× Jolt Mine"
+      ]
+    }
+  },
+  {
+    "id": "quest_switching_the_supply",
+    "title": {
+      "en": "Switching The Supply",
+      "es": "Switching The Supply"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_switching_the_s_38",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Spaceport",
+          "es": "Completar despliegue de misión para Celeste en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 900,
+      "currency": 4000,
+      "items": [
+        "Radio Renegade Outfit (Blue Color)",
+        "1× Spaceport Trench Tower Key",
+        "3× Synthesized Fuel"
+      ]
+    }
+  },
+  {
+    "id": "quest_lost_in_transmission",
+    "title": {
+      "en": "Lost In Transmission",
+      "es": "Lost In Transmission"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_lost_in_transmi_39",
+        "description": {
+          "en": "Complete mission deployment for Shani in Spaceport",
+          "es": "Completar despliegue de misión para Shani en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1000,
+      "currency": 4250,
+      "items": [
+        "1× Snap Hook"
+      ]
+    }
+  },
+  {
+    "id": "quest_a_warm_place_to_rest",
+    "title": {
+      "en": "A Warm Place To Rest",
+      "es": "A Warm Place To Rest"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_a_warm_place_to_40",
+        "description": {
+          "en": "Complete mission deployment for Apollo in Buried City",
+          "es": "Completar despliegue de misión para Apollo en Buried City"
+        },
+        "mapId": "buried_city",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1100,
+      "currency": 4500,
+      "items": [
+        "Radio Renegade Outfit (Goggles Variant)",
+        "1× Rosary",
+        "3× Noisemaker",
+        "5× Blue Light Stick"
+      ]
+    }
+  },
+  {
+    "id": "quest_communication_hideout",
+    "title": {
+      "en": "Communication Hideout",
+      "es": "Communication Hideout"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_communication_h_41",
+        "description": {
+          "en": "Complete mission deployment for Shani in Buried City",
+          "es": "Completar despliegue de misión para Shani en Buried City"
+        },
+        "mapId": "buried_city",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1200,
+      "currency": 4750,
+      "items": [
+        "1× Anvil III Aviator Outfit (Crimson Racer Color)",
+        "0× Heavy Ammo"
+      ]
+    }
+  },
+  {
+    "id": "quest_prescriptions_of_the_past",
+    "title": {
+      "en": "Prescriptions Of The Past",
+      "es": "Prescriptions Of The Past"
+    },
+    "vendor": "Lance",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_prescriptions_o_42",
+        "description": {
+          "en": "Complete mission deployment for Lance in Spaceport",
+          "es": "Completar despliegue de misión para Lance en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1300,
+      "currency": 5000,
+      "items": [
+        "1× Heavy Shield",
+        "1× Tactical Mk. 3 (Healing)",
+        "3× Adrenaline Shot"
+      ]
+    }
+  },
+  {
+    "id": "quest_into_the_fray",
+    "title": {
+      "en": "Into The Fray",
+      "es": "Into The Fray"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_into_the_fray_43",
+        "description": {
+          "en": "Deliver required items: 1× Leaper Pulse Unit to Shani in Any",
+          "es": "Entregar suministros requeridos: 1× Leaper Pulse Unit a Shani en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1400,
+      "currency": 5250,
+      "items": [
+        "Backpack Charm (Burger Boy) Radio Renegade Outfit (Grey Color)",
+        "1× Vulcano III",
+        "0× Shotgun Ammo"
+      ]
+    }
+  },
+  {
+    "id": "quest_power_out",
+    "title": {
+      "en": "Power Out",
+      "es": "Power Out"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_power_out_44",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Spaceport",
+          "es": "Completar despliegue de misión para Celeste en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1500,
+      "currency": 5500,
+      "items": [
+        "Radio Renegade Outfit (Bag Variant)",
+        "5× Explosive Compound",
+        "5× Oil",
+        "5× Wires"
+      ]
+    }
+  },
+  {
+    "id": "quest_paving_the_way",
+    "title": {
+      "en": "Paving The Way",
+      "es": "Paving The Way"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_paving_the_way_45",
+        "description": {
+          "en": "Complete mission deployment for Apollo in Dam Battlegrounds Buried City Blue Gate",
+          "es": "Completar despliegue de misión para Apollo en Dam Battlegrounds Buried City Blue Gate"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1600,
+      "currency": 2000,
+      "items": [
+        "1× Advanced Electrical Components",
+        "1× Raider Hatch Key",
+        "3× Seeker Grenade"
+      ]
+    }
+  },
+  {
+    "id": "quest_flickering_threat",
+    "title": {
+      "en": "Flickering Threat",
+      "es": "Flickering Threat"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_flickering_thre_46",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Dam Battlegrounds",
+          "es": "Completar despliegue de misión para Celeste en Dam Battlegrounds"
+        },
+        "mapId": "dam_battlegrounds",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1700,
+      "currency": 2250,
+      "items": [
+        "Radio Renegade Outfit (Helmet Variant)",
+        "3× Advanced Mechanical Components",
+        "5× Medium Gun Parts"
+      ]
+    }
+  },
+  {
+    "id": "quest_deciphering_the_data",
+    "title": {
+      "en": "Deciphering The Data",
+      "es": "Deciphering The Data"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_deciphering_the_47",
+        "description": {
+          "en": "Complete mission deployment for Shani in Spaceport",
+          "es": "Completar despliegue de misión para Shani en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1800,
+      "currency": 2500,
+      "items": [
+        "3× Defibrillator",
+        "3× Trailblazer"
+      ]
+    }
+  },
+  {
+    "id": "quest_bees",
+    "title": {
+      "en": "Bees!",
+      "es": "Bees!"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_bees_48",
+        "description": {
+          "en": "Complete mission deployment for Celeste in The Blue Gate",
+          "es": "Completar despliegue de misión para Celeste en The Blue Gate"
+        },
+        "mapId": "the_blue_gate",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 700,
+      "currency": 2750,
+      "items": [
+        "1× Advanced Electrical Components",
+        "3× Sensors"
+      ]
+    }
+  },
+  {
+    "id": "quest_groundbreaking",
+    "title": {
+      "en": "Groundbreaking",
+      "es": "Groundbreaking"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_groundbreaking_49",
+        "description": {
+          "en": "Complete mission deployment for Apollo in The Blue Gate",
+          "es": "Completar despliegue de misión para Apollo en The Blue Gate"
+        },
+        "mapId": "the_blue_gate",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 800,
+      "currency": 3000,
+      "items": [
+        "1× Power Rod Warden Outfit (Tangerine Color)"
+      ]
+    }
+  },
+  {
+    "id": "quest_dust_on_the_wires",
+    "title": {
+      "en": "Dust On The Wires",
+      "es": "Dust On The Wires"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_dust_on_the_wir_50",
+        "description": {
+          "en": "Deliver required items: 1× Scout Patrol Note to Shani in Spaceport",
+          "es": "Entregar suministros requeridos: 1× Scout Patrol Note a Shani en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 900,
+      "currency": 3250,
+      "items": [
+        "Backpack Charm (Fax Machine)"
+      ]
+    }
+  },
+  {
+    "id": "quest_espresso",
+    "title": {
+      "en": "Espresso",
+      "es": "Espresso"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_espresso_51",
+        "description": {
+          "en": "Deliver required items: 1× Espresso Machine Parts to Apollo in Any",
+          "es": "Entregar suministros requeridos: 1× Espresso Machine Parts a Apollo en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1000,
+      "currency": 3500,
+      "items": [
+        "1× Coffee Pot",
+        "3× Adrenaline Shot"
+      ]
+    }
+  },
+  {
+    "id": "quest_a_dead_end",
+    "title": {
+      "en": "A Dead End",
+      "es": "A Dead End"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_a_dead_end_52",
+        "description": {
+          "en": "Deliver required items: 1× Dusty Film Reel to Shani in The Blue Gate",
+          "es": "Entregar suministros requeridos: 1× Dusty Film Reel a Shani en The Blue Gate"
+        },
+        "mapId": "the_blue_gate",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1100,
+      "currency": 3750,
+      "items": [
+        "Patchwork (Warden Color)",
+        "0× Coins"
+      ]
+    }
+  },
+  {
+    "id": "quest_safe_passage",
+    "title": {
+      "en": "Safe Passage",
+      "es": "Safe Passage"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_safe_passage_53",
+        "description": {
+          "en": "Complete mission deployment for Apollo in Any",
+          "es": "Completar despliegue de misión para Apollo en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1200,
+      "currency": 4000,
+      "items": [
+        "3× Barricade Kit",
+        "3× Shrapnel Grenade",
+        "5× Li'l Smoke Grenade"
+      ]
+    }
+  },
+  {
+    "id": "quest_life_of_a_pharmacist",
+    "title": {
+      "en": "Life Of A Pharmacist",
+      "es": "Life Of A Pharmacist"
+    },
+    "vendor": "Lance",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_life_of_a_pharm_54",
+        "description": {
+          "en": "Complete mission deployment for Lance in Buried City",
+          "es": "Completar despliegue de misión para Lance en Buried City"
+        },
+        "mapId": "buried_city",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1300,
+      "currency": 4250,
+      "items": [
+        "1× Defibrillator",
+        "1× Surge Shield Recharger",
+        "3× Sterilized Bandage"
+      ]
+    }
+  },
+  {
+    "id": "quest_fragmented_logs",
+    "title": {
+      "en": "Fragmented Logs",
+      "es": "Fragmented Logs"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_fragmented_logs_55",
+        "description": {
+          "en": "Deliver required items: 1× Electrical Components to Shani in Stella Montis",
+          "es": "Entregar suministros requeridos: 1× Electrical Components a Shani en Stella Montis"
+        },
+        "mapId": "stella_montis",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1400,
+      "currency": 4500,
+      "items": [
+        "3× Showstopper",
+        "3× Trailblazer"
+      ]
+    }
+  },
+  {
+    "id": "quest_reduced_to_rubble",
+    "title": {
+      "en": "Reduced to Rubble",
+      "es": "Reduced to Rubble"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_reduced_to_rubb_56",
+        "description": {
+          "en": "Complete mission deployment for Shani in The Blue Gate",
+          "es": "Completar despliegue de misión para Shani en The Blue Gate"
+        },
+        "mapId": "the_blue_gate",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1500,
+      "currency": 4750,
+      "items": [
+        "1× Zipline",
+        "3× Barricade Kit",
+        "3× Door Blocker"
+      ]
+    }
+  },
+  {
+    "id": "quest_in_my_image",
+    "title": {
+      "en": "In My Image",
+      "es": "In My Image"
+    },
+    "vendor": "Lance",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_in_my_image_57",
+        "description": {
+          "en": "Complete mission deployment for Lance in Stella Montis",
+          "es": "Completar despliegue de misión para Lance en Stella Montis"
+        },
+        "mapId": "stella_montis",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1600,
+      "currency": 5000,
+      "items": [
+        "2× Looting Mk. 2",
+        "5× Green Light Stick"
+      ]
+    }
+  },
+  {
+    "id": "quest_what_goes_around",
+    "title": {
+      "en": "What Goes Around",
+      "es": "What Goes Around"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_what_goes_aroun_58",
+        "description": {
+          "en": "Complete mission deployment for Apollo in Any",
+          "es": "Completar despliegue de misión para Apollo en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1700,
+      "currency": 5250,
+      "items": [
+        "Backpack Charm (Cans)",
+        "2× Noisemaker",
+        "3× Blaze Grenade"
+      ]
+    }
+  },
+  {
+    "id": "quest_tribute_to_toledo",
+    "title": {
+      "en": "Tribute To Toledo",
+      "es": "Tribute To Toledo"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_tribute_to_tole_59",
+        "description": {
+          "en": "Deliver required items: 1× Power Rod to Celeste in Any",
+          "es": "Entregar suministros requeridos: 1× Power Rod a Celeste en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1800,
+      "currency": 5500,
+      "items": [
+        "2× Advanced Mechanical Components",
+        "3× Synthesized Fuel",
+        "5× Magnet"
+      ]
+    }
+  },
+  {
+    "id": "quest_furtive_meetings",
+    "title": {
+      "en": "Furtive Meetings",
+      "es": "Furtive Meetings"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_furtive_meeting_60",
+        "description": {
+          "en": "Deliver required items: 1× Secret Meeting Info to Shani in Stella Montis",
+          "es": "Entregar suministros requeridos: 1× Secret Meeting Info a Shani en Stella Montis"
+        },
+        "mapId": "stella_montis",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 700,
+      "currency": 2000,
+      "items": [
+        "1× Aphelion",
+        "5× Energy Clip"
+      ]
+    }
+  },
+  {
+    "id": "quest_exploring_pendola_pass",
+    "title": {
+      "en": "Exploring Pendola Pass",
+      "es": "Exploring Pendola Pass"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_exploring_pendo_61",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Pendola Pass",
+          "es": "Completar despliegue de misión para Celeste en Pendola Pass"
+        },
+        "mapId": "pendola_pass",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 800,
+      "currency": 2250,
+      "items": [
+        "1× Breathtaking Snow Globe",
+        "1× Medium Shield",
+        "1× Osprey I"
+      ]
+    }
+  },
+  {
+    "id": "quest_with_a_trace",
+    "title": {
+      "en": "With A Trace",
+      "es": "With A Trace"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_with_a_trace_62",
+        "description": {
+          "en": "Complete mission deployment for Shani in The Blue Gate",
+          "es": "Completar despliegue de misión para Shani en The Blue Gate"
+        },
+        "mapId": "the_blue_gate",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 900,
+      "currency": 2500,
+      "items": [
+        "1× Looting Mk. 2",
+        "1× Medium Shield"
+      ]
+    }
+  },
+  {
+    "id": "quest_cold_storage",
+    "title": {
+      "en": "Cold Storage",
+      "es": "Cold Storage"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_cold_storage_63",
+        "description": {
+          "en": "Deliver required items: 1× Old World Books to Shani in Stella Montis",
+          "es": "Entregar suministros requeridos: 1× Old World Books a Shani en Stella Montis"
+        },
+        "mapId": "stella_montis",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1000,
+      "currency": 2750,
+      "items": [
+        "1× Raider Hatch Key",
+        "3× Gas Mine"
+      ]
+    }
+  },
+  {
+    "id": "quest_sparks_fly",
+    "title": {
+      "en": "Sparks Fly",
+      "es": "Saltan Chispas"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_sparks_fly_64",
+        "description": {
+          "en": "Complete mission deployment for Apollo in Any",
+          "es": "Completar despliegue de misión para Apollo en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1100,
+      "currency": 3000,
+      "items": [
+        "1× Trigger 'Nade Blueprint",
+        "2× Processor",
+        "4× Crude Explosives"
+      ]
+    }
+  },
+  {
+    "id": "quest_digging_up_dirt",
+    "title": {
+      "en": "Digging Up Dirt",
+      "es": "Digging Up Dirt"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_digging_up_dirt_65",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Buried City",
+          "es": "Completar despliegue de misión para Celeste en Buried City"
+        },
+        "mapId": "buried_city",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1200,
+      "currency": 3250,
+      "items": [
+        "2× Advanced Electrical Components",
+        "2× Speaker Component"
+      ]
+    }
+  },
+  {
+    "id": "quest_last_entry",
+    "title": {
+      "en": "Last Entry",
+      "es": "Last Entry"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_last_entry_66",
+        "description": {
+          "en": "Deliver required items: 1× Official Shutdown Documentation 1× Seed Vault Box Key to Shani in Stella Montis",
+          "es": "Entregar suministros requeridos: 1× Official Shutdown Documentation 1× Seed Vault Box Key a Shani en Stella Montis"
+        },
+        "mapId": "stella_montis",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1300,
+      "currency": 3500,
+      "items": [
+        "1× Yellow Light Stick Blueprint"
+      ]
+    }
+  },
+  {
+    "id": "quest_shoring_up_defenses",
+    "title": {
+      "en": "Shoring Up Defenses",
+      "es": "Shoring Up Defenses"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_shoring_up_defe_67",
+        "description": {
+          "en": "Deliver required items: 1× ARC Alloy to Apollo in Riven Tides",
+          "es": "Entregar suministros requeridos: 1× ARC Alloy a Apollo en Riven Tides"
+        },
+        "mapId": "riven_tides",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1400,
+      "currency": 3750,
+      "items": [
+        "3× Barricade Kit",
+        "3× Lure Grenade Trap",
+        "6× Seeker Grenade"
+      ]
+    }
+  },
+  {
+    "id": "quest_clean_hands",
+    "title": {
+      "en": "Clean Hands",
+      "es": "Clean Hands"
+    },
+    "vendor": "Nomadic Envoys",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_clean_hands_68",
+        "description": {
+          "en": "Complete mission deployment for Nomadic Envoys in Pendola Pass",
+          "es": "Completar despliegue de misión para Nomadic Envoys en Pendola Pass"
+        },
+        "mapId": "pendola_pass",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1500,
+      "currency": 4000,
+      "items": [
+        "1× Battered Paperback",
+        "1× Sextant",
+        "1× Shield Recharger"
+      ]
+    }
+  },
+  {
+    "id": "quest_worth_your_salt",
+    "title": {
+      "en": "Worth Your Salt",
+      "es": "Valer tu Sal"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_worth_your_salt_69",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Spaceport",
+          "es": "Completar despliegue de misión para Celeste en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1600,
+      "currency": 4250,
+      "items": [
+        "1× Vita Spray Blueprint"
+      ]
+    }
+  },
+  {
+    "id": "quest_wires_crossed",
+    "title": {
+      "en": "Wires Crossed",
+      "es": "Wires Crossed"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_wires_crossed_70",
+        "description": {
+          "en": "Deliver required items: 1× Sentinel Firing Core 1× Snitch Scanner 1× Surveyor Vault to Celeste in Blue Gate Spaceport Buried City",
+          "es": "Entregar suministros requeridos: 1× Sentinel Firing Core 1× Snitch Scanner 1× Surveyor Vault a Celeste en Blue Gate Spaceport Buried City"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1700,
+      "currency": 4500,
+      "items": [
+        "1× Renegade I",
+        "2× Crash Mat",
+        "2× Zipline",
+        "3× Electrical Components"
+      ]
+    }
+  },
+  {
+    "id": "quest_the_clean_dream",
+    "title": {
+      "en": "The Clean Dream",
+      "es": "The Clean Dream"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_the_clean_dream_71",
+        "description": {
+          "en": "Complete mission deployment for Apollo in Spaceport The Blue Gate",
+          "es": "Completar despliegue de misión para Apollo en Spaceport The Blue Gate"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1800,
+      "currency": 4750,
+      "items": [
+        "2× Deadline",
+        "3× Heavy Fuze Grenade",
+        "3× Showstopper"
+      ]
+    }
+  },
+  {
+    "id": "quest_snap_and_salvage",
+    "title": {
+      "en": "Snap And Salvage",
+      "es": "Snap And Salvage"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_snap_and_salvag_72",
+        "description": {
+          "en": "Deliver required items: 1× Flow Controller 1× Magnetron to Tian Wen in Stella Montis",
+          "es": "Entregar suministros requeridos: 1× Flow Controller 1× Magnetron a Tian Wen en Stella Montis"
+        },
+        "mapId": "stella_montis",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 700,
+      "currency": 5000,
+      "items": [
+        "1× Burletta III",
+        "1× Extended Light Mag II",
+        "1× Silencer II",
+        "0× Light Ammo"
+      ]
+    }
+  },
+  {
+    "id": "quest_out_of_the_shadows",
+    "title": {
+      "en": "Out Of The Shadows",
+      "es": "Out Of The Shadows"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_out_of_the_shad_73",
+        "description": {
+          "en": "Deliver required items: 1× Rocketeer Driver to Shani in Any",
+          "es": "Entregar suministros requeridos: 1× Rocketeer Driver a Shani en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 800,
+      "currency": 5250,
+      "items": [
+        "2× Wolfpack",
+        "3× Surge Shield Recharger"
+      ]
+    }
+  },
+  {
+    "id": "quest_building_a_library",
+    "title": {
+      "en": "Building A Library",
+      "es": "Building A Library"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_building_a_libr_74",
+        "description": {
+          "en": "Complete mission deployment for Apollo in Buried City",
+          "es": "Completar despliegue de misión para Apollo en Buried City"
+        },
+        "mapId": "buried_city",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 900,
+      "currency": 5500,
+      "items": [
+        "1× Explosive Mine",
+        "1× Heavy Fuze Grenade",
+        "1× Jolt Mine"
+      ]
+    }
+  },
+  {
+    "id": "quest_line_in_the_sand",
+    "title": {
+      "en": "Line in the Sand",
+      "es": "Line in the Sand"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_line_in_the_san_75",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Buried City",
+          "es": "Completar despliegue de misión para Celeste en Buried City"
+        },
+        "mapId": "buried_city",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1000,
+      "currency": 2000,
+      "items": [
+        "2× Exodus Modules",
+        "2× Magnetic Accelerator",
+        "2× Magnetron"
+      ]
+    }
+  },
+  {
+    "id": "quest_sizing_things_up",
+    "title": {
+      "en": "Sizing Things Up",
+      "es": "Sizing Things Up"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_sizing_things_u_76",
+        "description": {
+          "en": "Deliver required items: 1× ARC Conductive Coupler to Celeste in Pendola Pass",
+          "es": "Entregar suministros requeridos: 1× ARC Conductive Coupler a Celeste en Pendola Pass"
+        },
+        "mapId": "pendola_pass",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1100,
+      "currency": 2250,
+      "items": [
+        "1× Bettina I",
+        "1× Exodus Technical Handbook",
+        "3× Adrenaline Shot",
+        "0× Heavy Ammo"
+      ]
+    }
+  },
+  {
+    "id": "quest_a_toxic_trail",
+    "title": {
+      "en": "A Toxic Trail",
+      "es": "A Toxic Trail"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_a_toxic_trail_77",
+        "description": {
+          "en": "Complete mission deployment for Shani in Dam Battlegrounds",
+          "es": "Completar despliegue de misión para Shani en Dam Battlegrounds"
+        },
+        "mapId": "dam_battlegrounds",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1200,
+      "currency": 2500,
+      "items": [
+        "1× Tactical Mk. 2",
+        "3× Gas Mine",
+        "3× Pulse Mine",
+        "3× Zipline"
+      ]
+    }
+  },
+  {
+    "id": "quest_tracks_of_the_beast",
+    "title": {
+      "en": "Tracks Of The Beast",
+      "es": "Tracks Of The Beast"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_tracks_of_the_b_78",
+        "description": {
+          "en": "Complete mission deployment for Shani in Pendola Pass",
+          "es": "Completar despliegue de misión para Shani en Pendola Pass"
+        },
+        "mapId": "pendola_pass",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1300,
+      "currency": 2750,
+      "items": [
+        "1× Grappling Hook",
+        "1× Skulker Targeter",
+        "1× Wolfpack",
+        "3× Showstopper"
+      ]
+    }
+  },
+  {
+    "id": "quest_the_league",
+    "title": {
+      "en": "The League",
+      "es": "The League"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_the_league_79",
+        "description": {
+          "en": "Deliver required items: 1× Bicycle Pump 1× Deflated Football to Apollo in Dam Battlegrounds Buried City",
+          "es": "Entregar suministros requeridos: 1× Bicycle Pump 1× Deflated Football a Apollo en Dam Battlegrounds Buried City"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1400,
+      "currency": 3000,
+      "items": [
+        "Aviator Outfit (Faded Flush)",
+        "5× Firecracker",
+        "5× Tagging Grenade"
+      ]
+    }
+  },
+  {
+    "id": "quest_celeste_s_childhood_drawings",
+    "title": {
+      "en": "Celeste's Childhood Drawings",
+      "es": "Celeste's Childhood Drawings"
+    },
+    "vendor": "Lance",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_celeste_s_child_80",
+        "description": {
+          "en": "Complete mission deployment for Lance in Riven Tides",
+          "es": "Completar despliegue de misión para Lance en Riven Tides"
+        },
+        "mapId": "riven_tides",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1500,
+      "currency": 3250,
+      "items": [
+        "Lance's Mixtape",
+        "3× Sterilized Bandage"
+      ]
+    }
+  },
+  {
+    "id": "quest_taking_stock",
+    "title": {
+      "en": "Taking Stock",
+      "es": "Taking Stock"
+    },
+    "vendor": "Nomadic Envoys",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_taking_stock_81",
+        "description": {
+          "en": "Deliver required items: 3× Industrial Battery to Nomadic Envoys in Stella Montis Spaceport Dam Battlegrounds Buried City",
+          "es": "Entregar suministros requeridos: 3× Industrial Battery a Nomadic Envoys en Stella Montis Spaceport Dam Battlegrounds Buried City"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1600,
+      "currency": 3500,
+      "items": [
+        "1× Advanced Electrical Components",
+        "2× Jolt Mine"
+      ]
+    }
+  },
+  {
+    "id": "quest_ruins_and_reverberations",
+    "title": {
+      "en": "Ruins And Reverberations",
+      "es": "Ruins And Reverberations"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_ruins_and_rever_82",
+        "description": {
+          "en": "Deliver required items: 1× Spotter Relay to Celeste in Pendola Pass",
+          "es": "Entregar suministros requeridos: 1× Spotter Relay a Celeste en Pendola Pass"
+        },
+        "mapId": "pendola_pass",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1700,
+      "currency": 3750,
+      "items": [
+        "1× Looting Mk. 3 (Safekeeper)",
+        "2× Smoke Grenade",
+        "2× Speaker Component",
+        "3× Electrical Components"
+      ]
+    }
+  },
+  {
+    "id": "quest_outstanding_balance",
+    "title": {
+      "en": "Outstanding Balance",
+      "es": "Outstanding Balance"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_outstanding_bal_83",
+        "description": {
+          "en": "Deliver required items: 1× Dodger's Note to Tian Wen in The Blue Gate",
+          "es": "Entregar suministros requeridos: 1× Dodger's Note a Tian Wen en The Blue Gate"
+        },
+        "mapId": "the_blue_gate",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1800,
+      "currency": 4000,
+      "items": [
+        "Aviator Outfit (Gothic Graffiti Color)",
+        "1× Extended Medium Mag III",
+        "1× Silencer II"
+      ]
+    }
+  },
+  {
+    "id": "quest_with_a_view",
+    "title": {
+      "en": "With A View",
+      "es": "With A View"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_with_a_view_84",
+        "description": {
+          "en": "Deliver required items: 1× Ion Sputter 1× Rotary Encoder to Shani in Stella Montis",
+          "es": "Entregar suministros requeridos: 1× Ion Sputter 1× Rotary Encoder a Shani en Stella Montis"
+        },
+        "mapId": "stella_montis",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 700,
+      "currency": 4250,
+      "items": [
+        "1× Tactical Mk. 2",
+        "5× Steel Spring",
+        "5× Wires"
+      ]
+    }
+  },
+  {
+    "id": "quest_on_deaf_ears",
+    "title": {
+      "en": "On Deaf Ears",
+      "es": "On Deaf Ears"
+    },
+    "vendor": "Lance",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_on_deaf_ears_85",
+        "description": {
+          "en": "Complete mission deployment for Lance in Stella Montis",
+          "es": "Completar despliegue de misión para Lance en Stella Montis"
+        },
+        "mapId": "stella_montis",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 800,
+      "currency": 4500,
+      "items": [
+        "1× Shaker Warden Outfit (Navy Blue Color)",
+        "3× Lure Grenade",
+        "5× Noisemaker"
+      ]
+    }
+  },
+  {
+    "id": "quest_combat_recon",
+    "title": {
+      "en": "Combat Recon",
+      "es": "Combat Recon"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_combat_recon_86",
+        "description": {
+          "en": "Complete mission deployment for Shani in Buried City",
+          "es": "Completar despliegue de misión para Shani en Buried City"
+        },
+        "mapId": "buried_city",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 900,
+      "currency": 4750,
+      "items": [
+        "1× Fireworks Box Radio Renegade Outfit (Red Color)",
+        "5× Firecracker"
+      ]
+    }
+  },
+  {
+    "id": "quest_a_new_type_of_plant",
+    "title": {
+      "en": "A New Type Of Plant",
+      "es": "A New Type Of Plant"
+    },
+    "vendor": "Lance",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_a_new_type_of_p_87",
+        "description": {
+          "en": "Deliver required items: 1× Possibly Toxic Plant to Lance in Dam Battlegrounds",
+          "es": "Entregar suministros requeridos: 1× Possibly Toxic Plant a Lance en Dam Battlegrounds"
+        },
+        "mapId": "dam_battlegrounds",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1000,
+      "currency": 5000,
+      "items": [
+        "1× Vita Shot",
+        "5× Antiseptic"
+      ]
+    }
+  },
+  {
+    "id": "quest_safe_harbor",
+    "title": {
+      "en": "Safe Harbor",
+      "es": "Safe Harbor"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_safe_harbor_88",
+        "description": {
+          "en": "Deliver required items: 1× Precision Gimbal to Tian Wen in Riven Tides",
+          "es": "Entregar suministros requeridos: 1× Precision Gimbal a Tian Wen en Riven Tides"
+        },
+        "mapId": "riven_tides",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1100,
+      "currency": 5250,
+      "items": [
+        "1× Heavy Gun Parts",
+        "1× Horizontal Grip",
+        "1× Surge Coil"
+      ]
+    }
+  },
+  {
+    "id": "quest_keeping_an_eye_out",
+    "title": {
+      "en": "Keeping an Eye Out",
+      "es": "Keeping an Eye Out"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_keeping_an_eye__89",
+        "description": {
+          "en": "Complete mission deployment for Celeste in The Blue Gate",
+          "es": "Completar despliegue de misión para Celeste en The Blue Gate"
+        },
+        "mapId": "the_blue_gate",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1200,
+      "currency": 5500,
+      "items": [
+        "1× Flame Spray",
+        "5× Pulse Mine"
+      ]
+    }
+  },
+  {
+    "id": "quest_a_first_foothold",
+    "title": {
+      "en": "A First Foothold",
+      "es": "A First Foothold"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_a_first_foothol_90",
+        "description": {
+          "en": "Complete mission deployment for Apollo in The Blue Gate",
+          "es": "Completar despliegue de misión para Apollo en The Blue Gate"
+        },
+        "mapId": "the_blue_gate",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1300,
+      "currency": 2000,
+      "items": [
+        "3× Heavy Fuze Grenade",
+        "3× Shrapnel Grenade",
+        "3× Snap Blast Grenade"
+      ]
+    }
+  },
+  {
+    "id": "quest_battening_down",
+    "title": {
+      "en": "Battening Down",
+      "es": "Battening Down"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_battening_down_91",
+        "description": {
+          "en": "Complete mission deployment for Apollo in Riven Tides",
+          "es": "Completar despliegue de misión para Apollo en Riven Tides"
+        },
+        "mapId": "riven_tides",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1400,
+      "currency": 2250,
+      "items": [
+        "1× Riven Tides Hotel Keycard No. 107",
+        "3× Smoke Grenade Trap"
+      ]
+    }
+  },
+  {
+    "id": "quest_boarding_the_frigate",
+    "title": {
+      "en": "Boarding The Frigate",
+      "es": "Boarding The Frigate"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_boarding_the_fr_92",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Frigate",
+          "es": "Completar despliegue de misión para Celeste en Frigate"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1500,
+      "currency": 2500,
+      "items": [
+        "1× Breathtaking Snow Globe",
+        "1× Medium Shield",
+        "1× Osprey I"
+      ]
+    }
+  },
+  {
+    "id": "quest_to_the_skies",
+    "title": {
+      "en": "To The Skies",
+      "es": "To The Skies"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_to_the_skies_93",
+        "description": {
+          "en": "Deliver required items: 1× ARC Performance Steel 1× ARC Synthetic Resin 1× ARC Thermo Lining 1× Pop Trigger to Apollo in Dam Battlegrounds Blue Gate Spaceport Riven Tides",
+          "es": "Entregar suministros requeridos: 1× ARC Performance Steel 1× ARC Synthetic Resin 1× ARC Thermo Lining 1× Pop Trigger a Apollo en Dam Battlegrounds Blue Gate Spaceport Riven Tides"
+        },
+        "mapId": "riven_tides",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1600,
+      "currency": 2750,
+      "items": [
+        "3× ARC Performance Steel",
+        "3× ARC Synthetic Resin",
+        "3× ARC Thermo Lining"
+      ]
+    }
+  },
+  {
+    "id": "quest_mixed_signals",
+    "title": {
+      "en": "Mixed Signals",
+      "es": "Mixed Signals"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_mixed_signals_94",
+        "description": {
+          "en": "Deliver required items: 1× Surveyor Vault to Shani in Any",
+          "es": "Entregar suministros requeridos: 1× Surveyor Vault a Shani en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1700,
+      "currency": 3000,
+      "items": [
+        "1× Photoelectric Cloak",
+        "1× Raider Hatch Key"
+      ]
+    }
+  },
+  {
+    "id": "quest_clamoring_for_attention",
+    "title": {
+      "en": "Clamoring for Attention",
+      "es": "Clamoring for Attention"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_clamoring_for_a_95",
+        "description": {
+          "en": "Deliver required items: 1× Battery 3× Wires to Shani in The Blue Gate",
+          "es": "Entregar suministros requeridos: 1× Battery 3× Wires a Shani en The Blue Gate"
+        },
+        "mapId": "the_blue_gate",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1800,
+      "currency": 3250,
+      "items": [
+        "3× Tagging Grenade",
+        "5× Lure Grenade",
+        "5× Noisemaker"
+      ]
+    }
+  },
+  {
+    "id": "quest_waking_the_grid",
+    "title": {
+      "en": "Waking the Grid",
+      "es": "Waking the Grid"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_waking_the_grid_96",
+        "description": {
+          "en": "Complete mission deployment for Shani in Spaceport",
+          "es": "Completar despliegue de misión para Shani en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 700,
+      "currency": 3500,
+      "items": [
+        "1× Tactical Mk. 3 (Revival)",
+        "3× Vita Shot",
+        "5× Surge Shield Recharger"
+      ]
+    }
+  },
+  {
+    "id": "quest_collision_course",
+    "title": {
+      "en": "Collision Course",
+      "es": "Collision Course"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_collision_cours_98",
+        "description": {
+          "en": "Deliver required items: 1× Comet Igniter to Tian Wen in Any",
+          "es": "Entregar suministros requeridos: 1× Comet Igniter a Tian Wen en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 900,
+      "currency": 4000,
+      "items": [
+        "1× Canto I",
+        "1× Extended Medium Mag III",
+        "1× Muzzle Brake II"
+      ]
+    }
+  },
+  {
+    "id": "quest_turnabout",
+    "title": {
+      "en": "Turnabout",
+      "es": "Turnabout"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_turnabout_99",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Spaceport",
+          "es": "Completar despliegue de misión para Celeste en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1000,
+      "currency": 4250,
+      "items": [
+        "2× Heavy Gun Parts",
+        "2× Medium Gun Parts"
+      ]
+    }
+  },
+  {
+    "id": "quest_a_prime_specimen",
+    "title": {
+      "en": "A Prime Specimen",
+      "es": "A Prime Specimen"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_a_prime_specime_100",
+        "description": {
+          "en": "Complete mission deployment for Shani in The Blue Gate",
+          "es": "Completar despliegue de misión para Shani en The Blue Gate"
+        },
+        "mapId": "the_blue_gate",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1100,
+      "currency": 4500,
+      "items": [
+        "1× Patrol Car Key",
+        "3× Door Blocker"
+      ]
+    }
+  },
+  {
+    "id": "quest_the_stench_of_corruption",
+    "title": {
+      "en": "The Stench Of Corruption",
+      "es": "The Stench Of Corruption"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_the_stench_of_c_101",
+        "description": {
+          "en": "Deliver required items: 1× Flushing Terminal Key to Shani in Spaceport",
+          "es": "Entregar suministros requeridos: 1× Flushing Terminal Key a Shani en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1200,
+      "currency": 4750,
+      "items": [
+        "1× Air Freshener",
+        "1× Dam Staff Room Key Warden Outfit (Blue Color)",
+        "3× Noisemaker"
+      ]
+    }
+  },
+  {
+    "id": "quest_bait_fetch_blast",
+    "title": {
+      "en": "Bait, Fetch, Blast",
+      "es": "Bait, Fetch, Blast"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_bait_fetch_blas_102",
+        "description": {
+          "en": "Deliver required items: 1× Bully Fragmenter to Apollo in Pendola Pass",
+          "es": "Entregar suministros requeridos: 1× Bully Fragmenter a Apollo en Pendola Pass"
+        },
+        "mapId": "pendola_pass",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1300,
+      "currency": 5000,
+      "items": [
+        "1× Bully Fragmenter",
+        "1× Wolfpack"
+      ]
+    }
+  },
+  {
+    "id": "quest_belly_of_the_beast",
+    "title": {
+      "en": "Belly Of The Beast",
+      "es": "Belly Of The Beast"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_belly_of_the_be_103",
+        "description": {
+          "en": "Complete mission deployment for Shani in Pendola Pass",
+          "es": "Completar despliegue de misión para Shani en Pendola Pass"
+        },
+        "mapId": "pendola_pass",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1400,
+      "currency": 5250,
+      "items": [
+        "Raider Supplies Crate"
+      ]
+    }
+  },
+  {
+    "id": "quest_test_case",
+    "title": {
+      "en": "Test Case",
+      "es": "Test Case"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_test_case_104",
+        "description": {
+          "en": "Deliver required items: 1× Fireball Burner 1× Firefly Burner 1× Hornet Driver to Apollo in Any",
+          "es": "Entregar suministros requeridos: 1× Fireball Burner 1× Firefly Burner 1× Hornet Driver a Apollo en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1500,
+      "currency": 5500,
+      "items": [
+        "1× Fireworks Box Blueprint",
+        "3× Blaze Grenade",
+        "3× Seeker Grenade"
+      ]
+    }
+  },
+  {
+    "id": "quest_celeste_s_teenage_rebellion",
+    "title": {
+      "en": "Celeste's Teenage Rebellion",
+      "es": "Celeste's Teenage Rebellion"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_celeste_s_teena_105",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Riven Tides",
+          "es": "Completar despliegue de misión para Celeste en Riven Tides"
+        },
+        "mapId": "riven_tides",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1600,
+      "currency": 2000,
+      "items": [
+        "1× Heavy Shield",
+        "1× Looting Mk. 2"
+      ]
+    }
+  },
+  {
+    "id": "quest_a_path_not_yours",
+    "title": {
+      "en": "A Path Not Yours",
+      "es": "A Path Not Yours"
+    },
+    "vendor": "Nomadic Envoys",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_a_path_not_your_106",
+        "description": {
+          "en": "Deliver required items: 1× Broken Compass to Nomadic Envoys in The Blue Gate",
+          "es": "Entregar suministros requeridos: 1× Broken Compass a Nomadic Envoys en The Blue Gate"
+        },
+        "mapId": "the_blue_gate",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1700,
+      "currency": 2250,
+      "items": [
+        "1× Tellurion",
+        "2× Battery",
+        "2× Magnet",
+        "2× Power Cable"
+      ]
+    }
+  },
+  {
+    "id": "quest_divided",
+    "title": {
+      "en": "Divided",
+      "es": "Divided"
+    },
+    "vendor": "Nomadic Envoys",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_divided_107",
+        "description": {
+          "en": "Complete mission deployment for Nomadic Envoys in Pendola Pass",
+          "es": "Completar despliegue de misión para Nomadic Envoys en Pendola Pass"
+        },
+        "mapId": "pendola_pass",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1800,
+      "currency": 2500,
+      "items": [
+        "1× Music Box",
+        "1× Rusted Gear",
+        "2× Durable Cloth",
+        "2× Magnet"
+      ]
+    }
+  },
+  {
+    "id": "quest_settled_in_full",
+    "title": {
+      "en": "Settled in Full",
+      "es": "Settled in Full"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_settled_in_full_108",
+        "description": {
+          "en": "Deliver required items: 1× Bastion Cell to Tian Wen in Any",
+          "es": "Entregar suministros requeridos: 1× Bastion Cell a Tian Wen en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 700,
+      "currency": 2750,
+      "items": [
+        "0× Raider Tokens"
+      ]
+    }
+  },
+  {
+    "id": "quest_movie_night",
+    "title": {
+      "en": "Movie Night",
+      "es": "Movie Night"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_movie_night_109",
+        "description": {
+          "en": "Deliver required items: 1× Portable TV 1× Stack Of Movie Tapes to Apollo in Any",
+          "es": "Entregar suministros requeridos: 1× Portable TV 1× Stack Of Movie Tapes a Apollo en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 800,
+      "currency": 3000,
+      "items": [
+        "1× Fireworks Box",
+        "3× Showstopper",
+        "3× Smoke Grenade"
+      ]
+    }
+  },
+  {
+    "id": "quest_stable_housing",
+    "title": {
+      "en": "Stable Housing",
+      "es": "Stable Housing"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_stable_housing_110",
+        "description": {
+          "en": "Deliver required items: 1× Project Heartwood Blueprints to Tian Wen in Stella Montis",
+          "es": "Entregar suministros requeridos: 1× Project Heartwood Blueprints a Tian Wen en Stella Montis"
+        },
+        "mapId": "stella_montis",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 900,
+      "currency": 3250,
+      "items": [
+        "1× Snap Hook",
+        "5× Lure Grenade",
+        "5× Seeker Grenade"
+      ]
+    }
+  },
+  {
+    "id": "quest_on_the_map",
+    "title": {
+      "en": "On The Map",
+      "es": "On The Map"
+    },
+    "vendor": "Lance",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_on_the_map_111",
+        "description": {
+          "en": "Complete mission deployment for Lance in Spaceport",
+          "es": "Completar despliegue de misión para Lance en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1000,
+      "currency": 3500,
+      "items": [
+        "1× Tactical Mk. 3 (Healing)",
+        "3× Sterilized Bandage",
+        "3× Surge Shield Recharger"
+      ]
+    }
+  },
+  {
+    "id": "quest_bombing_run",
+    "title": {
+      "en": "Bombing Run",
+      "es": "Bombing Run"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_bombing_run_112",
+        "description": {
+          "en": "Complete mission deployment for Shani in Any",
+          "es": "Completar despliegue de misión para Shani en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1100,
+      "currency": 3750,
+      "items": [
+        "Finger Gun Single Shot Emote",
+        "0× Raider Tokens"
+      ]
+    }
+  },
+  {
+    "id": "quest_armored_transports",
+    "title": {
+      "en": "Armored Transports",
+      "es": "Armored Transports"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_armored_transpo_113",
+        "description": {
+          "en": "Complete mission deployment for Tian Wen in The Blue Gate",
+          "es": "Completar despliegue de misión para Tian Wen en The Blue Gate"
+        },
+        "mapId": "the_blue_gate",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1200,
+      "currency": 4000,
+      "items": [
+        "Aviator Outfit (Blue Yellow Color)",
+        "3× Defibrillator",
+        "3× Smoke Grenade"
+      ]
+    }
+  },
+  {
+    "id": "quest_a_wrench_in_the_works",
+    "title": {
+      "en": "A Wrench in the Works",
+      "es": "A Wrench in the Works"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_a_wrench_in_the_114",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Spaceport",
+          "es": "Completar despliegue de misión para Celeste en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1300,
+      "currency": 4250,
+      "items": [
+        "Radio Renegade Outfit (Yellow Color)",
+        "3× Mod Components",
+        "5× Mechanical Components"
+      ]
+    }
+  },
+  {
+    "id": "quest_exploring_pendola_pass_115",
+    "title": {
+      "en": "Exploring Pendola Pass",
+      "es": "Exploring Pendola Pass"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_exploring_pendo_115",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Pendola Pass",
+          "es": "Completar despliegue de misión para Celeste en Pendola Pass"
+        },
+        "mapId": "pendola_pass",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1400,
+      "currency": 4500,
+      "items": [
+        "1× Breathtaking Snow Globe",
+        "1× Medium Shield",
+        "1× Osprey I"
+      ]
+    }
+  },
+  {
+    "id": "quest_clean_hands_116",
+    "title": {
+      "en": "Clean Hands",
+      "es": "Clean Hands"
+    },
+    "vendor": "Nomadic Envoys",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_clean_hands_116",
+        "description": {
+          "en": "Complete mission deployment for Nomadic Envoys in Pendola Pass",
+          "es": "Completar despliegue de misión para Nomadic Envoys en Pendola Pass"
+        },
+        "mapId": "pendola_pass",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1500,
+      "currency": 4750,
+      "items": [
+        "1× Battered Paperback",
+        "1× Sextant",
+        "1× Shield Recharger"
+      ]
+    }
+  },
+  {
+    "id": "quest_wires_crossed_117",
+    "title": {
+      "en": "Wires Crossed",
+      "es": "Wires Crossed"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_wires_crossed_117",
+        "description": {
+          "en": "Deliver required items: 1× Sentinel Firing Core 1× Snitch Scanner 1× Surveyor Vault to Celeste in Blue Gate Spaceport Buried City",
+          "es": "Entregar suministros requeridos: 1× Sentinel Firing Core 1× Snitch Scanner 1× Surveyor Vault a Celeste en Blue Gate Spaceport Buried City"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1600,
+      "currency": 5000,
+      "items": [
+        "1× Renegade I",
+        "2× Crash Mat",
+        "2× Zipline",
+        "3× Electrical Components"
+      ]
+    }
+  },
+  {
+    "id": "quest_sizing_things_up_118",
+    "title": {
+      "en": "Sizing Things Up",
+      "es": "Sizing Things Up"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_sizing_things_u_118",
+        "description": {
+          "en": "Deliver required items: 1× ARC Conductive Coupler to Celeste in Pendola Pass",
+          "es": "Entregar suministros requeridos: 1× ARC Conductive Coupler a Celeste en Pendola Pass"
+        },
+        "mapId": "pendola_pass",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1700,
+      "currency": 5250,
+      "items": [
+        "1× Bettina I",
+        "1× Exodus Technical Handbook",
+        "3× Adrenaline Shot",
+        "0× Heavy Ammo"
+      ]
+    }
+  },
+  {
+    "id": "quest_tracks_of_the_beast_119",
+    "title": {
+      "en": "Tracks Of The Beast",
+      "es": "Tracks Of The Beast"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_tracks_of_the_b_119",
+        "description": {
+          "en": "Complete mission deployment for Shani in Pendola Pass",
+          "es": "Completar despliegue de misión para Shani en Pendola Pass"
+        },
+        "mapId": "pendola_pass",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1800,
+      "currency": 5500,
+      "items": [
+        "1× Grappling Hook",
+        "1× Skulker Targeter",
+        "1× Wolfpack",
+        "3× Showstopper"
+      ]
+    }
+  },
+  {
+    "id": "quest_celeste_s_childhood_drawings_120",
+    "title": {
+      "en": "Celeste's Childhood Drawings",
+      "es": "Celeste's Childhood Drawings"
+    },
+    "vendor": "Lance",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_celeste_s_child_120",
+        "description": {
+          "en": "Complete mission deployment for Lance in Riven Tides",
+          "es": "Completar despliegue de misión para Lance en Riven Tides"
+        },
+        "mapId": "riven_tides",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 700,
+      "currency": 2000,
+      "items": [
+        "Lance's Mixtape",
+        "3× Sterilized Bandage"
+      ]
+    }
+  },
+  {
+    "id": "quest_taking_stock_121",
+    "title": {
+      "en": "Taking Stock",
+      "es": "Taking Stock"
+    },
+    "vendor": "Nomadic Envoys",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_taking_stock_121",
+        "description": {
+          "en": "Deliver required items: 3× Industrial Battery to Nomadic Envoys in Stella Montis Spaceport Dam Battlegrounds Buried City",
+          "es": "Entregar suministros requeridos: 3× Industrial Battery a Nomadic Envoys en Stella Montis Spaceport Dam Battlegrounds Buried City"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 800,
+      "currency": 2250,
+      "items": [
+        "1× Advanced Electrical Components",
+        "2× Jolt Mine"
+      ]
+    }
+  },
+  {
+    "id": "quest_ruins_and_reverberations_122",
+    "title": {
+      "en": "Ruins And Reverberations",
+      "es": "Ruins And Reverberations"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_ruins_and_rever_122",
+        "description": {
+          "en": "Deliver required items: 1× Spotter Relay to Celeste in Pendola Pass",
+          "es": "Entregar suministros requeridos: 1× Spotter Relay a Celeste en Pendola Pass"
+        },
+        "mapId": "pendola_pass",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 900,
+      "currency": 2500,
+      "items": [
+        "1× Looting Mk. 3 (Safekeeper)",
+        "2× Smoke Grenade",
+        "2× Speaker Component",
+        "3× Electrical Components"
+      ]
+    }
+  },
+  {
+    "id": "quest_boarding_the_frigate_123",
+    "title": {
+      "en": "Boarding The Frigate",
+      "es": "Boarding The Frigate"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_boarding_the_fr_123",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Frigate",
+          "es": "Completar despliegue de misión para Celeste en Frigate"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1000,
+      "currency": 2750,
+      "items": [
+        "1× Breathtaking Snow Globe",
+        "1× Medium Shield",
+        "1× Osprey I"
+      ]
+    }
+  },
+  {
+    "id": "quest_to_the_skies_124",
+    "title": {
+      "en": "To The Skies",
+      "es": "To The Skies"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_to_the_skies_124",
+        "description": {
+          "en": "Deliver required items: 1× ARC Performance Steel 1× ARC Synthetic Resin 1× ARC Thermo Lining 1× Pop Trigger to Apollo in Dam Battlegrounds Blue Gate Spaceport Riven Tides",
+          "es": "Entregar suministros requeridos: 1× ARC Performance Steel 1× ARC Synthetic Resin 1× ARC Thermo Lining 1× Pop Trigger a Apollo en Dam Battlegrounds Blue Gate Spaceport Riven Tides"
+        },
+        "mapId": "riven_tides",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1100,
+      "currency": 3000,
+      "items": [
+        "3× ARC Performance Steel",
+        "3× ARC Synthetic Resin",
+        "3× ARC Thermo Lining"
+      ]
+    }
+  },
+  {
+    "id": "quest_bait_fetch_blast_125",
+    "title": {
+      "en": "Bait, Fetch, Blast",
+      "es": "Bait, Fetch, Blast"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_bait_fetch_blas_125",
+        "description": {
+          "en": "Deliver required items: 1× Bully Fragmenter to Apollo in Pendola Pass",
+          "es": "Entregar suministros requeridos: 1× Bully Fragmenter a Apollo en Pendola Pass"
+        },
+        "mapId": "pendola_pass",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1200,
+      "currency": 3250,
+      "items": [
+        "1× Bully Fragmenter",
+        "1× Wolfpack"
+      ]
+    }
+  },
+  {
+    "id": "quest_belly_of_the_beast_126",
+    "title": {
+      "en": "Belly Of The Beast",
+      "es": "Belly Of The Beast"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_belly_of_the_be_126",
+        "description": {
+          "en": "Complete mission deployment for Shani in Pendola Pass",
+          "es": "Completar despliegue de misión para Shani en Pendola Pass"
+        },
+        "mapId": "pendola_pass",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1300,
+      "currency": 3500,
+      "items": [
+        "Raider Supplies Crate"
+      ]
+    }
+  },
+  {
+    "id": "quest_celeste_s_teenage_rebellion_127",
+    "title": {
+      "en": "Celeste's Teenage Rebellion",
+      "es": "Celeste's Teenage Rebellion"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_celeste_s_teena_127",
+        "description": {
+          "en": "Complete mission deployment for Celeste in Riven Tides",
+          "es": "Completar despliegue de misión para Celeste en Riven Tides"
+        },
+        "mapId": "riven_tides",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1400,
+      "currency": 3750,
+      "items": [
+        "1× Heavy Shield",
+        "1× Looting Mk. 2"
+      ]
+    }
+  },
+  {
+    "id": "quest_a_path_not_yours_128",
+    "title": {
+      "en": "A Path Not Yours",
+      "es": "A Path Not Yours"
+    },
+    "vendor": "Nomadic Envoys",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_a_path_not_your_128",
+        "description": {
+          "en": "Deliver required items: 1× Broken Compass to Nomadic Envoys in The Blue Gate",
+          "es": "Entregar suministros requeridos: 1× Broken Compass a Nomadic Envoys en The Blue Gate"
+        },
+        "mapId": "the_blue_gate",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1500,
+      "currency": 4000,
+      "items": [
+        "1× Tellurion",
+        "2× Battery",
+        "2× Magnet",
+        "2× Power Cable"
+      ]
+    }
+  },
+  {
+    "id": "quest_divided_129",
+    "title": {
+      "en": "Divided",
+      "es": "Divided"
+    },
+    "vendor": "Nomadic Envoys",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_divided_129",
+        "description": {
+          "en": "Complete mission deployment for Nomadic Envoys in Pendola Pass",
+          "es": "Completar despliegue de misión para Nomadic Envoys en Pendola Pass"
+        },
+        "mapId": "pendola_pass",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1600,
+      "currency": 4250,
+      "items": [
+        "1× Music Box",
+        "1× Rusted Gear",
+        "2× Durable Cloth",
+        "2× Magnet"
+      ]
+    }
+  },
+  {
+    "id": "quest_dust_on_the_wires_130",
+    "title": {
+      "en": "Dust On The Wires",
+      "es": "Dust On The Wires"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_dust_on_the_wir_130",
+        "description": {
+          "en": "Deliver required items: 1× Scout Patrol Note to Shani in Spaceport",
+          "es": "Entregar suministros requeridos: 1× Scout Patrol Note a Shani en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1700,
+      "currency": 4500,
+      "items": [
+        "Backpack Charm (Fax Machine)"
+      ]
+    }
+  },
+  {
+    "id": "quest_fragmented_logs_131",
+    "title": {
+      "en": "Fragmented Logs",
+      "es": "Fragmented Logs"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_fragmented_logs_131",
+        "description": {
+          "en": "Deliver required items: 1× Electrical Components to Shani in Stella Montis",
+          "es": "Entregar suministros requeridos: 1× Electrical Components a Shani en Stella Montis"
+        },
+        "mapId": "stella_montis",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1800,
+      "currency": 4750,
+      "items": [
+        "3× Showstopper",
+        "3× Trailblazer"
+      ]
+    }
+  },
+  {
+    "id": "quest_furtive_meetings_132",
+    "title": {
+      "en": "Furtive Meetings",
+      "es": "Furtive Meetings"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_furtive_meeting_132",
+        "description": {
+          "en": "Deliver required items: 1× Secret Meeting Info to Shani in Stella Montis",
+          "es": "Entregar suministros requeridos: 1× Secret Meeting Info a Shani en Stella Montis"
+        },
+        "mapId": "stella_montis",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 700,
+      "currency": 5000,
+      "items": [
+        "1× Aphelion",
+        "5× Energy Clip"
+      ]
+    }
+  },
+  {
+    "id": "quest_last_entry_133",
+    "title": {
+      "en": "Last Entry",
+      "es": "Last Entry"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_last_entry_133",
+        "description": {
+          "en": "Deliver required items: 1× Official Shutdown Documentation 1× Seed Vault Box Key to Shani in Stella Montis",
+          "es": "Entregar suministros requeridos: 1× Official Shutdown Documentation 1× Seed Vault Box Key a Shani en Stella Montis"
+        },
+        "mapId": "stella_montis",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 800,
+      "currency": 5250,
+      "items": [
+        "1× Yellow Light Stick Blueprint"
+      ]
+    }
+  },
+  {
+    "id": "quest_outstanding_balance_134",
+    "title": {
+      "en": "Outstanding Balance",
+      "es": "Outstanding Balance"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_outstanding_bal_134",
+        "description": {
+          "en": "Deliver required items: 1× Dodger's Note to Tian Wen in The Blue Gate",
+          "es": "Entregar suministros requeridos: 1× Dodger's Note a Tian Wen en The Blue Gate"
+        },
+        "mapId": "the_blue_gate",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 900,
+      "currency": 5500,
+      "items": [
+        "Aviator Outfit (Gothic Graffiti Color)",
+        "1× Extended Medium Mag III",
+        "1× Silencer II"
+      ]
+    }
+  },
+  {
+    "id": "quest_clamoring_for_attention_135",
+    "title": {
+      "en": "Clamoring for Attention",
+      "es": "Clamoring for Attention"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_clamoring_for_a_135",
+        "description": {
+          "en": "Deliver required items: 1× Battery 3× Wires to Shani in The Blue Gate",
+          "es": "Entregar suministros requeridos: 1× Battery 3× Wires a Shani en The Blue Gate"
+        },
+        "mapId": "the_blue_gate",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1000,
+      "currency": 2000,
+      "items": [
+        "3× Tagging Grenade",
+        "5× Lure Grenade",
+        "5× Noisemaker"
+      ]
+    }
+  },
+  {
+    "id": "quest_waking_the_grid_136",
+    "title": {
+      "en": "Waking the Grid",
+      "es": "Waking the Grid"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_waking_the_grid_136",
+        "description": {
+          "en": "Complete mission deployment for Shani in Spaceport",
+          "es": "Completar despliegue de misión para Shani en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1100,
+      "currency": 2250,
+      "items": [
+        "1× Tactical Mk. 3 (Revival)",
+        "3× Vita Shot",
+        "5× Surge Shield Recharger"
+      ]
+    }
+  },
+  {
+    "id": "quest_test_case_137",
+    "title": {
+      "en": "Test Case",
+      "es": "Test Case"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_test_case_137",
+        "description": {
+          "en": "Deliver required items: 1× Fireball Burner 1× Firefly Burner 1× Hornet Driver to Apollo in Any",
+          "es": "Entregar suministros requeridos: 1× Fireball Burner 1× Firefly Burner 1× Hornet Driver a Apollo en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1200,
+      "currency": 2500,
+      "items": [
+        "1× Fireworks Box Blueprint",
+        "3× Blaze Grenade",
+        "3× Seeker Grenade"
+      ]
+    }
+  },
+  {
+    "id": "quest_settled_in_full_138",
+    "title": {
+      "en": "Settled in Full",
+      "es": "Settled in Full"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_settled_in_full_138",
+        "description": {
+          "en": "Deliver required items: 1× Bastion Cell to Tian Wen in Any",
+          "es": "Entregar suministros requeridos: 1× Bastion Cell a Tian Wen en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1300,
+      "currency": 2750,
+      "items": [
+        "0× Raider Tokens"
+      ]
+    }
+  },
+  {
+    "id": "quest_the_league_139",
+    "title": {
+      "en": "The League",
+      "es": "The League"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_the_league_139",
+        "description": {
+          "en": "Deliver required items: 1× Bicycle Pump 1× Deflated Football to Apollo in Dam Battlegrounds Buried City",
+          "es": "Entregar suministros requeridos: 1× Bicycle Pump 1× Deflated Football a Apollo en Dam Battlegrounds Buried City"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1400,
+      "currency": 3000,
+      "items": [
+        "Aviator Outfit (Faded Flush)",
+        "5× Firecracker",
+        "5× Tagging Grenade"
+      ]
+    }
+  },
+  {
+    "id": "quest_with_a_view_140",
+    "title": {
+      "en": "With A View",
+      "es": "With A View"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_with_a_view_140",
+        "description": {
+          "en": "Deliver required items: 1× Ion Sputter 1× Rotary Encoder to Shani in Stella Montis",
+          "es": "Entregar suministros requeridos: 1× Ion Sputter 1× Rotary Encoder a Shani en Stella Montis"
+        },
+        "mapId": "stella_montis",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1500,
+      "currency": 3250,
+      "items": [
+        "1× Tactical Mk. 2",
+        "5× Steel Spring",
+        "5× Wires"
+      ]
+    }
+  },
+  {
+    "id": "quest_on_deaf_ears_141",
+    "title": {
+      "en": "On Deaf Ears",
+      "es": "On Deaf Ears"
+    },
+    "vendor": "Lance",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_on_deaf_ears_141",
+        "description": {
+          "en": "Complete mission deployment for Lance in Stella Montis",
+          "es": "Completar despliegue de misión para Lance en Stella Montis"
+        },
+        "mapId": "stella_montis",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1600,
+      "currency": 3500,
+      "items": [
+        "1× Shaker Warden Outfit (Navy Blue Color)",
+        "3× Lure Grenade",
+        "5× Noisemaker"
+      ]
+    }
+  },
+  {
+    "id": "quest_combat_recon_142",
+    "title": {
+      "en": "Combat Recon",
+      "es": "Combat Recon"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_combat_recon_142",
+        "description": {
+          "en": "Complete mission deployment for Shani in Buried City",
+          "es": "Completar despliegue de misión para Shani en Buried City"
+        },
+        "mapId": "buried_city",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1700,
+      "currency": 3750,
+      "items": [
+        "1× Fireworks Box Radio Renegade Outfit (Red Color)",
+        "5× Firecracker"
+      ]
+    }
+  },
+  {
+    "id": "quest_a_prime_specimen_143",
+    "title": {
+      "en": "A Prime Specimen",
+      "es": "A Prime Specimen"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_a_prime_specime_143",
+        "description": {
+          "en": "Complete mission deployment for Shani in The Blue Gate",
+          "es": "Completar despliegue de misión para Shani en The Blue Gate"
+        },
+        "mapId": "the_blue_gate",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1800,
+      "currency": 4000,
+      "items": [
+        "1× Patrol Car Key",
+        "3× Door Blocker"
+      ]
+    }
+  },
+  {
+    "id": "quest_movie_night_144",
+    "title": {
+      "en": "Movie Night",
+      "es": "Movie Night"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_movie_night_144",
+        "description": {
+          "en": "Deliver required items: 1× Portable TV 1× Stack Of Movie Tapes to Apollo in Any",
+          "es": "Entregar suministros requeridos: 1× Portable TV 1× Stack Of Movie Tapes a Apollo en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 700,
+      "currency": 4250,
+      "items": [
+        "1× Fireworks Box",
+        "3× Showstopper",
+        "3× Smoke Grenade"
+      ]
+    }
+  },
+  {
+    "id": "quest_on_the_map_145",
+    "title": {
+      "en": "On The Map",
+      "es": "On The Map"
+    },
+    "vendor": "Lance",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_on_the_map_145",
+        "description": {
+          "en": "Complete mission deployment for Lance in Spaceport",
+          "es": "Completar despliegue de misión para Lance en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 800,
+      "currency": 4500,
+      "items": [
+        "1× Tactical Mk. 3 (Healing)",
+        "3× Sterilized Bandage",
+        "3× Surge Shield Recharger"
+      ]
+    }
+  },
+  {
+    "id": "quest_bombing_run_146",
+    "title": {
+      "en": "Bombing Run",
+      "es": "Bombing Run"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_bombing_run_146",
+        "description": {
+          "en": "Complete mission deployment for Shani in Any",
+          "es": "Completar despliegue de misión para Shani en Any"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 900,
+      "currency": 4750,
+      "items": [
+        "Finger Gun Single Shot Emote",
+        "0× Raider Tokens"
+      ]
+    }
+  },
+  {
+    "id": "quest_paving_the_way_147",
+    "title": {
+      "en": "Paving The Way",
+      "es": "Paving The Way"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_paving_the_way_147",
+        "description": {
+          "en": "Complete mission deployment for Apollo in Dam Battlegrounds Buried City Blue Gate",
+          "es": "Completar despliegue de misión para Apollo en Dam Battlegrounds Buried City Blue Gate"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1000,
+      "currency": 5000,
+      "items": [
+        "1× Advanced Electrical Components",
+        "1× Raider Hatch Key",
+        "3× Seeker Grenade"
+      ]
+    }
+  },
+  {
+    "id": "quest_deciphering_the_data_148",
+    "title": {
+      "en": "Deciphering The Data",
+      "es": "Deciphering The Data"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_deciphering_the_148",
+        "description": {
+          "en": "Complete mission deployment for Shani in Spaceport",
+          "es": "Completar despliegue de misión para Shani en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1100,
+      "currency": 5250,
+      "items": [
+        "3× Defibrillator",
+        "3× Trailblazer"
+      ]
+    }
+  },
+  {
+    "id": "quest_groundbreaking_149",
+    "title": {
+      "en": "Groundbreaking",
+      "es": "Groundbreaking"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 5,
+    "objectives": [
+      {
+        "id": "obj_groundbreaking_149",
+        "description": {
+          "en": "Complete mission deployment for Apollo in The Blue Gate",
+          "es": "Completar despliegue de misión para Apollo en The Blue Gate"
+        },
+        "mapId": "the_blue_gate",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1200,
+      "currency": 5500,
+      "items": [
+        "1× Power Rod Warden Outfit (Tangerine Color)"
+      ]
+    }
+  },
+  {
+    "id": "quest_the_clean_dream_150",
+    "title": {
+      "en": "The Clean Dream",
+      "es": "The Clean Dream"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_the_clean_dream_150",
+        "description": {
+          "en": "Complete mission deployment for Apollo in Spaceport The Blue Gate",
+          "es": "Completar despliegue de misión para Apollo en Spaceport The Blue Gate"
+        },
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1300,
+      "currency": 2000,
+      "items": [
+        "2× Deadline",
+        "3× Heavy Fuze Grenade",
+        "3× Showstopper"
+      ]
+    }
+  },
+  {
+    "id": "quest_a_toxic_trail_151",
+    "title": {
+      "en": "A Toxic Trail",
+      "es": "A Toxic Trail"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_a_toxic_trail_151",
+        "description": {
+          "en": "Complete mission deployment for Shani in Dam Battlegrounds",
+          "es": "Completar despliegue de misión para Shani en Dam Battlegrounds"
+        },
+        "mapId": "dam_battlegrounds",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1400,
+      "currency": 2250,
+      "items": [
+        "1× Tactical Mk. 2",
+        "3× Gas Mine",
+        "3× Pulse Mine",
+        "3× Zipline"
+      ]
+    }
+  },
+  {
+    "id": "quest_the_stench_of_corruption_152",
+    "title": {
+      "en": "The Stench Of Corruption",
+      "es": "The Stench Of Corruption"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_the_stench_of_c_152",
+        "description": {
+          "en": "Deliver required items: 1× Flushing Terminal Key to Shani in Spaceport",
+          "es": "Entregar suministros requeridos: 1× Flushing Terminal Key a Shani en Spaceport"
+        },
+        "mapId": "the_spaceport",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1500,
+      "currency": 2500,
+      "items": [
+        "1× Air Freshener",
+        "1× Dam Staff Room Key Warden Outfit (Blue Color)",
+        "3× Noisemaker"
+      ]
     }
   }
 ]

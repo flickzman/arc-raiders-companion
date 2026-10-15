@@ -33,6 +33,7 @@ export const RaidPlannerView: React.FC = () => {
     setRouteMode,
     completedObjectiveIds,
     toggleCompletedObjective,
+    customQuests,
   } = usePlayerStore();
 
   const [selectedPoi, setSelectedPoi] = useState<POI | null>(null);
@@ -40,9 +41,10 @@ export const RaidPlannerView: React.FC = () => {
   const [inRaidMode, setInRaidMode] = useState<boolean>(false);
   const [currentStepIndex, setCurrentStepIndex] = useState<number>(1);
 
+  const allAvailableQuests = useMemo(() => [...customQuests, ...allQuests], [customQuests]);
   const activeQuests = useMemo(
-    () => allQuests.filter((q) => activeQuestIds.includes(q.id)),
-    [activeQuestIds]
+    () => allAvailableQuests.filter((q) => activeQuestIds.includes(q.id)),
+    [allAvailableQuests, activeQuestIds]
   );
 
   // Map clustering: contar objetivos activos por sector

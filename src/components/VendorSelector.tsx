@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { usePlayerStore } from '../store/usePlayerStore';
 import { allQuests } from '../data/db';
 import { type Vendor, type MapId } from '../data/schemas';
-import { Search, X, Trash2, Filter, Camera } from 'lucide-react';
+import { Search, X, Trash2, Filter, Camera, Plus, Sparkles } from 'lucide-react';
 
 interface VendorSelectorProps {
   selectedVendor: Vendor | 'ALL';
@@ -20,6 +20,8 @@ const vendors: { id: Vendor; role: { en: string; es: string } }[] = [
   { id: 'Lance', role: { en: 'Tactical Vanguard', es: 'Vanguardia Táctica' } },
   { id: 'Celeste', role: { en: 'Heavy ARC Hunter', es: 'Cazadora ARC Pesada' } },
   { id: 'Apollo', role: { en: 'Energy Grid Engineer', es: 'Ingeniero de Red Eléctrica' } },
+  { id: 'Nomadic Envoys', role: { en: 'Nomadic Envoys', es: 'Enviados Nómadas' } },
+  { id: 'Other', role: { en: 'Custom / Other', es: 'Personalizadas / Otros' } },
 ];
 
 export const VendorSelector: React.FC<VendorSelectorProps> = ({
@@ -31,13 +33,42 @@ export const VendorSelector: React.FC<VendorSelectorProps> = ({
   setSearchQuery,
   onOpenCaptureModal,
 }) => {
-  const { language, activeQuestIds, clearAllActiveQuests } = usePlayerStore();
+  const { language, activeQuestIds, clearAllActiveQuests, customQuests, addCustomQuest } =
+    usePlayerStore();
+
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [newTitle, setNewTitle] = useState('');
+  const [newVendor, setNewVendor] = useState<Vendor>('Other');
+  const [newMap, setNewMap] = useState<MapId>('any');
+
+  const allAvailableQuests = useMemo(() => [...customQuests, ...allQuests], [customQuests]);
 
   const getVendorActiveCount = (v: Vendor) => {
-    return allQuests
+    return allAvailableQuests
       .filter((q) => q.vendor === v)
       .filter((q) => activeQuestIds.includes(q.id)).length;
   };
+
+  const handleQuickAdd = (title: string, vendor?: Vendor, map?: MapId) => {
+    if (!title.trim()) return;
+    addCustomQuest(
+      title.trim(),
+      vendor || (selectedVendor === 'ALL' ? 'Other' : selectedVendor),
+      map || (selectedMapFilter === 'ALL' ? 'any' : selectedMapFilter)
+    );
+    setNewTitle('');
+    setShowAddModal(false);
+  };
+
+  const hasExactMatch = useMemo(() => {
+    if (!searchQuery.trim()) return true;
+    const q = searchQuery.trim().toLowerCase();
+    return allAvailableQuests.some(
+      (quest) =>
+        quest.title.en.toLowerCase() === q ||
+        (quest.title.es && quest.title.es.toLowerCase() === q)
+    );
+  }, [searchQuery, allAvailableQuests]);
 
   return (
     <div className="bg-neutral-900/60 border border-neutral-800 rounded-xl p-4 space-y-4">
@@ -67,8 +98,21 @@ export const VendorSelector: React.FC<VendorSelectorProps> = ({
           )}
         </div>
 
-        {/* Map Filter Selector & OCR Trigger */}
+        {/* Map Filter Selector & Quick Actions */}
         <div className="flex items-center gap-2">
+          {/* Quick Add Quest Button (Title Only) */}
+          <button
+            onClick={() => {
+              setNewTitle(searchQuery.trim());
+              setShowAddModal(true);
+            }}
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/30 hover:border-emerald-500/60 hover:bg-emerald-500/20 text-emerald-400 text-xs font-mono font-semibold transition-all whitespace-nowrap shadow-sm shadow-emerald-500/5"
+            title={language === 'es' ? 'Añadir misión solo con el título' : 'Add quest with title only'}
+          >
+            <Plus className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">{language === 'es' ? 'Añadir' : 'Add'}</span>
+          </button>
+
           {onOpenCaptureModal && (
             <button
               onClick={onOpenCaptureModal}
@@ -105,6 +149,10 @@ export const VendorSelector: React.FC<VendorSelectorProps> = ({
             <option value="the_spaceport">
               {language === 'es' ? 'El Puerto Espacial' : 'The Spaceport'}
             </option>
+            <option value="the_blue_gate">
+              {language === 'es' ? 'La Puerta Azul' : 'The Blue Gate'}
+            </option>
+            <option value="stella_montis">Stella Montis</option>
             <option value="any">
               {language === 'es' ? 'Cualquier Sector' : 'Any Sector'}
             </option>
@@ -123,6 +171,27 @@ export const VendorSelector: React.FC<VendorSelectorProps> = ({
           )}
         </div>
       </div>
+
+      {/* Instant 1-Click Add Banner when searching an unlisted title */}
+      {searchQuery.trim().length > 0 && !hasExactMatch && (
+        <div className="flex items-center justify-between p-2.5 rounded-lg bg-emerald-950/40 border border-emerald-800/60 text-xs font-mono animate-in fade-in">
+          <span className="text-emerald-200 truncate mr-2">
+            {language === 'es'
+              ? `¿Misión nueva? Añade "${searchQuery.trim()}" con solo el título:`
+              : `New quest? Add "${searchQuery.trim()}" with just the title:`}
+          </span>
+          <button
+            onClick={() => {
+              handleQuickAdd(searchQuery);
+              setSearchQuery('');
+            }}
+            className="shrink-0 flex items-center gap-1 px-3 py-1 rounded bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold uppercase transition-all shadow-sm"
+          >
+            <Plus className="w-3.5 h-3.5" />
+            <span>{language === 'es' ? '+ Añadir y Activar' : '+ Add & Activate'}</span>
+          </button>
+        </div>
+      )}
 
       {/* Vendor Chips (10-second fast selection flow) */}
       <div>
@@ -172,6 +241,112 @@ export const VendorSelector: React.FC<VendorSelectorProps> = ({
           })}
         </div>
       </div>
+
+      {/* Quick Add Quest Modal (Title Only) */}
+      {showAddModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
+          <div className="bg-neutral-900 border border-neutral-800 rounded-2xl w-full max-w-md p-5 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-neutral-800">
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-emerald-400" />
+                <h3 className="font-bold text-sm uppercase tracking-wider text-neutral-100">
+                  {language === 'es' ? 'Añadir Misión (Solo con Título)' : 'Add Quest (Title Only)'}
+                </h3>
+              </div>
+              <button
+                onClick={() => setShowAddModal(false)}
+                className="p-1 rounded text-neutral-400 hover:text-neutral-100 transition-colors"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="space-y-3.5">
+              <div>
+                <label className="text-xs font-mono text-neutral-300 block mb-1 font-bold">
+                  {language === 'es' ? 'Título de la Misión *' : 'Quest Title *'}
+                </label>
+                <input
+                  type="text"
+                  autoFocus
+                  value={newTitle}
+                  onChange={(e) => setNewTitle(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') handleQuickAdd(newTitle, newVendor, newMap);
+                  }}
+                  placeholder={
+                    language === 'es'
+                      ? 'Ej: Reconocimiento del Búnker Subterráneo...'
+                      : 'e.g. Underground Bunker Recon...'
+                  }
+                  className="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-3 py-2 text-xs sm:text-sm text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:border-emerald-500"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs font-mono text-neutral-400 block mb-1">
+                    {language === 'es' ? 'Comerciante' : 'Vendor'}
+                  </label>
+                  <select
+                    value={newVendor}
+                    onChange={(e) => setNewVendor(e.target.value as Vendor)}
+                    className="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-2.5 py-1.5 text-xs text-neutral-300 focus:outline-none focus:border-emerald-500"
+                  >
+                    {vendors.map((v) => (
+                      <option key={v.id} value={v.id}>
+                        {v.id}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="text-xs font-mono text-neutral-400 block mb-1">
+                    {language === 'es' ? 'Sector / Mapa' : 'Sector / Map'}
+                  </label>
+                  <select
+                    value={newMap}
+                    onChange={(e) => setNewMap(e.target.value as MapId)}
+                    className="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-2.5 py-1.5 text-xs text-neutral-300 focus:outline-none focus:border-emerald-500"
+                  >
+                    <option value="any">{language === 'es' ? 'Cualquier Sector' : 'Any Sector'}</option>
+                    <option value="dam_battlegrounds">
+                      {language === 'es' ? 'Presa de Batalla' : 'Dam Battlegrounds'}
+                    </option>
+                    <option value="buried_city">
+                      {language === 'es' ? 'Ciudad Enterrada' : 'Buried City'}
+                    </option>
+                    <option value="the_spaceport">
+                      {language === 'es' ? 'El Puerto Espacial' : 'The Spaceport'}
+                    </option>
+                    <option value="the_blue_gate">
+                      {language === 'es' ? 'La Puerta Azul' : 'The Blue Gate'}
+                    </option>
+                    <option value="stella_montis">Stella Montis</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-end gap-2 pt-3 border-t border-neutral-800">
+              <button
+                onClick={() => setShowAddModal(false)}
+                className="px-3 py-1.5 rounded-lg border border-neutral-800 text-xs font-mono text-neutral-300 hover:bg-neutral-800 transition-colors"
+              >
+                {language === 'es' ? 'Cancelar' : 'Cancel'}
+              </button>
+              <button
+                disabled={!newTitle.trim()}
+                onClick={() => handleQuickAdd(newTitle, newVendor, newMap)}
+                className="px-4 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:opacity-40 text-neutral-950 font-bold text-xs font-mono uppercase transition-all shadow-md shadow-emerald-500/20"
+              >
+                {language === 'es' ? '✓ Añadir y Activar' : '✓ Add & Activate'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -22,6 +22,7 @@ export const VendorSchema = z.enum([
   'Lance',
   'Celeste',
   'Apollo',
+  'Nomadic Envoys',
   'Other',
 ]);
 

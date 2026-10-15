@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { usePlayerStore } from '../store/usePlayerStore';
 import { allQuests, allItems, getItemById, getLocalized } from '../data/db';
 import { Backpack, Crosshair, Wrench, CheckCircle2, Circle, ChevronRight } from 'lucide-react';
 
 export const LoadoutChecklist: React.FC = () => {
-  const { language, activeQuestIds } = usePlayerStore();
+  const { language, activeQuestIds, customQuests } = usePlayerStore();
   const [checkedBringIds, setCheckedBringIds] = useState<Record<string, boolean>>({});
 
   const toggleBringChecked = (itemId: string) => {
     setCheckedBringIds((prev) => ({ ...prev, [itemId]: !prev[itemId] }));
   };
 
-  // 1. Gather all items to bring from active quests
-  const activeQuests = allQuests.filter((q) => activeQuestIds.includes(q.id));
+  // 1. Gather all items to bring from active quests (including custom quests)
+  const allAvailableQuests = useMemo(() => [...customQuests, ...allQuests], [customQuests]);
+  const activeQuests = allAvailableQuests.filter((q) => activeQuestIds.includes(q.id));
 
   const itemsToBringMap = new Map<string, { itemId: string; count: number; questTitles: string[] }>();
   activeQuests.forEach((q) => {

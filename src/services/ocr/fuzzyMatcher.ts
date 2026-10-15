@@ -8,8 +8,13 @@ export interface MatchResult {
   matchedText: string;
 }
 
-export function matchQuestsFromText(extractedText: string): MatchResult[] {
+export function matchQuestsFromText(
+  extractedText: string,
+  extraQuests: Quest[] = []
+): MatchResult[] {
   if (!extractedText.trim()) return [];
+
+  const pool = [...extraQuests, ...allQuests];
 
   // Función auxiliar para normalizar sustituciones típicas de OCR (ej: 0 por o, 3 por e, 1 por i)
   const cleanOcrNoise = (str: string) =>
@@ -21,7 +26,7 @@ export function matchQuestsFromText(extractedText: string): MatchResult[] {
       .replace(/5/g, 's');
 
   // Configurar Fuse.js para buscar en títulos (inglés y español) y objetivos
-  const fuse = new Fuse(allQuests, {
+  const fuse = new Fuse(pool, {
     keys: [
       { name: 'title.en', weight: 0.6 },
       { name: 'title.es', weight: 0.6 },
@@ -67,7 +72,7 @@ export function matchQuestsFromText(extractedText: string): MatchResult[] {
 
   // 2. Si hay pocas coincidencias, probar con ventanas de texto o búsqueda global
   if (matchedQuestsMap.size === 0) {
-    for (const quest of allQuests) {
+    for (const quest of pool) {
       const enTitle = quest.title.en.toLowerCase();
       const esTitle = quest.title.es?.toLowerCase();
       const lowerExtracted = extractedText.toLowerCase();

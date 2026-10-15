@@ -12,12 +12,18 @@ import { CaptureModal } from './components/CaptureModal';
 import { Compass } from 'lucide-react';
 
 export function App() {
-  const { language } = usePlayerStore();
+  const { language, customQuests } = usePlayerStore();
   const [currentTab, setCurrentTab] = useState<'quests' | 'planner' | 'about'>('quests');
 
   // Estado del Modal de Ingesta Visual (OCR / Visión IA)
   const [isCaptureModalOpen, setIsCaptureModalOpen] = useState(false);
   const [pastedBlob, setPastedBlob] = useState<Blob | null>(null);
+
+  // Pool completo de misiones disponibles (base de datos wiki + misiones personalizadas añadidas)
+  const allAvailableQuests = useMemo(
+    () => [...customQuests, ...allQuests],
+    [customQuests]
+  );
 
   // Listener global de pegado (Ctrl+V) para capturas de pantalla de Windows (Win+Shift+S)
   useEffect(() => {
@@ -59,7 +65,7 @@ export function App() {
 
   // Filtrado reactivo de misiones
   const filteredQuests = useMemo(() => {
-    return allQuests.filter((quest) => {
+    return allAvailableQuests.filter((quest) => {
       // 1. Filtro por comerciante
       if (selectedVendor !== 'ALL' && quest.vendor !== selectedVendor) {
         return false;

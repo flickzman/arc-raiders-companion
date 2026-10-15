@@ -27,7 +27,8 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
   onClose,
   initialImageBlob,
 }) => {
-  const { language, addActiveQuests, geminiApiKey, setGeminiApiKey } = usePlayerStore();
+  const { language, addActiveQuests, geminiApiKey, setGeminiApiKey, customQuests, addCustomQuest } =
+    usePlayerStore();
 
   const [activeTab, setActiveTab] = useState<'pc' | 'mobile'>('pc');
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -44,6 +45,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
   const [selectedQuestIds, setSelectedQuestIds] = useState<string[]>([]);
   const [tempApiKey, setTempApiKey] = useState(geminiApiKey);
   const [isKeySaved, setIsKeySaved] = useState(false);
+  const [manualTitle, setManualTitle] = useState('');
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -84,10 +86,14 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
     setScanStatusText(language === 'es' ? 'Preparando imagen...' : 'Preparing image...');
 
     try {
-      const result = await scanImageWithTesseract(blob, (progress, status) => {
-        setScanProgress(progress);
-        setScanStatusText(status);
-      });
+      const result = await scanImageWithTesseract(
+        blob,
+        (progress, status) => {
+          setScanProgress(progress);
+          setScanStatusText(status);
+        },
+        customQuests
+      );
 
       setMatches(result.matches);
       setSelectedQuestIds(result.matches.map((m) => m.quest.id));
@@ -413,6 +419,57 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
               </div>
             </div>
           )}
+
+          {/* Manual Add by Title fallback in Capture Modal */}
+          <div className="pt-3 border-t border-neutral-800 space-y-2">
+            <span className="text-[11px] font-mono text-neutral-400">
+              {language === 'es'
+                ? '¿No aparece tu misión? Añádela directamente solo con el título:'
+                : 'Missing your quest? Add it directly with just the title:'}
+            </span>
+            <div className="flex items-center gap-2">
+              <input
+                type="text"
+                value={manualTitle}
+                onChange={(e) => setManualTitle(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && manualTitle.trim()) {
+                    const newQ = addCustomQuest(manualTitle.trim());
+                    setMatches((prev) => [
+                      { quest: newQ, confidence: 100, matchedText: manualTitle.trim() },
+                      ...prev,
+                    ]);
+                    setSelectedQuestIds((prev) => [...prev, newQ.id]);
+                    setManualTitle('');
+                  }
+                }}
+                placeholder={
+                  language === 'es'
+                    ? 'Escribe el título de la misión...'
+                    : 'Type quest title...'
+                }
+                className="flex-1 bg-neutral-950 border border-neutral-800 rounded-lg px-3 py-1.5 text-xs text-neutral-200 placeholder:text-neutral-500 font-mono focus:border-amber-500 focus:outline-none"
+              />
+              <button
+                type="button"
+                disabled={!manualTitle.trim()}
+                onClick={() => {
+                  if (manualTitle.trim()) {
+                    const newQ = addCustomQuest(manualTitle.trim());
+                    setMatches((prev) => [
+                      { quest: newQ, confidence: 100, matchedText: manualTitle.trim() },
+                      ...prev,
+                    ]);
+                    setSelectedQuestIds((prev) => [...prev, newQ.id]);
+                    setManualTitle('');
+                  }
+                }}
+                className="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:opacity-40 text-neutral-950 font-bold text-xs font-mono uppercase transition-all shadow-sm"
+              >
+                + {language === 'es' ? 'Añadir' : 'Add'}
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Modal Footer */}

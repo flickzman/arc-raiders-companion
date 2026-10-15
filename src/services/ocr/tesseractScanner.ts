@@ -1,5 +1,6 @@
 import { createWorker } from 'tesseract.js';
 import { matchQuestsFromText, type MatchResult } from './fuzzyMatcher';
+import { type Quest } from '../../data/schemas';
 
 export interface ScanResult {
   rawText: string;
@@ -8,7 +9,8 @@ export interface ScanResult {
 
 export async function scanImageWithTesseract(
   imageSource: string | File | Blob,
-  onProgress?: (progress: number, status: string) => void
+  onProgress?: (progress: number, status: string) => void,
+  extraQuests: Quest[] = []
 ): Promise<ScanResult> {
   onProgress?.(10, 'Iniciando motor OCR...');
 
@@ -72,7 +74,7 @@ export async function scanImageWithTesseract(
     const rawText = ret.data.text || '';
 
     onProgress?.(85, 'Asociando con catálogo de misiones...');
-    const matches = matchQuestsFromText(rawText);
+    const matches = matchQuestsFromText(rawText, extraQuests);
 
     onProgress?.(100, 'Completado');
     return { rawText, matches };

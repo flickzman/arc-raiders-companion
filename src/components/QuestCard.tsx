@@ -2,15 +2,16 @@ import React from 'react';
 import { usePlayerStore } from '../store/usePlayerStore';
 import { type Quest } from '../data/schemas';
 import { getLocalized, getItemById, getPOIById, getMapById } from '../data/db';
-import { Check, MapPin, Key, Target, Award, Sparkles, Lock, Split, Clock } from 'lucide-react';
+import { Check, MapPin, Key, Target, Award, Sparkles, Lock, Split, Clock, Trash2 } from 'lucide-react';
 
 interface QuestCardProps {
   quest: Quest;
 }
 
 export const QuestCard: React.FC<QuestCardProps> = ({ quest }) => {
-  const { language, activeQuestIds, toggleActiveQuest } = usePlayerStore();
+  const { language, activeQuestIds, toggleActiveQuest, deleteCustomQuest } = usePlayerStore();
   const isActive = activeQuestIds.includes(quest.id);
+  const isCustom = quest.id.startsWith('custom_');
 
   return (
     <div
@@ -43,6 +44,11 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest }) => {
               <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-neutral-800 text-neutral-300 border border-neutral-700 font-semibold">
                 {quest.vendor}
               </span>
+              {isCustom && (
+                <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-purple-950/80 text-purple-300 border border-purple-700/60 font-semibold">
+                  {language === 'es' ? 'Personalizada' : 'Custom'}
+                </span>
+              )}
               {quest.requiredLevel && (
                 <span className="text-[10px] font-mono text-neutral-400">
                   {language === 'es' ? 'Nv.' : 'Lv.'} {quest.requiredLevel}
@@ -52,12 +58,27 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest }) => {
           </div>
         </div>
 
-        {/* Active Indicator Badge */}
-        {isActive && (
-          <span className="text-[10px] font-mono font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 border border-amber-500/40">
-            {language === 'es' ? 'ACTIVA' : 'ACTIVE'}
-          </span>
-        )}
+        {/* Right Header Actions: Custom Delete + Active Indicator */}
+        <div className="flex items-center gap-2">
+          {isCustom && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                deleteCustomQuest(quest.id);
+              }}
+              className="p-1 rounded hover:bg-red-950/60 text-neutral-500 hover:text-red-400 transition-colors"
+              title={language === 'es' ? 'Eliminar misión personalizada' : 'Delete custom quest'}
+            >
+              <Trash2 className="w-3.5 h-3.5" />
+            </button>
+          )}
+
+          {isActive && (
+            <span className="text-[10px] font-mono font-bold tracking-wider uppercase px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 border border-amber-500/40">
+              {language === 'es' ? 'ACTIVA' : 'ACTIVE'}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Objectives Breakdown */}

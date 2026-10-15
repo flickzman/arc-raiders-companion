@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { type Quest, type Vendor, type MapId } from '../data/schemas';
 
 export interface PlayerState {
   language: 'es' | 'en';
@@ -7,6 +8,9 @@ export interface PlayerState {
   completedQuestIds: string[];
   completedObjectiveIds: string[];
   trackedItemIds: string[];
+
+  // Misiones personalizadas (añadidas dinámicamente solo con título)
+  customQuests: Quest[];
   
   // Planificador de Incursión
   selectedMapId: string | null;
@@ -21,6 +25,8 @@ export interface PlayerState {
   setGeminiApiKey: (key: string) => void;
   toggleActiveQuest: (questId: string) => void;
   addActiveQuests: (questIds: string[]) => void;
+  addCustomQuest: (title: string, vendor?: Vendor, mapId?: MapId) => Quest;
+  deleteCustomQuest: (questId: string) => void;
   toggleCompletedObjective: (objectiveId: string) => void;
   resetRaidObjectives: () => void;
   markQuestCompleted: (questId: string) => void;
@@ -40,6 +46,7 @@ export const usePlayerStore = create<PlayerState>()(
       completedQuestIds: [],
       completedObjectiveIds: [],
       trackedItemIds: [],
+      customQuests: [],
 
       selectedMapId: 'dam_battlegrounds',
       spawnPoiId: 'dam_south_swamp',
@@ -62,6 +69,53 @@ export const usePlayerStore = create<PlayerState>()(
       addActiveQuests: (questIds) =>
         set((state) => ({
           activeQuestIds: Array.from(new Set([...state.activeQuestIds, ...questIds])),
+        })),
+
+      addCustomQuest: (title: string, vendor: Vendor = 'Other', mapId: MapId = 'any') => {
+        const cleanTitle = title.trim();
+        const id = `custom_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
+        const newQuest: Quest = {
+          id,
+          title: {
+            en: cleanTitle,
+            es: cleanTitle,
+          },
+          vendor: vendor || 'Other',
+          requiredLevel: 1,
+          objectives: [
+            {
+              id: `${id}_obj_1`,
+              description: {
+                en: cleanTitle,
+                es: cleanTitle,
+              },
+              mapId: mapId || 'any',
+              alternativePoiIds: [],
+              inOneRound: false,
+              count: 1,
+            },
+          ],
+          itemsToBring: [],
+          rewards: {
+            currency: 2000,
+            xp: 500,
+            items: ['Intel Cache'],
+          },
+        };
+
+        set((state) => ({
+          customQuests: [newQuest, ...state.customQuests],
+          activeQuestIds: Array.from(new Set([id, ...state.activeQuestIds])),
+        }));
+
+        return newQuest;
+      },
+
+      deleteCustomQuest: (questId: string) =>
+        set((state) => ({
+          customQuests: state.customQuests.filter((q) => q.id !== questId),
+          activeQuestIds: state.activeQuestIds.filter((id) => id !== questId),
+          completedQuestIds: state.completedQuestIds.filter((id) => id !== questId),
         })),
 
       toggleCompletedObjective: (objectiveId) =>
