@@ -1,0 +1,237 @@
+[
+  {
+    "id": "quest_rising_tide",
+    "title": {
+      "en": "A Rising Tide",
+      "es": "Marea Creciente"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_rt_1",
+        "description": {
+          "en": "Unlock the top-floor foreman suite at Grandioso Apartments and retrieve the logbook",
+          "es": "Abre la suite del capataz en Apartamentos Grandioso y recupera el diario digital"
+        },
+        "mapId": "buried_city",
+        "poiId": "city_grandioso_apartments",
+        "requiredItemId": "item_key_grandioso",
+        "targetItemId": "item_foreman_log",
+        "count": 1
+      },
+      {
+        "id": "obj_rt_2",
+        "description": {
+          "en": "Restore power with a Power Cell and scan telemetry at Controlled Access Zone",
+          "es": "Restaura la energía con una Célula y escanea la telemetría en la Zona de Acceso Controlado"
+        },
+        "mapId": "dam_battlegrounds",
+        "poiId": "dam_controlled_access",
+        "requiredItemId": "item_power_cell",
+        "count": 1
+      }
+    ],
+    "itemsToBring": [
+      {
+        "itemId": "item_key_grandioso",
+        "count": 1,
+        "optional": false
+      },
+      {
+        "itemId": "item_power_cell",
+        "count": 1,
+        "optional": false
+      }
+    ],
+    "rewards": {
+      "xp": 1200,
+      "currency": 4500,
+      "items": ["Advanced Combat Vest", "5.56 AP Ammo x60"]
+    }
+  },
+  {
+    "id": "quest_what_we_left",
+    "title": {
+      "en": "What We Left Behind",
+      "es": "Lo Que Dejamos Atrás"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_wwl_1",
+        "description": {
+          "en": "Investigate the ruined antenna tower at South Swamp Outpost",
+          "es": "Investiga la torre de antena en ruinas en el Puesto del Pantano Sur"
+        },
+        "mapId": "dam_battlegrounds",
+        "poiId": "dam_south_swamp",
+        "count": 1
+      },
+      {
+        "id": "obj_wwl_2",
+        "description": {
+          "en": "Search the raider cache in Underground Parking Garage for ARC Logic Microchips",
+          "es": "Busca en el alijo raider del Aparcamiento Subterráneo para conseguir Microchips Lógicos ARC"
+        },
+        "mapId": "buried_city",
+        "poiId": "city_parking_garage",
+        "targetItemId": "item_microchip",
+        "count": 2
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 850,
+      "currency": 2800,
+      "items": ["Tactical Backpack", "Smoke Grenade x2"]
+    }
+  },
+  {
+    "id": "quest_back_on_top",
+    "title": {
+      "en": "Back on Top",
+      "es": "De Vuelta en la Cima"
+    },
+    "vendor": "Lance",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_bot_1",
+        "description": {
+          "en": "Tag the exterior foundation wall at Pattern House with neon spray paint",
+          "es": "Pinta el muro de cimientos de la Casa de Patrones con spray de pintura neón"
+        },
+        "mapId": "dam_battlegrounds",
+        "poiId": "dam_pattern_house",
+        "requiredItemId": "item_spray_can",
+        "count": 1
+      },
+      {
+        "id": "obj_bot_2",
+        "description": {
+          "en": "Spray-paint the Buried Properties billboard mural near Galleria",
+          "es": "Pinta el mural publicitario de Propiedades Enterradas cerca de la Galería"
+        },
+        "mapId": "buried_city",
+        "poiId": "city_galleria",
+        "requiredItemId": "item_spray_can",
+        "count": 1
+      }
+    ],
+    "itemsToBring": [
+      {
+        "itemId": "item_spray_can",
+        "count": 2,
+        "optional": false
+      }
+    ],
+    "rewards": {
+      "xp": 950,
+      "currency": 3200,
+      "items": ["Raider Hood (Cosmetic)", "Frag Grenade x3"]
+    }
+  },
+  {
+    "id": "quest_power_grid",
+    "title": {
+      "en": "Reclaiming the Grid",
+      "es": "Recuperando la Red"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_grid_1",
+        "description": {
+          "en": "Reboot the emergency turbine switch at Power Generation Complex",
+          "es": "Reinicia el interruptor de emergencia en el Complejo de Generación Eléctrica"
+        },
+        "mapId": "dam_battlegrounds",
+        "poiId": "dam_power_plant",
+        "count": 1
+      },
+      {
+        "id": "obj_grid_2",
+        "description": {
+          "en": "Verify water cooling pressure in Hydroponic Dome Complex",
+          "es": "Verifica la presión de refrigeración en las Cúpulas Hidropónicas"
+        },
+        "mapId": "dam_battlegrounds",
+        "poiId": "dam_hydroponic_dome",
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1100,
+      "currency": 3800,
+      "items": ["Heavy Assault Rifle", "Energy Drink x4"]
+    }
+  },
+  {
+    "id": "quest_hunt_heavy_arc",
+    "title": {
+      "en": "Apex Hunter",
+      "es": "Cazador Alfa"
+    },
+    "vendor": "Celeste",
+    "requiredLevel": 4,
+    "objectives": [
+      {
+        "id": "obj_hunt_1",
+        "description": {
+          "en": "Eliminate an ARC Heavy Unit (Stalker or Behemoth) in any sector and extract its Power Core",
+          "es": "Elimina una unidad pesada ARC (Stalker o Behemoth) en cualquier sector y extrae su Núcleo"
+        },
+        "mapId": "any",
+        "targetItemId": "item_arc_power_core",
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1800,
+      "currency": 6000,
+      "items": ["High-Power Sniper Rifle", "Heavy Shield Mod"]
+    }
+  },
+  {
+    "id": "quest_metro_recon",
+    "title": {
+      "en": "Subterranean Echoes",
+      "es": "Ecos Subterráneos"
+    },
+    "vendor": "Tian Wen",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_metro_1",
+        "description": {
+          "en": "Scout the ARC machine patrols around Piazza Roma",
+          "es": "Explora las patrullas de máquinas ARC alrededor de Plaza Roma"
+        },
+        "mapId": "buried_city",
+        "poiId": "city_piazza_roma",
+        "count": 1
+      },
+      {
+        "id": "obj_metro_2",
+        "description": {
+          "en": "Secure the Underground Metro Station extraction route",
+          "es": "Asegura la ruta de extracción del Metro Subterráneo"
+        },
+        "mapId": "buried_city",
+        "poiId": "city_extract_metro",
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 750,
+      "currency": 2400,
+      "items": ["Compact SMG", "Light Medkit x3"]
+    }
+  }
+]

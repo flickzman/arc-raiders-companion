@@ -1,0 +1,230 @@
+[
+  {
+    "id": "dam_battlegrounds",
+    "name": {
+      "en": "Dam Battlegrounds",
+      "es": "Presa de Batalla"
+    },
+    "description": {
+      "en": "Flooded industrial valleys surrounding the massive Alcantara Power Station.",
+      "es": "Valles industriales inundados que rodean la colosal Central Eléctrica de Alcántara."
+    },
+    "pois": [
+      {
+        "id": "dam_power_plant",
+        "name": { "en": "Power Generation Complex", "es": "Complejo de Generación Eléctrica" },
+        "mapId": "dam_battlegrounds",
+        "coordinates": { "x": 50, "y": 40 },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "dam_hydroponic_dome",
+        "name": { "en": "Hydroponic Dome Complex", "es": "Cúpulas Hidropónicas" },
+        "mapId": "dam_battlegrounds",
+        "coordinates": { "x": 28, "y": 35 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "dam_pattern_house",
+        "name": { "en": "Pattern House", "es": "Casa de Patrones" },
+        "mapId": "dam_battlegrounds",
+        "coordinates": { "x": 52, "y": 15 },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "dam_controlled_access",
+        "name": { "en": "Controlled Access Zone", "es": "Zona de Acceso Controlado" },
+        "mapId": "dam_battlegrounds",
+        "coordinates": { "x": 65, "y": 55 },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "dam_south_swamp",
+        "name": { "en": "South Swamp Outpost", "es": "Puesto del Pantano Sur" },
+        "mapId": "dam_battlegrounds",
+        "coordinates": { "x": 30, "y": 75 },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": true
+      },
+      {
+        "id": "dam_north_ridge",
+        "name": { "en": "North Ridge Overlook", "es": "Mirador de la Cresta Norte" },
+        "mapId": "dam_battlegrounds",
+        "coordinates": { "x": 75, "y": 25 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": true
+      },
+      {
+        "id": "dam_extract_river",
+        "name": { "en": "Riverside Extraction Flare", "es": "Extracción de Ribera" },
+        "mapId": "dam_battlegrounds",
+        "coordinates": { "x": 15, "y": 60 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": true,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "dam_extract_substation",
+        "name": { "en": "Substation Highground Extract", "es": "Extracción Subestación Elevada" },
+        "mapId": "dam_battlegrounds",
+        "coordinates": { "x": 82, "y": 70 },
+        "dangerLevel": "high",
+        "isExtractionPoint": true,
+        "isSpawnPoint": false
+      }
+    ]
+  },
+  {
+    "id": "buried_city",
+    "name": {
+      "en": "Buried City",
+      "es": "Ciudad Enterrada"
+    },
+    "description": {
+      "en": "Dense urban ruins half-submerged in arid sands, filled with vertical apartment complexes and dark sub-levels.",
+      "es": "Ruinas urbanas densas semienterradas en arena árida, con complejos de apartamentos y oscuros túneles subterráneos."
+    },
+    "pois": [
+      {
+        "id": "city_piazza_roma",
+        "name": { "en": "Piazza Roma", "es": "Plaza Roma" },
+        "mapId": "buried_city",
+        "coordinates": { "x": 45, "y": 40 },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "city_grandioso_apartments",
+        "name": { "en": "Grandioso Apartments", "es": "Apartamentos Grandioso" },
+        "mapId": "buried_city",
+        "coordinates": { "x": 62, "y": 35 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "city_parking_garage",
+        "name": { "en": "Underground Parking Garage", "es": "Aparcamiento Subterráneo" },
+        "mapId": "buried_city",
+        "coordinates": { "x": 35, "y": 65 },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "city_galleria",
+        "name": { "en": "Buried Galleria & Properties", "es": "Galería y Propiedades Enterradas" },
+        "mapId": "buried_city",
+        "coordinates": { "x": 55, "y": 58 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "city_perimeter_dunes",
+        "name": { "en": "South Dunes Infiltration", "es": "Infiltración Dunas Sur" },
+        "mapId": "buried_city",
+        "coordinates": { "x": 20, "y": 80 },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": true
+      },
+      {
+        "id": "city_highway_overpass",
+        "name": { "en": "North Highway Overpass", "es": "Paso Elevado Autovía Norte" },
+        "mapId": "buried_city",
+        "coordinates": { "x": 70, "y": 18 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": true
+      },
+      {
+        "id": "city_extract_rooftop",
+        "name": { "en": "Grandioso Rooftop Extract", "es": "Extracción Azotea Grandioso" },
+        "mapId": "buried_city",
+        "coordinates": { "x": 68, "y": 28 },
+        "dangerLevel": "high",
+        "isExtractionPoint": true,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "city_extract_metro",
+        "name": { "en": "Underground Metro Station Extract", "es": "Extracción Metro Subterráneo" },
+        "mapId": "buried_city",
+        "coordinates": { "x": 38, "y": 78 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": true,
+        "isSpawnPoint": false
+      }
+    ]
+  },
+  {
+    "id": "the_spaceport",
+    "name": {
+      "en": "The Spaceport",
+      "es": "El Puerto Espacial"
+    },
+    "description": {
+      "en": "Vast aerospace terminal with launch towers, radar domes and hangars patrolled by heavy ARC machines.",
+      "es": "Vasta terminal aeroespacial con torres de lanzamiento y hangares patrullados por máquinas ARC pesadas."
+    },
+    "pois": [
+      {
+        "id": "spaceport_launchpad",
+        "name": { "en": "Orbital Launchpad A", "es": "Plataforma Orbital A" },
+        "mapId": "the_spaceport",
+        "coordinates": { "x": 50, "y": 45 },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "spaceport_hangar",
+        "name": { "en": "Cargo Hangar 3", "es": "Hangar de Carga 3" },
+        "mapId": "the_spaceport",
+        "coordinates": { "x": 30, "y": 35 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "spaceport_radar_dish",
+        "name": { "en": "Deep Space Radar Array", "es": "Antena de Radar Espacial" },
+        "mapId": "the_spaceport",
+        "coordinates": { "x": 70, "y": 30 },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "spaceport_terminal_spawn",
+        "name": { "en": "West Perimeter Fence", "es": "Valla Perimetral Oeste" },
+        "mapId": "the_spaceport",
+        "coordinates": { "x": 15, "y": 50 },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": true
+      },
+      {
+        "id": "spaceport_extract_tarmac",
+        "name": { "en": "Runway Tarmac Extraction", "es": "Extracción Pista de Aterrizaje" },
+        "mapId": "the_spaceport",
+        "coordinates": { "x": 50, "y": 80 },
+        "dangerLevel": "high",
+        "isExtractionPoint": true,
+        "isSpawnPoint": false
+      }
+    ]
+  }
+]

@@ -1,0 +1,162 @@
+[
+  {
+    "id": "item_key_grandioso",
+    "name": {
+      "en": "Grandioso Apartment Key",
+      "es": "Llave del Apartamento Grandioso"
+    },
+    "category": "Key",
+    "description": {
+      "en": "A reinforced keycard unlocking the top-floor foreman suite in Buried City.",
+      "es": "Tarjeta reforzada que desbloquea la suite del capataz en la última planta de Ciudad Enterrada."
+    },
+    "usedInQuests": ["quest_rising_tide"],
+    "usedInUpgrades": [],
+    "sellValue": 1500
+  },
+  {
+    "id": "item_power_cell",
+    "name": {
+      "en": "Industrial Power Cell",
+      "es": "Célula de Energía Industrial"
+    },
+    "category": "Tech",
+    "description": {
+      "en": "High-voltage battery unit used to restore power to secured bunker doors and terminals.",
+      "es": "Batería de alto voltaje utilizada para restaurar la energía en terminales y búnkeres cerrados."
+    },
+    "usedInQuests": ["quest_rising_tide"],
+    "usedInUpgrades": [
+      {
+        "stationId": "station_workbench",
+        "stationName": { "en": "Workbench", "es": "Banco de Trabajo" },
+        "level": 2,
+        "count": 2
+      }
+    ],
+    "sellValue": 800
+  },
+  {
+    "id": "item_zipline_kit",
+    "name": {
+      "en": "Tactical Zipline Rig",
+      "es": "Equipo de Tirolina Táctica"
+    },
+    "category": "Consumable",
+    "description": {
+      "en": "Deployable wire system for rapid descent and rooftop transitions in urban zones.",
+      "es": "Sistema de cable desplegable para descenso rápido y cruce de azoteas en zonas urbanas."
+    },
+    "usedInQuests": [],
+    "usedInUpgrades": [],
+    "sellValue": 450
+  },
+  {
+    "id": "item_foreman_log",
+    "name": {
+      "en": "Foreman's Encrypted Logbook",
+      "es": "Diario Encriptado del Capataz"
+    },
+    "category": "Valuable",
+    "description": {
+      "en": "Contains telemetry and maintenance codes for the Alcantara water flow systems.",
+      "es": "Contiene telemetría y códigos de mantenimiento de los sistemas de caudal de Alcántara."
+    },
+    "usedInQuests": ["quest_rising_tide"],
+    "usedInUpgrades": [],
+    "sellValue": 3200
+  },
+  {
+    "id": "item_arc_power_core",
+    "name": {
+      "en": "ARC Heavy Power Core",
+      "es": "Núcleo de Energía Pesado ARC"
+    },
+    "category": "Material",
+    "description": {
+      "en": "Extracted from destroyed ARC Behemoths and Stalkers. Crucial for heavy weapon fabrication.",
+      "es": "Extraído de máquinas ARC Behemoth y Stalker. Esencial para fabricar armamento pesado."
+    },
+    "usedInQuests": ["quest_hunt_heavy_arc"],
+    "usedInUpgrades": [
+      {
+        "stationId": "station_armory",
+        "stationName": { "en": "Armory Station", "es": "Estación de Armería" },
+        "level": 2,
+        "count": 1
+      }
+    ],
+    "sellValue": 2500
+  },
+  {
+    "id": "item_microchip",
+    "name": {
+      "en": "ARC Logic Microchip",
+      "es": "Microchip Lógico ARC"
+    },
+    "category": "Tech",
+    "description": {
+      "en": "Computing unit scavenged from ARC drones and terminals.",
+      "es": "Unidad de computación recuperada de drones ARC y terminales de control."
+    },
+    "usedInQuests": ["quest_what_we_left"],
+    "usedInUpgrades": [
+      {
+        "stationId": "station_workbench",
+        "stationName": { "en": "Workbench", "es": "Banco de Trabajo" },
+        "level": 1,
+        "count": 3
+      },
+      {
+        "stationId": "station_medbay",
+        "stationName": { "en": "Medical Station", "es": "Estación Médica" },
+        "level": 2,
+        "count": 2
+      }
+    ],
+    "sellValue": 650
+  },
+  {
+    "id": "item_spray_can",
+    "name": {
+      "en": "Raider Neon Spray Paint",
+      "es": "Spray de Pintura Neón Raider"
+    },
+    "category": "Consumable",
+    "description": {
+      "en": "Special phosphorescent paint used by faction raiders to claim territory and mark routes.",
+      "es": "Pintura fosforescente especial utilizada para marcar territorio y señalizar rutas seguras."
+    },
+    "usedInQuests": ["quest_back_on_top"],
+    "usedInUpgrades": [],
+    "sellValue": 200
+  },
+  {
+    "id": "item_scrap_metal",
+    "name": {
+      "en": "High-Tensile Scrap Metal",
+      "es": "Chatarra Metálica Reforzada"
+    },
+    "category": "Material",
+    "description": {
+      "en": "Standard reinforcement plating needed for virtually every hideout construction project.",
+      "es": "Planchas de refuerzo estándar necesarias para prácticamente cualquier módulo del refugio."
+    },
+    "usedInQuests": [],
+    "usedInUpgrades": [
+      {
+        "stationId": "station_stash",
+        "stationName": { "en": "Stash Expansion", "es": "Ampliación de Alijo" },
+        "level": 1,
+        "count": 10
+      },
+      {
+        "stationId": "station_workbench",
+        "stationName": { "en": "Workbench", "es": "Banco de Trabajo" },
+        "level": 1,
+        "count": 5
+      }
+    ],
+    "sellValue": 120
+  }
+]
