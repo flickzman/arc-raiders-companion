@@ -2,7 +2,7 @@ import React from 'react';
 import { usePlayerStore } from '../store/usePlayerStore';
 import { type Quest } from '../data/schemas';
 import { getLocalized, getItemById, getPOIById, getMapById } from '../data/db';
-import { Check, MapPin, Key, Target, Award, Sparkles } from 'lucide-react';
+import { Check, MapPin, Key, Target, Award, Sparkles, Lock, Split, Clock } from 'lucide-react';
 
 interface QuestCardProps {
   quest: Quest;
@@ -121,6 +121,36 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest }) => {
                       <span>
                         {language === 'es' ? 'Lootear:' : 'Loot:'} {getLocalized(targetItem.name, language)}
                         {obj.count && obj.count > 1 ? ` x${obj.count}` : ''}
+                      </span>
+                    </span>
+                  )}
+
+                  {/* Alternative POIs Badge (OR) */}
+                  {obj.alternativePoiIds && obj.alternativePoiIds.length > 0 && (
+                    <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950/40 text-amber-300 border border-amber-500/40">
+                      <Split className="w-3 h-3 text-amber-400" />
+                      <span>
+                        {language === 'es' ? 'Alternativas válidas (uno u otro)' : 'Alternative sites (one or other)'}
+                      </span>
+                    </span>
+                  )}
+
+                  {/* Sequential Dependency Badge (AND) */}
+                  {obj.dependsOnObjectiveId && (
+                    <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950/40 text-rose-300 border border-rose-800/40">
+                      <Lock className="w-3 h-3 text-rose-400" />
+                      <span>
+                        {language === 'es' ? 'Secuencial (Requiere paso previo)' : 'Sequential (Requires prior step)'}
+                      </span>
+                    </span>
+                  )}
+
+                  {/* In One Round Badge */}
+                  {obj.inOneRound && (
+                    <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950/40 text-cyan-300 border border-cyan-800/40">
+                      <Clock className="w-3 h-3 text-cyan-400" />
+                      <span>
+                        {language === 'es' ? 'En 1 sola raid' : 'In 1 round'}
                       </span>
                     </span>
                   )}

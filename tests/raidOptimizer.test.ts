@@ -43,7 +43,6 @@ describe('Raid Route Optimizer: Rat vs Sweep Mode and Phase 2 Features', () => {
   it('should calculate compass bearings for all navigation waypoints', () => {
     const route = optimizeRaidRoute(damMap, allQuests, spawnPoiId, 'sweep');
 
-    // Todos los pasos posteriores al spawn deben tener rumbo calculado
     for (let i = 1; i < route.steps.length; i++) {
       const step = route.steps[i];
       expect(step.bearing).toBeDefined();
@@ -54,16 +53,47 @@ describe('Raid Route Optimizer: Rat vs Sweep Mode and Phase 2 Features', () => {
   });
 
   it('should reroute to an alternative extraction if the closest is marked disabled', () => {
-    // Primera ruta sin filtros
     const standardRoute = optimizeRaidRoute(damMap, allQuests, spawnPoiId, 'rat');
     const firstExtractId = standardRoute.steps[standardRoute.steps.length - 1].poi.id;
 
-    // Deshabilitar esa extracción específica
     const rerouted = optimizeRaidRoute(damMap, allQuests, spawnPoiId, 'rat', [firstExtractId]);
     const newExtractId = rerouted.steps[rerouted.steps.length - 1].poi.id;
 
-    // La nueva extracción debe ser diferente y válida
     expect(newExtractId).not.toBe(firstExtractId);
     expect(rerouted.steps[rerouted.steps.length - 1].poi.isExtractionPoint).toBe(true);
+  });
+
+  it('CASO OR (Alternativas): should pick the closest alternative POI and avoid visiting the other', () => {
+    // Off The Radar tiene alternativas: dam_south_swamp O dam_north_ridge
+    const offTheRadarQuest = allQuests.filter((q) => q.id === 'quest_off_the_radar');
+
+    // 1. Spawneando en South Swamp: debe elegir South Swamp
+    const routeSouth = optimizeRaidRoute(damMap, offTheRadarQuest, 'dam_south_swamp', 'sweep');
+    const poiIdsSouth = routeSouth.steps.map((s) => s.poi.id);
+    expect(poiIdsSouth).toContain('dam_south_swamp');
+    expect(poiIdsSouth).not.toContain('dam_north_ridge');
+
+    // 2. Spawneando en North Ridge: debe elegir North Ridge
+    const routeNorth = optimizeRaidRoute(damMap, offTheRadarQuest, 'dam_north_ridge', 'sweep');
+    const poiIdsNorth = routeNorth.steps.map((s) => s.poi.id);
+    expect(poiIdsNorth).toContain('dam_north_ridge');
+    expect(poiIdsNorth).not.toContain('dam_south_swamp');
+  });
+
+  it('CASO AND (Secuencial): should strictly visit predecessor before dependent objective', () => {
+    // Hatch Repairs: obj_hatch_1 (dam_south_swamp) -> obj_hatch_2 (dam_controlled_access, depende de 1)
+    const hatchQuest = allQuests.filter((q) => q.id === 'quest_hatch_repairs');
+
+    // Spawneamos en North Ridge (lejos de ambos)
+    const route = optimizeRaidRoute(damMap, hatchQuest, 'dam_north_ridge', 'sweep');
+    const poiSequence = route.steps.map((s) => s.poi.id);
+
+    const step1Index = poiSequence.indexOf('dam_south_swamp');
+    const step2Index = poiSequence.indexOf('dam_controlled_access');
+
+    expect(step1Index).toBeGreaterThan(-1);
+    expect(step2Index).toBeGreaterThan(-1);
+    // El paso 1 DEBE visitarse antes del paso 2
+    expect(step1Index).toBeLessThan(step2Index);
   });
 });

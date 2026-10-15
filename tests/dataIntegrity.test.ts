@@ -49,6 +49,25 @@ describe('Data Integrity & Schema Validation', () => {
           ).toBe(true);
         }
 
+        // 1b. Verify alternativePoiIds exist in maps
+        if (obj.alternativePoiIds && obj.alternativePoiIds.length > 0) {
+          for (const altPoiId of obj.alternativePoiIds) {
+            expect(
+              allPoiIds.has(altPoiId),
+              `Objective "${obj.id}" in quest "${quest.id}" references unknown alternativePoiId: "${altPoiId}"`
+            ).toBe(true);
+          }
+        }
+
+        // 1c. Verify dependsOnObjectiveId exists
+        if (obj.dependsOnObjectiveId) {
+          const allObjectiveIds = new Set(quests.flatMap((q) => q.objectives.map((o) => o.id)));
+          expect(
+            allObjectiveIds.has(obj.dependsOnObjectiveId),
+            `Objective "${obj.id}" references unknown dependsOnObjectiveId: "${obj.dependsOnObjectiveId}"`
+          ).toBe(true);
+        }
+
         // 2. Verify requiredItemId exists
         if (obj.requiredItemId) {
           expect(

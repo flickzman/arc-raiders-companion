@@ -1,9 +1,16 @@
 import { type GameMap, type POI, type Quest, type Objective } from '../../data/schemas';
 
+export interface RouteObjectiveAssignment {
+  quest: Quest;
+  objective: Objective;
+  chosenPoi: POI;
+  alternativePois: POI[];
+}
+
 export interface RouteStep {
   poi: POI;
   type: 'spawn' | 'objective' | 'extraction';
-  objectives: { quest: Quest; objective: Objective }[];
+  objectives: RouteObjectiveAssignment[];
   distanceFromPrevious: number;
   cumulativeDistance: number;
   bearing?: {
@@ -40,9 +47,8 @@ function calculateBearing(
   to: { x: number; y: number }
 ): { degrees: number; cardinal: 'N' | 'NE' | 'E' | 'SE' | 'S' | 'SW' | 'W' | 'NW' } {
   const dx = to.x - from.x;
-  const dy = to.y - from.y; // En pantalla +y va hacia el sur
+  const dy = to.y - from.y;
 
-  // atan2(dx, -dy) da 0 en el norte (+y invertido)
   let rad = Math.atan2(dx, -dy);
   let deg = Math.round((rad * 180) / Math.PI);
   if (deg < 0) deg += 360;
@@ -74,51 +80,127 @@ export function optimizeRaidRoute(
     map.pois.find((p) => p.isSpawnPoint) ||
     map.pois[0];
 
-  // Filtrar extracciones activas (excluyendo las deshabilitadas)
+  // Filtrar extracciones disponibles
   const availableExtractions = map.pois
     .filter((p) => p.isExtractionPoint)
     .filter((p) => !disabledExtractionIds.includes(p.id));
 
-  // Fallback si todas están deshabilitadas
   const extractions = availableExtractions.length > 0
     ? availableExtractions
     : map.pois.filter((p) => p.isExtractionPoint);
 
-  // 2. Filtrar objetivos de este mapa
-  const relevantObjectives: { quest: Quest; objective: Objective; poi?: POI }[] = [];
   const transitObjectives: { quest: Quest; objective: Objective }[] = [];
+
+  // 2. Resolver alternativas (OR) para cada objetivo activo
+  // Un objetivo puede tener un poiId y varios alternativePoiIds
+  interface ResolvedObjective {
+    quest: Quest;
+    objective: Objective;
+    chosenPoi: POI;
+    alternativePois: POI[];
+    dependsOnObjectiveId?: string;
+  }
+
+  const resolvedObjectives: ResolvedObjective[] = [];
 
   activeQuests.forEach((q) => {
     q.objectives.forEach((obj) => {
       if (obj.mapId === 'any') {
         transitObjectives.push({ quest: q, objective: obj });
-      } else if (obj.mapId === map.id) {
-        const poi = obj.poiId ? map.pois.find((p) => p.id === obj.poiId) : undefined;
-        relevantObjectives.push({ quest: q, objective: obj, poi });
+        return;
+      }
+
+      // Candidatos válidos de POIs para este objetivo
+      const candidateIds: string[] = [];
+      if (obj.poiId) candidateIds.push(obj.poiId);
+      if (obj.alternativePoiIds) {
+        obj.alternativePoiIds.forEach((altId) => {
+          if (!candidateIds.includes(altId)) candidateIds.push(altId);
+        });
+      }
+
+      // Filtrar los que pertenecen a este mapa
+      const candidatePois = candidateIds
+        .map((id) => map.pois.find((p) => p.id === id))
+        .filter((p): p is POI => !!p);
+
+      if (candidatePois.length === 0) {
+        return; // No pertenece a este mapa
+      }
+
+      if (candidatePois.length === 1) {
+        resolvedObjectives.push({
+          quest: q,
+          objective: obj,
+          chosenPoi: candidatePois[0],
+          alternativePois: [],
+          dependsOnObjectiveId: obj.dependsOnObjectiveId,
+        });
+      } else {
+        // CASO OR / ALTERNATIVA: Evaluar cuál de los candidatos es más conveniente desde el spawn
+        let bestCandidate = candidatePois[0];
+        let minCost = Infinity;
+
+        candidatePois.forEach((cand) => {
+          const dist = calculateDistance(spawnPoi.coordinates, cand.coordinates);
+          const danger = dangerScoreMap[cand.dangerLevel];
+          const cost = mode === 'rat' ? dist * 0.4 + danger * 1.5 : dist * 1.0 + danger * 0.2;
+
+          if (cost < minCost) {
+            minCost = cost;
+            bestCandidate = cand;
+          }
+        });
+
+        const otherAlternatives = candidatePois.filter((p) => p.id !== bestCandidate.id);
+
+        resolvedObjectives.push({
+          quest: q,
+          objective: obj,
+          chosenPoi: bestCandidate,
+          alternativePois: otherAlternatives,
+          dependsOnObjectiveId: obj.dependsOnObjectiveId,
+        });
       }
     });
   });
 
-  // Agrupar objetivos con POI válido
-  const poiObjectivesMap = new Map<string, { poi: POI; objectives: { quest: Quest; objective: Objective }[] }>();
+  // 3. Agrupar objetivos por su POI elegido
+  interface PoiCluster {
+    poi: POI;
+    assignments: RouteObjectiveAssignment[];
+    dependentOnObjIds: string[];
+    providedObjIds: string[];
+  }
 
-  relevantObjectives.forEach((item) => {
-    if (item.poi) {
-      const existing = poiObjectivesMap.get(item.poi.id);
-      if (existing) {
-        existing.objectives.push({ quest: item.quest, objective: item.objective });
-      } else {
-        poiObjectivesMap.set(item.poi.id, {
-          poi: item.poi,
-          objectives: [{ quest: item.quest, objective: item.objective }],
-        });
+  const clusterMap = new Map<string, PoiCluster>();
+
+  resolvedObjectives.forEach((ro) => {
+    const existing = clusterMap.get(ro.chosenPoi.id);
+    const assignment: RouteObjectiveAssignment = {
+      quest: ro.quest,
+      objective: ro.objective,
+      chosenPoi: ro.chosenPoi,
+      alternativePois: ro.alternativePois,
+    };
+
+    if (existing) {
+      existing.assignments.push(assignment);
+      existing.providedObjIds.push(ro.objective.id);
+      if (ro.dependsOnObjectiveId) {
+        existing.dependentOnObjIds.push(ro.dependsOnObjectiveId);
       }
     } else {
-      transitObjectives.push({ quest: item.quest, objective: item.objective });
+      clusterMap.set(ro.chosenPoi.id, {
+        poi: ro.chosenPoi,
+        assignments: [assignment],
+        providedObjIds: [ro.objective.id],
+        dependentOnObjIds: ro.dependsOnObjectiveId ? [ro.dependsOnObjectiveId] : [],
+      });
     }
   });
 
-  const targetPois = Array.from(poiObjectivesMap.values());
+  const targetClusters = Array.from(clusterMap.values());
   const steps: RouteStep[] = [];
   const skippedObjectives: SkippedObjective[] = [];
 
@@ -133,45 +215,58 @@ export function optimizeRaidRoute(
 
   let currentPos = spawnPoi.coordinates;
   let cumulativeDist = 0;
+  const completedObjectiveSet = new Set<string>();
 
   if (mode === 'rat') {
     // MODO RATA:
-    // Máximo 2 POIs más seguros y cercanos.
-    // Penalización severa a POIs con peligro 'high'.
-    const scoredPois = targetPois.map((item) => {
-      const dist = calculateDistance(spawnPoi.coordinates, item.poi.coordinates);
-      const danger = dangerScoreMap[item.poi.dangerLevel];
+    // Máximo 2 POIs seguros, respetando dependencias
+    const available = targetClusters.map((cl) => {
+      const dist = calculateDistance(spawnPoi.coordinates, cl.poi.coordinates);
+      const danger = dangerScoreMap[cl.poi.dangerLevel];
       const cost = dist * 0.4 + danger * 1.5;
-      return { ...item, dist, cost };
+      return { ...cl, dist, cost };
     });
 
-    // Ordenar por menor coste
-    scoredPois.sort((a, b) => a.cost - b.cost);
+    available.sort((a, b) => a.cost - b.cost);
 
-    const selectedForRat = scoredPois.slice(0, 2);
-    const excludedForRat = scoredPois.slice(2);
+    const selectedForRat = available.slice(0, 2);
+    const excludedForRat = available.slice(2);
+
+    // Si el segundo seleccionado depende de un objetivo que no está en el primero, comprobar precedencia
+    selectedForRat.sort((a, b) => {
+      if (b.dependentOnObjIds.some((depId) => a.providedObjIds.includes(depId))) {
+        return -1; // a debe ir primero
+      }
+      if (a.dependentOnObjIds.some((depId) => b.providedObjIds.includes(depId))) {
+        return 1; // b debe ir primero
+      }
+      return a.cost - b.cost;
+    });
 
     selectedForRat.forEach((entry) => {
       const dist = calculateDistance(currentPos, entry.poi.coordinates);
       const bearing = calculateBearing(currentPos, entry.poi.coordinates);
       cumulativeDist += dist;
+
       steps.push({
         poi: entry.poi,
         type: 'objective',
-        objectives: entry.objectives,
+        objectives: entry.assignments,
         distanceFromPrevious: Math.round(dist),
         cumulativeDistance: Math.round(cumulativeDist),
         bearing,
       });
+
       currentPos = entry.poi.coordinates;
+      entry.providedObjIds.forEach((id) => completedObjectiveSet.add(id));
     });
 
-    // Registrar los objetivos omitidos por seguridad
+    // Descartados
     excludedForRat.forEach((entry) => {
-      entry.objectives.forEach((obj) => {
+      entry.assignments.forEach((asg) => {
         skippedObjectives.push({
-          quest: obj.quest,
-          objective: obj.objective,
+          quest: asg.quest,
+          objective: asg.objective,
           poi: entry.poi,
           reason: {
             es: entry.poi.dangerLevel === 'high'
@@ -186,40 +281,58 @@ export function optimizeRaidRoute(
     });
   } else {
     // MODO BARRIDO:
-    // Visita TODOS los POIs activos resolviendo una ruta continua (Nearest Neighbor TSP)
-    const unvisited = [...targetPois];
+    // Visita TODOS los POIs activos respetando estrictamente dependencias (CASO 1: AND Secuencial)
+    const unvisited = [...targetClusters];
 
     while (unvisited.length > 0) {
-      let bestIndex = 0;
+      // Filtrar clusters elegibles (cuyas dependencias previas estén ya satisfechas)
+      const eligible = unvisited.filter((cl) => {
+        if (cl.dependentOnObjIds.length === 0) return true;
+        // Solo es elegible si las dependencias que están en el mismo mapa ya se visitaron
+        return cl.dependentOnObjIds.every(
+          (depId) =>
+            completedObjectiveSet.has(depId) ||
+            !resolvedObjectives.some((ro) => ro.objective.id === depId)
+        );
+      });
+
+      // Si por alguna razón circular ninguno es elegible, tomar el primero restante
+      const candidates = eligible.length > 0 ? eligible : unvisited;
+
+      let bestIndexInCandidates = 0;
       let minCost = Infinity;
 
-      for (let i = 0; i < unvisited.length; i++) {
-        const item = unvisited[i];
+      for (let i = 0; i < candidates.length; i++) {
+        const item = candidates[i];
         const dist = calculateDistance(currentPos, item.poi.coordinates);
         const danger = dangerScoreMap[item.poi.dangerLevel];
         const cost = dist * 1.0 + danger * 0.15;
 
         if (cost < minCost) {
           minCost = cost;
-          bestIndex = i;
+          bestIndexInCandidates = i;
         }
       }
 
-      const next = unvisited.splice(bestIndex, 1)[0];
-      const dist = calculateDistance(currentPos, next.poi.coordinates);
-      const bearing = calculateBearing(currentPos, next.poi.coordinates);
+      const nextCluster = candidates[bestIndexInCandidates];
+      const originalIdx = unvisited.findIndex((u) => u.poi.id === nextCluster.poi.id);
+      unvisited.splice(originalIdx, 1);
+
+      const dist = calculateDistance(currentPos, nextCluster.poi.coordinates);
+      const bearing = calculateBearing(currentPos, nextCluster.poi.coordinates);
       cumulativeDist += dist;
 
       steps.push({
-        poi: next.poi,
+        poi: nextCluster.poi,
         type: 'objective',
-        objectives: next.objectives,
+        objectives: nextCluster.assignments,
         distanceFromPrevious: Math.round(dist),
         cumulativeDistance: Math.round(cumulativeDist),
         bearing,
       });
 
-      currentPos = next.poi.coordinates;
+      currentPos = nextCluster.poi.coordinates;
+      nextCluster.providedObjIds.forEach((id) => completedObjectiveSet.add(id));
     }
   }
 

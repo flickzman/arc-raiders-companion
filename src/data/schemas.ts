@@ -30,6 +30,9 @@ export const ObjectiveSchema = z.object({
   description: LocalizedStringSchema,
   mapId: MapIdSchema.default('any'),
   poiId: z.string().optional(),
+  alternativePoiIds: z.array(z.string()).default([]), // [OR / Alternativa]: cualquiera de estos POIs es válido (uno u otro)
+  dependsOnObjectiveId: z.string().optional(),         // [AND / Secuencial]: ID del paso que debe completarse antes
+  inOneRound: z.boolean().default(false),             // [Restricción]: debe realizarse en una única incursión
   requiredItemId: z.string().optional(),
   targetItemId: z.string().optional(),
   count: z.number().default(1),

@@ -158,5 +158,42 @@
       }
     ],
     "sellValue": 120
+  },
+  {
+    "id": "item_hatch_key",
+    "name": {
+      "en": "Raider Hatch Keycard",
+      "es": "Tarjeta de Escotilla Raider"
+    },
+    "category": "Key",
+    "description": {
+      "en": "Access card needed to unlock sealed drainage hatches in the Controlled Access Zone.",
+      "es": "Tarjeta de acceso necesaria para desbloquear escotillas de drenaje en la Zona de Acceso Controlado."
+    },
+    "usedInQuests": ["quest_hatch_repairs"],
+    "usedInUpgrades": [],
+    "sellValue": 1200
+  },
+  {
+    "id": "item_esr_analyzer",
+    "name": {
+      "en": "ESR Medical Analyzer",
+      "es": "Analizador Médico ESR"
+    },
+    "category": "Tech",
+    "description": {
+      "en": "High-grade diagnostic scanner scavenged from abandoned pharmacies in Buried City.",
+      "es": "Escáner diagnóstico de alta precisión recuperado de farmacias abandonadas en Ciudad Enterrada."
+    },
+    "usedInQuests": ["quest_reveal_in_ruins"],
+    "usedInUpgrades": [
+      {
+        "stationId": "station_medbay",
+        "stationName": { "en": "Medical Station", "es": "Estación Médica" },
+        "level": 2,
+        "count": 1
+      }
+    ],
+    "sellValue": 1800
   }
 ]

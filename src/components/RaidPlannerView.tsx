@@ -236,7 +236,7 @@ export const RaidPlannerView: React.FC = () => {
                 {language === 'es' ? 'Objetivos a completar en este punto:' : 'Objectives to complete at this waypoint:'}
               </span>
               <div className="space-y-2">
-                {activeStep.objectives.map(({ quest, objective }) => {
+                {activeStep.objectives.map(({ quest, objective, chosenPoi, alternativePois }) => {
                   const isDone = completedObjectiveIds.includes(objective.id);
 
                   return (
@@ -256,13 +256,33 @@ export const RaidPlannerView: React.FC = () => {
                           <Circle className="w-5 h-5 text-neutral-500 hover:text-amber-400" />
                         )}
                       </button>
-                      <div>
+                      <div className="flex-1">
                         <div className="text-[11px] font-mono text-amber-400 font-bold uppercase">
                           [{quest.vendor}] {getLocalized(quest.title, language)}
                         </div>
                         <div className={`text-xs font-medium ${isDone ? 'line-through text-neutral-400' : 'text-neutral-100'}`}>
                           {getLocalized(objective.description, language)}
                         </div>
+                        {alternativePois && alternativePois.length > 0 && (
+                          <div className="text-[10px] font-mono text-amber-300 mt-1 flex items-center gap-1 bg-amber-950/40 px-2 py-0.5 rounded border border-amber-800/40 w-fit">
+                            <span>⚡</span>
+                            <span>
+                              {language === 'es'
+                                ? `Alternativa elegida: ${getLocalized(chosenPoi.name, language)}`
+                                : `Chosen site: ${getLocalized(chosenPoi.name, language)}`}
+                            </span>
+                          </div>
+                        )}
+                        {objective.dependsOnObjectiveId && (
+                          <div className="text-[10px] font-mono text-rose-300 mt-1 flex items-center gap-1 bg-rose-950/40 px-2 py-0.5 rounded border border-rose-800/40 w-fit">
+                            <span>🔒</span>
+                            <span>
+                              {language === 'es'
+                                ? 'Paso secuencial ordenado'
+                                : 'Sequential step in order'}
+                            </span>
+                          </div>
+                        )}
                       </div>
                     </div>
                   );
@@ -557,7 +577,7 @@ export const RaidPlannerView: React.FC = () => {
                 {/* Objectives attached to this step */}
                 {step.objectives.length > 0 && (
                   <div className="mt-3 pl-10 space-y-2 border-t border-neutral-800/60 pt-2.5">
-                    {step.objectives.map(({ quest, objective }) => {
+                    {step.objectives.map(({ quest, objective, chosenPoi, alternativePois }) => {
                       const isDone = completedObjectiveIds.includes(objective.id);
 
                       return (
@@ -582,6 +602,28 @@ export const RaidPlannerView: React.FC = () => {
                             <span className={`text-xs ${isDone ? 'line-through text-neutral-400' : 'text-neutral-200'}`}>
                               {getLocalized(objective.description, language)}
                             </span>
+
+                            {alternativePois && alternativePois.length > 0 && (
+                              <div className="text-[10px] font-mono text-amber-300 mt-1 flex items-center gap-1 bg-amber-950/40 px-2 py-0.5 rounded border border-amber-800/40 w-fit">
+                                <span>⚡</span>
+                                <span>
+                                  {language === 'es'
+                                    ? `Alternativa elegida: ${getLocalized(chosenPoi.name, language)}`
+                                    : `Chosen site: ${getLocalized(chosenPoi.name, language)}`}
+                                </span>
+                              </div>
+                            )}
+
+                            {objective.dependsOnObjectiveId && (
+                              <div className="text-[10px] font-mono text-rose-300 mt-1 flex items-center gap-1 bg-rose-950/40 px-2 py-0.5 rounded border border-rose-800/40 w-fit">
+                                <span>🔒</span>
+                                <span>
+                                  {language === 'es'
+                                    ? 'Paso secuencial ordenado'
+                                    : 'Sequential step in order'}
+                                </span>
+                              </div>
+                            )}
                           </div>
                         </div>
                       );

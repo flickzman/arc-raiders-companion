@@ -28,6 +28,7 @@
         },
         "mapId": "dam_battlegrounds",
         "poiId": "dam_controlled_access",
+        "dependsOnObjectiveId": "obj_rt_1",
         "requiredItemId": "item_power_cell",
         "count": 1
       }
@@ -48,6 +49,104 @@
       "xp": 1200,
       "currency": 4500,
       "items": ["Advanced Combat Vest", "5.56 AP Ammo x60"]
+    }
+  },
+  {
+    "id": "quest_off_the_radar",
+    "title": {
+      "en": "Off The Radar",
+      "es": "Fuera del Radar"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_otr_1",
+        "description": {
+          "en": "In a single round, visit a Field Depot and repair the rooftop radio antenna (South Swamp or North Ridge)",
+          "es": "En una sola ronda, visita un Puesto de Campo y repara la antena de radio (Pantano Sur o Cresta Norte)"
+        },
+        "mapId": "dam_battlegrounds",
+        "poiId": "dam_south_swamp",
+        "alternativePoiIds": ["dam_north_ridge"],
+        "inOneRound": true,
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 800,
+      "currency": 2600,
+      "items": ["Defibrillator x2", "Origin Field Outfit"]
+    }
+  },
+  {
+    "id": "quest_hatch_repairs",
+    "title": {
+      "en": "Hatch Repairs",
+      "es": "Reparación de Escotillas"
+    },
+    "vendor": "Shani",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_hatch_1",
+        "description": {
+          "en": "Paso 1: Search the raider cache at South Swamp Outpost for a Raider Hatch Keycard",
+          "es": "Paso 1: Busca en el alijo de Pantano Sur para obtener una Tarjeta de Escotilla Raider"
+        },
+        "mapId": "dam_battlegrounds",
+        "poiId": "dam_south_swamp",
+        "targetItemId": "item_hatch_key",
+        "count": 1
+      },
+      {
+        "id": "obj_hatch_2",
+        "description": {
+          "en": "Paso 2: Unlock the drainage pipeline hatch in Controlled Access Zone and seal the leak",
+          "es": "Paso 2: Desbloquea la escotilla en la Zona de Acceso Controlado y sella la fuga"
+        },
+        "mapId": "dam_battlegrounds",
+        "poiId": "dam_controlled_access",
+        "dependsOnObjectiveId": "obj_hatch_1",
+        "requiredItemId": "item_hatch_key",
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1050,
+      "currency": 3400,
+      "items": ["Welding Kit", "Armor Repair Plate x3"]
+    }
+  },
+  {
+    "id": "quest_reveal_in_ruins",
+    "title": {
+      "en": "A Reveal in Ruins",
+      "es": "Revelación en Ruinas"
+    },
+    "vendor": "Lance",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_rir_1",
+        "description": {
+          "en": "Search for an ESR Medical Analyzer in Buried City pharmacies (Piazza Roma or Galleria)",
+          "es": "Busca un Analizador Médico ESR en farmacias de Ciudad Enterrada (Plaza Roma o Galería)"
+        },
+        "mapId": "buried_city",
+        "poiId": "city_piazza_roma",
+        "alternativePoiIds": ["city_galleria"],
+        "targetItemId": "item_esr_analyzer",
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1150,
+      "currency": 4100,
+      "items": ["Advanced Stim Shot x2", "Tactical Helmet"]
     }
   },
   {
