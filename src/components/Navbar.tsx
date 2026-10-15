@@ -1,13 +1,14 @@
 import React from 'react';
 import { usePlayerStore } from '../store/usePlayerStore';
-import { Shield, MapPin, CheckSquare, Globe, Info } from 'lucide-react';
+import { Shield, MapPin, CheckSquare, Globe, Info, Camera } from 'lucide-react';
 
 interface NavbarProps {
   currentTab: 'quests' | 'planner' | 'about';
   setCurrentTab: (tab: 'quests' | 'planner' | 'about') => void;
+  onOpenCaptureModal: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab }) => {
+export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab, onOpenCaptureModal }) => {
   const { language, setLanguage, activeQuestIds } = usePlayerStore();
 
   return (
@@ -60,6 +61,19 @@ export const Navbar: React.FC<NavbarProps> = ({ currentTab, setCurrentTab }) => 
           >
             <MapPin className="w-4 h-4" />
             <span className="hidden sm:inline">{language === 'es' ? 'Raid Planner' : 'Raid Planner'}</span>
+          </button>
+
+          {/* OCR / Scan Action Button */}
+          <button
+            onClick={onOpenCaptureModal}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-neutral-900 border border-neutral-800 hover:border-amber-500/50 hover:bg-neutral-850 text-neutral-300 text-xs font-mono transition-all"
+            title={language === 'es' ? 'Escanear pantalla / Pegar con Ctrl+V' : 'Scan screen / Paste with Ctrl+V'}
+          >
+            <Camera className="w-3.5 h-3.5 text-amber-400" />
+            <span className="hidden md:inline">{language === 'es' ? 'Escanear' : 'Scan'}</span>
+            <span className="text-[10px] px-1 py-0.2 rounded bg-neutral-800 text-amber-400 font-mono hidden lg:inline">
+              Ctrl+V
+            </span>
           </button>
 
           <button

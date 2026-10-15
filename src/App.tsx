@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { usePlayerStore } from './store/usePlayerStore';
 import { allQuests } from './data/db';
 import { type Vendor, type MapId } from './data/schemas';
@@ -8,11 +8,49 @@ import { QuestCard } from './components/QuestCard';
 import { LoadoutChecklist } from './components/LoadoutChecklist';
 import { RaidPlannerView } from './components/RaidPlannerView';
 import { AboutView } from './components/AboutView';
+import { CaptureModal } from './components/CaptureModal';
 import { Compass } from 'lucide-react';
 
 export function App() {
   const { language } = usePlayerStore();
   const [currentTab, setCurrentTab] = useState<'quests' | 'planner' | 'about'>('quests');
+
+  // Estado del Modal de Ingesta Visual (OCR / Visión IA)
+  const [isCaptureModalOpen, setIsCaptureModalOpen] = useState(false);
+  const [pastedBlob, setPastedBlob] = useState<Blob | null>(null);
+
+  // Listener global de pegado (Ctrl+V) para capturas de pantalla de Windows (Win+Shift+S)
+  useEffect(() => {
+    const handlePaste = (e: ClipboardEvent) => {
+      // Ignorar si el usuario está escribiendo en un input o textarea
+      const target = e.target as HTMLElement | null;
+      if (
+        target &&
+        (target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.isContentEditable)
+      ) {
+        return;
+      }
+
+      if (e.clipboardData && e.clipboardData.items) {
+        for (const item of Array.from(e.clipboardData.items)) {
+          if (item.type.startsWith('image/')) {
+            const blob = item.getAsFile();
+            if (blob) {
+              e.preventDefault();
+              setPastedBlob(blob);
+              setIsCaptureModalOpen(true);
+              break;
+            }
+          }
+        }
+      }
+    };
+
+    window.addEventListener('paste', handlePaste);
+    return () => window.removeEventListener('paste', handlePaste);
+  }, []);
 
   // Filtros de búsqueda
   const [selectedVendor, setSelectedVendor] = useState<Vendor | 'ALL'>('ALL');
@@ -56,7 +94,11 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100 flex flex-col font-sans">
-      <Navbar currentTab={currentTab} setCurrentTab={setCurrentTab} />
+      <Navbar
+        currentTab={currentTab}
+        setCurrentTab={setCurrentTab}
+        onOpenCaptureModal={() => setIsCaptureModalOpen(true)}
+      />
 
       <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
         {currentTab === 'quests' && (
@@ -69,6 +111,7 @@ export function App() {
               setSelectedMapFilter={setSelectedMapFilter}
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
+              onOpenCaptureModal={() => setIsCaptureModalOpen(true)}
             />
 
             {/* Main 2-Column Responsive Layout */}
@@ -126,6 +169,16 @@ export function App() {
 
         {currentTab === 'about' && <AboutView />}
       </main>
+
+      {/* Modal de Ingesta Visual */}
+      <CaptureModal
+        isOpen={isCaptureModalOpen}
+        onClose={() => {
+          setIsCaptureModalOpen(false);
+          setPastedBlob(null);
+        }}
+        initialImageBlob={pastedBlob}
+      />
 
       {/* Footer */}
       <footer className="border-t border-neutral-900 bg-neutral-950 py-4 px-6 text-center text-xs font-mono text-neutral-500">

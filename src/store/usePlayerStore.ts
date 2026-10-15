@@ -13,9 +13,14 @@ export interface PlayerState {
   spawnPoiId: string | null;
   routeMode: 'rat' | 'sweep';
 
+  // Visión por IA (opcional)
+  geminiApiKey: string;
+
   // Acciones
   setLanguage: (lang: 'es' | 'en') => void;
+  setGeminiApiKey: (key: string) => void;
   toggleActiveQuest: (questId: string) => void;
+  addActiveQuests: (questIds: string[]) => void;
   toggleCompletedObjective: (objectiveId: string) => void;
   resetRaidObjectives: () => void;
   markQuestCompleted: (questId: string) => void;
@@ -39,8 +44,10 @@ export const usePlayerStore = create<PlayerState>()(
       selectedMapId: 'dam_battlegrounds',
       spawnPoiId: 'dam_south_swamp',
       routeMode: 'rat',
+      geminiApiKey: '',
 
       setLanguage: (language) => set({ language }),
+      setGeminiApiKey: (geminiApiKey) => set({ geminiApiKey }),
 
       toggleActiveQuest: (questId) =>
         set((state) => {
@@ -51,6 +58,11 @@ export const usePlayerStore = create<PlayerState>()(
               : [...state.activeQuestIds, questId],
           };
         }),
+
+      addActiveQuests: (questIds) =>
+        set((state) => ({
+          activeQuestIds: Array.from(new Set([...state.activeQuestIds, ...questIds])),
+        })),
 
       toggleCompletedObjective: (objectiveId) =>
         set((state) => {

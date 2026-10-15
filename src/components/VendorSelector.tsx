@@ -2,7 +2,7 @@ import React from 'react';
 import { usePlayerStore } from '../store/usePlayerStore';
 import { allQuests } from '../data/db';
 import { type Vendor, type MapId } from '../data/schemas';
-import { Search, X, Trash2, Filter } from 'lucide-react';
+import { Search, X, Trash2, Filter, Camera } from 'lucide-react';
 
 interface VendorSelectorProps {
   selectedVendor: Vendor | 'ALL';
@@ -11,6 +11,7 @@ interface VendorSelectorProps {
   setSelectedMapFilter: (m: MapId | 'ALL') => void;
   searchQuery: string;
   setSearchQuery: (q: string) => void;
+  onOpenCaptureModal?: () => void;
 }
 
 const vendors: { id: Vendor; role: { en: string; es: string } }[] = [
@@ -28,6 +29,7 @@ export const VendorSelector: React.FC<VendorSelectorProps> = ({
   setSelectedMapFilter,
   searchQuery,
   setSearchQuery,
+  onOpenCaptureModal,
 }) => {
   const { language, activeQuestIds, clearAllActiveQuests } = usePlayerStore();
 
@@ -65,8 +67,28 @@ export const VendorSelector: React.FC<VendorSelectorProps> = ({
           )}
         </div>
 
-        {/* Map Filter Selector */}
+        {/* Map Filter Selector & OCR Trigger */}
         <div className="flex items-center gap-2">
+          {onOpenCaptureModal && (
+            <button
+              onClick={onOpenCaptureModal}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 hover:border-amber-500/60 hover:bg-amber-500/20 text-amber-400 text-xs font-mono font-semibold transition-all whitespace-nowrap shadow-sm shadow-amber-500/5"
+              title={
+                language === 'es'
+                  ? 'Pegar captura con Ctrl+V o escanear con cámara'
+                  : 'Paste screenshot with Ctrl+V or scan with camera'
+              }
+            >
+              <Camera className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">
+                {language === 'es' ? 'OCR / Captura' : 'OCR / Capture'}
+              </span>
+              <span className="text-[10px] px-1 py-0.2 rounded bg-neutral-900 text-amber-300 border border-neutral-700 font-mono hidden md:inline">
+                Ctrl+V
+              </span>
+            </button>
+          )}
+
           <Filter className="w-4 h-4 text-neutral-500 hidden sm:inline" />
           <select
             value={selectedMapFilter}
