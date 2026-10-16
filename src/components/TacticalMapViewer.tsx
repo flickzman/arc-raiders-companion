@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 import { type GameMap, type POI } from '../data/schemas';
 import { type OptimizedRoute } from '../services/optimizer/raidOptimizer';
 import { getLocalized } from '../data/db';
@@ -41,6 +41,54 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
     ? route.steps.find((s) => s.poi.id === selectedPoi.id)?.objectives || []
     : [];
 
+  // ── Zoom / Pan ────────────────────────────────────────────────────────────
+  const MIN_ZOOM = 0.8;
+  const MAX_ZOOM = 4.0;
+  const ZOOM_SENSITIVITY = 0.0012;
+
+  const [zoom, setZoom] = useState(1);
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const isPanning = useRef(false);
+  const lastPointer = useRef({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleWheel = useCallback((e: React.WheelEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const cursorX = e.clientX - rect.left;
+    const cursorY = e.clientY - rect.top;
+    setZoom((prevZoom) => {
+      const delta = -e.deltaY * ZOOM_SENSITIVITY;
+      const nextZoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, prevZoom + delta * prevZoom));
+      const scale = nextZoom / prevZoom;
+      setPan((prev) => ({
+        x: cursorX - scale * (cursorX - prev.x),
+        y: cursorY - scale * (cursorY - prev.y),
+      }));
+      return nextZoom;
+    });
+  }, []);
+
+  const handlePointerDown = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+    isPanning.current = true;
+    lastPointer.current = { x: e.clientX, y: e.clientY };
+    (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
+  }, []);
+
+  const handlePointerMove = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isPanning.current) return;
+    const dx = e.clientX - lastPointer.current.x;
+    const dy = e.clientY - lastPointer.current.y;
+    lastPointer.current = { x: e.clientX, y: e.clientY };
+    setPan((prev) => ({ x: prev.x + dx, y: prev.y + dy }));
+  }, []);
+
+  const handlePointerUp = useCallback(() => { isPanning.current = false; }, []);
+
+
+  const resetView = useCallback(() => { setZoom(1); setPan({ x: 0, y: 0 }); }, []);
+
   return (
     <div className="bg-neutral-950 border border-neutral-800 rounded-2xl p-4 overflow-hidden relative shadow-2xl space-y-4">
       {/* HUD Header */}
@@ -69,8 +117,27 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
         </div>
       </div>
 
-      {/* SVG Canvas (600 x 400 coordinate space) */}
-      <div className="relative w-full aspect-[3/2] bg-[#070b12] rounded-xl border border-neutral-800/80 overflow-hidden shadow-inner select-none">
+      {/* SVG Canvas — zoomable/pannable */}
+      <div
+        ref={containerRef}
+        className="relative w-full aspect-[3/2] bg-[#070b12] rounded-xl border border-neutral-800/80 overflow-hidden shadow-inner select-none cursor-grab active:cursor-grabbing"
+        onWheel={handleWheel}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerLeave={handlePointerUp}
+      >
+        {/* Zoomable / pannable inner layer */}
+        <div
+          style={{
+            transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
+            transformOrigin: '0 0',
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+          }}
+        >
         {/* Radar Background Grid */}
         <svg
           viewBox="0 0 600 400"
@@ -170,11 +237,25 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
           )}
         </svg>
 
-        {/* Compass Rose */}
-        <div className="absolute top-3 right-3 bg-neutral-950/80 border border-neutral-800 px-2 py-1.5 rounded-lg flex items-center gap-1.5 text-[10px] font-mono text-neutral-400 pointer-events-none">
+        </div>{/* end zoomable inner layer */}
+
+        {/* Compass Rose — outside zoom layer, fixed to container corner */}
+        <div className="absolute top-3 right-3 z-40 bg-neutral-950/80 border border-neutral-800 px-2 py-1.5 rounded-lg flex items-center gap-1.5 text-[10px] font-mono text-neutral-400 pointer-events-none">
           <Compass className="w-3.5 h-3.5 text-cyan-400" />
           <span>N ▲</span>
         </div>
+
+        {/* Re-open zoomable inner layer for POI Nodes */}
+        <div
+          style={{
+            transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
+            transformOrigin: '0 0',
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+          }}
+        >
 
         {/* POI Nodes */}
         {map.pois.map((poi) => {
@@ -241,6 +322,34 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
             </div>
           );
         })}
+        </div>{/* end zoomable inner layer */}
+
+        {/* Zoom Controls HUD (fixed to container, not zoomed) */}
+        <div className="absolute bottom-2 right-2 z-50 flex flex-col gap-1">
+          <button
+            onPointerDown={(e) => e.stopPropagation()}
+            onClick={(e) => { e.stopPropagation(); setZoom((z) => Math.min(4.0, +(z + 0.25).toFixed(2))); }}
+            className="w-7 h-7 rounded bg-neutral-900/90 border border-neutral-700 text-neutral-300 hover:text-white hover:border-neutral-500 text-base font-mono flex items-center justify-center transition-colors"
+            title={language === 'es' ? 'Acercar' : 'Zoom In'}
+          >+</button>
+          <button
+            onPointerDown={(e) => e.stopPropagation()}
+            onClick={(e) => { e.stopPropagation(); setZoom((z) => Math.max(0.8, +(z - 0.25).toFixed(2))); }}
+            className="w-7 h-7 rounded bg-neutral-900/90 border border-neutral-700 text-neutral-300 hover:text-white hover:border-neutral-500 text-base font-mono flex items-center justify-center transition-colors"
+            title={language === 'es' ? 'Alejar' : 'Zoom Out'}
+          >−</button>
+          <button
+            onPointerDown={(e) => e.stopPropagation()}
+            onClick={(e) => { e.stopPropagation(); resetView(); }}
+            className="w-7 h-7 rounded bg-neutral-900/90 border border-neutral-700 text-neutral-400 hover:text-amber-400 hover:border-amber-700 text-[10px] font-mono flex items-center justify-center transition-colors"
+            title={language === 'es' ? 'Restablecer vista' : 'Reset view'}
+          >⌂</button>
+        </div>
+
+        {/* Zoom % indicator */}
+        <div className="absolute bottom-2 left-2 z-50 text-[10px] font-mono text-neutral-500 bg-neutral-950/70 px-1.5 py-0.5 rounded pointer-events-none">
+          {Math.round(zoom * 100)}%
+        </div>
       </div>
 
       {/* Selected POI Intel Drawer */}

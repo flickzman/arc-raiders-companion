@@ -281,10 +281,20 @@
       {
         "id": "obj_hunt_1",
         "description": {
-          "en": "Eliminate an ARC Heavy Unit (Stalker or Behemoth) in any sector and extract its Power Core",
-          "es": "Elimina una unidad pesada ARC (Stalker o Behemoth) en cualquier sector y extrae su Núcleo"
+          "en": "Scout ARC Heavy Unit patrol patterns at Orbital Launchpad A",
+          "es": "Rastrea los patrones de patrulla de unidades pesadas ARC en la Plataforma Orbital A"
         },
-        "mapId": "any",
+        "mapId": "the_spaceport",
+        "poiId": "spaceport_launchpad",
+        "count": 1
+      },
+      {
+        "id": "obj_hunt_2",
+        "description": {
+          "en": "Eliminate an ARC Heavy Unit (Stalker or Behemoth) and extract its Power Core",
+          "es": "Elimina una unidad pesada ARC (Stalker o Behemoth) y extrae su Núcleo de Energía"
+        },
+        "mapId": "the_spaceport",
         "targetItemId": "item_arc_power_core",
         "count": 1
       }
@@ -331,6 +341,79 @@
       "xp": 750,
       "currency": 2400,
       "items": ["Compact SMG", "Light Medkit x3"]
+    }
+  },
+  {
+    "id": "quest_spaceport_blackout",
+    "title": {
+      "en": "Comms Blackout",
+      "es": "Apagón de Comunicaciones"
+    },
+    "vendor": "Apollo",
+    "requiredLevel": 3,
+    "objectives": [
+      {
+        "id": "obj_blackout_1",
+        "description": {
+          "en": "Access the Deep Space Radar Array and download the encrypted frequency logs",
+          "es": "Accede a la Antena de Radar Espacial y descarga los registros de frecuencia cifrados"
+        },
+        "mapId": "the_spaceport",
+        "poiId": "spaceport_radar_dish",
+        "targetItemId": "item_encrypted_diary",
+        "count": 1
+      },
+      {
+        "id": "obj_blackout_2",
+        "description": {
+          "en": "Plant a signal relay device inside Cargo Hangar 3",
+          "es": "Instala un repetidor de señal dentro del Hangar de Carga 3"
+        },
+        "mapId": "the_spaceport",
+        "poiId": "spaceport_hangar",
+        "requiredItemId": "item_signal_relay",
+        "count": 1
+      }
+    ],
+    "itemsToBring": [
+      {
+        "itemId": "item_signal_relay",
+        "count": 1,
+        "optional": false
+      }
+    ],
+    "rewards": {
+      "xp": 1350,
+      "currency": 4800,
+      "items": ["Tactical Radio Mod", "EMP Grenade x2"]
+    }
+  },
+  {
+    "id": "quest_spaceport_tarmac_run",
+    "title": {
+      "en": "Tarmac Run",
+      "es": "Carrera de Pista"
+    },
+    "vendor": "Lance",
+    "requiredLevel": 2,
+    "objectives": [
+      {
+        "id": "obj_tarmac_1",
+        "description": {
+          "en": "Reach the Runway Tarmac Extraction point carrying a black-box flight recorder",
+          "es": "Llega a la Extracción de la Pista de Aterrizaje llevando una caja negra del vuelo"
+        },
+        "mapId": "the_spaceport",
+        "poiId": "spaceport_extract_tarmac",
+        "targetItemId": "item_flight_recorder",
+        "count": 1
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 900,
+      "currency": 3100,
+      "items": ["Sprint Booster Mod", "Light Armor Vest"]
     }
   }
 ]

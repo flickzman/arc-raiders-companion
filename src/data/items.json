@@ -132,6 +132,51 @@
     "sellValue": 200
   },
   {
+    "id": "item_encrypted_diary",
+    "name": {
+      "en": "Encrypted Frequency Log",
+      "es": "Registro de Frecuencias Cifrado"
+    },
+    "category": "Valuable",
+    "description": {
+      "en": "Data slate containing encrypted transmission logs from the Spaceport's radar array.",
+      "es": "Tableta de datos con registros de transmisiones cifradas de la antena del Puerto Espacial."
+    },
+    "usedInQuests": ["quest_spaceport_blackout"],
+    "usedInUpgrades": [],
+    "sellValue": 2800
+  },
+  {
+    "id": "item_signal_relay",
+    "name": {
+      "en": "Tactical Signal Relay Device",
+      "es": "Repetidor de Señal Táctico"
+    },
+    "category": "Tech",
+    "description": {
+      "en": "A compact relay unit planted inside hostile structures to extend comms coverage.",
+      "es": "Unidad repetidora compacta instalada dentro de estructuras enemigas para ampliar la cobertura de comunicaciones."
+    },
+    "usedInQuests": ["quest_spaceport_blackout"],
+    "usedInUpgrades": [],
+    "sellValue": 600
+  },
+  {
+    "id": "item_flight_recorder",
+    "name": {
+      "en": "Black Box Flight Recorder",
+      "es": "Caja Negra del Vuelo"
+    },
+    "category": "Valuable",
+    "description": {
+      "en": "Crash-hardened data recorder recovered from an ARC downed shuttle. Contains pre-invasion trajectory data.",
+      "es": "Grabadora de datos resistente a impactos recuperada de un transbordador ARC derribado. Contiene datos de trayectoria pre-invasión."
+    },
+    "usedInQuests": ["quest_spaceport_tarmac_run"],
+    "usedInUpgrades": [],
+    "sellValue": 3500
+  },
+  {
     "id": "item_scrap_metal",
     "name": {
       "en": "High-Tensile Scrap Metal",
