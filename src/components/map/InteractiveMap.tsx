@@ -307,28 +307,22 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
                   onClick={handleMapClick}
                   style={{ cursor: calibrationMode ? 'crosshair' : undefined }}
                 >
-                  {/* Layer 1: PNG / WebP Map Image or Fallback SVG Radar */}
+                  {/* Layer 1: Official PNG Map Image */}
                   {!imageError && currentMap.imageUrl ? (
-                    <picture className="w-full h-full block">
-                      <source
-                        srcSet={currentMap.imageUrl.replace(/\.png$/, '.webp')}
-                        type="image/webp"
-                      />
-                      <img
-                        src={currentMap.imageUrl}
-                        alt={getLocalized(currentMap.name, language)}
-                        decoding="async"
-                        className={`w-full h-full object-cover select-none pointer-events-none block transition-opacity duration-300 ${
-                          imageLoaded ? 'opacity-100' : 'opacity-0'
-                        }`}
-                        onLoad={() => setImageLoaded(true)}
-                        onError={() => {
-                          console.warn(`Could not load map image at ${currentMap.imageUrl}, using SVG fallback.`);
-                          setImageError(true);
-                        }}
-                        draggable={false}
-                      />
-                    </picture>
+                    <img
+                      src={currentMap.imageUrl}
+                      alt={getLocalized(currentMap.name, language)}
+                      decoding="async"
+                      className={`w-full h-full object-cover select-none pointer-events-none block transition-opacity duration-300 ${
+                        imageLoaded ? 'opacity-100' : 'opacity-0'
+                      }`}
+                      onLoad={() => setImageLoaded(true)}
+                      onError={() => {
+                        console.warn(`Could not load map image at ${currentMap.imageUrl}, using SVG fallback.`);
+                        setImageError(true);
+                      }}
+                      draggable={false}
+                    />
                   ) : null}
 
                   {/* Fallback Topographic Radar SVG Canvas (Shown if image is missing, errored, or still loading) */}
