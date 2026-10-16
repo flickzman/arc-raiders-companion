@@ -7,8 +7,13 @@
 [![Zod Validated](https://img.shields.io/badge/Zod-Validated-3068b7)](https://zod.dev/)
 [![Vitest](https://img.shields.io/badge/Tests-29%20Passed-brightgreen)](https://vitest.dev/)
 
+[**🌐 Open Web App (Live Companion)**](https://flickzman.github.io/arc-raiders-companion/)  
+*No terminal or installation needed — open directly on your second monitor, phone, or tablet.*
+
+---
+
 > **Tactical Companion & Raid Route Planner for ARC Raiders**  
-> An open-source (GNU AGPLv3), local-first, zero-server-cost tactical companion designed to eliminate the mental overhead of tracking 15+ simultaneous quests and optimize raid routes in *ARC Raiders*.
+> An open-source (GNU AGPLv3), local-first, zero-server-cost companion designed to eliminate the mental overhead of tracking 15+ simultaneous quests and optimize raid routes in *ARC Raiders*.
 
 ---
 
@@ -16,8 +21,8 @@
 
 ### 1. 10-Second Fast Quest & Vendor Selector
 - **Faction & Vendor Grouping:** Instantly toggle and track missions across all ARC Raiders traders: **Tian Wen**, **Shani**, **Lance**, **Celeste**, **Apollo**, and **Nomadic Envoys**.
-- **Predictive Search & Filter:** Search by quest title, narrative dialogue, objectives, item loot, and map sectors.
-- **Instant 1-Click State:** Toggle active quests with persistent local browser storage (`localStorage` via Zustand). No sign-up or accounts required.
+- **Multi-Criteria Search:** Search by quest title, narrative dialogue, objectives, item loot, and map sectors.
+- **Instant 1-Click State:** Toggle active quests with persistent local browser storage (`localStorage` via Zustand). No sign-up, telemetry, or account creation required.
 
 ### 2. Loadout & Stash HUD (What to Bring vs. What to Find)
 - **Stash Prep (What to Bring):** Consolidates required keys (*Grandioso Apartment Keycard*, etc.), tools, and consumables into a clear checklist before dropping into the raid.
@@ -27,32 +32,32 @@
 ### 3. Dynamic Raid Route Optimizer & Tactical Radar
 - **In-Raid Drop Point Selection:** Select where you landed (*"I dropped here"*), and the engine dynamically recalibrates your tactical route in real time.
 - **Dual Navigation Profiles:**
-  - **Rat / Survival Mode:** Prioritizes 1–2 nearby, low-risk objectives, steers clear of high-hazard zones (`dangerLevel: 'high'`), and routes directly to the safest extraction point.
-  - **Sweep / Efficiency Mode:** Solves the Traveling Salesperson Problem (TSP) across all active quest POIs to maximize XP, loot, and progression in a single deployment.
-- **Complex Quest Logic:**
-  - **Alternative Objectives (OR):** Automatically evaluates alternative POIs (e.g., hack terminal A or terminal B) and selects the closest waypoint.
-  - **Sequential Precedence (AND):** Enforces strict prerequisite order (e.g., retrieve the access keycard before unlocking the security door).
-- **Live In-Raid Focus HUD:** Clean, distraction-free view with waypoint step-by-step navigation, distance telemetry, compass bearings ($0^\circ - 360^\circ$), and an emergency evacuation button.
+  - **Rat / Survival Mode:** Prioritizes 1-2 nearby, low-risk objectives, steers clear of high-hazard zones (`dangerLevel: 'high'`), and routes directly to the safest extraction point.
+  - **Sweep / Efficiency Mode:** Solves a Precedence-Constrained Routing Heuristic across all active quest POIs to maximize XP, loot, and progression in a single deployment.
+- **Sequential Ordering & Alternative Evaluation (SOP Heuristic):**
+  - **Disjunctive Targets (OR):** Automatically evaluates alternative POIs (e.g., hack terminal A or terminal B) and selects the cost-optimal waypoint.
+  - **Sequential Precedence (AND):** Enforces strict prerequisite order (e.g., retrieve the access keycard before unlocking the security door) via topological eligibility filtering.
+- **Live In-Raid Focus HUD:** Clean, distraction-free view with waypoint step-by-step navigation, distance telemetry, compass bearings (0° - 360°), and an emergency evacuation button.
 
 ### 4. Visual Quest Ingestion (OCR & Vision AI)
 - **Dual-Monitor PC Mode (`Ctrl+V` Instant Ingest):**
   - Press `Win+Shift+S` in-game to snip your quest log and `Ctrl+V` directly into the app.
-  - 100% in-browser processing with **Tesseract.js** (adaptive binarization, grayscale normalization) and **Fuse.js** fuzzy matching against the quest database. Zero latency, complete privacy, no server uploads.
-- **Mobile Photo Mode (Screen Photo with Gemini 1.5 Flash Vision):**
-  - Handles perspective distortion, glare, and physical monitor moiré patterns from mobile camera photos.
-  - Direct client-side connection to Google Gemini 1.5 Flash Vision API. Your API key remains strictly stored in your local browser.
+  - 100% in-browser processing with **Tesseract.js** (WASM with adaptive binarization) and **Fuse.js** fuzzy matching against the quest database. Low-latency, completely offline, and network-independent.
+- **Mobile Photo Mode (Screen Photo with Gemini Vision API):**
+  - Handles perspective distortion, glare, and physical monitor moire patterns from mobile camera photos.
+  - Direct client-side connection to the Google Gemini Flash API. Your API key remains strictly stored in your local browser storage.
 
 ### 5. 4K Cenital Satellite Top-Down Maps & Smooth Navigation
 - **8 Official High-Resolution Sectors (4096×4096):**
-  - Full cenital top-down satellite maps for *Dam Battlegrounds*, *Buried City*, *The Spaceport*, *The Blue Gate*, *Stella Montis*, *Pendola Pass*, *Riven Tides*, and *Practice Range* (~78 MB in optimized visual assets).
+  - Full cenital top-down satellite maps for *Dam Battlegrounds*, *Buried City*, *The Spaceport*, *The Blue Gate*, *Stella Montis*, *Pendola Pass*, *Riven Tides*, and *Practice Range* (~78 MB in PNG assets served statically from `/public/maps/`).
 - **Calibrated Continuous Zoom & Pan:**
-  - Engine powered by `react-zoom-pan-pinch` with smooth continuous scaling (`smooth={true}`, `wheel: step 0.0015`), eliminating abrupt zoom jumps and allowing micro-inspection of buildings and terrain.
+  - Zoom engine powered by `react-zoom-pan-pinch` with smooth continuous scaling (`smooth={true}`, `wheel: step 0.0015`), eliminating abrupt zoom jumps and allowing micro-inspection of buildings and terrain.
 - **Marker Inverse Scaling:**
   - Tactical nodes and badges dynamically scale inversely with the camera zoom, remaining legible whether viewing the whole sector or zooming into street level.
 - **Tactical Quest Type Badges:**
   - Distinct tactical iconography per objective category: **Recon**, **Combat**, **Sabotage**, **Delivery**, and **Locked Room / Keycard**.
 - **Developer Coordinate Calibration Tool:**
-  - Interactive click-to-copy utility for calculating exact $(X, Y)$ percentage coordinates on the official maps.
+  - Interactive click-to-copy utility for calculating exact (X, Y) percentage coordinates on the official maps.
 
 ### 6. Official Wiki Database & Multi-Criteria Search
 - **118 Official Wiki Quests & 407 Objectives:**
@@ -83,6 +88,8 @@
 
 ## 🚀 Installation & Local Development
 
+For developers wishing to contribute or run a local instance:
+
 ```bash
 # Clone the repository
 git clone https://github.com/Flickzman/arc-raiders-companion.git
@@ -105,13 +112,20 @@ npm run build
 
 ## 🗺️ Project Roadmap
 
-- [x] **Phase 1 — Core MVP:** Zod database schema + 10-second vendor selector + Loadout HUD + Workshop station protection.
-- [x] **Phase 2 — Tactical Routing:** Dynamic TSP route optimizer, compass bearings ($0^\circ - 360^\circ$), Rat vs. Sweep navigation profiles, OR/AND quest constraints, and In-Raid Focus HUD.
-- [x] **Phase 3 — Visual Ingestion:** Desktop `Ctrl+V` screenshot capture with local Tesseract.js OCR + Mobile photo mode with Google Gemini 1.5 Flash Vision.
-- [x] **Phase 4 — 4K Satellite Maps & Official Wiki:** 8 official 4096×4096 cenital satellite maps, 118 wiki quests with narrative dialogue, smooth continuous zoom engine, and precise POI geocoding.
+- [x] **Phase 1 — Core MVP:** Zod database schema, 10-second vendor selector, Loadout HUD, and workshop station protection.
+- [x] **Phase 2 — Tactical Routing:** Dynamic route optimizer (SOP heuristic), compass bearings (0° - 360°), Rat vs. Sweep navigation profiles, OR/AND quest constraints, and In-Raid Focus HUD.
+- [x] **Phase 3 — Visual Ingestion:** Desktop `Ctrl+V` screenshot capture with local Tesseract.js OCR, and mobile photo mode with Google Gemini Flash Vision API.
+- [ ] **Phase 4 — 4K Satellite Maps & Official Wiki Database (Active Development):**
+  - [x] 8 official 4096×4096 cenital satellite maps integrated.
+  - [x] 118 wiki quests and 407 objectives with narrative dialogue populated.
+  - [x] Calibrated continuous zoom & pan engine with inverse marker scaling.
+  - [ ] Exhaustive POI coordinate calibration across secondary sectors (*Stella Montis*, *The Blue Gate*, *Pendola Pass*, *Riven Tides*).
+  - [ ] Progressive WebP/AVIF asset compression and tiled mipmaps for mobile memory optimization.
 
 ---
 
-## 📄 License
+## ⚖️ Disclaimer & Intellectual Property
 
-This project is licensed under the **GNU Affero General Public License v3.0 (AGPLv3)**. See the [LICENSE](LICENSE) file for details.
+- **Source Code License:** The source code of this application is licensed under the **GNU Affero General Public License v3.0 (AGPLv3)**. See the [LICENSE](LICENSE) file for terms.
+- **Game Assets & Trademarks:** *ARC Raiders*, game imagery, map textures, faction icons, quest dialogues, and item lore are the copyrighted and trademarked intellectual property of **Embark Studios AB**.
+- **Community Non-Commercial Fair Use:** This is an unofficial, open-source community companion app created under Fair Use principles for informational, educational, and tactical player utility. It is not affiliated with, endorsed by, or sponsored by Embark Studios AB.
