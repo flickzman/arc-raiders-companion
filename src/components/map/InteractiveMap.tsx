@@ -227,7 +227,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
       </div>
 
       {/* Main Map Viewer Canvas with Zoom Pan Pinch */}
-      <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-[#070b12] overflow-hidden select-none">
+      <div className="relative w-full h-[540px] sm:h-[680px] bg-[#070b12] overflow-hidden select-none">
         <TransformWrapper
           initialScale={1}
           minScale={0.6}
@@ -302,7 +302,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
                 contentClass="!w-full !h-full flex items-center justify-center cursor-grab active:cursor-grabbing"
               >
                 <div
-                  className="relative w-full max-w-[1400px] aspect-square sm:aspect-[4/3] flex items-center justify-center"
+                  className="relative aspect-square w-full max-w-[1100px] flex items-center justify-center bg-black/40 shadow-2xl overflow-hidden rounded-lg"
                   onClick={handleMapClick}
                   style={{ cursor: calibrationMode ? 'crosshair' : undefined }}
                 >
@@ -311,7 +311,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
                     <img
                       src={currentMap.imageUrl}
                       alt={getLocalized(currentMap.name, language)}
-                      className={`w-full h-full object-contain select-none pointer-events-none block transition-opacity duration-300 ${
+                      className={`w-full h-full object-cover select-none pointer-events-none block transition-opacity duration-300 ${
                         imageLoaded ? 'opacity-100' : 'opacity-0'
                       }`}
                       onLoad={() => setImageLoaded(true)}
