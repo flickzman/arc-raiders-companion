@@ -233,8 +233,9 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
           minScale={0.6}
           maxScale={4.5}
           centerOnInit
-          wheel={{ step: 0.12 }}
-          pinch={{ step: 5 }}
+          smooth={true}
+          wheel={{ step: 0.0015 }}
+          pinch={{ step: 2 }}
           onTransform={(ref: ReactZoomPanPinchRef) => {
             setScale(ref.state.scale);
           }}

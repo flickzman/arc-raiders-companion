@@ -113,8 +113,8 @@
       {
         "id": "obj_a_better_use_1",
         "description": {
-          "en": "Request in a Supply Drop from a [[Supply Call Station",
-          "es": "Request in a Supply Drop from a [[Supply Call Station"
+          "en": "Request in a Supply Drop from a Supply Call Station",
+          "es": "Request in a Supply Drop from a Supply Call Station"
         },
         "type": "recon",
         "mapId": "any",
@@ -162,8 +162,8 @@
       {
         "id": "obj_a_dead_end_1",
         "description": {
-          "en": "Find [[Mantikor",
-          "es": "Find [[Mantikor"
+          "en": "Find Mantikor",
+          "es": "Find Mantikor"
         },
         "type": "recon",
         "mapId": "the_blue_gate",
@@ -174,8 +174,8 @@
       {
         "id": "obj_a_dead_end_2",
         "description": {
-          "en": "Search the locked room for any records on [[Project Heartwood (lore)",
-          "es": "Search the locked room for any records on [[Project Heartwood (lore)"
+          "en": "Search the locked room for any records on Project Heartwood",
+          "es": "Search the locked room for any records on Project Heartwood"
         },
         "type": "locked_room",
         "mapId": "the_blue_gate",
@@ -307,8 +307,8 @@
       {
         "id": "obj_a_lay_of_the_land_1",
         "description": {
-          "en": "Reach the [[Jiangsu Romagna",
-          "es": "Reach the [[Jiangsu Romagna"
+          "en": "Reach the Jiangsu Romagna",
+          "es": "Reach the Jiangsu Romagna"
         },
         "type": "recon",
         "mapId": "the_spaceport",
@@ -514,8 +514,8 @@
       {
         "id": "obj_a_prime_specimen_1",
         "description": {
-          "en": "Obtain 2 [[ARC Powercell",
-          "es": "Obtain 2 [[ARC Powercell"
+          "en": "Obtain 2 ARC Powercell",
+          "es": "Obtain 2 ARC Powercell"
         },
         "type": "recon",
         "mapId": "the_blue_gate",
@@ -526,8 +526,8 @@
       {
         "id": "obj_a_prime_specimen_2",
         "description": {
-          "en": "Interact with any [[Deforester Husk",
-          "es": "Interact with any [[Deforester Husk"
+          "en": "Interact with any Deforester Husk",
+          "es": "Interact with any Deforester Husk"
         },
         "type": "recon",
         "mapId": "the_blue_gate",
@@ -538,8 +538,8 @@
       {
         "id": "obj_a_prime_specimen_3",
         "description": {
-          "en": "Loot an [[Deforester Husk",
-          "es": "Loot an [[Deforester Husk"
+          "en": "Loot an Deforester Husk",
+          "es": "Loot an Deforester Husk"
         },
         "type": "recon",
         "mapId": "the_blue_gate",
@@ -701,8 +701,8 @@
       {
         "id": "obj_a_symbol_of_unification_2",
         "description": {
-          "en": "Locate [[Raider Flag",
-          "es": "Locate [[Raider Flag"
+          "en": "Locate Raider Flag",
+          "es": "Locate Raider Flag"
         },
         "type": "recon",
         "mapId": "dam_battlegrounds",
@@ -954,7 +954,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_grandioso_apartments"
       },
       {
         "id": "obj_after_rain_comes_2",
@@ -1763,8 +1764,8 @@
       {
         "id": "obj_celeste_s_childhood_drawings_1",
         "description": {
-          "en": "Find young [[Celeste",
-          "es": "Find young [[Celeste"
+          "en": "Find young Celeste",
+          "es": "Find young Celeste"
         },
         "type": "recon",
         "mapId": "riven_tides",
@@ -1842,7 +1843,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_south_swamp"
       },
       {
         "id": "obj_celeste_s_journals_2",
@@ -1859,8 +1861,8 @@
       {
         "id": "obj_celeste_s_journals_3",
         "description": {
-          "en": "Deliver 2 [[Celeste's Journal",
-          "es": "Deliver 2 [[Celeste's Journal"
+          "en": "Deliver 2 Celeste's Journal",
+          "es": "Deliver 2 Celeste's Journal"
         },
         "type": "delivery",
         "mapId": "dam_battlegrounds",
@@ -2332,8 +2334,8 @@
       {
         "id": "obj_combat_recon_4",
         "description": {
-          "en": "Destroy 2 [[Spotter",
-          "es": "Destroy 2 [[Spotter"
+          "en": "Destroy 2 Spotter",
+          "es": "Destroy 2 Spotter"
         },
         "type": "combat",
         "mapId": "buried_city",
@@ -3044,8 +3046,8 @@
       {
         "id": "obj_exploring_pendola_pass_3",
         "description": {
-          "en": "Use 1 [[Wires",
-          "es": "Use 1 [[Wires"
+          "en": "Use 1 Wires",
+          "es": "Use 1 Wires"
         },
         "type": "recon",
         "mapId": "pendola_pass",
@@ -3100,7 +3102,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_power_plant"
       },
       {
         "id": "obj_eyes_in_the_sky_2",
@@ -3112,19 +3115,21 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_radar_dish"
       },
       {
         "id": "obj_eyes_in_the_sky_3",
         "description": {
-          "en": "On Buried City, install a LiDAR Scanner on top of the [[Galleria Soldanella",
-          "es": "On Buried City, install a LiDAR Scanner on top of the [[Galleria Soldanella"
+          "en": "On Buried City, install a LiDAR Scanner on top of the Galleria Soldanella",
+          "es": "On Buried City, install a LiDAR Scanner on top of the Galleria Soldanella"
         },
         "type": "recon",
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_galleria"
       }
     ],
     "itemsToBring": [],
@@ -3275,8 +3280,8 @@
       {
         "id": "obj_fragmented_logs_1",
         "description": {
-          "en": "In either of the Robotic Sandbox control rooms, repair the out-of-service terminal with 1 [[Electrical Components",
-          "es": "In either of the Robotic Sandbox control rooms, repair the out-of-service terminal with 1 [[Electrical Components"
+          "en": "In either of the Robotic Sandbox control rooms, repair the out-of-service terminal with 1 Electrical Components",
+          "es": "In either of the Robotic Sandbox control rooms, repair the out-of-service terminal with 1 Electrical Components"
         },
         "type": "recon",
         "mapId": "stella_montis",
@@ -4662,14 +4667,15 @@
       {
         "id": "obj_our_presence_up_there_1",
         "description": {
-          "en": "Visit the Pattern House in [[Dam Battlegrounds",
-          "es": "Visit the Pattern House in [[Dam Battlegrounds"
+          "en": "Visit the Pattern House in Dam Battlegrounds",
+          "es": "Visit the Pattern House in Dam Battlegrounds"
         },
         "type": "recon",
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_pattern_house"
       },
       {
         "id": "obj_our_presence_up_there_2",
@@ -4863,7 +4869,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_piazza_roma"
       },
       {
         "id": "obj_paving_the_way_4",
@@ -5441,8 +5448,8 @@
       {
         "id": "obj_shoring_up_defenses_2",
         "description": {
-          "en": "Destroy 3 [[Firefly",
-          "es": "Destroy 3 [[Firefly"
+          "en": "Destroy 3 Firefly",
+          "es": "Destroy 3 Firefly"
         },
         "type": "combat",
         "mapId": "riven_tides",
@@ -6125,18 +6132,6 @@
         "alternativePoiIds": [],
         "inOneRound": false,
         "count": 1
-      },
-      {
-        "id": "obj_taking_stock_5",
-        "description": {
-          "en": "type = item",
-          "es": "type = item"
-        },
-        "type": "recon",
-        "mapId": "any",
-        "alternativePoiIds": [],
-        "inOneRound": false,
-        "count": 1
       }
     ],
     "itemsToBring": [],
@@ -6636,8 +6631,8 @@
       {
         "id": "obj_the_stench_of_corruption_5",
         "description": {
-          "en": "Use [[Flushing Terminal Key",
-          "es": "Use [[Flushing Terminal Key"
+          "en": "Use Flushing Terminal Key",
+          "es": "Use Flushing Terminal Key"
         },
         "type": "recon",
         "mapId": "the_spaceport",
@@ -6812,7 +6807,7 @@
           "es": "Search for the Gondola Prototype near the Red Lakes"
         },
         "type": "recon",
-        "mapId": "any",
+        "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
         "count": 1
@@ -6824,7 +6819,7 @@
           "es": "Search for the Gondola Prototype in the Farmlands"
         },
         "type": "recon",
-        "mapId": "any",
+        "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
         "count": 1
@@ -6836,7 +6831,7 @@
           "es": "Search for the Gondola Prototype in the East Plains"
         },
         "type": "recon",
-        "mapId": "any",
+        "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
         "count": 1
@@ -6848,7 +6843,7 @@
           "es": "Search for the Gondola Prototype at the top of the Dried Riverbed"
         },
         "type": "recon",
-        "mapId": "any",
+        "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
         "count": 1
@@ -6860,7 +6855,7 @@
           "es": "Install ARC Performance Steel"
         },
         "type": "recon",
-        "mapId": "any",
+        "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
         "count": 1
@@ -6872,7 +6867,7 @@
           "es": "Install ARC Pop Trigger"
         },
         "type": "recon",
-        "mapId": "any",
+        "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
         "count": 1
@@ -6884,7 +6879,7 @@
           "es": "Install ARC Synthetic Resin"
         },
         "type": "recon",
-        "mapId": "any",
+        "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
         "count": 1
@@ -6896,7 +6891,7 @@
           "es": "Install ARC Thermo Lining"
         },
         "type": "recon",
-        "mapId": "any",
+        "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
         "count": 1
@@ -6908,7 +6903,7 @@
           "es": "Activate the Gondola Prototype"
         },
         "type": "recon",
-        "mapId": "any",
+        "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
         "count": 1
@@ -7177,7 +7172,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_grandioso_apartments"
       },
       {
         "id": "obj_unexpected_initiative_2",
@@ -7189,7 +7185,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_grandioso_apartments"
       },
       {
         "id": "obj_unexpected_initiative_3",
@@ -7201,7 +7198,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_piazza_roma"
       },
       {
         "id": "obj_unexpected_initiative_4",
@@ -7213,7 +7211,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_piazza_roma"
       },
       {
         "id": "obj_unexpected_initiative_5",
@@ -7274,7 +7273,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_hydroponic_dome"
       },
       {
         "id": "obj_untended_garden_2",
@@ -7570,7 +7570,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_grandioso_apartments"
       }
     ],
     "itemsToBring": [],
