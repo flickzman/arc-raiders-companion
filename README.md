@@ -7,10 +7,8 @@
 [![Zod Validated](https://img.shields.io/badge/Zod-Validated-3068b7)](https://zod.dev/)
 [![Vitest](https://img.shields.io/badge/Tests-29%20Passed-brightgreen)](https://vitest.dev/)
 
-[**🌐 Open Web App (Live Companion)**](https://flickzman.github.io/arc-raiders-companion/)  
-*No terminal or installation needed — open directly on your second monitor, phone, or tablet.*
-
 ---
+
 
 > **Tactical Companion & Raid Route Planner for ARC Raiders**  
 > An open-source (GNU AGPLv3), local-first, zero-server-cost companion designed to eliminate the mental overhead of tracking 15+ simultaneous quests and optimize raid routes in *ARC Raiders*.
@@ -86,9 +84,22 @@
 
 ---
 
-## 🚀 Installation & Local Development
+## 🚀 Quick Start & Local Setup
 
-For developers wishing to contribute or run a local instance:
+### ⚡ 1-Click Launch (Recommended for Players)
+
+If you have [Node.js](https://nodejs.org/) (v18+) installed, you can launch the companion with a single click — no terminal commands required:
+
+- **Windows:** Double-click [`launch.bat`](launch.bat).
+- **Linux / macOS:** Run `./launch.sh` (or double-click after granting executable permissions).
+
+The launcher checks your environment, installs dependencies automatically on first run, starts the local tactical server, and opens `http://localhost:5173` in your default browser.
+
+---
+
+### 💻 Manual CLI Setup (Developers)
+
+For developers wishing to contribute or inspect code:
 
 ```bash
 # Clone the repository
@@ -120,7 +131,8 @@ npm run build
   - [x] 118 wiki quests and 398 clean, verified objectives with narrative dialogue populated.
   - [x] Calibrated continuous zoom & pan engine with inverse marker scaling.
   - [x] Calibrated 79 POI coordinates with 124 objectives linked across all secondary sectors (*The Spaceport*, *Stella Montis*, *The Blue Gate*, *Pendola Pass*, *Riven Tides*).
-  - [x] Progressive WebP image support with PNG fallback and asynchronous GPU texture decoding.
+  - [x] 4K satellite maps with asynchronous GPU texture decoding and calibrated viewport.
+
 
 ---
 
