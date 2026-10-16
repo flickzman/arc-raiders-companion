@@ -14,7 +14,7 @@
 ## ⚡ Características del Sistema
 
 ### 1. Selector Rápido de Misiones por Comerciante (Flujo de 10 segundos)
-- Agrupación por facciones y comerciantes del juego: **Tian Wen**, **Shani**, **Lance**, **Celeste** y **Apollo**.
+- Agrupación por facciones y comerciantes del juego: **Tian Wen**, **Shani**, **Lance**, **Celeste**, **Apollo** y **Nomadic Envoys**.
 - Búsqueda predictiva instantánea y filtrado por sectores y mapas.
 - Activación en un clic con persistencia en el navegador (`localStorage` vía Zustand).
 
@@ -23,7 +23,7 @@
 - **Loot Prioritario (Qué Buscar en Raid):** Listado de objetos clave a extraer (diarios encriptados, microchips lógicos, núcleos pesados ARC).
 - **Alerta de Refugio / Estaciones (¡NO VENDER!):** Detección automática de materiales necesarios para mejoras del banco de trabajo, armería o alijo, impidiendo que vendas o recicles ítems críticos por error.
 
-### 3. Optimizador de Incursión Dinámico & Mapa Táctico (Fase 2)
+### 3. Optimizador de Incursión Dinámico & Radar Táctico (Fase 2)
 - **Selección de Spawn en Partida:** El usuario marca dónde ha aparecido (*"He aparecido aquí"*) y el motor recalcula el vector de aproximación en tiempo real.
 - **Modos de Ruta Táctica:**
   - **Modo Rata / Supervivencia:** Prioriza 1-2 objetivos cercanos a la extracción, esquiva POIs con peligro elevado (`dangerLevel: 'high'`) y traza la ruta hacia el punto de extracción más seguro.
@@ -43,6 +43,27 @@
   - Conector directo con la API gratuita de Google Gemini Flash para detección semántica de misiones.
   - La clave de API se almacena de forma estrictamente local en tu navegador.
 
+### 5. Mapas Satelitales Cenitales 4K e Interacción Fluida (Fase 4 / Wiki Real)
+- **8 Sectores Oficiales en Alta Resolución (4096×4096):**
+  - *Dam Battlegrounds*, *Buried City*, *The Spaceport*, *The Blue Gate*, *Stella Montis*, *Pendola Pass*, *Riven Tides* y *Practice Range* (~78 MB en recursos visuales optimizados).
+- **Zoom & Panning Gradual Calibrado:**
+  - Motor de zoom basado en `react-zoom-pan-pinch` con aceleración continua suave (`smooth={true}`, `wheel: step 0.0015`), eliminando los saltos bruscos y permitiendo inspección milimétrica de edificios y rutas.
+- **Escalado Inverso de Marcadores:**
+  - Pines tácticos y badges que mantienen escala visual constante y legible independientemente de si estás alejado (visión de sector) o en zoom máximo (visión de calle).
+- **Emblemas Tácticos por Tipología de Objetivo:**
+  - Identificación visual de objetivos por categoría: Reconocimiento, Combate, Sabotaje, Entrega y Salas Bloqueadas / Llaves.
+- **Herramienta de Calibración de Coordenadas (Dev Mode):**
+  - Sistema de clic interactivo para obtener y copiar coordenadas porcentuales precisas $(X, Y)$ de nuevos edificios sobre el mapa oficial.
+
+### 6. Base de Datos Completa de la Wiki Oficial & Búsqueda Predictiva
+- **118 Misiones Oficiales & 407 Objetivos:**
+  - Textos de lore completos, diálogos de comerciantes, condiciones de una sola ronda (`inOneRound`), dependencias de objetos y tablas de recompensas (XP, Créditos, Ítems cosméticos y mods).
+- **Búsqueda Predictiva Multicriterio con Alias de Mapa:**
+  - Reconocimiento de alias en español e inglés (ej. *"presa"*, *"puerto espacial"*, *"stella"*, *"ciudad enterrada"*).
+  - Filtrado en 1 clic directamente desde las etiquetas de ubicación en las tarjetas de misión.
+- **Misiones Personalizadas Rápidas:**
+  - Posibilidad de añadir misiones instantáneamente solo con el título o mediante el buscador rápido.
+
 ---
 
 ## 🚀 Instalación y Desarrollo Local
@@ -58,7 +79,7 @@ npm install
 # Iniciar servidor de desarrollo local
 npm run dev
 
-# Ejecutar tests de validación e integridad referencial (15 tests)
+# Ejecutar tests de validación e integridad referencial (29 tests)
 npm test
 
 # Compilar para producción
@@ -70,8 +91,9 @@ npm run build
 ## 🗺️ Estado del Proyecto
 
 - [x] **Fase 1:** Base de datos Zod + Selector rápido por comerciante + Loadout HUD + Alerta de Refugio.
-- [x] **Fase 2:** Radar vectorial SVG interactivo (*Dam Battlegrounds*, *Buried City*, *The Spaceport*), cálculo dinámico de rumbos de brújula ($0^\circ - 360^\circ$), Modo Rata vs. Barrido, objetivos OR/AND y HUD de foco.
+- [x] **Fase 2:** Radar vectorial SVG interactivo, cálculo dinámico de rumbos de brújula ($0^\circ - 360^\circ$), Modo Rata vs. Barrido, objetivos OR/AND y HUD de foco.
 - [x] **Fase 3:** Ingesta visual por `Ctrl+V` (captura limpia de Windows `Win+Shift+S`) con OCR local + Conector de visión IA con Gemini Flash para fotos de móvil.
+- [x] **Fase 4 (En Curso):** 8 mapas cenitales 4K oficiales, 118 misiones de la wiki con diálogo y lore, zoom y paneo continuo fluido, y etiquetado exhaustivo de POIs.
 
 ---
 
