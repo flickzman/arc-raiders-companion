@@ -1,14 +1,15 @@
 import React from 'react';
 import { usePlayerStore } from '../store/usePlayerStore';
-import { type Quest } from '../data/schemas';
+import { type Quest, type MapId } from '../data/schemas';
 import { getLocalized, getItemById, getPOIById, getMapById } from '../data/db';
-import { Check, MapPin, Key, Target, Award, Sparkles, Lock, Split, Clock, Trash2 } from 'lucide-react';
+import { Check, MapPin, Key, Target, Award, Sparkles, Lock, Split, Clock, Trash2, Radio } from 'lucide-react';
 
 interface QuestCardProps {
   quest: Quest;
+  onSelectMap?: (mapId: MapId) => void;
 }
 
-export const QuestCard: React.FC<QuestCardProps> = ({ quest }) => {
+export const QuestCard: React.FC<QuestCardProps> = ({ quest, onSelectMap }) => {
   const { language, activeQuestIds, toggleActiveQuest, deleteCustomQuest } = usePlayerStore();
   const isActive = activeQuestIds.includes(quest.id);
   const isCustom = quest.id.startsWith('custom_');
@@ -55,6 +56,16 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest }) => {
                 </span>
               )}
             </div>
+
+            {/* ARC Raiders Radio HUD Introduction Dialog */}
+            {quest.description && (
+              <div className="flex items-start gap-2 mt-2 p-2 rounded-lg bg-neutral-900/60 border border-neutral-800/80 text-xs text-neutral-300 font-mono">
+                <Radio className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                <p className="line-clamp-2 leading-relaxed italic text-neutral-300">
+                  "{getLocalized(quest.description, language)}"
+                </p>
+              </div>
+            )}
           </div>
         </div>
 
@@ -106,25 +117,49 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest }) => {
 
                 {/* Badges: Map, POI, Items */}
                 <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
-                  {/* Map / POI Badge */}
+                  {/* Interactive Map / POI Badge (1-Click Map Filter Trigger) */}
                   {poi ? (
-                    <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-900 text-cyan-300 border border-cyan-800/40">
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onSelectMap?.(obj.mapId);
+                      }}
+                      className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-900 text-cyan-300 border border-cyan-800/40 hover:border-cyan-400 hover:bg-cyan-950/50 hover:text-cyan-200 transition-all cursor-pointer shadow-xs"
+                      title={language === 'es' ? `Filtrar misiones en ${map ? getLocalized(map.name, language) : getLocalized(poi.name, language)}` : `Filter quests in ${map ? map.name.en : poi.name.en}`}
+                    >
                       <MapPin className="w-3 h-3 text-cyan-400" />
                       <span>{getLocalized(poi.name, language)}</span>
                       {poi.dangerLevel === 'high' && (
                         <span className="text-red-400 font-bold" title={language === 'es' ? 'Alto Peligro' : 'High Hazard'}>!</span>
                       )}
-                    </span>
+                    </button>
                   ) : map ? (
-                    <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-900 text-neutral-300 border border-neutral-800">
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onSelectMap?.(obj.mapId);
+                      }}
+                      className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-900 text-neutral-300 border border-neutral-800 hover:border-cyan-500 hover:text-cyan-300 hover:bg-cyan-950/40 transition-all cursor-pointer shadow-xs"
+                      title={language === 'es' ? `Filtrar misiones en ${getLocalized(map.name, language)}` : `Filter quests in ${map.name.en}`}
+                    >
                       <MapPin className="w-3 h-3 text-neutral-400" />
-                      <span>{getLocalized(map.name, language)}</span>
-                    </span>
+                      <span>📍 {getLocalized(map.name, language)}</span>
+                    </button>
                   ) : (
-                    <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-900 text-neutral-400 border border-neutral-800">
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onSelectMap?.('any');
+                      }}
+                      className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-900 text-neutral-400 border border-neutral-800 hover:border-amber-500 hover:text-amber-300 hover:bg-amber-950/30 transition-all cursor-pointer shadow-xs"
+                      title={language === 'es' ? 'Válido en cualquier sector' : 'Valid in any sector'}
+                    >
                       <Sparkles className="w-3 h-3 text-amber-400" />
                       <span>{language === 'es' ? 'Cualquier Sector' : 'Any Sector'}</span>
-                    </span>
+                    </button>
                   )}
 
                   {/* Required Item Badge */}

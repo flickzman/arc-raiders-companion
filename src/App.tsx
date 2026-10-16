@@ -9,6 +9,7 @@ import { LoadoutChecklist } from './components/LoadoutChecklist';
 import { RaidPlannerView } from './components/RaidPlannerView';
 import { AboutView } from './components/AboutView';
 import { CaptureModal } from './components/CaptureModal';
+import { matchesQuestSearch } from './services/search/questSearch';
 import { Compass } from 'lucide-react';
 
 export function App() {
@@ -79,19 +80,9 @@ export function App() {
         if (!hasObjectiveInMap) return false;
       }
 
-      // 3. Filtro por búsqueda de texto
+      // 3. Filtro por búsqueda inteligente multi-criterio y tolerancia de alias de mapa
       if (searchQuery.trim()) {
-        const q = searchQuery.toLowerCase();
-        const titleMatch =
-          quest.title.en.toLowerCase().includes(q) ||
-          (quest.title.es && quest.title.es.toLowerCase().includes(q));
-        const vendorMatch = quest.vendor.toLowerCase().includes(q);
-        const objMatch = quest.objectives.some(
-          (obj) =>
-            obj.description.en.toLowerCase().includes(q) ||
-            (obj.description.es && obj.description.es.toLowerCase().includes(q))
-        );
-        if (!titleMatch && !vendorMatch && !objMatch) return false;
+        if (!matchesQuestSearch(quest, searchQuery)) return false;
       }
 
       return true;
@@ -157,7 +148,11 @@ export function App() {
                 ) : (
                   <div className="space-y-3">
                     {filteredQuests.map((quest) => (
-                      <QuestCard key={quest.id} quest={quest} />
+                      <QuestCard
+                        key={quest.id}
+                        quest={quest}
+                        onSelectMap={(mapId) => setSelectedMapFilter(mapId)}
+                      />
                     ))}
                   </div>
                 )}

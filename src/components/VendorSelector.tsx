@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { usePlayerStore } from '../store/usePlayerStore';
-import { allQuests } from '../data/db';
+import { allQuests, allMaps } from '../data/db';
 import { type Vendor, type MapId } from '../data/schemas';
 import { Search, X, Trash2, Filter, Camera, Plus, Sparkles } from 'lucide-react';
 
@@ -47,6 +47,12 @@ export const VendorSelector: React.FC<VendorSelectorProps> = ({
     return allAvailableQuests
       .filter((q) => q.vendor === v)
       .filter((q) => activeQuestIds.includes(q.id)).length;
+  };
+
+  const getMapQuestCount = (m: MapId) => {
+    return allAvailableQuests.filter((q) =>
+      q.objectives.some((obj) => obj.mapId === m || obj.mapId === 'any')
+    ).length;
   };
 
   const handleQuickAdd = (title: string, vendor?: Vendor, map?: MapId) => {
@@ -140,19 +146,11 @@ export const VendorSelector: React.FC<VendorSelectorProps> = ({
             className="bg-neutral-950 border border-neutral-800 text-xs rounded-lg px-2.5 py-2 text-neutral-300 focus:outline-none focus:border-amber-500"
           >
             <option value="ALL">{language === 'es' ? 'Todos los Mapas' : 'All Maps'}</option>
-            <option value="dam_battlegrounds">
-              {language === 'es' ? 'Presa de Batalla' : 'Dam Battlegrounds'}
-            </option>
-            <option value="buried_city">
-              {language === 'es' ? 'Ciudad Enterrada' : 'Buried City'}
-            </option>
-            <option value="the_spaceport">
-              {language === 'es' ? 'El Puerto Espacial' : 'The Spaceport'}
-            </option>
-            <option value="the_blue_gate">
-              {language === 'es' ? 'La Puerta Azul' : 'The Blue Gate'}
-            </option>
-            <option value="stella_montis">Stella Montis</option>
+            {allMaps.map((m) => (
+              <option key={m.id} value={m.id}>
+                {m.name[language === 'es' ? 'es' : 'en']}
+              </option>
+            ))}
             <option value="any">
               {language === 'es' ? 'Cualquier Sector' : 'Any Sector'}
             </option>
@@ -242,6 +240,61 @@ export const VendorSelector: React.FC<VendorSelectorProps> = ({
         </div>
       </div>
 
+      {/* Map Sector Chips (1-click fast sector filtering) */}
+      <div>
+        <div className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-2 flex items-center justify-between">
+          <span>{language === 'es' ? 'Sectores / Mapas' : 'Sectors / Maps'}</span>
+          <span className="text-cyan-400 font-mono text-[10px]">
+            {selectedMapFilter === 'ALL'
+              ? (language === 'es' ? 'Todos los sectores visibles' : 'All sectors visible')
+              : `${allMaps.find((s) => s.id === selectedMapFilter)?.name[language === 'es' ? 'es' : 'en']}`}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+          {/* ALL Maps Chip */}
+          <button
+            onClick={() => setSelectedMapFilter('ALL')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all border ${
+              selectedMapFilter === 'ALL'
+                ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/60 shadow-sm shadow-cyan-500/10'
+                : 'bg-neutral-950/80 text-neutral-400 border-neutral-800 hover:border-neutral-700 hover:text-neutral-200'
+            }`}
+          >
+            {language === 'es' ? 'Todos los Mapas' : 'All Maps'}
+          </button>
+
+          {/* Each Sector Chip */}
+          {allMaps.map((map) => {
+            const count = getMapQuestCount(map.id);
+            const isSelected = selectedMapFilter === map.id;
+
+            return (
+              <button
+                key={map.id}
+                onClick={() => setSelectedMapFilter(isSelected ? 'ALL' : map.id)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all border ${
+                  isSelected
+                    ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/60 shadow-sm shadow-cyan-500/10'
+                    : 'bg-neutral-950/80 text-neutral-400 border-neutral-800 hover:border-neutral-700 hover:text-neutral-200'
+                }`}
+              >
+                <span>{map.name[language === 'es' ? 'es' : 'en']}</span>
+                <span
+                  className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full font-bold ${
+                    isSelected
+                      ? 'bg-cyan-500 text-neutral-950'
+                      : 'bg-neutral-800 text-neutral-400'
+                  }`}
+                >
+                  {count}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Quick Add Quest Modal (Title Only) */}
       {showAddModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
@@ -311,19 +364,11 @@ export const VendorSelector: React.FC<VendorSelectorProps> = ({
                     className="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-2.5 py-1.5 text-xs text-neutral-300 focus:outline-none focus:border-emerald-500"
                   >
                     <option value="any">{language === 'es' ? 'Cualquier Sector' : 'Any Sector'}</option>
-                    <option value="dam_battlegrounds">
-                      {language === 'es' ? 'Presa de Batalla' : 'Dam Battlegrounds'}
-                    </option>
-                    <option value="buried_city">
-                      {language === 'es' ? 'Ciudad Enterrada' : 'Buried City'}
-                    </option>
-                    <option value="the_spaceport">
-                      {language === 'es' ? 'El Puerto Espacial' : 'The Spaceport'}
-                    </option>
-                    <option value="the_blue_gate">
-                      {language === 'es' ? 'La Puerta Azul' : 'The Blue Gate'}
-                    </option>
-                    <option value="stella_montis">Stella Montis</option>
+                    {allMaps.map((m) => (
+                      <option key={m.id} value={m.id}>
+                        {m.name[language === 'es' ? 'es' : 'en']}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>

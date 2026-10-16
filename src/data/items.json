@@ -195,5 +195,21 @@
       }
     ],
     "sellValue": 1800
+  },
+  {
+    "id": "item_key_riven_hotel_107",
+    "name": {
+      "en": "Riven Tides Hotel Keycard No. 107",
+      "es": "Tarjeta de Hotel Riven Tides Nº 107"
+    },
+    "category": "Key",
+    "description": {
+      "en": "Keycard unlocking room 107 at the Riven Tides beachside hotel complex.",
+      "es": "Tarjeta de acceso para la habitación 107 del complejo hotelero en la playa de Riven Tides."
+    },
+    "usedInQuests": ["quest_battening_down"],
+    "usedInUpgrades": [],
+    "sellValue": 1800
   }
 ]
+

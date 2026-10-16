@@ -54,6 +54,7 @@ export const ObjectiveSchema = z.object({
 export const QuestSchema = z.object({
   id: z.string(),
   title: LocalizedStringSchema,
+  description: LocalizedStringSchema.optional(),
   vendor: VendorSchema,
   requiredLevel: z.number().optional(),
   objectives: z.array(ObjectiveSchema),
