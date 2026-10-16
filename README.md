@@ -115,12 +115,12 @@ npm run build
 - [x] **Phase 1 — Core MVP:** Zod database schema, 10-second vendor selector, Loadout HUD, and workshop station protection.
 - [x] **Phase 2 — Tactical Routing:** Dynamic route optimizer (SOP heuristic), compass bearings (0° - 360°), Rat vs. Sweep navigation profiles, OR/AND quest constraints, and In-Raid Focus HUD.
 - [x] **Phase 3 — Visual Ingestion:** Desktop `Ctrl+V` screenshot capture with local Tesseract.js OCR, and mobile photo mode with Google Gemini Flash Vision API.
-- [ ] **Phase 4 — 4K Satellite Maps & Official Wiki Database (Active Development):**
+- [x] **Phase 4 — 4K Satellite Maps & Official Wiki Database:**
   - [x] 8 official 4096×4096 cenital satellite maps integrated.
-  - [x] 118 wiki quests and 407 objectives with narrative dialogue populated.
+  - [x] 118 wiki quests and 398 clean, verified objectives with narrative dialogue populated.
   - [x] Calibrated continuous zoom & pan engine with inverse marker scaling.
-  - [ ] Exhaustive POI coordinate calibration across secondary sectors (*Stella Montis*, *The Blue Gate*, *Pendola Pass*, *Riven Tides*).
-  - [ ] Progressive WebP/AVIF asset compression and tiled mipmaps for mobile memory optimization.
+  - [x] Calibrated 79 POI coordinates with 124 objectives linked across all secondary sectors (*The Spaceport*, *Stella Montis*, *The Blue Gate*, *Pendola Pass*, *Riven Tides*).
+  - [x] Progressive WebP image support with PNG fallback and asynchronous GPU texture decoding.
 
 ---
 

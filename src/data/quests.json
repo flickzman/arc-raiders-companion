@@ -253,7 +253,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_olive_grove"
       },
       {
         "id": "obj_a_first_foothold_3",
@@ -265,7 +266,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_olive_grove"
       },
       {
         "id": "obj_a_first_foothold_4",
@@ -314,7 +316,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_control_tower_a6"
       },
       {
         "id": "obj_a_lay_of_the_land_2",
@@ -338,7 +341,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_control_tower_a6"
       },
       {
         "id": "obj_a_lay_of_the_land_4",
@@ -435,7 +439,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_collapsed_highway"
       },
       {
         "id": "obj_a_path_not_yours_2",
@@ -447,37 +452,14 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_collapsed_highway"
       },
       {
         "id": "obj_a_path_not_yours_3",
         "description": {
           "en": "Find Bilguun's gift at the buried cache under the hideout",
           "es": "Find Bilguun's gift at the buried cache under the hideout"
-        },
-        "type": "recon",
-        "mapId": "the_blue_gate",
-        "alternativePoiIds": [],
-        "inOneRound": false,
-        "count": 1
-      },
-      {
-        "id": "obj_a_path_not_yours_4",
-        "description": {
-          "en": "optional = yes",
-          "es": "optional = yes"
-        },
-        "type": "recon",
-        "mapId": "the_blue_gate",
-        "alternativePoiIds": [],
-        "inOneRound": false,
-        "count": 1
-      },
-      {
-        "id": "obj_a_path_not_yours_5",
-        "description": {
-          "en": "type = item",
-          "es": "type = item"
         },
         "type": "recon",
         "mapId": "the_blue_gate",
@@ -1038,7 +1020,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_security_checkpoint"
       },
       {
         "id": "obj_armored_transports_2",
@@ -1050,7 +1033,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_security_checkpoint"
       },
       {
         "id": "obj_armored_transports_3",
@@ -1062,7 +1046,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_security_checkpoint"
       },
       {
         "id": "obj_armored_transports_4",
@@ -1074,7 +1059,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_traffic_tunnel"
       }
     ],
     "itemsToBring": [],
@@ -1195,18 +1181,6 @@
         "alternativePoiIds": [],
         "inOneRound": false,
         "count": 1
-      },
-      {
-        "id": "obj_bait_fetch_blast_4",
-        "description": {
-          "en": "type = item",
-          "es": "type = item"
-        },
-        "type": "recon",
-        "mapId": "pendola_pass",
-        "alternativePoiIds": [],
-        "inOneRound": false,
-        "count": 1
       }
     ],
     "itemsToBring": [],
@@ -1254,7 +1228,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_hotel_beach"
       },
       {
         "id": "obj_battening_down_3",
@@ -1302,7 +1277,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_olive_grove"
       },
       {
         "id": "obj_bees_2",
@@ -1314,7 +1290,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_olive_grove"
       }
     ],
     "itemsToBring": [],
@@ -1341,18 +1318,6 @@
     "requiredLevel": 2,
     "objectives": [
       {
-        "id": "obj_belly_of_the_beast_1",
-        "description": {
-          "en": "type = item",
-          "es": "type = item"
-        },
-        "type": "recon",
-        "mapId": "pendola_pass",
-        "alternativePoiIds": [],
-        "inOneRound": false,
-        "count": 1
-      },
-      {
         "id": "obj_belly_of_the_beast_2",
         "description": {
           "en": "Enter the Emperor",
@@ -1362,7 +1327,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_emperor_carcass"
       },
       {
         "id": "obj_belly_of_the_beast_3",
@@ -1374,7 +1340,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_emperor_carcass"
       },
       {
         "id": "obj_belly_of_the_beast_4",
@@ -1386,7 +1353,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_emperor_carcass"
       },
       {
         "id": "obj_belly_of_the_beast_5",
@@ -1398,7 +1366,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_emperor_carcass"
       },
       {
         "id": "obj_belly_of_the_beast_6",
@@ -1410,19 +1379,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
-      },
-      {
-        "id": "obj_belly_of_the_beast_7",
-        "description": {
-          "en": "type = item",
-          "es": "type = item"
-        },
-        "type": "recon",
-        "mapId": "pendola_pass",
-        "alternativePoiIds": [],
-        "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_emperor_carcass"
       }
     ],
     "itemsToBring": [],
@@ -1920,18 +1878,6 @@
         "count": 1
       },
       {
-        "id": "obj_celeste_s_teenage_rebellion_3",
-        "description": {
-          "en": "optional = yes",
-          "es": "optional = yes"
-        },
-        "type": "recon",
-        "mapId": "riven_tides",
-        "alternativePoiIds": [],
-        "inOneRound": false,
-        "count": 1
-      },
-      {
         "id": "obj_celeste_s_teenage_rebellion_4",
         "description": {
           "en": "Reach the old Raider Camp near the hotel, overlooking the beach",
@@ -1941,7 +1887,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_hotel_beach"
       },
       {
         "id": "obj_celeste_s_teenage_rebellion_5",
@@ -1965,7 +1912,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_harbor_control"
       },
       {
         "id": "obj_celeste_s_teenage_rebellion_7",
@@ -2025,7 +1973,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_warehouse_complex"
       },
       {
         "id": "obj_clamoring_for_attention_2",
@@ -2037,7 +1986,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_warehouse_complex"
       },
       {
         "id": "obj_clamoring_for_attention_3",
@@ -2049,7 +1999,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_security_checkpoint"
       }
     ],
     "itemsToBring": [],
@@ -2086,7 +2037,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_railyard_station"
       },
       {
         "id": "obj_clean_hands_2",
@@ -2110,7 +2062,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_old_town"
       },
       {
         "id": "obj_clean_hands_4",
@@ -2122,7 +2075,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_old_town"
       }
     ],
     "itemsToBring": [],
@@ -2475,7 +2429,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_fuel_control"
       },
       {
         "id": "obj_deciphering_the_data_2",
@@ -2487,7 +2442,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_arrival_terminal"
       },
       {
         "id": "obj_deciphering_the_data_3",
@@ -2499,7 +2455,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_arrival_terminal"
       }
     ],
     "itemsToBring": [],
@@ -2583,7 +2540,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_railyard_station"
       },
       {
         "id": "obj_divided_2",
@@ -2595,7 +2553,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_weather_dispatch"
       },
       {
         "id": "obj_divided_3",
@@ -2607,7 +2566,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_weather_dispatch"
       },
       {
         "id": "obj_divided_4",
@@ -2619,7 +2579,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_railyard_station"
       }
     ],
     "itemsToBring": [],
@@ -2850,7 +2811,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_hangar"
       },
       {
         "id": "obj_dust_on_the_wires_4",
@@ -2862,7 +2824,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_hangar"
       },
       {
         "id": "obj_dust_on_the_wires_5",
@@ -3041,7 +3004,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_observatory"
       },
       {
         "id": "obj_exploring_pendola_pass_3",
@@ -3065,7 +3029,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_commissary"
       }
     ],
     "itemsToBring": [],
@@ -3287,7 +3252,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_robotic_sandbox"
       },
       {
         "id": "obj_fragmented_logs_2",
@@ -3299,7 +3265,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_robotic_sandbox"
       },
       {
         "id": "obj_fragmented_logs_3",
@@ -3311,7 +3278,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_cultural_archives"
       }
     ],
     "itemsToBring": [],
@@ -3347,7 +3315,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_medical_research"
       },
       {
         "id": "obj_furtive_meetings_2",
@@ -3359,7 +3328,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_seed_vault"
       },
       {
         "id": "obj_furtive_meetings_3",
@@ -3371,7 +3341,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_seed_vault"
       },
       {
         "id": "obj_furtive_meetings_4",
@@ -3443,7 +3414,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_rocket_assembly"
       },
       {
         "id": "obj_greasing_her_palms_3",
@@ -3492,7 +3464,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_pilgrims_peak"
       },
       {
         "id": "obj_groundbreaking_2",
@@ -3504,7 +3477,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_pilgrims_peak"
       },
       {
         "id": "obj_groundbreaking_3",
@@ -3788,7 +3762,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_collapsed_highway"
       },
       {
         "id": "obj_keeping_an_eye_out_2",
@@ -3897,7 +3872,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_seed_vault"
       },
       {
         "id": "obj_last_entry_2",
@@ -3921,7 +3897,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_seed_vault"
       },
       {
         "id": "obj_last_entry_4",
@@ -3933,7 +3910,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_seed_vault"
       },
       {
         "id": "obj_last_entry_5",
@@ -4138,7 +4116,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_control_tower_a6"
       },
       {
         "id": "obj_lost_in_transmission_2",
@@ -4150,7 +4129,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_control_tower_a6"
       },
       {
         "id": "obj_lost_in_transmission_3",
@@ -4306,7 +4286,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_departure_terminal"
       },
       {
         "id": "obj_medical_merchandise_2",
@@ -4427,7 +4408,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_cultural_archives"
       },
       {
         "id": "obj_movie_night_3",
@@ -4515,7 +4497,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_central_atrium"
       },
       {
         "id": "obj_on_deaf_ears_2",
@@ -4539,7 +4522,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_medical_research"
       },
       {
         "id": "obj_on_deaf_ears_4",
@@ -4551,7 +4535,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_assembly_workshops"
       }
     ],
     "itemsToBring": [],
@@ -4589,7 +4574,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_fuel_control"
       },
       {
         "id": "obj_on_the_map_2",
@@ -4601,7 +4587,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_fuel_control"
       },
       {
         "id": "obj_on_the_map_3",
@@ -4784,7 +4771,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_traffic_tunnel"
       },
       {
         "id": "obj_outstanding_balance_2",
@@ -4796,7 +4784,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_pilgrims_peak"
       },
       {
         "id": "obj_outstanding_balance_3",
@@ -5040,7 +5029,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_departure_terminal"
       },
       {
         "id": "obj_prescriptions_of_the_past_2",
@@ -5052,7 +5042,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_departure_terminal"
       },
       {
         "id": "obj_prescriptions_of_the_past_3",
@@ -5151,7 +5142,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_collapsed_highway"
       },
       {
         "id": "obj_reduced_to_rubble_2",
@@ -5163,7 +5155,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_barren_clearing"
       },
       {
         "id": "obj_reduced_to_rubble_3",
@@ -5175,7 +5168,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_barren_clearing"
       },
       {
         "id": "obj_reduced_to_rubble_4",
@@ -5224,7 +5218,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_observatory"
       },
       {
         "id": "obj_ruins_and_reverberations_2",
@@ -5286,7 +5281,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_hotel_beach"
       },
       {
         "id": "obj_safe_harbor_2",
@@ -5467,7 +5463,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_stacking_yard"
       },
       {
         "id": "obj_shoring_up_defenses_4",
@@ -5479,7 +5476,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_hotel_beach"
       }
     ],
     "itemsToBring": [],
@@ -5516,19 +5514,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
-      },
-      {
-        "id": "obj_sizing_things_up_2",
-        "description": {
-          "en": "optional = yes",
-          "es": "optional = yes"
-        },
-        "type": "recon",
-        "mapId": "pendola_pass",
-        "alternativePoiIds": [],
-        "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_old_town"
       },
       {
         "id": "obj_sizing_things_up_3",
@@ -5552,7 +5539,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_emperor_carcass"
       },
       {
         "id": "obj_sizing_things_up_5",
@@ -5564,7 +5552,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_emperor_carcass"
       },
       {
         "id": "obj_sizing_things_up_6",
@@ -5576,19 +5565,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
-      },
-      {
-        "id": "obj_sizing_things_up_7",
-        "description": {
-          "en": "type = item",
-          "es": "type = item"
-        },
-        "type": "recon",
-        "mapId": "pendola_pass",
-        "alternativePoiIds": [],
-        "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_emperor_carcass"
       }
     ],
     "itemsToBring": [],
@@ -5626,7 +5604,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_robotic_sandbox"
       },
       {
         "id": "obj_snap_and_salvage_2",
@@ -5638,7 +5617,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_central_atrium"
       },
       {
         "id": "obj_snap_and_salvage_3",
@@ -5797,7 +5777,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_security_bridge"
       },
       {
         "id": "obj_stable_housing_2",
@@ -5809,7 +5790,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_security_bridge"
       },
       {
         "id": "obj_stable_housing_3",
@@ -5821,7 +5803,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_security_bridge"
       },
       {
         "id": "obj_stable_housing_4",
@@ -5833,7 +5816,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_security_bridge"
       },
       {
         "id": "obj_stable_housing_5",
@@ -6058,7 +6042,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_fuel_control"
       }
     ],
     "itemsToBring": [],
@@ -6095,7 +6080,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_central_atrium"
       },
       {
         "id": "obj_taking_stock_2",
@@ -6240,7 +6226,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_fuel_control"
       },
       {
         "id": "obj_the_clean_dream_2",
@@ -6264,7 +6251,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_maintenance_bunker"
       },
       {
         "id": "obj_the_clean_dream_4",
@@ -6590,7 +6578,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_departure_terminal"
       },
       {
         "id": "obj_the_stench_of_corruption_2",
@@ -6626,7 +6615,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_fuel_control"
       },
       {
         "id": "obj_the_stench_of_corruption_5",
@@ -6943,7 +6933,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_northern_tracks"
       },
       {
         "id": "obj_tracks_of_the_beast_2",
@@ -6955,7 +6946,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_northern_tracks"
       },
       {
         "id": "obj_tracks_of_the_beast_3",
@@ -7347,7 +7339,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_departure_terminal"
       },
       {
         "id": "obj_waking_the_grid_3",
@@ -7359,7 +7352,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_arrival_terminal"
       }
     ],
     "itemsToBring": [],
@@ -7546,7 +7540,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_pilgrims_peak"
       },
       {
         "id": "obj_wires_crossed_2",
@@ -7558,7 +7553,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_launchpad"
       },
       {
         "id": "obj_wires_crossed_3",
@@ -7609,7 +7605,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_barren_clearing"
       },
       {
         "id": "obj_with_a_trace_2",
@@ -7633,7 +7630,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_barren_clearing"
       },
       {
         "id": "obj_with_a_trace_4",
@@ -7693,7 +7691,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_assembly_workshops"
       },
       {
         "id": "obj_with_a_view_3",
@@ -7766,7 +7765,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_rocket_assembly"
       },
       {
         "id": "obj_worth_your_salt_2",
@@ -7778,7 +7778,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_rocket_assembly"
       },
       {
         "id": "obj_worth_your_salt_3",
@@ -7790,7 +7791,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_rocket_assembly"
       },
       {
         "id": "obj_worth_your_salt_4",
