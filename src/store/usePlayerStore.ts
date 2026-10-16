@@ -41,8 +41,8 @@ export interface PlayerState {
 export const usePlayerStore = create<PlayerState>()(
   persist(
     (set) => ({
-      language: 'es',
-      activeQuestIds: ['quest_rising_tide', 'quest_what_we_left'], // Misiones de ejemplo activas por defecto
+      language: 'en',
+      activeQuestIds: ['quest_rising_tide', 'quest_what_we_left'], // Sample active quests by default
       completedQuestIds: [],
       completedObjectiveIds: [],
       trackedItemIds: [],

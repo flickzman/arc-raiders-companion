@@ -5,98 +5,113 @@
 [![React](https://img.shields.io/badge/React-19.0-61dafb)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-4.0-38bdf8)](https://tailwindcss.com/)
 [![Zod Validated](https://img.shields.io/badge/Zod-Validated-3068b7)](https://zod.dev/)
+[![Vitest](https://img.shields.io/badge/Tests-29%20Passed-brightgreen)](https://vitest.dev/)
 
 > **Tactical Companion & Raid Route Planner for ARC Raiders**  
-> Una companion app de código abierto (GNU AGPLv3), local-first y sin costes de servidor para eliminar la sobrecarga de gestionar 15+ misiones simultáneas en *ARC Raiders*.
+> An open-source (GNU AGPLv3), local-first, zero-server-cost tactical companion designed to eliminate the mental overhead of tracking 15+ simultaneous quests and optimize raid routes in *ARC Raiders*.
 
 ---
 
-## ⚡ Características del Sistema
+## ⚡ Key Features
 
-### 1. Selector Rápido de Misiones por Comerciante (Flujo de 10 segundos)
-- Agrupación por facciones y comerciantes del juego: **Tian Wen**, **Shani**, **Lance**, **Celeste**, **Apollo** y **Nomadic Envoys**.
-- Búsqueda predictiva instantánea y filtrado por sectores y mapas.
-- Activación en un clic con persistencia en el navegador (`localStorage` vía Zustand).
+### 1. 10-Second Fast Quest & Vendor Selector
+- **Faction & Vendor Grouping:** Instantly toggle and track missions across all ARC Raiders traders: **Tian Wen**, **Shani**, **Lance**, **Celeste**, **Apollo**, and **Nomadic Envoys**.
+- **Predictive Search & Filter:** Search by quest title, narrative dialogue, objectives, item loot, and map sectors.
+- **Instant 1-Click State:** Toggle active quests with persistent local browser storage (`localStorage` via Zustand). No sign-up or accounts required.
 
-### 2. Loadout & Stash HUD (Qué Llevar vs Qué Buscar)
-- **Preparación de Alijo (Qué Llevar):** Consolidación de llaves (*Apartamento Grandioso*, etc.), herramientas y consumibles requeridos para tus misiones activas antes de salir a la raid.
-- **Loot Prioritario (Qué Buscar en Raid):** Listado de objetos clave a extraer (diarios encriptados, microchips lógicos, núcleos pesados ARC).
-- **Alerta de Refugio / Estaciones (¡NO VENDER!):** Detección automática de materiales necesarios para mejoras del banco de trabajo, armería o alijo, impidiendo que vendas o recicles ítems críticos por error.
+### 2. Loadout & Stash HUD (What to Bring vs. What to Find)
+- **Stash Prep (What to Bring):** Consolidates required keys (*Grandioso Apartment Keycard*, etc.), tools, and consumables into a clear checklist before dropping into the raid.
+- **Priority Loot (What to Find):** Highlights mission-critical items to scavenge and extract (encrypted frequency slates, ARC logic microchips, heavy power cores).
+- **Hideout & Station Protection (DO NOT SELL!):** Automatically flags materials needed for workbench, armory, medical station, or stash upgrades, preventing accidental recycling or sales.
 
-### 3. Optimizador de Incursión Dinámico & Radar Táctico (Fase 2)
-- **Selección de Spawn en Partida:** El usuario marca dónde ha aparecido (*"He aparecido aquí"*) y el motor recalcula el vector de aproximación en tiempo real.
-- **Modos de Ruta Táctica:**
-  - **Modo Rata / Supervivencia:** Prioriza 1-2 objetivos cercanos a la extracción, esquiva POIs con peligro elevado (`dangerLevel: 'high'`) y traza la ruta hacia el punto de extracción más seguro.
-  - **Modo Barrido / Eficiencia:** Resuelve el Problema del Viajante (TSP) para completar todos los objetivos del mapa minimizando la distancia global.
-- **Mecánicas Complejas de Misiones:**
-  - **Objetivos con Alternativas (OR):** Si una misión permite hackear la consola A o la consola B, el optimizador calcula cuál está más cerca y descarta la redundante.
-  - **Dependencias Secuenciales (AND):** Respeta el orden estricto de pasos previos (ej. conseguir la llave antes de abrir la bóveda).
-- **HUD de Incursión en Vivo:** Interfaz limpia sin distracciones, navegación paso a paso y botón de aborto/pánico para evacuar hacia la extracción más cercana.
+### 3. Dynamic Raid Route Optimizer & Tactical Radar
+- **In-Raid Drop Point Selection:** Select where you landed (*"I dropped here"*), and the engine dynamically recalibrates your tactical route in real time.
+- **Dual Navigation Profiles:**
+  - **Rat / Survival Mode:** Prioritizes 1–2 nearby, low-risk objectives, steers clear of high-hazard zones (`dangerLevel: 'high'`), and routes directly to the safest extraction point.
+  - **Sweep / Efficiency Mode:** Solves the Traveling Salesperson Problem (TSP) across all active quest POIs to maximize XP, loot, and progression in a single deployment.
+- **Complex Quest Logic:**
+  - **Alternative Objectives (OR):** Automatically evaluates alternative POIs (e.g., hack terminal A or terminal B) and selects the closest waypoint.
+  - **Sequential Precedence (AND):** Enforces strict prerequisite order (e.g., retrieve the access keycard before unlocking the security door).
+- **Live In-Raid Focus HUD:** Clean, distraction-free view with waypoint step-by-step navigation, distance telemetry, compass bearings ($0^\circ - 360^\circ$), and an emergency evacuation button.
 
-### 4. Ingesta Visual de Misiones (Fase 3: OCR & Visión IA)
-- **Modo PC Doble Monitor (`Ctrl+V` Instantáneo):**
-  - Pulsa `Win+Shift+S` en tu juego y haz `Ctrl+V` en la app.
-  - Procesamiento 100% local en tu navegador con **Tesseract.js** (binarización adaptativa y contraste) y emparejamiento difuso con **Fuse.js**.
-  - Sin subir imágenes a servidores externos, privado y de latencia cero.
-- **Modo Móvil (Foto a Monitor con Gemini 1.5 Flash Vision):**
-  - Supera el problema físico del patrón de muaré y la inclinación de perspectiva de fotos hechas con el móvil a pantallas.
-  - Conector directo con la API gratuita de Google Gemini Flash para detección semántica de misiones.
-  - La clave de API se almacena de forma estrictamente local en tu navegador.
+### 4. Visual Quest Ingestion (OCR & Vision AI)
+- **Dual-Monitor PC Mode (`Ctrl+V` Instant Ingest):**
+  - Press `Win+Shift+S` in-game to snip your quest log and `Ctrl+V` directly into the app.
+  - 100% in-browser processing with **Tesseract.js** (adaptive binarization, grayscale normalization) and **Fuse.js** fuzzy matching against the quest database. Zero latency, complete privacy, no server uploads.
+- **Mobile Photo Mode (Screen Photo with Gemini 1.5 Flash Vision):**
+  - Handles perspective distortion, glare, and physical monitor moiré patterns from mobile camera photos.
+  - Direct client-side connection to Google Gemini 1.5 Flash Vision API. Your API key remains strictly stored in your local browser.
 
-### 5. Mapas Satelitales Cenitales 4K e Interacción Fluida (Fase 4 / Wiki Real)
-- **8 Sectores Oficiales en Alta Resolución (4096×4096):**
-  - *Dam Battlegrounds*, *Buried City*, *The Spaceport*, *The Blue Gate*, *Stella Montis*, *Pendola Pass*, *Riven Tides* y *Practice Range* (~78 MB en recursos visuales optimizados).
-- **Zoom & Panning Gradual Calibrado:**
-  - Motor de zoom basado en `react-zoom-pan-pinch` con aceleración continua suave (`smooth={true}`, `wheel: step 0.0015`), eliminando los saltos bruscos y permitiendo inspección milimétrica de edificios y rutas.
-- **Escalado Inverso de Marcadores:**
-  - Pines tácticos y badges que mantienen escala visual constante y legible independientemente de si estás alejado (visión de sector) o en zoom máximo (visión de calle).
-- **Emblemas Tácticos por Tipología de Objetivo:**
-  - Identificación visual de objetivos por categoría: Reconocimiento, Combate, Sabotaje, Entrega y Salas Bloqueadas / Llaves.
-- **Herramienta de Calibración de Coordenadas (Dev Mode):**
-  - Sistema de clic interactivo para obtener y copiar coordenadas porcentuales precisas $(X, Y)$ de nuevos edificios sobre el mapa oficial.
+### 5. 4K Cenital Satellite Top-Down Maps & Smooth Navigation
+- **8 Official High-Resolution Sectors (4096×4096):**
+  - Full cenital top-down satellite maps for *Dam Battlegrounds*, *Buried City*, *The Spaceport*, *The Blue Gate*, *Stella Montis*, *Pendola Pass*, *Riven Tides*, and *Practice Range* (~78 MB in optimized visual assets).
+- **Calibrated Continuous Zoom & Pan:**
+  - Engine powered by `react-zoom-pan-pinch` with smooth continuous scaling (`smooth={true}`, `wheel: step 0.0015`), eliminating abrupt zoom jumps and allowing micro-inspection of buildings and terrain.
+- **Marker Inverse Scaling:**
+  - Tactical nodes and badges dynamically scale inversely with the camera zoom, remaining legible whether viewing the whole sector or zooming into street level.
+- **Tactical Quest Type Badges:**
+  - Distinct tactical iconography per objective category: **Recon**, **Combat**, **Sabotage**, **Delivery**, and **Locked Room / Keycard**.
+- **Developer Coordinate Calibration Tool:**
+  - Interactive click-to-copy utility for calculating exact $(X, Y)$ percentage coordinates on the official maps.
 
-### 6. Base de Datos Completa de la Wiki Oficial & Búsqueda Predictiva
-- **118 Misiones Oficiales & 407 Objetivos:**
-  - Textos de lore completos, diálogos de comerciantes, condiciones de una sola ronda (`inOneRound`), dependencias de objetos y tablas de recompensas (XP, Créditos, Ítems cosméticos y mods).
-- **Búsqueda Predictiva Multicriterio con Alias de Mapa:**
-  - Reconocimiento de alias en español e inglés (ej. *"presa"*, *"puerto espacial"*, *"stella"*, *"ciudad enterrada"*).
-  - Filtrado en 1 clic directamente desde las etiquetas de ubicación en las tarjetas de misión.
-- **Misiones Personalizadas Rápidas:**
-  - Posibilidad de añadir misiones instantáneamente solo con el título o mediante el buscador rápido.
+### 6. Official Wiki Database & Multi-Criteria Search
+- **118 Official Wiki Quests & 407 Objectives:**
+  - Complete lore entries, trader radio dialogue, single-round constraints (`inOneRound`), item dependencies, and reward tables (XP, Credits, cosmetic gear, weapon mods).
+- **Multi-Criteria Search with Map Aliases:**
+  - Built-in recognition for map aliases and localized names (e.g., *"dam"*, *"spaceport"*, *"stella"*, *"buried city"*, *"presa"*).
+  - 1-click map filtering directly from objective tags on quest cards.
+- **Quick Custom Quests:**
+  - Instantly create custom or unlisted quests by title for real-time tracking.
 
 ---
 
-## 🚀 Instalación y Desarrollo Local
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+| :--- | :--- |
+| **Framework** | [React 19](https://react.dev/) + [TypeScript 5.7](https://www.typescriptlang.org/) |
+| **Build Tool** | [Vite 6](https://vitejs.dev/) + [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react) |
+| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) |
+| **State Management** | [Zustand 5](https://zustand-demo.pmnd.rs/) with `persist` middleware (`localStorage`) |
+| **Schema Validation** | [Zod 3.24](https://zod.dev/) (Full referential integrity across maps, items, and quests) |
+| **Map Engine** | [react-zoom-pan-pinch 4.2](https://github.com/BetterTyped/react-zoom-pan-pinch) + Custom SVG overlay |
+| **OCR & Search** | [Tesseract.js 7](https://tesseract.projectnaptha.com/) + [Fuse.js 7.5](https://fusejs.io/) |
+| **Icons** | [Lucide React](https://lucide.dev/) |
+| **Testing** | [Vitest 3](https://vitest.dev/) (29 automated unit & integrity tests) |
+
+---
+
+## 🚀 Installation & Local Development
 
 ```bash
-# Clonar el repositorio
+# Clone the repository
 git clone https://github.com/Flickzman/arc-raiders-companion.git
 cd arc-raiders-companion
 
-# Instalar dependencias
+# Install dependencies
 npm install
 
-# Iniciar servidor de desarrollo local
+# Start the local development server
 npm run dev
 
-# Ejecutar tests de validación e integridad referencial (29 tests)
+# Run automated tests and referential integrity suite (29 tests)
 npm test
 
-# Compilar para producción
+# Build for production
 npm run build
 ```
 
 ---
 
-## 🗺️ Estado del Proyecto
+## 🗺️ Project Roadmap
 
-- [x] **Fase 1:** Base de datos Zod + Selector rápido por comerciante + Loadout HUD + Alerta de Refugio.
-- [x] **Fase 2:** Radar vectorial SVG interactivo, cálculo dinámico de rumbos de brújula ($0^\circ - 360^\circ$), Modo Rata vs. Barrido, objetivos OR/AND y HUD de foco.
-- [x] **Fase 3:** Ingesta visual por `Ctrl+V` (captura limpia de Windows `Win+Shift+S`) con OCR local + Conector de visión IA con Gemini Flash para fotos de móvil.
-- [x] **Fase 4 (En Curso):** 8 mapas cenitales 4K oficiales, 118 misiones de la wiki con diálogo y lore, zoom y paneo continuo fluido, y etiquetado exhaustivo de POIs.
+- [x] **Phase 1 — Core MVP:** Zod database schema + 10-second vendor selector + Loadout HUD + Workshop station protection.
+- [x] **Phase 2 — Tactical Routing:** Dynamic TSP route optimizer, compass bearings ($0^\circ - 360^\circ$), Rat vs. Sweep navigation profiles, OR/AND quest constraints, and In-Raid Focus HUD.
+- [x] **Phase 3 — Visual Ingestion:** Desktop `Ctrl+V` screenshot capture with local Tesseract.js OCR + Mobile photo mode with Google Gemini 1.5 Flash Vision.
+- [x] **Phase 4 — 4K Satellite Maps & Official Wiki:** 8 official 4096×4096 cenital satellite maps, 118 wiki quests with narrative dialogue, smooth continuous zoom engine, and precise POI geocoding.
 
 ---
 
-## 📄 Licencia
+## 📄 License
 
-Este proyecto está licenciado bajo la **GNU Affero General Public License v3.0 (AGPLv3)**. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+This project is licensed under the **GNU Affero General Public License v3.0 (AGPLv3)**. See the [LICENSE](LICENSE) file for details.

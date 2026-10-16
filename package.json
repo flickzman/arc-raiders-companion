@@ -2,6 +2,7 @@
   "name": "arc-raiders-companion",
   "private": true,
   "version": "0.1.0",
+  "description": "Tactical Companion & Raid Route Planner for ARC Raiders. Local-first open-source web application with 4K satellite maps, TSP route clustering, and visual quest ingestion.",
   "type": "module",
   "scripts": {
     "dev": "vite",
