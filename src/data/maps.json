@@ -130,6 +130,186 @@
         "dangerLevel": "high",
         "isExtractionPoint": true,
         "isSpawnPoint": false
+      },
+      {
+        "id": "dam_research_admin",
+        "name": {
+          "en": "Research & Administration",
+          "es": "Investigación y Administración"
+        },
+        "mapId": "dam_battlegrounds",
+        "coordinates": {
+          "x": 48.5,
+          "y": 32
+        },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "dam_old_battleground",
+        "name": {
+          "en": "Old Battleground (Baron Husk)",
+          "es": "Antiguo Campo de Batalla (Restos del Barón)"
+        },
+        "mapId": "dam_battlegrounds",
+        "coordinates": {
+          "x": 42,
+          "y": 62
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "dam_formicai_outpost",
+        "name": {
+          "en": "Formicai Outpost",
+          "es": "Puesto Avanzado Formicai"
+        },
+        "mapId": "dam_battlegrounds",
+        "coordinates": {
+          "x": 68,
+          "y": 38
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "dam_water_treatment",
+        "name": {
+          "en": "Water Treatment Control",
+          "es": "Control de Tratamiento de Aguas"
+        },
+        "mapId": "dam_battlegrounds",
+        "coordinates": {
+          "x": 38,
+          "y": 48
+        },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "dam_scrap_yard",
+        "name": {
+          "en": "Scrap Yard",
+          "es": "Desguace"
+        },
+        "mapId": "dam_battlegrounds",
+        "coordinates": {
+          "x": 58,
+          "y": 68
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "dam_victory_ridge",
+        "name": {
+          "en": "Victory Ridge (Broken Highway)",
+          "es": "Cresta de la Victoria (Autopista Rota)"
+        },
+        "mapId": "dam_battlegrounds",
+        "coordinates": {
+          "x": 72,
+          "y": 18
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "dam_formicai_hills",
+        "name": {
+          "en": "Formicai Hills Wreckage",
+          "es": "Restos de las Colinas Formicai"
+        },
+        "mapId": "dam_battlegrounds",
+        "coordinates": {
+          "x": 74,
+          "y": 42
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "dam_water_towers",
+        "name": {
+          "en": "Water Towers",
+          "es": "Torres de Agua"
+        },
+        "mapId": "dam_battlegrounds",
+        "coordinates": {
+          "x": 34,
+          "y": 56
+        },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "dam_red_lakes",
+        "name": {
+          "en": "Red Lakes",
+          "es": "Lagos Rojos"
+        },
+        "mapId": "dam_battlegrounds",
+        "coordinates": {
+          "x": 22,
+          "y": 45
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "dam_farmlands",
+        "name": {
+          "en": "Farmlands",
+          "es": "Tierras de Cultivo"
+        },
+        "mapId": "dam_battlegrounds",
+        "coordinates": {
+          "x": 25,
+          "y": 25
+        },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "dam_east_plains",
+        "name": {
+          "en": "East Plains",
+          "es": "Llanuras del Este"
+        },
+        "mapId": "dam_battlegrounds",
+        "coordinates": {
+          "x": 78,
+          "y": 50
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "dam_dried_riverbed",
+        "name": {
+          "en": "Dried Riverbed",
+          "es": "Lecho del Río Seco"
+        },
+        "mapId": "dam_battlegrounds",
+        "coordinates": {
+          "x": 45,
+          "y": 78
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
       }
     ]
   },
@@ -263,6 +443,156 @@
         },
         "dangerLevel": "medium",
         "isExtractionPoint": true,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "city_library",
+        "name": {
+          "en": "City Center Library",
+          "es": "Biblioteca del Centro Urbano"
+        },
+        "mapId": "buried_city",
+        "coordinates": {
+          "x": 50,
+          "y": 46
+        },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "city_marano_park",
+        "name": {
+          "en": "Marano Park",
+          "es": "Parque Marano"
+        },
+        "mapId": "buried_city",
+        "coordinates": {
+          "x": 42,
+          "y": 52
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "city_main_street",
+        "name": {
+          "en": "Main Street",
+          "es": "Calle Principal"
+        },
+        "mapId": "buried_city",
+        "coordinates": {
+          "x": 48,
+          "y": 50
+        },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "city_red_tower",
+        "name": {
+          "en": "Red Tower (Old Town)",
+          "es": "Torre Roja (Casco Antiguo)"
+        },
+        "mapId": "buried_city",
+        "coordinates": {
+          "x": 32,
+          "y": 32
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "city_santa_maria_houses",
+        "name": {
+          "en": "Santa Maria Houses (Old Town)",
+          "es": "Casas de Santa María (Casco Antiguo)"
+        },
+        "mapId": "buried_city",
+        "coordinates": {
+          "x": 28,
+          "y": 38
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "city_outskirts_gas_station",
+        "name": {
+          "en": "Outskirts Gas Station",
+          "es": "Gasolinera de las Afueras"
+        },
+        "mapId": "buried_city",
+        "coordinates": {
+          "x": 24,
+          "y": 68
+        },
+        "dangerLevel": "low",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "city_pharmacy",
+        "name": {
+          "en": "City Pharmacy",
+          "es": "Farmacia de la Ciudad"
+        },
+        "mapId": "buried_city",
+        "coordinates": {
+          "x": 52,
+          "y": 42
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "city_marano_station",
+        "name": {
+          "en": "Marano Station",
+          "es": "Estación Marano"
+        },
+        "mapId": "buried_city",
+        "coordinates": {
+          "x": 38,
+          "y": 56
+        },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "city_warehouses",
+        "name": {
+          "en": "Warehouses",
+          "es": "Almacenes"
+        },
+        "mapId": "buried_city",
+        "coordinates": {
+          "x": 66,
+          "y": 64
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "city_research_building",
+        "name": {
+          "en": "Research Building",
+          "es": "Edificio de Investigación"
+        },
+        "mapId": "buried_city",
+        "coordinates": {
+          "x": 58,
+          "y": 48
+        },
+        "dangerLevel": "high",
+        "isExtractionPoint": false,
         "isSpawnPoint": false
       }
     ]
@@ -652,6 +982,36 @@
         "dangerLevel": "medium",
         "isExtractionPoint": true,
         "isSpawnPoint": false
+      },
+      {
+        "id": "blue_gate_trappers_glade",
+        "name": {
+          "en": "Trapper's Glade",
+          "es": "Claro del Trampero"
+        },
+        "mapId": "the_blue_gate",
+        "coordinates": {
+          "x": 38,
+          "y": 32
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "blue_gate_abandoned_housing",
+        "name": {
+          "en": "Abandoned Housing Project",
+          "es": "Proyecto de Viviendas Abandonadas"
+        },
+        "mapId": "the_blue_gate",
+        "coordinates": {
+          "x": 62,
+          "y": 44
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
       }
     ]
   },
@@ -815,6 +1175,36 @@
         },
         "dangerLevel": "medium",
         "isExtractionPoint": true,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "riven_customs_house",
+        "name": {
+          "en": "Customs Houses",
+          "es": "Casas de Aduanas"
+        },
+        "mapId": "riven_tides",
+        "coordinates": {
+          "x": 44,
+          "y": 34
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "riven_quay",
+        "name": {
+          "en": "The Quay",
+          "es": "El Muelle (Quay)"
+        },
+        "mapId": "riven_tides",
+        "coordinates": {
+          "x": 50,
+          "y": 32
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
         "isSpawnPoint": false
       }
     ]
@@ -1188,6 +1578,21 @@
         },
         "dangerLevel": "medium",
         "isExtractionPoint": true,
+        "isSpawnPoint": false
+      },
+      {
+        "id": "pendola_nomad_camp",
+        "name": {
+          "en": "Nomad Camp",
+          "es": "Campamento Nómada"
+        },
+        "mapId": "pendola_pass",
+        "coordinates": {
+          "x": 28,
+          "y": 62
+        },
+        "dangerLevel": "medium",
+        "isExtractionPoint": false,
         "isSpawnPoint": false
       }
     ]
