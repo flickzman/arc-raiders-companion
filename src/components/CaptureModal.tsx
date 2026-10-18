@@ -125,7 +125,8 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
           setScanProgress(progress);
           setScanStatusText(status);
         },
-        customQuests
+        customQuests,
+        language
       );
 
       setRawOcrText(result.rawText);
@@ -457,20 +458,39 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                     {language === 'es' ? 'Misiones Detectadas' : 'Detected Quests'} ({matches.length})
                   </span>
                 </span>
-                <button
-                  onClick={() =>
-                    setSelectedQuestIds(
-                      selectedQuestIds.length === matches.length
-                        ? []
-                        : matches.map((m) => m.quest.id)
-                    )
-                  }
-                  className="text-[10px] font-mono text-neutral-400 hover:text-neutral-200"
-                >
-                  {selectedQuestIds.length === matches.length
-                    ? (language === 'es' ? 'Deseleccionar todas' : 'Deselect all')
-                    : (language === 'es' ? 'Seleccionar todas' : 'Select all')}
-                </button>
+                <div className="flex items-center gap-2">
+                  {matches.some((m) => m.quest.isTrial) && (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setSelectedQuestIds((prev) =>
+                          prev.filter((id) => {
+                            const q = matches.find((m) => m.quest.id === id)?.quest;
+                            return !q?.isTrial;
+                          })
+                        )
+                      }
+                      className="text-[10px] font-mono text-purple-400 hover:text-purple-300 underline"
+                      title={language === 'es' ? 'Desmarcar contratos temporales/trials' : 'Deselect temporary trials'}
+                    >
+                      {language === 'es' ? 'Omitir Trials' : 'Omit Trials'}
+                    </button>
+                  )}
+                  <button
+                    onClick={() =>
+                      setSelectedQuestIds(
+                        selectedQuestIds.length === matches.length
+                          ? []
+                          : matches.map((m) => m.quest.id)
+                      )
+                    }
+                    className="text-[10px] font-mono text-neutral-400 hover:text-neutral-200"
+                  >
+                    {selectedQuestIds.length === matches.length
+                      ? (language === 'es' ? 'Deseleccionar todas' : 'Deselect all')
+                      : (language === 'es' ? 'Seleccionar todas' : 'Select all')}
+                  </button>
+                </div>
               </div>
 
               <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
@@ -496,8 +516,13 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                           {isChecked && <Check className="w-3.5 h-3.5 stroke-[3]" />}
                         </div>
                         <div>
-                          <div className="text-xs font-bold text-neutral-100">
-                            {getLocalized(quest.title, language)}
+                          <div className="text-xs font-bold text-neutral-100 flex items-center gap-1.5">
+                            <span>{getLocalized(quest.title, language)}</span>
+                            {quest.isTrial && (
+                              <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-800 font-bold uppercase">
+                                {language === 'es' ? 'Trial / Botín' : 'Trial'}
+                              </span>
+                            )}
                           </div>
                           <div className="text-[10px] font-mono text-neutral-400">
                             [{quest.vendor}] • {quest.objectives.length} {language === 'es' ? 'objetivos' : 'objectives'}

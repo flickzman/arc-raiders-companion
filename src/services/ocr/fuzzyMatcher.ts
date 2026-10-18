@@ -22,21 +22,27 @@ export function cleanUiNoise(text: string): string {
     .replace(/[\(\[\{]?\s*\d+\s*\/\s*\d+\s*[\)\]\}]?$/g, '')
     // Quitar etiquetas comunes de estado
     .replace(/\b(COMPLETED|TRACKED|ACTIVE|PENDING|LOCKED)\b/gi, '')
-    // Quitar símbolos de viñetas, cajas [ ], flechas >, y avatares OCR (©, €, etc)
-    .replace(/^[\s>»•\-–—*#|[\]{}()©€$@%&~+!?,;:/\\0-9]*/g, '')
+    // Quitar cajas de selección [ ], [x], ( ), flechas >, viñetas
+    .replace(/^[\s\-_*•>»#|[\](){}]*/g, '')
     .trim();
 
-  // Si aún empieza con un artefacto ruidoso corto del icono (ej. "+r, ", "f%7 ", "{© ")
-  // pero preservando palabras legítimas de inicio como "A ", "TO ", "THE "
-  cleaned = cleaned.replace(/^([a-z0-9%$!?,;:+_\-]{1,4}\s+)+/i, (match) => {
-    const trimmedUpper = match.trim().toUpperCase();
-    if (['A', 'TO', 'THE', 'AN', 'IN', 'ON', 'OFF'].includes(trimmedUpper)) {
-      return match;
+  // Dividir en tokens para descartar tokens iniciales que contengan símbolos de ruido (como "f%7", "+r,", "{©", "©", "€)")
+  const tokens = cleaned.split(/\s+/);
+  while (tokens.length > 1) {
+    const first = tokens[0];
+    // Si el primer token contiene caracteres extraños que no sean letras o comillas
+    // o es un símbolo o número residual de un icono
+    if (
+      /[^a-zA-ZáéíóúÁÉÍÓÚñÑ']/i.test(first) ||
+      (first.length === 1 && !['A', 'Y', 'E', 'O', 'U'].includes(first.toUpperCase()))
+    ) {
+      tokens.shift();
+    } else {
+      break;
     }
-    return '';
-  }).trim();
+  }
 
-  return cleaned;
+  return tokens.join(' ').trim();
 }
 
 // Normalización suave de sustituciones comunes de OCR sin destruir dígitos necesarios
@@ -121,7 +127,7 @@ export function analyzeQuestsFromText(
     }
 
     const candidates = [cleanedLine, ...generateOcrVariants(cleanedLine)];
-    let matchedInLine = false;
+    let bestLineMatch: { quest: Quest; confidence: number } | null = null;
 
     for (const cand of candidates) {
       const results = fuse.search(cand);
@@ -130,25 +136,28 @@ export function analyzeQuestsFromText(
         const score = topMatch.score ?? 1;
         const confidence = Math.round((1 - score) * 100);
 
-        if (confidence >= 55) {
-          matchedInLine = true;
-          const existing = matchedQuestsMap.get(topMatch.item.id);
-          if (!existing || existing.confidence < confidence) {
-            matchedQuestsMap.set(topMatch.item.id, {
-              quest: topMatch.item,
-              confidence,
-              matchedText: cleanedLine,
-            });
+        if (confidence >= 60) {
+          if (!bestLineMatch || confidence > bestLineMatch.confidence) {
+            bestLineMatch = { quest: topMatch.item, confidence };
           }
-          if (confidence >= 90) {
+          if (confidence >= 95) {
             break;
           }
         }
       }
     }
 
-    // Si la línea tiene formato de título (varias palabras o letras en mayúsculas) y no se asoció a nada
-    if (!matchedInLine && cleanedLine.length >= 4 && !unmatchedCandidateLines.includes(cleanedLine)) {
+    if (bestLineMatch) {
+      const existing = matchedQuestsMap.get(bestLineMatch.quest.id);
+      if (!existing || existing.confidence < bestLineMatch.confidence) {
+        matchedQuestsMap.set(bestLineMatch.quest.id, {
+          quest: bestLineMatch.quest,
+          confidence: bestLineMatch.confidence,
+          matchedText: cleanedLine,
+        });
+      }
+    } else if (cleanedLine.length >= 4 && !unmatchedCandidateLines.includes(cleanedLine)) {
+      // Si la línea tiene formato de título y no se asoció a nada
       unmatchedCandidateLines.push(cleanedLine);
     }
   }

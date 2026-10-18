@@ -82,6 +82,7 @@ export const usePlayerStore = create<PlayerState>()(
           },
           vendor: vendor || 'Other',
           requiredLevel: 1,
+          isTrial: false,
           objectives: [
             {
               id: `${id}_obj_1`,

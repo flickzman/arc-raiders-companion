@@ -11,9 +11,10 @@ export interface ScanResult {
 export async function scanImageWithTesseract(
   imageSource: string | File | Blob,
   onProgress?: (progress: number, status: string) => void,
-  extraQuests: Quest[] = []
+  extraQuests: Quest[] = [],
+  preferredLanguage: 'es' | 'en' = 'es'
 ): Promise<ScanResult> {
-  onProgress?.(10, 'Iniciando motor OCR...');
+  onProgress?.(10, preferredLanguage === 'es' ? 'Iniciando motor OCR bilingüe (ES/EN)...' : 'Starting bilingual OCR engine (EN/ES)...');
 
   let processedImage: string | File | Blob = imageSource;
 
@@ -85,9 +86,11 @@ export async function scanImageWithTesseract(
     processedImage = imageSource;
   }
 
-  onProgress?.(30, 'Cargando modelos de reconocimiento...');
+  onProgress?.(30, preferredLanguage === 'es' ? 'Cargando modelos español e inglés...' : 'Loading Spanish & English models...');
 
-  const worker = await createWorker('eng');
+  // Cargar modelos combinados de español e inglés para máxima precisión con tildes y caracteres especiales
+  const ocrLanguages = preferredLanguage === 'es' ? ['spa', 'eng'] : ['eng', 'spa'];
+  const worker = await createWorker(ocrLanguages);
 
   try {
     onProgress?.(50, 'Escaneando texto de pantalla...');

@@ -57,6 +57,7 @@ export const QuestSchema = z.object({
   description: LocalizedStringSchema.optional(),
   vendor: VendorSchema,
   requiredLevel: z.number().optional(),
+  isTrial: z.boolean().optional().default(false),
   objectives: z.array(ObjectiveSchema),
   itemsToBring: z.array(z.object({
     itemId: z.string(),
