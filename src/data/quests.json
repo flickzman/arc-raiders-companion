@@ -275,7 +275,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_mountain_watchtower"
       },
       {
         "id": "obj_a_first_foothold_2",
@@ -363,7 +364,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_arrival_terminal"
       },
       {
         "id": "obj_a_lay_of_the_land_3",
@@ -597,7 +599,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_galleria"
       },
       {
         "id": "obj_a_reveal_in_ruins_2",
@@ -736,7 +739,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_north_ridge"
       }
     ],
     "itemsToBring": [],
@@ -785,7 +789,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_south_swamp"
       },
       {
         "id": "obj_a_toxic_trail_3",
@@ -847,7 +852,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_highway_overpass"
       },
       {
         "id": "obj_a_warm_place_to_rest_2",
@@ -933,7 +939,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_control_tower_a6"
       }
     ],
     "itemsToBring": [],
@@ -1848,7 +1855,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_north_ridge"
       },
       {
         "id": "obj_celeste_s_journals_3",
@@ -1897,7 +1905,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_harbor_control"
       },
       {
         "id": "obj_celeste_s_teenage_rebellion_2",
@@ -1909,7 +1918,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_harbor_control"
       },
       {
         "id": "obj_celeste_s_teenage_rebellion_4",
@@ -2293,7 +2303,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_parking_garage"
       },
       {
         "id": "obj_combat_recon_2",
@@ -2821,7 +2832,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_radar_dish"
       },
       {
         "id": "obj_dust_on_the_wires_2",
@@ -2918,7 +2930,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_north_ridge"
       },
       {
         "id": "obj_echoes_of_victory_ridge_2",
@@ -3165,7 +3178,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_perimeter_dunes"
       },
       {
         "id": "obj_eyes_on_the_prize_2",
@@ -3249,7 +3263,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_power_plant"
       }
     ],
     "itemsToBring": [],
@@ -3461,7 +3476,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_galleria"
       }
     ],
     "itemsToBring": [],
@@ -3809,7 +3825,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_collapsed_highway"
       }
     ],
     "itemsToBring": [],
@@ -3992,7 +4009,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_highway_overpass"
       },
       {
         "id": "obj_life_of_a_pharmacist_2",
@@ -4211,7 +4229,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_galleria"
       },
       {
         "id": "obj_marked_for_death_2",
@@ -4333,7 +4352,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_galleria"
       },
       {
         "id": "obj_medical_merchandise_3",
@@ -4544,7 +4564,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_medical_research"
       },
       {
         "id": "obj_on_deaf_ears_3",
@@ -4646,7 +4667,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_departure_terminal"
       },
       {
         "id": "obj_on_the_map_5",
@@ -4708,7 +4730,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_power_plant"
       },
       {
         "id": "obj_our_presence_up_there_3",
@@ -4990,7 +5013,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_radar_dish"
       },
       {
         "id": "obj_power_out_2",
@@ -5215,7 +5239,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_barren_clearing"
       }
     ],
     "itemsToBring": [],
@@ -5726,7 +5751,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_south_swamp"
       },
       {
         "id": "obj_source_of_the_contamination_3",
@@ -5924,7 +5950,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_north_ridge"
       },
       {
         "id": "obj_straight_record_2",
@@ -5948,7 +5975,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_power_plant"
       },
       {
         "id": "obj_straight_record_4",
@@ -5960,7 +5988,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_power_plant"
       },
       {
         "id": "obj_straight_record_5",
@@ -5972,7 +6001,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_power_plant"
       },
       {
         "id": "obj_straight_record_6",
@@ -6064,7 +6094,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_radar_dish"
       },
       {
         "id": "obj_switching_the_supply_2",
@@ -6127,7 +6158,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_radar_dish"
       },
       {
         "id": "obj_taking_stock_3",
@@ -6151,7 +6183,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_galleria"
       }
     ],
     "itemsToBring": [],
@@ -6383,7 +6416,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_galleria"
       },
       {
         "id": "obj_the_league_5",
@@ -6444,7 +6478,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_north_ridge"
       },
       {
         "id": "obj_the_major_s_footlocker_2",
@@ -7150,7 +7185,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_control_tower_a6"
       },
       {
         "id": "obj_turnabout_2",
@@ -7312,7 +7348,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_controlled_access"
       },
       {
         "id": "obj_untended_garden_3",
@@ -7361,7 +7398,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_control_tower_a6"
       },
       {
         "id": "obj_waking_the_grid_2",
@@ -7424,7 +7462,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_controlled_access"
       },
       {
         "id": "obj_water_troubles_2",
@@ -7652,7 +7691,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_barren_clearing"
       },
       {
         "id": "obj_with_a_trace_3",

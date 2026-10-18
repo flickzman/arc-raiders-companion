@@ -112,22 +112,10 @@
         "objectiveDescription": "Locate Raider Flag"
       },
       {
-        "questId": "quest_a_symbol_of_unification",
-        "questTitle": "A Symbol of Unification",
-        "objectiveId": "obj_a_symbol_of_unification_3",
-        "objectiveDescription": "Hoist the flag on the small platform overlooking the Red Lake"
-      },
-      {
         "questId": "quest_a_toxic_trail_151",
         "questTitle": "A Toxic Trail",
         "objectiveId": "obj_a_toxic_trail_1",
         "objectiveDescription": "Return to the water intake below the Water Treatment Control building"
-      },
-      {
-        "questId": "quest_a_toxic_trail_151",
-        "questTitle": "A Toxic Trail",
-        "objectiveId": "obj_a_toxic_trail_2",
-        "objectiveDescription": "Search the swamp for traces of the barrel's origins"
       },
       {
         "questId": "quest_a_toxic_trail_151",
@@ -186,20 +174,8 @@
       {
         "questId": "quest_celeste_s_journals",
         "questTitle": "Celeste's Journals",
-        "objectiveId": "obj_celeste_s_journals_2",
-        "objectiveDescription": "Retrieve Celeste's Journals from the northern outpost overlooking the Red Lakes"
-      },
-      {
-        "questId": "quest_celeste_s_journals",
-        "questTitle": "Celeste's Journals",
         "objectiveId": "obj_celeste_s_journals_3",
         "objectiveDescription": "Deliver 2 Celeste's Journal"
-      },
-      {
-        "questId": "quest_echoes_of_victory_ridge",
-        "questTitle": "Echoes Of Victory Ridge",
-        "objectiveId": "obj_echoes_of_victory_ridge_1",
-        "objectiveDescription": "Reach Victory Ridge"
       },
       {
         "questId": "quest_echoes_of_victory_ridge",
@@ -230,12 +206,6 @@
         "questTitle": "Flickering Threat",
         "objectiveId": "obj_flickering_threat_3",
         "objectiveDescription": "Find the Ventilation Shaft"
-      },
-      {
-        "questId": "quest_flickering_threat",
-        "questTitle": "Flickering Threat",
-        "objectiveId": "obj_flickering_threat_4",
-        "objectiveDescription": "Enable the power via the power switch underneath the stairs"
       },
       {
         "questId": "quest_greasing_her_palms",
@@ -270,12 +240,6 @@
       {
         "questId": "quest_our_presence_up_there",
         "questTitle": "Our Presence up There",
-        "objectiveId": "obj_our_presence_up_there_2",
-        "objectiveDescription": "Find and flip the power switch"
-      },
-      {
-        "questId": "quest_our_presence_up_there",
-        "questTitle": "Our Presence up There",
         "objectiveId": "obj_our_presence_up_there_3",
         "objectiveDescription": "Complete the antenna installation on the roof"
       },
@@ -288,44 +252,14 @@
       {
         "questId": "quest_source_of_the_contamination",
         "questTitle": "Source Of The Contamination",
-        "objectiveId": "obj_source_of_the_contamination_2",
-        "objectiveDescription": "Search for the Flood Spill Intake near the Swamp"
-      },
-      {
-        "questId": "quest_source_of_the_contamination",
-        "questTitle": "Source Of The Contamination",
         "objectiveId": "obj_source_of_the_contamination_3",
         "objectiveDescription": "Investigate any suspicious objects"
       },
       {
         "questId": "quest_straight_record",
         "questTitle": "Straight Record",
-        "objectiveId": "obj_straight_record_1",
-        "objectiveDescription": "Reach Victory Ridge"
-      },
-      {
-        "questId": "quest_straight_record",
-        "questTitle": "Straight Record",
         "objectiveId": "obj_straight_record_2",
         "objectiveDescription": "Find the old EMP trap"
-      },
-      {
-        "questId": "quest_straight_record",
-        "questTitle": "Straight Record",
-        "objectiveId": "obj_straight_record_3",
-        "objectiveDescription": "Disable the first power switch"
-      },
-      {
-        "questId": "quest_straight_record",
-        "questTitle": "Straight Record",
-        "objectiveId": "obj_straight_record_4",
-        "objectiveDescription": "Disable the second power switch"
-      },
-      {
-        "questId": "quest_straight_record",
-        "questTitle": "Straight Record",
-        "objectiveId": "obj_straight_record_5",
-        "objectiveDescription": "Disable the third power switch"
       },
       {
         "questId": "quest_straight_record",
@@ -344,12 +278,6 @@
         "questTitle": "The League",
         "objectiveId": "obj_the_league_3",
         "objectiveDescription": "On Dam Battlegrounds, photograph the goal by the Water Towers"
-      },
-      {
-        "questId": "quest_the_major_s_footlocker",
-        "questTitle": "The Major's Footlocker",
-        "objectiveId": "obj_the_major_s_footlocker_1",
-        "objectiveDescription": "Search for Major Aiva's mementos in the apartments northwest of The Dam"
       },
       {
         "questId": "quest_the_major_s_footlocker",
@@ -414,20 +342,8 @@
       {
         "questId": "quest_untended_garden",
         "questTitle": "Untended Garden",
-        "objectiveId": "obj_untended_garden_2",
-        "objectiveDescription": "Access the data archive in one of the domes"
-      },
-      {
-        "questId": "quest_untended_garden",
-        "questTitle": "Untended Garden",
         "objectiveId": "obj_untended_garden_3",
         "objectiveDescription": "Upload the data to the computer terminal in any Field Depot"
-      },
-      {
-        "questId": "quest_water_troubles",
-        "questTitle": "Water Troubles",
-        "objectiveId": "obj_water_troubles_1",
-        "objectiveDescription": "Locate the Flood Access Tunnel under the Red Lake Balcony"
       },
       {
         "questId": "quest_water_troubles",
@@ -516,20 +432,8 @@
       {
         "questId": "quest_reveal_in_ruins",
         "questTitle": "A Reveal in Ruins",
-        "objectiveId": "obj_a_reveal_in_ruins_1",
-        "objectiveDescription": "Search for an ESR Analyzer inside any pharmacy in Buried City"
-      },
-      {
-        "questId": "quest_reveal_in_ruins",
-        "questTitle": "A Reveal in Ruins",
         "objectiveId": "obj_a_reveal_in_ruins_2",
         "objectiveDescription": "Deliver the ESR Analyzer to Lance"
-      },
-      {
-        "questId": "quest_a_warm_place_to_rest",
-        "questTitle": "A Warm Place To Rest",
-        "objectiveId": "obj_a_warm_place_to_rest_1",
-        "objectiveDescription": "Locate the Abandoned Highway Camp"
       },
       {
         "questId": "quest_a_warm_place_to_rest",
@@ -584,12 +488,6 @@
         "questTitle": "Building A Library",
         "objectiveId": "obj_building_a_library_5",
         "objectiveDescription": "Deliver 3 books to Apollo"
-      },
-      {
-        "questId": "quest_combat_recon_142",
-        "questTitle": "Combat Recon",
-        "objectiveId": "obj_combat_recon_1",
-        "objectiveDescription": "Scope out a cover spot in the Parking Garage staircases"
       },
       {
         "questId": "quest_combat_recon_142",
@@ -660,20 +558,8 @@
       {
         "questId": "quest_eyes_on_the_prize",
         "questTitle": "Eyes On The Prize",
-        "objectiveId": "obj_eyes_on_the_prize_1",
-        "objectiveDescription": "Find the secluded roof terrace south-west of the Southern Station, look for blue tarps"
-      },
-      {
-        "questId": "quest_eyes_on_the_prize",
-        "questTitle": "Eyes On The Prize",
         "objectiveId": "obj_eyes_on_the_prize_2",
         "objectiveDescription": "Rewire the solar panel using 3 Wires"
-      },
-      {
-        "questId": "quest_greasing_her_palms",
-        "questTitle": "Greasing Her Palms",
-        "objectiveId": "obj_greasing_her_palms_3",
-        "objectiveDescription": "On Buried City, visit the barricaded area on floor 6 of the Space Travel Building"
       },
       {
         "questId": "quest_industrial_espionage",
@@ -692,12 +578,6 @@
         "questTitle": "Industrial Espionage",
         "objectiveId": "obj_industrial_espionage_3",
         "objectiveDescription": "Plant a bug on the weapon cache"
-      },
-      {
-        "questId": "quest_life_of_a_pharmacist",
-        "questTitle": "Life Of A Pharmacist",
-        "objectiveId": "obj_life_of_a_pharmacist_1",
-        "objectiveDescription": "Find the Arbusto Farmacia by the collapsed highway"
       },
       {
         "questId": "quest_life_of_a_pharmacist",
@@ -750,12 +630,6 @@
       {
         "questId": "quest_marked_for_death",
         "questTitle": "Marked For Death",
-        "objectiveId": "obj_marked_for_death_1",
-        "objectiveDescription": "Reach the Su Durante Warehouses in the Outskirts in Buried City"
-      },
-      {
-        "questId": "quest_marked_for_death",
-        "questTitle": "Marked For Death",
         "objectiveId": "obj_marked_for_death_2",
         "objectiveDescription": "Search for Tian Wen's cache near the Warehouses"
       },
@@ -776,24 +650,6 @@
         "questTitle": "Market Correction",
         "objectiveId": "obj_market_correction_2",
         "objectiveDescription": "Sabotage the cache"
-      },
-      {
-        "questId": "quest_medical_merchandise",
-        "questTitle": "Medical Merchandise",
-        "objectiveId": "obj_medical_merchandise_2",
-        "objectiveDescription": "Search 3 containers in the Hospital on Buried City"
-      },
-      {
-        "questId": "quest_taking_stock_121",
-        "questTitle": "Taking Stock",
-        "objectiveId": "obj_taking_stock_4",
-        "objectiveDescription": "On Buried City, ping a Bastion"
-      },
-      {
-        "questId": "quest_the_league_139",
-        "questTitle": "The League",
-        "objectiveId": "obj_the_league_4",
-        "objectiveDescription": "On Buried City, photograph the football magazines in any kiosk"
       },
       {
         "questId": "quest_the_root_of_the_matter",
@@ -932,12 +788,6 @@
       {
         "questId": "quest_a_lay_of_the_land",
         "questTitle": "A Lay Of The Land",
-        "objectiveId": "obj_a_lay_of_the_land_2",
-        "objectiveDescription": "Find the shipping notes in the foreman's office"
-      },
-      {
-        "questId": "quest_a_lay_of_the_land",
-        "questTitle": "A Lay Of The Land",
         "objectiveId": "obj_a_lay_of_the_land_4",
         "objectiveDescription": "Deliver 1 LiDAR Scanner to Shani"
       },
@@ -946,18 +796,6 @@
         "questTitle": "A Wrench in the Works",
         "objectiveId": "obj_a_wrench_in_the_works_1",
         "objectiveDescription": "Search the buses near the western gate"
-      },
-      {
-        "questId": "quest_a_wrench_in_the_works",
-        "questTitle": "A Wrench in the Works",
-        "objectiveId": "obj_a_wrench_in_the_works_2",
-        "objectiveDescription": "Locate the stash of sabotage supplies hidden at the Water Towers"
-      },
-      {
-        "questId": "quest_dust_on_the_wires_130",
-        "questTitle": "Dust on the Wires",
-        "objectiveId": "obj_dust_on_the_wires_1",
-        "objectiveDescription": "Vist any Field Depot on the eastern side of the Spaceport"
       },
       {
         "questId": "quest_dust_on_the_wires_130",
@@ -992,20 +830,8 @@
       {
         "questId": "quest_on_the_map_145",
         "questTitle": "On The Map",
-        "objectiveId": "obj_on_the_map_4",
-        "objectiveDescription": "Transmit your location from the roof of the Container Storage building"
-      },
-      {
-        "questId": "quest_on_the_map_145",
-        "questTitle": "On The Map",
         "objectiveId": "obj_on_the_map_5",
         "objectiveDescription": "Find the container covered in tarp, and mark it"
-      },
-      {
-        "questId": "quest_power_out",
-        "questTitle": "Power Out",
-        "objectiveId": "obj_power_out_1",
-        "objectiveDescription": "Find the Electrical Substation south of the Spaceport"
       },
       {
         "questId": "quest_power_out",
@@ -1032,18 +858,6 @@
         "objectiveDescription": "Search for the records"
       },
       {
-        "questId": "quest_switching_the_supply",
-        "questTitle": "Switching The Supply",
-        "objectiveId": "obj_switching_the_supply_1",
-        "objectiveDescription": "Find the tunnels under the Spaceport"
-      },
-      {
-        "questId": "quest_taking_stock_121",
-        "questTitle": "Taking Stock",
-        "objectiveId": "obj_taking_stock_2",
-        "objectiveDescription": "On Spaceport, take a photo of a Baron Husk"
-      },
-      {
         "questId": "quest_the_stench_of_corruption_152",
         "questTitle": "The Stench Of Corruption",
         "objectiveId": "obj_the_stench_of_corruption_2",
@@ -1064,20 +878,8 @@
       {
         "questId": "quest_turnabout",
         "questTitle": "Turnabout",
-        "objectiveId": "obj_turnabout_1",
-        "objectiveDescription": "Go to the North Trench Tower (Key is Required)"
-      },
-      {
-        "questId": "quest_turnabout",
-        "questTitle": "Turnabout",
         "objectiveId": "obj_turnabout_2",
         "objectiveDescription": "Locate and upload the blackmail files to Celeste"
-      },
-      {
-        "questId": "quest_waking_the_grid_136",
-        "questTitle": "Waking the Grid",
-        "objectiveId": "obj_waking_the_grid_1",
-        "objectiveDescription": "Activate the security sensors in one of the Guard Towers"
       },
       {
         "questId": "quest_worth_your_salt",
@@ -1222,12 +1024,6 @@
       {
         "questId": "quest_a_first_foothold",
         "questTitle": "A First Foothold",
-        "objectiveId": "obj_a_first_foothold_1",
-        "objectiveDescription": "Stabilize the observation deck near the Ridgeline"
-      },
-      {
-        "questId": "quest_a_first_foothold",
-        "questTitle": "A First Foothold",
         "objectiveId": "obj_a_first_foothold_4",
         "objectiveDescription": "Nail down the roof plates on the Raider structure near Trapper's Glade"
       },
@@ -1274,28 +1070,10 @@
         "objectiveDescription": "Photograph the abandoned housing project"
       },
       {
-        "questId": "quest_keeping_an_eye_out",
-        "questTitle": "Keeping an Eye Out",
-        "objectiveId": "obj_keeping_an_eye_out_2",
-        "objectiveDescription": "Find Bilguun's shelter, and search for any clues of his presence"
-      },
-      {
         "questId": "quest_outstanding_balance_134",
         "questTitle": "Outstanding Balance",
         "objectiveId": "obj_outstanding_balance_3",
         "objectiveDescription": "Deliver Dodger's Note to Tian Wen"
-      },
-      {
-        "questId": "quest_reduced_to_rubble",
-        "questTitle": "Reduced to Rubble",
-        "objectiveId": "obj_reduced_to_rubble_4",
-        "objectiveDescription": "Investigate the unknown ARC machines"
-      },
-      {
-        "questId": "quest_with_a_trace",
-        "questTitle": "With A Trace",
-        "objectiveId": "obj_with_a_trace_2",
-        "objectiveDescription": "Find signs of who brought down the ARC machines"
       },
       {
         "questId": "quest_with_a_trace",
@@ -1426,18 +1204,6 @@
         "questTitle": "Celeste's Childhood Drawings",
         "objectiveId": "obj_celeste_s_childhood_drawings_4",
         "objectiveDescription": "Find the drawing at the Quay"
-      },
-      {
-        "questId": "quest_celeste_s_teenage_rebellion_127",
-        "questTitle": "Celeste's Teenage Rebellion",
-        "objectiveId": "obj_celeste_s_teenage_rebellion_1",
-        "objectiveDescription": "Reach the lookout tower on Mulatierra Hill"
-      },
-      {
-        "questId": "quest_celeste_s_teenage_rebellion_127",
-        "questTitle": "Celeste's Teenage Rebellion",
-        "objectiveId": "obj_celeste_s_teenage_rebellion_2",
-        "objectiveDescription": "Transmit the location from the top of the tower"
       },
       {
         "questId": "quest_celeste_s_teenage_rebellion_127",
@@ -1638,12 +1404,6 @@
         "questTitle": "Last Entry",
         "objectiveId": "obj_last_entry_5",
         "objectiveDescription": "Bring the Official Shutdown Documentation to Shani"
-      },
-      {
-        "questId": "quest_on_deaf_ears_141",
-        "questTitle": "On Deaf Ears",
-        "objectiveId": "obj_on_deaf_ears_2",
-        "objectiveDescription": "Find where the researcher held their lecture, and access their notes"
       },
       {
         "questId": "quest_snap_and_salvage",

@@ -30,6 +30,7 @@ export interface OptimizedRoute {
   steps: RouteStep[];
   skippedObjectives: SkippedObjective[];
   transitObjectives: { quest: Quest; objective: Objective }[];
+  unmappedSectorObjectives: { quest: Quest; objective: Objective }[];
   totalDistance: number;
   dangerRating: 'low' | 'medium' | 'high';
   estimatedDurationMinutes: number;
@@ -72,7 +73,8 @@ export function optimizeRaidRoute(
   activeQuests: Quest[],
   spawnPoiId: string | null,
   mode: 'rat' | 'sweep',
-  disabledExtractionIds: string[] = []
+  disabledExtractionIds: string[] = [],
+  objectivePoiOverrides: Record<string, string> = {}
 ): OptimizedRoute {
   // 1. Encuentra punto de spawn
   const spawnPoi =
@@ -90,6 +92,7 @@ export function optimizeRaidRoute(
     : map.pois.filter((p) => p.isExtractionPoint);
 
   const transitObjectives: { quest: Quest; objective: Objective }[] = [];
+  const unmappedSectorObjectives: { quest: Quest; objective: Objective }[] = [];
 
   // 2. Resolver alternativas (OR) para cada objetivo activo
   // Un objetivo puede tener un poiId y varios alternativePoiIds
@@ -110,23 +113,27 @@ export function optimizeRaidRoute(
         return;
       }
 
-      // Candidatos válidos de POIs para este objetivo
-      const candidateIds: string[] = [];
-      if (obj.poiId) candidateIds.push(obj.poiId);
-      if (obj.alternativePoiIds) {
-        obj.alternativePoiIds.forEach((altId) => {
-          if (!candidateIds.includes(altId)) candidateIds.push(altId);
-        });
-      }
+      // Si pertenece a este mapa específico
+      if (obj.mapId === map.id) {
+        // Candidatos válidos de POIs para este objetivo
+        const candidateIds: string[] = [];
+        const effectivePoiId = objectivePoiOverrides[obj.id] || obj.poiId;
+        if (effectivePoiId) candidateIds.push(effectivePoiId);
+        if (obj.alternativePoiIds) {
+          obj.alternativePoiIds.forEach((altId) => {
+            if (!candidateIds.includes(altId)) candidateIds.push(altId);
+          });
+        }
 
-      // Filtrar los que pertenecen a este mapa
-      const candidatePois = candidateIds
-        .map((id) => map.pois.find((p) => p.id === id))
-        .filter((p): p is POI => !!p);
+        // Filtrar los que pertenecen a este mapa
+        const candidatePois = candidateIds
+          .map((id) => map.pois.find((p) => p.id === id))
+          .filter((p): p is POI => !!p);
 
-      if (candidatePois.length === 0) {
-        return; // No pertenece a este mapa
-      }
+        if (candidatePois.length === 0) {
+          unmappedSectorObjectives.push({ quest: q, objective: obj });
+          return;
+        }
 
       if (candidatePois.length === 1) {
         resolvedObjectives.push({
@@ -162,8 +169,9 @@ export function optimizeRaidRoute(
           dependsOnObjectiveId: obj.dependsOnObjectiveId,
         });
       }
-    });
+    }
   });
+});
 
   // 3. Agrupar objetivos por su POI elegido
   interface PoiCluster {
@@ -374,6 +382,7 @@ export function optimizeRaidRoute(
     steps,
     skippedObjectives,
     transitObjectives,
+    unmappedSectorObjectives,
     totalDistance: Math.round(cumulativeDist),
     dangerRating,
     estimatedDurationMinutes,

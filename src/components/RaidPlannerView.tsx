@@ -37,6 +37,9 @@ export const RaidPlannerView: React.FC = () => {
     completedObjectiveIds,
     toggleCompletedObjective,
     customQuests,
+    objectivePoiOverrides,
+    setObjectivePoiOverride,
+    clearObjectivePoiOverride,
   } = usePlayerStore();
 
   const [selectedPoi, setSelectedPoi] = useState<POI | null>(null);
@@ -88,9 +91,10 @@ export const RaidPlannerView: React.FC = () => {
       activeQuests,
       spawnPoiId,
       routeMode,
-      disabledExtractionIds
+      disabledExtractionIds,
+      objectivePoiOverrides
     );
-  }, [selectedMap, activeQuests, spawnPoiId, routeMode, disabledExtractionIds]);
+  }, [selectedMap, activeQuests, spawnPoiId, routeMode, disabledExtractionIds, objectivePoiOverrides]);
 
   // Step activo en In-Raid Focus HUD
   const activeStep =
@@ -813,6 +817,86 @@ export const RaidPlannerView: React.FC = () => {
               </li>
             ))}
           </ul>
+        </div>
+      )}
+
+      {/* 7. Objetivos Activos en Este Sector Pendientes de Ubicar */}
+      {optimizedRoute.unmappedSectorObjectives.length > 0 && (
+        <div className="bg-amber-950/20 border border-amber-800/40 rounded-xl p-4 text-xs font-mono space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 font-bold uppercase text-amber-400">
+              <MapPin className="w-4 h-4 text-amber-400" />
+              <span>
+                {language === 'es'
+                  ? `Objetivos de ${getLocalized(selectedMap.name, language)} sin POI fijado (${optimizedRoute.unmappedSectorObjectives.length})`
+                  : `Objectives in ${getLocalized(selectedMap.name, language)} needing POI (${optimizedRoute.unmappedSectorObjectives.length})`}
+              </span>
+            </div>
+            <span className="text-[10px] text-neutral-400">
+              {language === 'es' ? 'Selecciona un POI para sumarlo a la ruta táctica' : 'Assign to POI to calculate into route'}
+            </span>
+          </div>
+
+          <div className="space-y-2">
+            {optimizedRoute.unmappedSectorObjectives.map(({ quest, objective }) => {
+              const currentOverride = objectivePoiOverrides[objective.id];
+
+              return (
+                <div
+                  key={objective.id}
+                  className="bg-neutral-900 border border-neutral-800 rounded-lg p-3 flex flex-col md:flex-row md:items-center justify-between gap-3"
+                >
+                  <div className="flex-1">
+                    <span className="text-[10px] font-bold text-amber-400 uppercase mr-1.5">
+                      [{quest.vendor}] {getLocalized(quest.title, language)}:
+                    </span>
+                    <span className="text-neutral-200 text-xs">
+                      {getLocalized(objective.description, language)}
+                    </span>
+                  </div>
+
+                  {/* Dropdown to assign to any POI of this map */}
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] text-neutral-400">
+                      {language === 'es' ? 'Ubicación:' : 'Location:'}
+                    </span>
+                    <select
+                      value={currentOverride || ''}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        if (val) {
+                          setObjectivePoiOverride(objective.id, val);
+                        } else {
+                          clearObjectivePoiOverride(objective.id);
+                        }
+                      }}
+                      className="bg-neutral-950 border border-neutral-700 hover:border-amber-500 rounded px-2 py-1 text-xs text-neutral-200 font-mono focus:outline-none focus:border-amber-400"
+                    >
+                      <option value="">
+                        {language === 'es' ? '-- Seleccionar edificio / POI --' : '-- Select building / POI --'}
+                      </option>
+                      {selectedMap.pois.map((poi) => (
+                        <option key={poi.id} value={poi.id}>
+                          {getLocalized(poi.name, language)} (X: {poi.coordinates.x}%, Y: {poi.coordinates.y}%)
+                        </option>
+                      ))}
+                    </select>
+
+                    {currentOverride && (
+                      <button
+                        type="button"
+                        onClick={() => clearObjectivePoiOverride(objective.id)}
+                        className="text-[10px] text-neutral-500 hover:text-red-400 px-1.5 py-0.5 rounded border border-neutral-800"
+                        title={language === 'es' ? 'Quitar asignación' : 'Clear assignment'}
+                      >
+                        ✕
+                      </button>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>
