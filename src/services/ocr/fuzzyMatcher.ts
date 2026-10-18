@@ -8,18 +8,35 @@ export interface MatchResult {
   matchedText: string;
 }
 
-// Limpia artefactos comunes de la interfaz de usuario de juegos (checkboxes, viñetas, contadores como 0/1)
-function cleanUiNoise(text: string): string {
-  return text
-    // Quitar cajas de selección [ ], [x], ( ), etc.
-    .replace(/^[\s\-_*•>#|[\](){}]*/g, '')
-    // Quitar numeración de inicio tipo "1.", "01 - ", etc.
-    .replace(/^\d+[\s.:)\-]+\s*/, '')
+export interface MatchAnalysis {
+  matches: MatchResult[];
+  unmatchedLines: string[];
+}
+
+// Limpia artefactos comunes de la interfaz de usuario de juegos y avatares de comerciantes
+export function cleanUiNoise(text: string): string {
+  let cleaned = text
+    // Normalizar apóstrofes curvados a estándar
+    .replace(/[\u2018\u2019\u201B]/g, "'")
     // Quitar contadores al final tipo "(0/1)", "0/3", "1/1", "[COMPLETED]"
     .replace(/[\(\[\{]?\s*\d+\s*\/\s*\d+\s*[\)\]\}]?$/g, '')
     // Quitar etiquetas comunes de estado
     .replace(/\b(COMPLETED|TRACKED|ACTIVE|PENDING|LOCKED)\b/gi, '')
+    // Quitar símbolos de viñetas, cajas [ ], flechas >, y avatares OCR (©, €, etc)
+    .replace(/^[\s>»•\-–—*#|[\]{}()©€$@%&~+!?,;:/\\0-9]*/g, '')
     .trim();
+
+  // Si aún empieza con un artefacto ruidoso corto del icono (ej. "+r, ", "f%7 ", "{© ")
+  // pero preservando palabras legítimas de inicio como "A ", "TO ", "THE "
+  cleaned = cleaned.replace(/^([a-z0-9%$!?,;:+_\-]{1,4}\s+)+/i, (match) => {
+    const trimmedUpper = match.trim().toUpperCase();
+    if (['A', 'TO', 'THE', 'AN', 'IN', 'ON', 'OFF'].includes(trimmedUpper)) {
+      return match;
+    }
+    return '';
+  }).trim();
+
+  return cleaned;
 }
 
 // Normalización suave de sustituciones comunes de OCR sin destruir dígitos necesarios
@@ -44,22 +61,39 @@ function generateOcrVariants(text: string): string[] {
     variants.push(stripped);
   }
 
+  // Si empieza por una letra suelta (ej. icono triangular de facción reconocido como "A ")
+  const strippedFirstLetter = text.replace(/^[a-zA-Z]\s+/, '').trim();
+  if (strippedFirstLetter.length >= 3 && !variants.includes(strippedFirstLetter)) {
+    variants.push(strippedFirstLetter);
+  }
+
   return variants;
 }
 
-export function matchQuestsFromText(
+const UI_HEADER_KEYWORDS = [
+  'QUESTS',
+  'CONTRACTS',
+  'LOGBOOK',
+  'CURRENT CONTRACTS',
+  'ACTIVE RAIDS',
+  'MISSIONS',
+  'OBJECTIVES',
+  'ASSIGNMENTS',
+];
+
+export function analyzeQuestsFromText(
   extractedText: string,
   extraQuests: Quest[] = []
-): MatchResult[] {
-  if (!extractedText.trim()) return [];
+): MatchAnalysis {
+  if (!extractedText.trim()) return { matches: [], unmatchedLines: [] };
 
   const pool = [...extraQuests, ...allQuests];
 
   // Configurar Fuse.js enfocado principalmente en títulos
   const fuse = new Fuse(pool, {
     keys: [
-      { name: 'title.en', weight: 0.7 },
-      { name: 'title.es', weight: 0.7 },
+      { name: 'title.en', weight: 0.8 },
+      { name: 'title.es', weight: 0.8 },
       { name: 'vendor', weight: 0.2 },
     ],
     includeScore: true,
@@ -74,13 +108,20 @@ export function matchQuestsFromText(
     .filter((l) => l.length >= 3);
 
   const matchedQuestsMap = new Map<string, MatchResult>();
+  const unmatchedCandidateLines: string[] = [];
 
   // 1. Probar línea por línea con limpieza de UI y variantes OCR
   for (const rawLine of rawLines) {
     const cleanedLine = cleanUiNoise(rawLine);
     if (cleanedLine.length < 3) continue;
 
+    // Ignorar encabezados evidentes de UI de juego
+    if (UI_HEADER_KEYWORDS.includes(cleanedLine.toUpperCase())) {
+      continue;
+    }
+
     const candidates = [cleanedLine, ...generateOcrVariants(cleanedLine)];
+    let matchedInLine = false;
 
     for (const cand of candidates) {
       const results = fuse.search(cand);
@@ -90,20 +131,29 @@ export function matchQuestsFromText(
         const confidence = Math.round((1 - score) * 100);
 
         if (confidence >= 55) {
+          matchedInLine = true;
           const existing = matchedQuestsMap.get(topMatch.item.id);
           if (!existing || existing.confidence < confidence) {
             matchedQuestsMap.set(topMatch.item.id, {
               quest: topMatch.item,
               confidence,
-              matchedText: rawLine,
+              matchedText: cleanedLine,
             });
+          }
+          if (confidence >= 90) {
+            break;
           }
         }
       }
     }
+
+    // Si la línea tiene formato de título (varias palabras o letras en mayúsculas) y no se asoció a nada
+    if (!matchedInLine && cleanedLine.length >= 4 && !unmatchedCandidateLines.includes(cleanedLine)) {
+      unmatchedCandidateLines.push(cleanedLine);
+    }
   }
 
-  // 2. Substring matching directo para atrapar misiones embebidas en bloques de texto
+  // 2. Substring matching directo para misiones que puedan estar en el texto completo
   const lowerExtracted = extractedText.toLowerCase();
   for (const quest of pool) {
     if (matchedQuestsMap.has(quest.id)) continue;
@@ -111,7 +161,6 @@ export function matchQuestsFromText(
     const enTitle = quest.title.en.toLowerCase();
     const esTitle = quest.title.es?.toLowerCase();
 
-    // Comprobación de título exacto contenido
     if (enTitle.length >= 4 && lowerExtracted.includes(enTitle)) {
       matchedQuestsMap.set(quest.id, {
         quest,
@@ -130,7 +179,23 @@ export function matchQuestsFromText(
     }
   }
 
-  // Devolver ordenados por mayor confianza
-  return Array.from(matchedQuestsMap.values()).sort((a, b) => b.confidence - a.confidence);
+  const matches = Array.from(matchedQuestsMap.values()).sort((a, b) => b.confidence - a.confidence);
+
+  // Filtrar de las candidatas aquellas que ya fueron mapeadas
+  const matchedTitles = new Set(matches.map((m) => m.quest.title.en.toLowerCase()));
+  const filteredUnmatched = unmatchedCandidateLines.filter(
+    (line) => !matchedTitles.has(line.toLowerCase())
+  );
+
+  return {
+    matches,
+    unmatchedLines: filteredUnmatched,
+  };
 }
 
+export function matchQuestsFromText(
+  extractedText: string,
+  extraQuests: Quest[] = []
+): MatchResult[] {
+  return analyzeQuestsFromText(extractedText, extraQuests).matches;
+}

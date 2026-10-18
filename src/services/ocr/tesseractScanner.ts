@@ -1,10 +1,11 @@
 import { createWorker } from 'tesseract.js';
-import { matchQuestsFromText, type MatchResult } from './fuzzyMatcher';
+import { analyzeQuestsFromText, type MatchResult } from './fuzzyMatcher';
 import { type Quest } from '../../data/schemas';
 
 export interface ScanResult {
   rawText: string;
   matches: MatchResult[];
+  unmatchedLines: string[];
 }
 
 export async function scanImageWithTesseract(
@@ -95,12 +96,15 @@ export async function scanImageWithTesseract(
     const rawText = ret.data.text || '';
 
     onProgress?.(85, 'Asociando con catálogo de misiones...');
-    const matches = matchQuestsFromText(rawText, extraQuests);
+    const analysis = analyzeQuestsFromText(rawText, extraQuests);
 
     onProgress?.(100, 'Completado');
-    return { rawText, matches };
+    return {
+      rawText,
+      matches: analysis.matches,
+      unmatchedLines: analysis.unmatchedLines,
+    };
   } finally {
     await worker.terminate();
   }
 }
-

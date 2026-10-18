@@ -76,4 +76,32 @@ describe('OCR Fuzzy Matching Service', () => {
     expect(matchedIds).toContain('quest_a_bad_feeling');
     expect(matches.length).toBeGreaterThanOrEqual(5);
   });
+
+  it('matches all quests from user actual screenshot OCR dump', () => {
+    const userScreenshotDump = `
+QUESTS
+> A DISTRACT AND DESTROY ARC ENEMIES
+> {© SIZING THINGS UP
+> +r, REDUCED TO RUBBLE
+> f%7 TO THE SKIES
+> €) CELESTE'S CHILDHOOD DRAWINGS
+> © BOARDING THE FRIGATE
+> €) MEDICAL MERCHANDISE
+>» +1; CLAMORING FOR ATTENTION
+    `;
+    const matches = matchQuestsFromText(userScreenshotDump);
+    const matchedIds = matches.map((m) => m.quest.id);
+
+    console.log('Detected from user dump:', matches.map(m => `${m.quest.title.en} (${m.confidence}%)`));
+
+    expect(matchedIds).toContain('quest_distract_and_destroy_arc_enemies');
+    expect(matchedIds).toContain('quest_sizing_things_up_118');
+    expect(matchedIds).toContain('quest_reduced_to_rubble');
+    expect(matchedIds).toContain('quest_to_the_skies_124');
+    expect(matchedIds).toContain('quest_celeste_s_childhood_drawings_120');
+    expect(matchedIds).toContain('quest_boarding_the_frigate_123');
+    expect(matchedIds).toContain('quest_medical_merchandise');
+    expect(matchedIds).toContain('quest_clamoring_for_attention_135');
+    expect(matches.length).toBe(8);
+  });
 });

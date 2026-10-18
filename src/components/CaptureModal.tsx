@@ -45,6 +45,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [rawOcrText, setRawOcrText] = useState<string | null>(null);
   const [showRawText, setShowRawText] = useState(false);
+  const [unmatchedLines, setUnmatchedLines] = useState<string[]>([]);
 
   // Resultados acumulados
   const [matches, setMatches] = useState<MatchResult[]>([]);
@@ -78,6 +79,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
     setMatches([]);
     setErrorMessage(null);
     setRawOcrText(null);
+    setUnmatchedLines([]);
     setIsScanning(false);
     onClose();
   };
@@ -88,6 +90,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
     setImagePreview(url);
     setErrorMessage(null);
     setRawOcrText(null);
+    setUnmatchedLines([]);
 
     // Si tiene configurada API key de Gemini, arranca Visión por IA por defecto
     // Si no, o si seleccionó Tesseract, arranca el motor correspondiente
@@ -127,6 +130,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
 
       setRawOcrText(result.rawText);
       mergeNewMatches(result.matches);
+      setUnmatchedLines(result.unmatchedLines);
 
       if (result.matches.length === 0) {
         setErrorMessage(
@@ -513,6 +517,40 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                     </div>
                   );
                 })}
+              </div>
+            </div>
+          )}
+
+          {/* Additional Unmatched Detected Titles with 1-Click Add */}
+          {unmatchedLines.length > 0 && (
+            <div className="bg-amber-950/25 border border-amber-800/40 rounded-xl p-3 space-y-2">
+              <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-amber-400">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>
+                  {language === 'es' ? 'Títulos adicionales detectados en pantalla:' : 'Additional titles detected on screen:'}
+                </span>
+              </div>
+              <p className="text-[10px] font-mono text-neutral-400">
+                {language === 'es'
+                  ? 'Si alguna no está en el catálogo oficial, añádela como misión con un solo clic:'
+                  : 'If any is a new or uncataloged contract, click to add it instantly:'}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {unmatchedLines.map((line, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => {
+                      const newQ = addCustomQuest(line);
+                      mergeNewMatches([{ quest: newQ, confidence: 100, matchedText: line }]);
+                      setUnmatchedLines((prev) => prev.filter((l) => l !== line));
+                    }}
+                    className="px-2.5 py-1 rounded-lg bg-neutral-900 border border-neutral-700 hover:border-amber-500 text-xs font-mono text-neutral-200 hover:text-amber-300 flex items-center gap-1.5 transition-all shadow-sm"
+                  >
+                    <PlusCircle className="w-3 h-3 text-amber-400" />
+                    <span>+ {line}</span>
+                  </button>
+                ))}
               </div>
             </div>
           )}

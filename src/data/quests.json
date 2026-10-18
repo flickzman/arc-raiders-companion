@@ -1,5 +1,38 @@
 [
   {
+    "id": "quest_distract_and_destroy_arc_enemies",
+    "title": {
+      "en": "Distract and Destroy ARC Enemies",
+      "es": "Distraer y Destruir Enemigos ARC"
+    },
+    "description": {
+      "en": "Engage ARC machines in combat, cause diversions and neutralize hostile machines.",
+      "es": "Entabla combate contra máquinas ARC, crea distracciones y neutralízalas."
+    },
+    "vendor": "Other",
+    "requiredLevel": 1,
+    "objectives": [
+      {
+        "id": "obj_distract_and_destroy_1",
+        "description": {
+          "en": "Distract and destroy ARC enemies",
+          "es": "Distrae y destruye enemigos ARC"
+        },
+        "type": "combat",
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 5
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1000,
+      "currency": 2500,
+      "items": []
+    }
+  },
+  {
     "id": "quest_a_bad_feeling",
     "title": {
       "en": "A Bad Feeling",
