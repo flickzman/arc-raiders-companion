@@ -24,12 +24,14 @@ interface CaptureModalProps {
   isOpen: boolean;
   onClose: () => void;
   initialImageBlob?: Blob | null;
+  onApplied?: () => void;
 }
 
 export const CaptureModal: React.FC<CaptureModalProps> = ({
   isOpen,
   onClose,
   initialImageBlob,
+  onApplied,
 }) => {
   const { language, addActiveQuests, geminiApiKey, setGeminiApiKey, customQuests, addCustomQuest } =
     usePlayerStore();
@@ -188,6 +190,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
   const handleApplyQuests = () => {
     if (selectedQuestIds.length > 0) {
       addActiveQuests(selectedQuestIds);
+      onApplied?.();
     }
     handleClose();
   };
