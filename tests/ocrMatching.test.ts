@@ -51,4 +51,29 @@ describe('OCR Fuzzy Matching Service', () => {
 
     expect(matches.length).toBe(0);
   });
+
+  it('correctly detects 10 collapsed quests from Arc Raiders logbook screen capture', () => {
+    const collapsedLogbookDump = `
+      LOGBOOK - ACTIVE CONTRACTS
+      [x] Off The Radar - Celeste (0/1)
+      [ ] A Balanced Harvest - Celeste
+      [ ] Hatch Repairs (0/1)
+      [x] A Rising Tide - Lance [TRACKED]
+      [ ] A Bad Feeling
+      > Spreading The Word
+      [ ] The Old Ways (0/1)
+      [x] Eyes In The Sky
+      [ ] Industrial Espionage
+      [ ] Buried Treasures (0/1)
+    `;
+    const matches = matchQuestsFromText(collapsedLogbookDump);
+    const matchedIds = matches.map((m) => m.quest.id);
+
+    expect(matchedIds).toContain('quest_off_the_radar');
+    expect(matchedIds).toContain('quest_a_balanced_harvest');
+    expect(matchedIds).toContain('quest_hatch_repairs');
+    expect(matchedIds).toContain('quest_rising_tide');
+    expect(matchedIds).toContain('quest_a_bad_feeling');
+    expect(matches.length).toBeGreaterThanOrEqual(5);
+  });
 });

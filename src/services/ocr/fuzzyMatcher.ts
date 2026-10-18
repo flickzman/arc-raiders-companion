@@ -8,6 +8,45 @@ export interface MatchResult {
   matchedText: string;
 }
 
+// Limpia artefactos comunes de la interfaz de usuario de juegos (checkboxes, viñetas, contadores como 0/1)
+function cleanUiNoise(text: string): string {
+  return text
+    // Quitar cajas de selección [ ], [x], ( ), etc.
+    .replace(/^[\s\-_*•>#|[\](){}]*/g, '')
+    // Quitar numeración de inicio tipo "1.", "01 - ", etc.
+    .replace(/^\d+[\s.:)\-]+\s*/, '')
+    // Quitar contadores al final tipo "(0/1)", "0/3", "1/1", "[COMPLETED]"
+    .replace(/[\(\[\{]?\s*\d+\s*\/\s*\d+\s*[\)\]\}]?$/g, '')
+    // Quitar etiquetas comunes de estado
+    .replace(/\b(COMPLETED|TRACKED|ACTIVE|PENDING|LOCKED)\b/gi, '')
+    .trim();
+}
+
+// Normalización suave de sustituciones comunes de OCR sin destruir dígitos necesarios
+function generateOcrVariants(text: string): string[] {
+  const variants = [text];
+  
+  // Variante convirtiendo símbolos típicos
+  const softNormalized = text
+    .replace(/0/g, 'O')
+    .replace(/3/g, 'E')
+    .replace(/@/g, 'A')
+    .replace(/[$§]/g, 'S')
+    .replace(/[|!]/g, 'I');
+    
+  if (softNormalized.toLowerCase() !== text.toLowerCase()) {
+    variants.push(softNormalized);
+  }
+
+  // Variante quitando puntuación redundante
+  const stripped = text.replace(/[^a-zA-Z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+  if (stripped && !variants.includes(stripped)) {
+    variants.push(stripped);
+  }
+
+  return variants;
+}
+
 export function matchQuestsFromText(
   extractedText: string,
   extraQuests: Quest[] = []
@@ -16,39 +55,33 @@ export function matchQuestsFromText(
 
   const pool = [...extraQuests, ...allQuests];
 
-  // Función auxiliar para normalizar sustituciones típicas de OCR (ej: 0 por o, 3 por e, 1 por i)
-  const cleanOcrNoise = (str: string) =>
-    str
-      .replace(/0/g, 'o')
-      .replace(/[1|!]/g, 'i')
-      .replace(/3/g, 'e')
-      .replace(/@/g, 'a')
-      .replace(/5/g, 's');
-
-  // Configurar Fuse.js para buscar en títulos (inglés y español) y objetivos
+  // Configurar Fuse.js enfocado principalmente en títulos
   const fuse = new Fuse(pool, {
     keys: [
-      { name: 'title.en', weight: 0.6 },
-      { name: 'title.es', weight: 0.6 },
+      { name: 'title.en', weight: 0.7 },
+      { name: 'title.es', weight: 0.7 },
       { name: 'vendor', weight: 0.2 },
-      { name: 'objectives.description.en', weight: 0.3 },
-      { name: 'objectives.description.es', weight: 0.3 },
     ],
     includeScore: true,
-    threshold: 0.5, // Tolerancia calibrada para OCR
+    threshold: 0.45,
     minMatchCharLength: 3,
+    ignoreLocation: true,
   });
 
-  const lines = extractedText
+  const rawLines = extractedText
     .split(/\r?\n/)
     .map((l) => l.trim())
-    .filter((l) => l.length >= 4);
+    .filter((l) => l.length >= 3);
 
   const matchedQuestsMap = new Map<string, MatchResult>();
 
-  // 1. Probar línea por línea con el texto original y con normalización de ruido OCR
-  for (const line of lines) {
-    const candidates = [line, cleanOcrNoise(line)];
+  // 1. Probar línea por línea con limpieza de UI y variantes OCR
+  for (const rawLine of rawLines) {
+    const cleanedLine = cleanUiNoise(rawLine);
+    if (cleanedLine.length < 3) continue;
+
+    const candidates = [cleanedLine, ...generateOcrVariants(cleanedLine)];
+
     for (const cand of candidates) {
       const results = fuse.search(cand);
       if (results.length > 0) {
@@ -56,13 +89,13 @@ export function matchQuestsFromText(
         const score = topMatch.score ?? 1;
         const confidence = Math.round((1 - score) * 100);
 
-        if (confidence >= 50) {
+        if (confidence >= 55) {
           const existing = matchedQuestsMap.get(topMatch.item.id);
           if (!existing || existing.confidence < confidence) {
             matchedQuestsMap.set(topMatch.item.id, {
               quest: topMatch.item,
               confidence,
-              matchedText: line,
+              matchedText: rawLine,
             });
           }
         }
@@ -70,23 +103,34 @@ export function matchQuestsFromText(
     }
   }
 
-  // 2. Si hay pocas coincidencias, probar con ventanas de texto o búsqueda global
-  if (matchedQuestsMap.size === 0) {
-    for (const quest of pool) {
-      const enTitle = quest.title.en.toLowerCase();
-      const esTitle = quest.title.es?.toLowerCase();
-      const lowerExtracted = extractedText.toLowerCase();
+  // 2. Substring matching directo para atrapar misiones embebidas en bloques de texto
+  const lowerExtracted = extractedText.toLowerCase();
+  for (const quest of pool) {
+    if (matchedQuestsMap.has(quest.id)) continue;
 
-      if (lowerExtracted.includes(enTitle) || (esTitle && lowerExtracted.includes(esTitle))) {
-        matchedQuestsMap.set(quest.id, {
-          quest,
-          confidence: 95,
-          matchedText: enTitle,
-        });
-      }
+    const enTitle = quest.title.en.toLowerCase();
+    const esTitle = quest.title.es?.toLowerCase();
+
+    // Comprobación de título exacto contenido
+    if (enTitle.length >= 4 && lowerExtracted.includes(enTitle)) {
+      matchedQuestsMap.set(quest.id, {
+        quest,
+        confidence: 95,
+        matchedText: quest.title.en,
+      });
+      continue;
+    }
+
+    if (esTitle && esTitle.length >= 4 && lowerExtracted.includes(esTitle)) {
+      matchedQuestsMap.set(quest.id, {
+        quest,
+        confidence: 95,
+        matchedText: quest.title.es || quest.title.en,
+      });
     }
   }
 
   // Devolver ordenados por mayor confianza
   return Array.from(matchedQuestsMap.values()).sort((a, b) => b.confidence - a.confidence);
 }
+
