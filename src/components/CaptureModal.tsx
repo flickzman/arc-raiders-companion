@@ -14,23 +14,29 @@ import {
   Loader2,
   KeyRound,
   CheckCircle2,
+  PlusCircle,
+  FileText,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react';
 
 interface CaptureModalProps {
   isOpen: boolean;
   onClose: () => void;
   initialImageBlob?: Blob | null;
+  onApplied?: () => void;
 }
 
 export const CaptureModal: React.FC<CaptureModalProps> = ({
   isOpen,
   onClose,
   initialImageBlob,
+  onApplied,
 }) => {
   const { language, addActiveQuests, geminiApiKey, setGeminiApiKey, customQuests, addCustomQuest } =
     usePlayerStore();
 
-  const [activeTab, setActiveTab] = useState<'pc' | 'mobile'>('pc');
+  const [engineMode, setEngineMode] = useState<'ai' | 'tesseract'>('ai');
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [currentBlob, setCurrentBlob] = useState<Blob | null>(null);
 
@@ -39,12 +45,16 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
   const [scanProgress, setScanProgress] = useState(0);
   const [scanStatusText, setScanStatusText] = useState('');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [rawOcrText, setRawOcrText] = useState<string | null>(null);
+  const [showRawText, setShowRawText] = useState(false);
+  const [unmatchedLines, setUnmatchedLines] = useState<string[]>([]);
 
-  // Resultados
+  // Resultados acumulados
   const [matches, setMatches] = useState<MatchResult[]>([]);
   const [selectedQuestIds, setSelectedQuestIds] = useState<string[]>([]);
   const [tempApiKey, setTempApiKey] = useState(geminiApiKey);
   const [isKeySaved, setIsKeySaved] = useState(false);
+  const [showKeyInput, setShowKeyInput] = useState(!geminiApiKey);
   const [manualTitle, setManualTitle] = useState('');
 
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -56,12 +66,22 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
     }
   }, [initialImageBlob, isOpen]);
 
+  // Actualizar apiKey temporal si cambia en store
+  useEffect(() => {
+    setTempApiKey(geminiApiKey);
+    if (geminiApiKey) {
+      setShowKeyInput(false);
+    }
+  }, [geminiApiKey]);
+
   // Limpiar estado al cerrar
   const handleClose = () => {
     setImagePreview(null);
     setCurrentBlob(null);
     setMatches([]);
     setErrorMessage(null);
+    setRawOcrText(null);
+    setUnmatchedLines([]);
     setIsScanning(false);
     onClose();
   };
@@ -70,20 +90,35 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
     setCurrentBlob(blob);
     const url = URL.createObjectURL(blob);
     setImagePreview(url);
-    setMatches([]);
     setErrorMessage(null);
+    setRawOcrText(null);
+    setUnmatchedLines([]);
 
-    // Si estamos en la pestaña PC, arrancar OCR local automáticamente
-    if (activeTab === 'pc') {
+    // Si tiene configurada API key de Gemini, arranca Visión por IA por defecto
+    // Si no, o si seleccionó Tesseract, arranca el motor correspondiente
+    if (geminiApiKey && engineMode === 'ai') {
+      runGeminiScan(blob, geminiApiKey);
+    } else if (engineMode === 'tesseract') {
       runTesseractScan(blob);
     }
+  };
+
+  const mergeNewMatches = (newMatches: MatchResult[]) => {
+    setMatches((prev) => {
+      const existingIds = new Set(prev.map((m) => m.quest.id));
+      const filtered = newMatches.filter((m) => !existingIds.has(m.quest.id));
+      const combined = [...prev, ...filtered];
+      // Auto-seleccionar todas las detectadas
+      setSelectedQuestIds(combined.map((m) => m.quest.id));
+      return combined;
+    });
   };
 
   const runTesseractScan = async (blob: Blob) => {
     setIsScanning(true);
     setErrorMessage(null);
-    setScanProgress(5);
-    setScanStatusText(language === 'es' ? 'Preparando imagen...' : 'Preparing image...');
+    setScanProgress(10);
+    setScanStatusText(language === 'es' ? 'Optimizando captura para fuentes oscuras...' : 'Optimizing capture for dark game UI...');
 
     try {
       const result = await scanImageWithTesseract(
@@ -92,17 +127,19 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
           setScanProgress(progress);
           setScanStatusText(status);
         },
-        customQuests
+        customQuests,
+        language
       );
 
-      setMatches(result.matches);
-      setSelectedQuestIds(result.matches.map((m) => m.quest.id));
+      setRawOcrText(result.rawText);
+      mergeNewMatches(result.matches);
+      setUnmatchedLines(result.unmatchedLines);
 
       if (result.matches.length === 0) {
         setErrorMessage(
           language === 'es'
-            ? 'No se detectaron títulos de misiones con suficiente claridad. Prueba a recortar la zona de misiones o usa la pestaña de Visión por IA.'
-            : 'No quest titles clearly detected. Try cropping the quests area or use the AI Vision tab.'
+            ? 'No se detectaron misiones con suficiente coincidencia en el texto local. Puedes probar con Visión por IA (Gemini) o añadir el título manualmente.'
+            : 'No quests clearly matched locally. Try AI Vision (Gemini) or add missing titles manually below.'
         );
       }
     } catch (err: any) {
@@ -112,22 +149,35 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
     }
   };
 
-  const runGeminiScan = async () => {
-    if (!currentBlob) return;
+  const runGeminiScan = async (blobToScan?: Blob, keyToUse?: string) => {
+    const targetBlob = blobToScan || currentBlob;
+    const key = keyToUse || tempApiKey || geminiApiKey;
+
+    if (!targetBlob) return;
+
+    if (!key.trim()) {
+      setShowKeyInput(true);
+      setErrorMessage(
+        language === 'es'
+          ? 'Introduce tu API Key de Gemini para activar la Visión por IA (es gratuita en Google AI Studio).'
+          : 'Please provide a Gemini API Key to use AI Vision (free on Google AI Studio).'
+      );
+      return;
+    }
+
     setIsScanning(true);
     setErrorMessage(null);
-    setScanStatusText(language === 'es' ? 'Analizando con Gemini Flash Vision...' : 'Analyzing with Gemini Flash Vision...');
+    setScanStatusText(language === 'es' ? 'Analizando captura con Gemini Vision...' : 'Analyzing screen capture with Gemini Vision...');
 
     try {
-      const results = await scanImageWithGeminiVision(currentBlob, tempApiKey || geminiApiKey);
-      setMatches(results);
-      setSelectedQuestIds(results.map((m) => m.quest.id));
+      const results = await scanImageWithGeminiVision(targetBlob, key);
+      mergeNewMatches(results);
 
       if (results.length === 0) {
         setErrorMessage(
           language === 'es'
-            ? 'Gemini no reconoció misiones en la imagen proporcionada.'
-            : 'Gemini did not recognize quests in the provided image.'
+            ? 'Gemini no identificó misiones de Arc Raiders en esta imagen.'
+            : 'Gemini did not find Arc Raiders quests in this image.'
         );
       }
     } catch (err: any) {
@@ -140,6 +190,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
   const handleApplyQuests = () => {
     if (selectedQuestIds.length > 0) {
       addActiveQuests(selectedQuestIds);
+      onApplied?.();
     }
     handleClose();
   };
@@ -154,13 +205,13 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
-      <div className="bg-neutral-900 border border-neutral-800 rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+      <div className="bg-neutral-900 border border-neutral-800 rounded-2xl w-full max-w-2xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
         {/* Modal Header */}
-        <div className="flex items-center justify-between p-4 border-b border-neutral-800">
+        <div className="flex items-center justify-between p-4 border-b border-neutral-800 bg-neutral-950/40">
           <div className="flex items-center gap-2">
             <Camera className="w-5 h-5 text-amber-400" />
             <h3 className="font-bold text-sm uppercase tracking-wider text-neutral-100">
-              {language === 'es' ? 'Ingesta Visual de Misiones (OCR & IA)' : 'Visual Quest Ingestion (OCR & AI)'}
+              {language === 'es' ? 'Ingesta Visual de Misiones (Logbook OCR)' : 'Quest Visual Ingestion (Logbook OCR)'}
             </h3>
           </div>
           <button
@@ -171,87 +222,53 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
           </button>
         </div>
 
-        {/* Tab Selection */}
-        <div className="flex border-b border-neutral-800 bg-neutral-950/60 p-2 gap-2">
-          <button
-            onClick={() => setActiveTab('pc')}
-            className={`flex-1 py-2 px-3 rounded-lg text-xs font-mono font-bold uppercase flex items-center justify-center gap-2 transition-all ${
-              activeTab === 'pc'
-                ? 'bg-amber-500 text-neutral-950 shadow-md'
-                : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-900'
-            }`}
-          >
-            <ClipboardPaste className="w-4 h-4" />
-            <span>{language === 'es' ? 'Captura PC (Ctrl+V / Tesseract)' : 'PC Snipping (Ctrl+V)'}</span>
-          </button>
+        {/* Engine Switcher Bar */}
+        <div className="flex items-center justify-between px-4 py-2.5 border-b border-neutral-800 bg-neutral-950/80 text-xs font-mono">
+          <span className="text-neutral-400 font-bold uppercase text-[11px]">
+            {language === 'es' ? 'Motor de Análisis:' : 'Analysis Engine:'}
+          </span>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => {
+                setEngineMode('ai');
+                if (currentBlob && geminiApiKey) runGeminiScan(currentBlob, geminiApiKey);
+              }}
+              className={`px-3 py-1 rounded-lg font-bold uppercase transition-all flex items-center gap-1.5 ${
+                engineMode === 'ai'
+                  ? 'bg-amber-500 text-neutral-950 shadow-sm'
+                  : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800'
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Visión IA (Gemini 99%)</span>
+            </button>
 
-          <button
-            onClick={() => setActiveTab('mobile')}
-            className={`flex-1 py-2 px-3 rounded-lg text-xs font-mono font-bold uppercase flex items-center justify-center gap-2 transition-all ${
-              activeTab === 'mobile'
-                ? 'bg-amber-500 text-neutral-950 shadow-md'
-                : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-900'
-            }`}
-          >
-            <Sparkles className="w-4 h-4" />
-            <span>{language === 'es' ? 'Foto Móvil (Gemini Vision IA)' : 'Phone Photo (Gemini AI)'}</span>
-          </button>
+            <button
+              onClick={() => {
+                setEngineMode('tesseract');
+                if (currentBlob) runTesseractScan(currentBlob);
+              }}
+              className={`px-3 py-1 rounded-lg font-bold uppercase transition-all flex items-center gap-1.5 ${
+                engineMode === 'tesseract'
+                  ? 'bg-amber-500 text-neutral-950 shadow-sm'
+                  : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800'
+              }`}
+            >
+              <ClipboardPaste className="w-3.5 h-3.5" />
+              <span>OCR Local (Offline)</span>
+            </button>
+          </div>
         </div>
 
         {/* Body Content */}
         <div className="p-4 overflow-y-auto space-y-4 flex-1">
-          {/* Dropzone / Upload area when no image is loaded */}
-          {!imagePreview && (
-            <div
-              onDragOver={(e) => e.preventDefault()}
-              onDrop={(e) => {
-                e.preventDefault();
-                if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-                  handleImageLoaded(e.dataTransfer.files[0]);
-                }
-              }}
-              onClick={() => fileInputRef.current?.click()}
-              className="border-2 border-dashed border-neutral-700 hover:border-amber-500/80 rounded-xl p-8 text-center cursor-pointer transition-colors bg-neutral-950/40 hover:bg-neutral-950/80 space-y-3"
-            >
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                capture={activeTab === 'mobile' ? 'environment' : undefined}
-                className="hidden"
-                onChange={(e) => {
-                  if (e.target.files && e.target.files[0]) {
-                    handleImageLoaded(e.target.files[0]);
-                  }
-                }}
-              />
-
-              <div className="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center mx-auto text-amber-400">
-                {activeTab === 'pc' ? <ClipboardPaste className="w-6 h-6" /> : <Camera className="w-6 h-6" />}
-              </div>
-
-              <div>
-                <p className="text-xs sm:text-sm font-bold text-neutral-200 uppercase">
-                  {activeTab === 'pc'
-                    ? (language === 'es' ? 'Pulsa Ctrl+V o arrastra una captura de pantalla' : 'Press Ctrl+V or drop a screenshot')
-                    : (language === 'es' ? 'Toca para abrir la cámara o seleccionar foto' : 'Tap to open camera or pick photo')}
-                </p>
-                <p className="text-[11px] font-mono text-neutral-500 mt-1">
-                  {activeTab === 'pc'
-                    ? (language === 'es' ? 'Tip: Haz Win+Shift+S al panel de misiones en ARC Raiders' : 'Tip: Use Win+Shift+S on ARC Raiders quest screen')
-                    : (language === 'es' ? 'Apunta a la pantalla de tu monitor con el móvil' : 'Snap a picture of your monitor with your phone')}
-                </p>
-              </div>
-            </div>
-          )}
-
-          {/* Gemini API Key Configuration (In Mobile / AI Tab) */}
-          {activeTab === 'mobile' && (
-            <div className="bg-neutral-950 border border-neutral-800 rounded-xl p-3.5 space-y-2.5">
+          {/* Gemini API Key Configuration Section (Collapsible or Shown when needed) */}
+          {(showKeyInput || engineMode === 'ai') && (
+            <div className="bg-neutral-950 border border-neutral-800/80 rounded-xl p-3 space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-mono text-neutral-300 font-bold flex items-center gap-1.5">
                   <KeyRound className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Google Gemini API Key</span>
+                  <span>Google Gemini API Key {geminiApiKey ? '(Configurada ✓)' : '(Requerida para IA)'}</span>
                 </span>
                 <a
                   href="https://aistudio.google.com/app/apikey"
@@ -275,12 +292,58 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                   onClick={() => {
                     setGeminiApiKey(tempApiKey);
                     setIsKeySaved(true);
+                    setShowKeyInput(false);
                     setTimeout(() => setIsKeySaved(false), 2000);
+                    if (currentBlob) {
+                      runGeminiScan(currentBlob, tempApiKey);
+                    }
                   }}
-                  className="px-3 py-1.5 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-xs font-mono text-neutral-200 transition-colors"
+                  className="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold text-xs font-mono transition-colors"
                 >
-                  {isKeySaved ? '✓' : (language === 'es' ? 'Guardar' : 'Save')}
+                  {isKeySaved ? '✓ Guardada' : (language === 'es' ? 'Guardar y Usar' : 'Save & Use')}
                 </button>
+              </div>
+            </div>
+          )}
+
+          {/* Dropzone / Upload area */}
+          {!imagePreview && (
+            <div
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={(e) => {
+                e.preventDefault();
+                if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                  handleImageLoaded(e.dataTransfer.files[0]);
+                }
+              }}
+              onClick={() => fileInputRef.current?.click()}
+              className="border-2 border-dashed border-neutral-700 hover:border-amber-500/80 rounded-xl p-8 text-center cursor-pointer transition-colors bg-neutral-950/40 hover:bg-neutral-950/80 space-y-3"
+            >
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={(e) => {
+                  if (e.target.files && e.target.files[0]) {
+                    handleImageLoaded(e.target.files[0]);
+                  }
+                }}
+              />
+
+              <div className="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center mx-auto text-amber-400">
+                <ClipboardPaste className="w-6 h-6" />
+              </div>
+
+              <div>
+                <p className="text-xs sm:text-sm font-bold text-neutral-200 uppercase">
+                  {language === 'es' ? 'Pulsa Ctrl+V o haz clic para cargar captura de pantalla' : 'Press Ctrl+V or click to load screenshot'}
+                </p>
+                <p className="text-[11px] font-mono text-neutral-500 mt-1">
+                  {language === 'es'
+                    ? 'Captura con Win+Shift+S la lista de misiones minimizadas en Arc Raiders'
+                    : 'Use Win+Shift+S on your Arc Raiders minimized quests logbook'}
+                </p>
               </div>
             </div>
           )}
@@ -294,16 +357,35 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                   alt="Screenshot preview"
                   className="max-h-48 w-auto object-contain"
                 />
-                <button
-                  onClick={() => {
-                    setImagePreview(null);
-                    setCurrentBlob(null);
-                    setMatches([]);
+                <div className="absolute top-2 right-2 flex items-center gap-1.5">
+                  <button
+                    onClick={() => fileInputRef.current?.click()}
+                    className="px-2.5 py-1 rounded-lg bg-black/80 hover:bg-black border border-neutral-700 text-[10px] font-mono text-amber-400 flex items-center gap-1"
+                  >
+                    <PlusCircle className="w-3 h-3" />
+                    <span>{language === 'es' ? '+ Añadir 2ª captura' : '+ Add 2nd screenshot'}</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setImagePreview(null);
+                      setCurrentBlob(null);
+                    }}
+                    className="px-2 py-1 rounded-lg bg-black/80 border border-neutral-700 text-[10px] font-mono text-neutral-300 hover:text-white"
+                  >
+                    {language === 'es' ? 'Quitar' : 'Remove'}
+                  </button>
+                </div>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={(e) => {
+                    if (e.target.files && e.target.files[0]) {
+                      handleImageLoaded(e.target.files[0]);
+                    }
                   }}
-                  className="absolute top-2 right-2 px-2 py-1 rounded bg-black/80 border border-neutral-700 text-[10px] font-mono text-neutral-300 hover:text-white"
-                >
-                  {language === 'es' ? 'Cambiar imagen' : 'Change image'}
-                </button>
+                />
               </div>
 
               {/* Progress Bar when Scanning */}
@@ -325,15 +407,17 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                 </div>
               )}
 
-              {/* Mobile AI Scan Trigger Button */}
-              {activeTab === 'mobile' && !isScanning && matches.length === 0 && (
-                <button
-                  onClick={runGeminiScan}
-                  className="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold text-xs font-mono uppercase flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20"
-                >
-                  <Sparkles className="w-4 h-4" />
-                  <span>{language === 'es' ? 'Analizar Foto con Visión IA' : 'Analyze Photo with AI Vision'}</span>
-                </button>
+              {/* Action buttons when image loaded but scan didn't run */}
+              {!isScanning && (
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => (engineMode === 'ai' ? runGeminiScan() : runTesseractScan(currentBlob!))}
+                    className="flex-1 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold text-xs font-mono uppercase flex items-center justify-center gap-2 shadow-md shadow-amber-500/20"
+                  >
+                    {engineMode === 'ai' ? <Sparkles className="w-4 h-4" /> : <ClipboardPaste className="w-4 h-4" />}
+                    <span>{language === 'es' ? 'Volver a escanear captura' : 'Re-scan capture'}</span>
+                  </button>
+                </div>
               )}
             </div>
           )}
@@ -343,6 +427,27 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
             <div className="p-3 rounded-xl bg-red-950/40 border border-red-800/60 text-xs font-mono text-red-300 flex items-start gap-2">
               <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
               <span>{errorMessage}</span>
+            </div>
+          )}
+
+          {/* Raw OCR Text Toggle (Useful for debugging/transparency) */}
+          {rawOcrText && (
+            <div className="border border-neutral-800 rounded-xl overflow-hidden bg-neutral-950/60">
+              <button
+                onClick={() => setShowRawText(!showRawText)}
+                className="w-full px-3 py-2 flex items-center justify-between text-[11px] font-mono text-neutral-400 hover:text-neutral-200 transition-colors"
+              >
+                <span className="flex items-center gap-1.5">
+                  <FileText className="w-3.5 h-3.5" />
+                  <span>{language === 'es' ? 'Ver texto extraído por OCR' : 'View extracted OCR raw text'}</span>
+                </span>
+                {showRawText ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+              </button>
+              {showRawText && (
+                <pre className="p-3 text-[10px] font-mono text-neutral-300 whitespace-pre-wrap bg-neutral-950 border-t border-neutral-800 max-h-36 overflow-y-auto">
+                  {rawOcrText}
+                </pre>
+              )}
             </div>
           )}
 
@@ -356,23 +461,42 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                     {language === 'es' ? 'Misiones Detectadas' : 'Detected Quests'} ({matches.length})
                   </span>
                 </span>
-                <button
-                  onClick={() =>
-                    setSelectedQuestIds(
-                      selectedQuestIds.length === matches.length
-                        ? []
-                        : matches.map((m) => m.quest.id)
-                    )
-                  }
-                  className="text-[10px] font-mono text-neutral-400 hover:text-neutral-200"
-                >
-                  {selectedQuestIds.length === matches.length
-                    ? (language === 'es' ? 'Deseleccionar todas' : 'Deselect all')
-                    : (language === 'es' ? 'Seleccionar todas' : 'Select all')}
-                </button>
+                <div className="flex items-center gap-2">
+                  {matches.some((m) => m.quest.isTrial) && (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setSelectedQuestIds((prev) =>
+                          prev.filter((id) => {
+                            const q = matches.find((m) => m.quest.id === id)?.quest;
+                            return !q?.isTrial;
+                          })
+                        )
+                      }
+                      className="text-[10px] font-mono text-purple-400 hover:text-purple-300 underline"
+                      title={language === 'es' ? 'Desmarcar contratos temporales/trials' : 'Deselect temporary trials'}
+                    >
+                      {language === 'es' ? 'Omitir Trials' : 'Omit Trials'}
+                    </button>
+                  )}
+                  <button
+                    onClick={() =>
+                      setSelectedQuestIds(
+                        selectedQuestIds.length === matches.length
+                          ? []
+                          : matches.map((m) => m.quest.id)
+                      )
+                    }
+                    className="text-[10px] font-mono text-neutral-400 hover:text-neutral-200"
+                  >
+                    {selectedQuestIds.length === matches.length
+                      ? (language === 'es' ? 'Deseleccionar todas' : 'Deselect all')
+                      : (language === 'es' ? 'Seleccionar todas' : 'Select all')}
+                  </button>
+                </div>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
                 {matches.map(({ quest, confidence }) => {
                   const isChecked = selectedQuestIds.includes(quest.id);
 
@@ -395,8 +519,13 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                           {isChecked && <Check className="w-3.5 h-3.5 stroke-[3]" />}
                         </div>
                         <div>
-                          <div className="text-xs font-bold text-neutral-100">
-                            {getLocalized(quest.title, language)}
+                          <div className="text-xs font-bold text-neutral-100 flex items-center gap-1.5">
+                            <span>{getLocalized(quest.title, language)}</span>
+                            {quest.isTrial && (
+                              <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-800 font-bold uppercase">
+                                {language === 'es' ? 'Trial / Botín' : 'Trial'}
+                              </span>
+                            )}
                           </div>
                           <div className="text-[10px] font-mono text-neutral-400">
                             [{quest.vendor}] • {quest.objectives.length} {language === 'es' ? 'objetivos' : 'objectives'}
@@ -420,12 +549,46 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
             </div>
           )}
 
+          {/* Additional Unmatched Detected Titles with 1-Click Add */}
+          {unmatchedLines.length > 0 && (
+            <div className="bg-amber-950/25 border border-amber-800/40 rounded-xl p-3 space-y-2">
+              <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-amber-400">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>
+                  {language === 'es' ? 'Títulos adicionales detectados en pantalla:' : 'Additional titles detected on screen:'}
+                </span>
+              </div>
+              <p className="text-[10px] font-mono text-neutral-400">
+                {language === 'es'
+                  ? 'Si alguna no está en el catálogo oficial, añádela como misión con un solo clic:'
+                  : 'If any is a new or uncataloged contract, click to add it instantly:'}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {unmatchedLines.map((line, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => {
+                      const newQ = addCustomQuest(line);
+                      mergeNewMatches([{ quest: newQ, confidence: 100, matchedText: line }]);
+                      setUnmatchedLines((prev) => prev.filter((l) => l !== line));
+                    }}
+                    className="px-2.5 py-1 rounded-lg bg-neutral-900 border border-neutral-700 hover:border-amber-500 text-xs font-mono text-neutral-200 hover:text-amber-300 flex items-center gap-1.5 transition-all shadow-sm"
+                  >
+                    <PlusCircle className="w-3 h-3 text-amber-400" />
+                    <span>+ {line}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Manual Add by Title fallback in Capture Modal */}
           <div className="pt-3 border-t border-neutral-800 space-y-2">
             <span className="text-[11px] font-mono text-neutral-400">
               {language === 'es'
-                ? '¿No aparece tu misión? Añádela directamente solo con el título:'
-                : 'Missing your quest? Add it directly with just the title:'}
+                ? '¿Falta alguna misión? Añádela directamente por título:'
+                : 'Missing any quest? Add it directly by title:'}
             </span>
             <div className="flex items-center gap-2">
               <input

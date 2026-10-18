@@ -1,0 +1,1693 @@
+{
+  "dam_battlegrounds": {
+    "mapId": "dam_battlegrounds",
+    "mapName": "Dam Battlegrounds",
+    "existingPois": [
+      {
+        "id": "dam_power_plant",
+        "name": "Power Generation Complex",
+        "coordinates": {
+          "x": 50,
+          "y": 40
+        }
+      },
+      {
+        "id": "dam_hydroponic_dome",
+        "name": "Hydroponic Dome Complex",
+        "coordinates": {
+          "x": 28,
+          "y": 35
+        }
+      },
+      {
+        "id": "dam_pattern_house",
+        "name": "Pattern House",
+        "coordinates": {
+          "x": 52,
+          "y": 15
+        }
+      },
+      {
+        "id": "dam_controlled_access",
+        "name": "Controlled Access Zone",
+        "coordinates": {
+          "x": 65,
+          "y": 55
+        }
+      },
+      {
+        "id": "dam_south_swamp",
+        "name": "South Swamp Outpost",
+        "coordinates": {
+          "x": 30,
+          "y": 75
+        }
+      },
+      {
+        "id": "dam_north_ridge",
+        "name": "North Ridge Overlook",
+        "coordinates": {
+          "x": 75,
+          "y": 25
+        }
+      },
+      {
+        "id": "dam_extract_river",
+        "name": "Riverside Extraction Flare",
+        "coordinates": {
+          "x": 15,
+          "y": 60
+        }
+      },
+      {
+        "id": "dam_extract_substation",
+        "name": "Substation Highground Extract",
+        "coordinates": {
+          "x": 82,
+          "y": 70
+        }
+      }
+    ],
+    "unmappedObjectives": [
+      {
+        "questId": "quest_a_balanced_harvest",
+        "questTitle": "A Balanced Harvest",
+        "objectiveId": "obj_a_balanced_harvest_1",
+        "objectiveDescription": "Go to the Research & Administration building"
+      },
+      {
+        "questId": "quest_a_balanced_harvest",
+        "questTitle": "A Balanced Harvest",
+        "objectiveId": "obj_a_balanced_harvest_2",
+        "objectiveDescription": "Locate Lab 1 on the upper floor above the reception"
+      },
+      {
+        "questId": "quest_a_balanced_harvest",
+        "questTitle": "A Balanced Harvest",
+        "objectiveId": "obj_a_balanced_harvest_3",
+        "objectiveDescription": "Search for any traces of the agricultural research project"
+      },
+      {
+        "questId": "quest_a_new_type_of_plant",
+        "questTitle": "A New Type Of Plant",
+        "objectiveId": "obj_a_new_type_of_plant_1",
+        "objectiveDescription": "Search for the new plant near the Baron Husk in the Old Battleground"
+      },
+      {
+        "questId": "quest_a_new_type_of_plant",
+        "questTitle": "A New Type Of Plant",
+        "objectiveId": "obj_a_new_type_of_plant_2",
+        "objectiveDescription": "Deliver the Possibly Toxic Plant to Lance"
+      },
+      {
+        "questId": "quest_a_symbol_of_unification",
+        "questTitle": "A Symbol of Unification",
+        "objectiveId": "obj_a_symbol_of_unification_1",
+        "objectiveDescription": "Reach the Formicai Outpost in Dam Battlegrounds"
+      },
+      {
+        "questId": "quest_a_symbol_of_unification",
+        "questTitle": "A Symbol of Unification",
+        "objectiveId": "obj_a_symbol_of_unification_2",
+        "objectiveDescription": "Locate Raider Flag"
+      },
+      {
+        "questId": "quest_a_toxic_trail_151",
+        "questTitle": "A Toxic Trail",
+        "objectiveId": "obj_a_toxic_trail_1",
+        "objectiveDescription": "Return to the water intake below the Water Treatment Control building"
+      },
+      {
+        "questId": "quest_a_toxic_trail_151",
+        "questTitle": "A Toxic Trail",
+        "objectiveId": "obj_a_toxic_trail_3",
+        "objectiveDescription": "Take a photo of the barrel truck"
+      },
+      {
+        "questId": "quest_a_toxic_trail_151",
+        "questTitle": "A Toxic Trail",
+        "objectiveId": "obj_a_toxic_trail_4",
+        "objectiveDescription": "Search the trunk for clues about the saboteur's identity"
+      },
+      {
+        "questId": "quest_broken_monument",
+        "questTitle": "Broken Monument",
+        "objectiveId": "obj_broken_monument_1",
+        "objectiveDescription": "Reach the hallowed grounds by the Scrap Yard"
+      },
+      {
+        "questId": "quest_broken_monument",
+        "questTitle": "Broken Monument",
+        "objectiveId": "obj_broken_monument_2",
+        "objectiveDescription": "Search for a compass near the broken-down vehicles"
+      },
+      {
+        "questId": "quest_broken_monument",
+        "questTitle": "Broken Monument",
+        "objectiveId": "obj_broken_monument_3",
+        "objectiveDescription": "Search for the video tape near the cylindrical containers"
+      },
+      {
+        "questId": "quest_broken_monument",
+        "questTitle": "Broken Monument",
+        "objectiveId": "obj_broken_monument_4",
+        "objectiveDescription": "Search for the old field rations in the Raider camp"
+      },
+      {
+        "questId": "quest_broken_monument",
+        "questTitle": "Broken Monument",
+        "objectiveId": "obj_broken_monument_5",
+        "objectiveDescription": "Deliver the First Wave Tape to Tian Wen"
+      },
+      {
+        "questId": "quest_broken_monument",
+        "questTitle": "Broken Monument",
+        "objectiveId": "obj_broken_monument_6",
+        "objectiveDescription": "Deliver First Wave Compass to Tian Wen"
+      },
+      {
+        "questId": "quest_broken_monument",
+        "questTitle": "Broken Monument",
+        "objectiveId": "obj_broken_monument_7",
+        "objectiveDescription": "Deliver First Wave Rations to Tian Wen"
+      },
+      {
+        "questId": "quest_celeste_s_journals",
+        "questTitle": "Celeste's Journals",
+        "objectiveId": "obj_celeste_s_journals_3",
+        "objectiveDescription": "Deliver 2 Celeste's Journal"
+      },
+      {
+        "questId": "quest_echoes_of_victory_ridge",
+        "questTitle": "Echoes Of Victory Ridge",
+        "objectiveId": "obj_echoes_of_victory_ridge_2",
+        "objectiveDescription": "Retrieve the battle plans from the hideout under the broken highway"
+      },
+      {
+        "questId": "quest_echoes_of_victory_ridge",
+        "questTitle": "Echoes Of Victory Ridge",
+        "objectiveId": "obj_echoes_of_victory_ridge_3",
+        "objectiveDescription": "Deliver Major Aiva's Patch to Celeste"
+      },
+      {
+        "questId": "quest_flickering_threat",
+        "questTitle": "Flickering Threat",
+        "objectiveId": "obj_flickering_threat_1",
+        "objectiveDescription": "Find the Generator Room"
+      },
+      {
+        "questId": "quest_flickering_threat",
+        "questTitle": "Flickering Threat",
+        "objectiveId": "obj_flickering_threat_2",
+        "objectiveDescription": "Repair the Generator"
+      },
+      {
+        "questId": "quest_flickering_threat",
+        "questTitle": "Flickering Threat",
+        "objectiveId": "obj_flickering_threat_3",
+        "objectiveDescription": "Find the Ventilation Shaft"
+      },
+      {
+        "questId": "quest_greasing_her_palms",
+        "questTitle": "Greasing Her Palms",
+        "objectiveId": "obj_greasing_her_palms_1",
+        "objectiveDescription": "On Dam Battlegrounds visit the Locked Room in the Water Treatment Control building"
+      },
+      {
+        "questId": "quest_keeping_the_memory",
+        "questTitle": "Keeping The Memory",
+        "objectiveId": "obj_keeping_the_memory_1",
+        "objectiveDescription": "Reach the wreckage in the Formicai Hills"
+      },
+      {
+        "questId": "quest_keeping_the_memory",
+        "questTitle": "Keeping The Memory",
+        "objectiveId": "obj_keeping_the_memory_2",
+        "objectiveDescription": "Search for the missing helmet"
+      },
+      {
+        "questId": "quest_keeping_the_memory",
+        "questTitle": "Keeping The Memory",
+        "objectiveId": "obj_keeping_the_memory_3",
+        "objectiveDescription": "Return the helmet to the memorial"
+      },
+      {
+        "questId": "quest_medical_merchandise",
+        "questTitle": "Medical Merchandise",
+        "objectiveId": "obj_medical_merchandise_3",
+        "objectiveDescription": "On Dam Battlegrounds, search 2 containers in the Research & Administration building's medical room"
+      },
+      {
+        "questId": "quest_our_presence_up_there",
+        "questTitle": "Our Presence up There",
+        "objectiveId": "obj_our_presence_up_there_3",
+        "objectiveDescription": "Complete the antenna installation on the roof"
+      },
+      {
+        "questId": "quest_source_of_the_contamination",
+        "questTitle": "Source Of The Contamination",
+        "objectiveId": "obj_source_of_the_contamination_1",
+        "objectiveDescription": "Reach the Water Treatment Building in The Dam"
+      },
+      {
+        "questId": "quest_source_of_the_contamination",
+        "questTitle": "Source Of The Contamination",
+        "objectiveId": "obj_source_of_the_contamination_3",
+        "objectiveDescription": "Investigate any suspicious objects"
+      },
+      {
+        "questId": "quest_straight_record",
+        "questTitle": "Straight Record",
+        "objectiveId": "obj_straight_record_2",
+        "objectiveDescription": "Find the old EMP trap"
+      },
+      {
+        "questId": "quest_straight_record",
+        "questTitle": "Straight Record",
+        "objectiveId": "obj_straight_record_6",
+        "objectiveDescription": "Shut down the EMP trap"
+      },
+      {
+        "questId": "quest_taking_stock_121",
+        "questTitle": "Taking Stock",
+        "objectiveId": "obj_taking_stock_3",
+        "objectiveDescription": "On Dam Battlegrounds, ping a Bombardier"
+      },
+      {
+        "questId": "quest_the_league_139",
+        "questTitle": "The League",
+        "objectiveId": "obj_the_league_3",
+        "objectiveDescription": "On Dam Battlegrounds, photograph the goal by the Water Towers"
+      },
+      {
+        "questId": "quest_the_major_s_footlocker",
+        "questTitle": "The Major's Footlocker",
+        "objectiveId": "obj_the_major_s_footlocker_2",
+        "objectiveDescription": "Deliver Major Aiva's Mementos to Tian Wen"
+      },
+      {
+        "questId": "quest_to_the_skies_124",
+        "questTitle": "To The Skies",
+        "objectiveId": "obj_to_the_skies_3",
+        "objectiveDescription": "Search for the Gondola Prototype near the Red Lakes"
+      },
+      {
+        "questId": "quest_to_the_skies_124",
+        "questTitle": "To The Skies",
+        "objectiveId": "obj_to_the_skies_4",
+        "objectiveDescription": "Search for the Gondola Prototype in the Farmlands"
+      },
+      {
+        "questId": "quest_to_the_skies_124",
+        "questTitle": "To The Skies",
+        "objectiveId": "obj_to_the_skies_5",
+        "objectiveDescription": "Search for the Gondola Prototype in the East Plains"
+      },
+      {
+        "questId": "quest_to_the_skies_124",
+        "questTitle": "To The Skies",
+        "objectiveId": "obj_to_the_skies_6",
+        "objectiveDescription": "Search for the Gondola Prototype at the top of the Dried Riverbed"
+      },
+      {
+        "questId": "quest_to_the_skies_124",
+        "questTitle": "To The Skies",
+        "objectiveId": "obj_to_the_skies_7",
+        "objectiveDescription": "Install ARC Performance Steel"
+      },
+      {
+        "questId": "quest_to_the_skies_124",
+        "questTitle": "To The Skies",
+        "objectiveId": "obj_to_the_skies_8",
+        "objectiveDescription": "Install ARC Pop Trigger"
+      },
+      {
+        "questId": "quest_to_the_skies_124",
+        "questTitle": "To The Skies",
+        "objectiveId": "obj_to_the_skies_9",
+        "objectiveDescription": "Install ARC Synthetic Resin"
+      },
+      {
+        "questId": "quest_to_the_skies_124",
+        "questTitle": "To The Skies",
+        "objectiveId": "obj_to_the_skies_10",
+        "objectiveDescription": "Install ARC Thermo Lining"
+      },
+      {
+        "questId": "quest_to_the_skies_124",
+        "questTitle": "To The Skies",
+        "objectiveId": "obj_to_the_skies_11",
+        "objectiveDescription": "Activate the Gondola Prototype"
+      },
+      {
+        "questId": "quest_untended_garden",
+        "questTitle": "Untended Garden",
+        "objectiveId": "obj_untended_garden_3",
+        "objectiveDescription": "Upload the data to the computer terminal in any Field Depot"
+      },
+      {
+        "questId": "quest_water_troubles",
+        "questTitle": "Water Troubles",
+        "objectiveId": "obj_water_troubles_2",
+        "objectiveDescription": "Find the intake to the District's Water Supply"
+      },
+      {
+        "questId": "quest_water_troubles",
+        "questTitle": "Water Troubles",
+        "objectiveId": "obj_water_troubles_3",
+        "objectiveDescription": "Sample the water"
+      }
+    ]
+  },
+  "buried_city": {
+    "mapId": "buried_city",
+    "mapName": "Buried City",
+    "existingPois": [
+      {
+        "id": "city_piazza_roma",
+        "name": "Piazza Roma",
+        "coordinates": {
+          "x": 45,
+          "y": 40
+        }
+      },
+      {
+        "id": "city_grandioso_apartments",
+        "name": "Grandioso Apartments",
+        "coordinates": {
+          "x": 62,
+          "y": 35
+        }
+      },
+      {
+        "id": "city_parking_garage",
+        "name": "Underground Parking Garage",
+        "coordinates": {
+          "x": 35,
+          "y": 65
+        }
+      },
+      {
+        "id": "city_galleria",
+        "name": "Buried Galleria & Properties",
+        "coordinates": {
+          "x": 55,
+          "y": 58
+        }
+      },
+      {
+        "id": "city_perimeter_dunes",
+        "name": "South Dunes Infiltration",
+        "coordinates": {
+          "x": 20,
+          "y": 80
+        }
+      },
+      {
+        "id": "city_highway_overpass",
+        "name": "North Highway Overpass",
+        "coordinates": {
+          "x": 70,
+          "y": 18
+        }
+      },
+      {
+        "id": "city_extract_rooftop",
+        "name": "Grandioso Rooftop Extract",
+        "coordinates": {
+          "x": 68,
+          "y": 28
+        }
+      },
+      {
+        "id": "city_extract_metro",
+        "name": "Underground Metro Station Extract",
+        "coordinates": {
+          "x": 38,
+          "y": 78
+        }
+      }
+    ],
+    "unmappedObjectives": [
+      {
+        "questId": "quest_reveal_in_ruins",
+        "questTitle": "A Reveal in Ruins",
+        "objectiveId": "obj_a_reveal_in_ruins_2",
+        "objectiveDescription": "Deliver the ESR Analyzer to Lance"
+      },
+      {
+        "questId": "quest_a_warm_place_to_rest",
+        "questTitle": "A Warm Place To Rest",
+        "objectiveId": "obj_a_warm_place_to_rest_2",
+        "objectiveDescription": "Search for any signs of survivors"
+      },
+      {
+        "questId": "quest_a_warm_place_to_rest",
+        "questTitle": "A Warm Place To Rest",
+        "objectiveId": "obj_a_warm_place_to_rest_3",
+        "objectiveDescription": "Follow the red markers"
+      },
+      {
+        "questId": "quest_a_warm_place_to_rest",
+        "questTitle": "A Warm Place To Rest",
+        "objectiveId": "obj_a_warm_place_to_rest_4",
+        "objectiveDescription": "Inspect the grave"
+      },
+      {
+        "questId": "quest_after_rain_comes",
+        "questTitle": "After Rain Comes",
+        "objectiveId": "obj_after_rain_comes_2",
+        "objectiveDescription": "Repair the solar panels using 5 Wires and 2 Battery"
+      },
+      {
+        "questId": "quest_building_a_library",
+        "questTitle": "Building A Library",
+        "objectiveId": "obj_building_a_library_1",
+        "objectiveDescription": "Locate the Library in the City Center"
+      },
+      {
+        "questId": "quest_building_a_library",
+        "questTitle": "Building A Library",
+        "objectiveId": "obj_building_a_library_2",
+        "objectiveDescription": "Find 1 romance book"
+      },
+      {
+        "questId": "quest_building_a_library",
+        "questTitle": "Building A Library",
+        "objectiveId": "obj_building_a_library_3",
+        "objectiveDescription": "Find 1 detective book"
+      },
+      {
+        "questId": "quest_building_a_library",
+        "questTitle": "Building A Library",
+        "objectiveId": "obj_building_a_library_4",
+        "objectiveDescription": "Find 1 adventure book"
+      },
+      {
+        "questId": "quest_building_a_library",
+        "questTitle": "Building A Library",
+        "objectiveId": "obj_building_a_library_5",
+        "objectiveDescription": "Deliver 3 books to Apollo"
+      },
+      {
+        "questId": "quest_combat_recon_142",
+        "questTitle": "Combat Recon",
+        "objectiveId": "obj_combat_recon_2",
+        "objectiveDescription": "Scope out a cover spot in the buses near Marano Park"
+      },
+      {
+        "questId": "quest_combat_recon_142",
+        "questTitle": "Combat Recon",
+        "objectiveId": "obj_combat_recon_3",
+        "objectiveDescription": "Scope out a cover spot in the attics around Main Street"
+      },
+      {
+        "questId": "quest_combat_recon_142",
+        "questTitle": "Combat Recon",
+        "objectiveId": "obj_combat_recon_4",
+        "objectiveDescription": "Destroy 2 Spotter"
+      },
+      {
+        "questId": "quest_combat_recon_142",
+        "questTitle": "Combat Recon",
+        "objectiveId": "obj_combat_recon_5",
+        "objectiveDescription": "Deliver a Spotter Relay to Shani"
+      },
+      {
+        "questId": "quest_communication_hideout",
+        "questTitle": "Communication Hideout",
+        "objectiveId": "obj_communication_hideout_1",
+        "objectiveDescription": "Reach the Red Tower in Old Town"
+      },
+      {
+        "questId": "quest_communication_hideout",
+        "questTitle": "Communication Hideout",
+        "objectiveId": "obj_communication_hideout_2",
+        "objectiveDescription": "Find missing battery cell"
+      },
+      {
+        "questId": "quest_communication_hideout",
+        "questTitle": "Communication Hideout",
+        "objectiveId": "obj_communication_hideout_3",
+        "objectiveDescription": "Install battery cell in the Generator"
+      },
+      {
+        "questId": "quest_communication_hideout",
+        "questTitle": "Communication Hideout",
+        "objectiveId": "obj_communication_hideout_4",
+        "objectiveDescription": "Enable the power on the Generator"
+      },
+      {
+        "questId": "quest_communication_hideout",
+        "questTitle": "Communication Hideout",
+        "objectiveId": "obj_communication_hideout_5",
+        "objectiveDescription": "Boot the antenna terminal near the Red Tower"
+      },
+      {
+        "questId": "quest_digging_up_dirt",
+        "questTitle": "Digging Up Dirt",
+        "objectiveId": "obj_digging_up_dirt_1",
+        "objectiveDescription": "Locate the Santa Maria Houses in Old Town"
+      },
+      {
+        "questId": "quest_digging_up_dirt",
+        "questTitle": "Digging Up Dirt",
+        "objectiveId": "obj_digging_up_dirt_2",
+        "objectiveDescription": "Locate the Dead Drop inside the courtyard"
+      },
+      {
+        "questId": "quest_eyes_on_the_prize",
+        "questTitle": "Eyes On The Prize",
+        "objectiveId": "obj_eyes_on_the_prize_2",
+        "objectiveDescription": "Rewire the solar panel using 3 Wires"
+      },
+      {
+        "questId": "quest_industrial_espionage",
+        "questTitle": "Industrial Espionage",
+        "objectiveId": "obj_industrial_espionage_1",
+        "objectiveDescription": "Find Tian Wen's weapon cache near the Gas Station in the Outskirts"
+      },
+      {
+        "questId": "quest_industrial_espionage",
+        "questTitle": "Industrial Espionage",
+        "objectiveId": "obj_industrial_espionage_2",
+        "objectiveDescription": "Deliver the Burletta to the rival weapon cache"
+      },
+      {
+        "questId": "quest_industrial_espionage",
+        "questTitle": "Industrial Espionage",
+        "objectiveId": "obj_industrial_espionage_3",
+        "objectiveDescription": "Plant a bug on the weapon cache"
+      },
+      {
+        "questId": "quest_life_of_a_pharmacist",
+        "questTitle": "Life Of A Pharmacist",
+        "objectiveId": "obj_life_of_a_pharmacist_2",
+        "objectiveDescription": "Document the pharmacist's hobbies"
+      },
+      {
+        "questId": "quest_life_of_a_pharmacist",
+        "questTitle": "Life Of A Pharmacist",
+        "objectiveId": "obj_life_of_a_pharmacist_3",
+        "objectiveDescription": "Document the pharmacist's family"
+      },
+      {
+        "questId": "quest_life_of_a_pharmacist",
+        "questTitle": "Life Of A Pharmacist",
+        "objectiveId": "obj_life_of_a_pharmacist_4",
+        "objectiveDescription": "Document the pharmacist's taste"
+      },
+      {
+        "questId": "quest_life_of_a_pharmacist",
+        "questTitle": "Life Of A Pharmacist",
+        "objectiveId": "obj_life_of_a_pharmacist_5",
+        "objectiveDescription": "Document the pharmacist's skills"
+      },
+      {
+        "questId": "quest_line_in_the_sand",
+        "questTitle": "Line in the Sand",
+        "objectiveId": "obj_line_in_the_sand_1",
+        "objectiveDescription": "Find out why the train never reached Marano Station"
+      },
+      {
+        "questId": "quest_line_in_the_sand",
+        "questTitle": "Line in the Sand",
+        "objectiveId": "obj_line_in_the_sand_2",
+        "objectiveDescription": "Find out who orchestrated the robbery"
+      },
+      {
+        "questId": "quest_line_in_the_sand",
+        "questTitle": "Line in the Sand",
+        "objectiveId": "obj_line_in_the_sand_3",
+        "objectiveDescription": "Find out where the thruster valves were stashed"
+      },
+      {
+        "questId": "quest_line_in_the_sand",
+        "questTitle": "Line in the Sand",
+        "objectiveId": "obj_line_in_the_sand_4",
+        "objectiveDescription": "Search the basement of the merchant's nearby apartment"
+      },
+      {
+        "questId": "quest_marked_for_death",
+        "questTitle": "Marked For Death",
+        "objectiveId": "obj_marked_for_death_2",
+        "objectiveDescription": "Search for Tian Wen's cache near the Warehouses"
+      },
+      {
+        "questId": "quest_marked_for_death",
+        "questTitle": "Marked For Death",
+        "objectiveId": "obj_marked_for_death_3",
+        "objectiveDescription": "Follow the clues"
+      },
+      {
+        "questId": "quest_market_correction",
+        "questTitle": "Market Correction",
+        "objectiveId": "obj_market_correction_1",
+        "objectiveDescription": "Locate the cache near Marano Station"
+      },
+      {
+        "questId": "quest_market_correction",
+        "questTitle": "Market Correction",
+        "objectiveId": "obj_market_correction_2",
+        "objectiveDescription": "Sabotage the cache"
+      },
+      {
+        "questId": "quest_the_root_of_the_matter",
+        "questTitle": "The Root of the Matter",
+        "objectiveId": "obj_the_root_of_the_matter_1",
+        "objectiveDescription": "Go to the Research Building"
+      },
+      {
+        "questId": "quest_the_root_of_the_matter",
+        "questTitle": "The Root of the Matter",
+        "objectiveId": "obj_the_root_of_the_matter_2",
+        "objectiveDescription": "Search the seed vault in the \"room with a great view\""
+      },
+      {
+        "questId": "quest_the_root_of_the_matter",
+        "questTitle": "The Root of the Matter",
+        "objectiveId": "obj_the_root_of_the_matter_3",
+        "objectiveDescription": "Deliver the Experimental Seed Sample to Celeste"
+      },
+      {
+        "questId": "quest_unexpected_initiative",
+        "questTitle": "Unexpected Initiative",
+        "objectiveId": "obj_unexpected_initiative_5",
+        "objectiveDescription": "Deliver a Nutrient Meter to Tian Wen"
+      },
+      {
+        "questId": "quest_unexpected_initiative",
+        "questTitle": "Unexpected Initiative",
+        "objectiveId": "obj_unexpected_initiative_6",
+        "objectiveDescription": "Deliver a Moisture Meter to Tian Wen"
+      }
+    ]
+  },
+  "the_spaceport": {
+    "mapId": "the_spaceport",
+    "mapName": "The Spaceport",
+    "existingPois": [
+      {
+        "id": "spaceport_launchpad",
+        "name": "Orbital Launchpad A",
+        "coordinates": {
+          "x": 50,
+          "y": 45
+        }
+      },
+      {
+        "id": "spaceport_hangar",
+        "name": "Cargo Hangar 3",
+        "coordinates": {
+          "x": 30,
+          "y": 35
+        }
+      },
+      {
+        "id": "spaceport_radar_dish",
+        "name": "Deep Space Radar Array",
+        "coordinates": {
+          "x": 70,
+          "y": 30
+        }
+      },
+      {
+        "id": "spaceport_control_tower_a6",
+        "name": "Control Tower A6 (Jiangsu)",
+        "coordinates": {
+          "x": 68,
+          "y": 22
+        }
+      },
+      {
+        "id": "spaceport_departure_terminal",
+        "name": "Departure Building & Security",
+        "coordinates": {
+          "x": 38,
+          "y": 58
+        }
+      },
+      {
+        "id": "spaceport_arrival_terminal",
+        "name": "Arrival Building & Data Office",
+        "coordinates": {
+          "x": 56,
+          "y": 60
+        }
+      },
+      {
+        "id": "spaceport_rocket_assembly",
+        "name": "Rocket Assembly Line",
+        "coordinates": {
+          "x": 45,
+          "y": 32
+        }
+      },
+      {
+        "id": "spaceport_fuel_control",
+        "name": "Fuel Control & Underground Grid",
+        "coordinates": {
+          "x": 62,
+          "y": 48
+        }
+      },
+      {
+        "id": "spaceport_terminal_spawn",
+        "name": "West Perimeter Fence",
+        "coordinates": {
+          "x": 15,
+          "y": 50
+        }
+      },
+      {
+        "id": "spaceport_north_trench_spawn",
+        "name": "North Trench Perimeter",
+        "coordinates": {
+          "x": 75,
+          "y": 15
+        }
+      },
+      {
+        "id": "spaceport_extract_tarmac",
+        "name": "Runway Tarmac Extraction",
+        "coordinates": {
+          "x": 50,
+          "y": 80
+        }
+      },
+      {
+        "id": "spaceport_extract_tunnels",
+        "name": "Fuel Tunnel Service Airlock",
+        "coordinates": {
+          "x": 35,
+          "y": 82
+        }
+      }
+    ],
+    "unmappedObjectives": [
+      {
+        "questId": "quest_a_lay_of_the_land",
+        "questTitle": "A Lay Of The Land",
+        "objectiveId": "obj_a_lay_of_the_land_4",
+        "objectiveDescription": "Deliver 1 LiDAR Scanner to Shani"
+      },
+      {
+        "questId": "quest_a_wrench_in_the_works",
+        "questTitle": "A Wrench in the Works",
+        "objectiveId": "obj_a_wrench_in_the_works_1",
+        "objectiveDescription": "Search the buses near the western gate"
+      },
+      {
+        "questId": "quest_dust_on_the_wires_130",
+        "questTitle": "Dust on the Wires",
+        "objectiveId": "obj_dust_on_the_wires_2",
+        "objectiveDescription": "Use the Field Radio to transmit the scout group's last log to Shani"
+      },
+      {
+        "questId": "quest_dust_on_the_wires_130",
+        "questTitle": "Dust on the Wires",
+        "objectiveId": "obj_dust_on_the_wires_5",
+        "objectiveDescription": "Search the remains left by the scouts"
+      },
+      {
+        "questId": "quest_dust_on_the_wires_130",
+        "questTitle": "Dust on the Wires",
+        "objectiveId": "obj_dust_on_the_wires_6",
+        "objectiveDescription": "Deliver the Scout Patrol Note to Shani"
+      },
+      {
+        "questId": "quest_lost_in_transmission",
+        "questTitle": "Lost In Transmission",
+        "objectiveId": "obj_lost_in_transmission_3",
+        "objectiveDescription": "Establish a connection from the terminal"
+      },
+      {
+        "questId": "quest_on_the_map_145",
+        "questTitle": "On The Map",
+        "objectiveId": "obj_on_the_map_3",
+        "objectiveDescription": "Head to the cactus patch in the wall breach, and transmit your location"
+      },
+      {
+        "questId": "quest_on_the_map_145",
+        "questTitle": "On The Map",
+        "objectiveId": "obj_on_the_map_5",
+        "objectiveDescription": "Find the container covered in tarp, and mark it"
+      },
+      {
+        "questId": "quest_power_out",
+        "questTitle": "Power Out",
+        "objectiveId": "obj_power_out_2",
+        "objectiveDescription": "Find any sign of the missing engineer"
+      },
+      {
+        "questId": "quest_power_out",
+        "questTitle": "Power Out",
+        "objectiveId": "obj_power_out_3",
+        "objectiveDescription": "Install the fuse"
+      },
+      {
+        "questId": "quest_power_out",
+        "questTitle": "Power Out",
+        "objectiveId": "obj_power_out_4",
+        "objectiveDescription": "Restore the power"
+      },
+      {
+        "questId": "quest_prescriptions_of_the_past",
+        "questTitle": "Prescriptions of the Past",
+        "objectiveId": "obj_prescriptions_of_the_past_3",
+        "objectiveDescription": "Search for the records"
+      },
+      {
+        "questId": "quest_the_stench_of_corruption_152",
+        "questTitle": "The Stench Of Corruption",
+        "objectiveId": "obj_the_stench_of_corruption_2",
+        "objectiveDescription": "Find the staff locker room"
+      },
+      {
+        "questId": "quest_the_stench_of_corruption_152",
+        "questTitle": "The Stench Of Corruption",
+        "objectiveId": "obj_the_stench_of_corruption_3",
+        "objectiveDescription": "Search the room for any clues of the saboteur's identity"
+      },
+      {
+        "questId": "quest_the_stench_of_corruption_152",
+        "questTitle": "The Stench Of Corruption",
+        "objectiveId": "obj_the_stench_of_corruption_5",
+        "objectiveDescription": "Use Flushing Terminal Key"
+      },
+      {
+        "questId": "quest_turnabout",
+        "questTitle": "Turnabout",
+        "objectiveId": "obj_turnabout_2",
+        "objectiveDescription": "Locate and upload the blackmail files to Celeste"
+      },
+      {
+        "questId": "quest_worth_your_salt",
+        "questTitle": "Worth Your Salt",
+        "objectiveId": "obj_worth_your_salt_4",
+        "objectiveDescription": "Use the machinery to charge the battery"
+      },
+      {
+        "questId": "quest_worth_your_salt",
+        "questTitle": "Worth Your Salt",
+        "objectiveId": "obj_worth_your_salt_5",
+        "objectiveDescription": "Deliver the Charged Battery to the drop-off point in the corner"
+      }
+    ]
+  },
+  "the_blue_gate": {
+    "mapId": "the_blue_gate",
+    "mapName": "The Blue Gate",
+    "existingPois": [
+      {
+        "id": "blue_gate_security_checkpoint",
+        "name": "Security Checkpoint Alpha",
+        "coordinates": {
+          "x": 45,
+          "y": 65
+        }
+      },
+      {
+        "id": "blue_gate_traffic_tunnel",
+        "name": "Highway Traffic Tunnel",
+        "coordinates": {
+          "x": 52,
+          "y": 72
+        }
+      },
+      {
+        "id": "blue_gate_pilgrims_peak",
+        "name": "Pilgrim's Peak & Comms Tower",
+        "coordinates": {
+          "x": 68,
+          "y": 25
+        }
+      },
+      {
+        "id": "blue_gate_olive_grove",
+        "name": "Olive Grove & Ancient Church",
+        "coordinates": {
+          "x": 28,
+          "y": 42
+        }
+      },
+      {
+        "id": "blue_gate_collapsed_highway",
+        "name": "Collapsed Highway & Nomad Shelter",
+        "coordinates": {
+          "x": 32,
+          "y": 78
+        }
+      },
+      {
+        "id": "blue_gate_warehouse_complex",
+        "name": "Warehouse Complex & Village",
+        "coordinates": {
+          "x": 55,
+          "y": 48
+        }
+      },
+      {
+        "id": "blue_gate_barren_clearing",
+        "name": "Barren Clearing & Machine Wreckage",
+        "coordinates": {
+          "x": 72,
+          "y": 55
+        }
+      },
+      {
+        "id": "blue_gate_maintenance_bunker",
+        "name": "Central Maintenance Bunker",
+        "coordinates": {
+          "x": 50,
+          "y": 38
+        }
+      },
+      {
+        "id": "blue_gate_mountain_watchtower",
+        "name": "Mountain Ridge Watchtower",
+        "coordinates": {
+          "x": 75,
+          "y": 20
+        }
+      },
+      {
+        "id": "blue_gate_south_approach",
+        "name": "South Canyon Ingress",
+        "coordinates": {
+          "x": 20,
+          "y": 82
+        }
+      },
+      {
+        "id": "blue_gate_extract_helipad",
+        "name": "Fortress Helipad Extraction",
+        "coordinates": {
+          "x": 82,
+          "y": 35
+        }
+      },
+      {
+        "id": "blue_gate_extract_canyon",
+        "name": "Lower Gorge Extraction Flare",
+        "coordinates": {
+          "x": 35,
+          "y": 88
+        }
+      }
+    ],
+    "unmappedObjectives": [
+      {
+        "questId": "quest_a_dead_end",
+        "questTitle": "A Dead End",
+        "objectiveId": "obj_a_dead_end_1",
+        "objectiveDescription": "Find Mantikor"
+      },
+      {
+        "questId": "quest_a_dead_end",
+        "questTitle": "A Dead End",
+        "objectiveId": "obj_a_dead_end_2",
+        "objectiveDescription": "Search the locked room for any records on Project Heartwood"
+      },
+      {
+        "questId": "quest_a_dead_end",
+        "questTitle": "A Dead End",
+        "objectiveId": "obj_a_dead_end_3",
+        "objectiveDescription": "Find the Dusty Film Reel"
+      },
+      {
+        "questId": "quest_a_dead_end",
+        "questTitle": "A Dead End",
+        "objectiveId": "obj_a_dead_end_4",
+        "objectiveDescription": "Deliver the Dusty Film Reel to Shani"
+      },
+      {
+        "questId": "quest_a_first_foothold",
+        "questTitle": "A First Foothold",
+        "objectiveId": "obj_a_first_foothold_4",
+        "objectiveDescription": "Nail down the roof plates on the Raider structure near Trapper's Glade"
+      },
+      {
+        "questId": "quest_a_path_not_yours_128",
+        "questTitle": "A Path Not Yours",
+        "objectiveId": "obj_a_path_not_yours_3",
+        "objectiveDescription": "Find Bilguun's gift at the buried cache under the hideout"
+      },
+      {
+        "questId": "quest_a_prime_specimen_143",
+        "questTitle": "A Prime Specimen",
+        "objectiveId": "obj_a_prime_specimen_1",
+        "objectiveDescription": "Obtain 2 ARC Powercell"
+      },
+      {
+        "questId": "quest_a_prime_specimen_143",
+        "questTitle": "A Prime Specimen",
+        "objectiveId": "obj_a_prime_specimen_2",
+        "objectiveDescription": "Interact with any Deforester Husk"
+      },
+      {
+        "questId": "quest_a_prime_specimen_143",
+        "questTitle": "A Prime Specimen",
+        "objectiveId": "obj_a_prime_specimen_3",
+        "objectiveDescription": "Loot an Deforester Husk"
+      },
+      {
+        "questId": "quest_groundbreaking_149",
+        "questTitle": "Groundbreaking",
+        "objectiveId": "obj_groundbreaking_3",
+        "objectiveDescription": "Search the room for any construction research"
+      },
+      {
+        "questId": "quest_groundbreaking_149",
+        "questTitle": "Groundbreaking",
+        "objectiveId": "obj_groundbreaking_4",
+        "objectiveDescription": "Find the building pictured on the whiteboard"
+      },
+      {
+        "questId": "quest_groundbreaking_149",
+        "questTitle": "Groundbreaking",
+        "objectiveId": "obj_groundbreaking_5",
+        "objectiveDescription": "Photograph the abandoned housing project"
+      },
+      {
+        "questId": "quest_outstanding_balance_134",
+        "questTitle": "Outstanding Balance",
+        "objectiveId": "obj_outstanding_balance_3",
+        "objectiveDescription": "Deliver Dodger's Note to Tian Wen"
+      },
+      {
+        "questId": "quest_with_a_trace",
+        "questTitle": "With A Trace",
+        "objectiveId": "obj_with_a_trace_4",
+        "objectiveDescription": "Inspect the communications device"
+      }
+    ]
+  },
+  "riven_tides": {
+    "mapId": "riven_tides",
+    "mapName": "Riven Tides",
+    "existingPois": [
+      {
+        "id": "riven_harbor_control",
+        "name": "Harbor Authority Tower",
+        "coordinates": {
+          "x": 48,
+          "y": 28
+        }
+      },
+      {
+        "id": "riven_hotel_beach",
+        "name": "Grand Hotel & Beachhead Camp",
+        "coordinates": {
+          "x": 30,
+          "y": 52
+        }
+      },
+      {
+        "id": "riven_lighthouse_promontory",
+        "name": "Lighthouse Promontory",
+        "coordinates": {
+          "x": 80,
+          "y": 25
+        }
+      },
+      {
+        "id": "riven_stacking_yard",
+        "name": "Stacking Yard Container Cranes",
+        "coordinates": {
+          "x": 55,
+          "y": 62
+        }
+      },
+      {
+        "id": "riven_submarine_drydock",
+        "name": "Submarine Drydock & Bunkers",
+        "coordinates": {
+          "x": 52,
+          "y": 42
+        }
+      },
+      {
+        "id": "riven_sunken_freighter",
+        "name": "Wrecked Cargo Freighter",
+        "coordinates": {
+          "x": 32,
+          "y": 65
+        }
+      },
+      {
+        "id": "riven_beachhead_spawn",
+        "name": "Southern Shoals Ingress",
+        "coordinates": {
+          "x": 18,
+          "y": 80
+        }
+      },
+      {
+        "id": "riven_north_cliffs_spawn",
+        "name": "Northern Sea Cliffs Ingress",
+        "coordinates": {
+          "x": 25,
+          "y": 18
+        }
+      },
+      {
+        "id": "riven_extract_causeway",
+        "name": "High Tide Causeway Extract",
+        "coordinates": {
+          "x": 75,
+          "y": 78
+        }
+      },
+      {
+        "id": "riven_extract_pier",
+        "name": "Breakwater Pier Extract",
+        "coordinates": {
+          "x": 62,
+          "y": 15
+        }
+      }
+    ],
+    "unmappedObjectives": [
+      {
+        "questId": "quest_battening_down",
+        "questTitle": "Battening Down",
+        "objectiveId": "obj_battening_down_1",
+        "objectiveDescription": "Photograph the cracks forming in the seawall"
+      },
+      {
+        "questId": "quest_battening_down",
+        "questTitle": "Battening Down",
+        "objectiveId": "obj_battening_down_3",
+        "objectiveDescription": "Fix the leaking oil pipe in the northeast"
+      },
+      {
+        "questId": "quest_celeste_s_childhood_drawings_120",
+        "questTitle": "Celeste's Childhood Drawings",
+        "objectiveId": "obj_celeste_s_childhood_drawings_1",
+        "objectiveDescription": "Find young Celeste"
+      },
+      {
+        "questId": "quest_celeste_s_childhood_drawings_120",
+        "questTitle": "Celeste's Childhood Drawings",
+        "objectiveId": "obj_celeste_s_childhood_drawings_2",
+        "objectiveDescription": "Search for anything significant in Celeste's Room"
+      },
+      {
+        "questId": "quest_celeste_s_childhood_drawings_120",
+        "questTitle": "Celeste's Childhood Drawings",
+        "objectiveId": "obj_celeste_s_childhood_drawings_3",
+        "objectiveDescription": "Find the drawing on the roof of the third Customs House"
+      },
+      {
+        "questId": "quest_celeste_s_childhood_drawings_120",
+        "questTitle": "Celeste's Childhood Drawings",
+        "objectiveId": "obj_celeste_s_childhood_drawings_4",
+        "objectiveDescription": "Find the drawing at the Quay"
+      },
+      {
+        "questId": "quest_celeste_s_teenage_rebellion_127",
+        "questTitle": "Celeste's Teenage Rebellion",
+        "objectiveId": "obj_celeste_s_teenage_rebellion_5",
+        "objectiveDescription": "Search for a radio transmitter at the Raider Camp"
+      },
+      {
+        "questId": "quest_celeste_s_teenage_rebellion_127",
+        "questTitle": "Celeste's Teenage Rebellion",
+        "objectiveId": "obj_celeste_s_teenage_rebellion_7",
+        "objectiveDescription": "Weld the broken generator"
+      },
+      {
+        "questId": "quest_celeste_s_teenage_rebellion_127",
+        "questTitle": "Celeste's Teenage Rebellion",
+        "objectiveId": "obj_celeste_s_teenage_rebellion_8",
+        "objectiveDescription": "Start the transmitter"
+      },
+      {
+        "questId": "quest_safe_harbor",
+        "questTitle": "Safe Harbor",
+        "objectiveId": "obj_safe_harbor_2",
+        "objectiveDescription": "Find the area portrayed in the sketch"
+      },
+      {
+        "questId": "quest_safe_harbor",
+        "questTitle": "Safe Harbor",
+        "objectiveId": "obj_safe_harbor_3",
+        "objectiveDescription": "Dig up the buried part"
+      },
+      {
+        "questId": "quest_safe_harbor",
+        "questTitle": "Safe Harbor",
+        "objectiveId": "obj_safe_harbor_4",
+        "objectiveDescription": "Deliver the Precision Gimbal to Tian Wen"
+      },
+      {
+        "questId": "quest_shoring_up_defenses",
+        "questTitle": "Shoring Up Defenses",
+        "objectiveId": "obj_shoring_up_defenses_1",
+        "objectiveDescription": "Destroy 5 Wasps"
+      },
+      {
+        "questId": "quest_shoring_up_defenses",
+        "questTitle": "Shoring Up Defenses",
+        "objectiveId": "obj_shoring_up_defenses_2",
+        "objectiveDescription": "Destroy 3 Firefly"
+      }
+    ]
+  },
+  "stella_montis": {
+    "mapId": "stella_montis",
+    "mapName": "Stella Montis",
+    "existingPois": [
+      {
+        "id": "stella_seed_vault",
+        "name": "Seed Vault Complex",
+        "coordinates": {
+          "x": 52,
+          "y": 40
+        }
+      },
+      {
+        "id": "stella_robotic_sandbox",
+        "name": "Robotic Sandboxes A & B",
+        "coordinates": {
+          "x": 38,
+          "y": 32
+        }
+      },
+      {
+        "id": "stella_cultural_archives",
+        "name": "Cultural & Media Archives",
+        "coordinates": {
+          "x": 65,
+          "y": 45
+        }
+      },
+      {
+        "id": "stella_medical_research",
+        "name": "Medical Research Laboratory",
+        "coordinates": {
+          "x": 35,
+          "y": 55
+        }
+      },
+      {
+        "id": "stella_central_atrium",
+        "name": "Central Atrium & Reception",
+        "coordinates": {
+          "x": 50,
+          "y": 58
+        }
+      },
+      {
+        "id": "stella_security_bridge",
+        "name": "Security Bridge & Vault",
+        "coordinates": {
+          "x": 58,
+          "y": 30
+        }
+      },
+      {
+        "id": "stella_assembly_workshops",
+        "name": "Assembly Workshops & Line",
+        "coordinates": {
+          "x": 62,
+          "y": 68
+        }
+      },
+      {
+        "id": "stella_primary_telescope",
+        "name": "Primary Telescope Dome",
+        "coordinates": {
+          "x": 50,
+          "y": 18
+        }
+      },
+      {
+        "id": "stella_alpine_pass_spawn",
+        "name": "Alpine Pass Ingress",
+        "coordinates": {
+          "x": 15,
+          "y": 82
+        }
+      },
+      {
+        "id": "stella_ridge_spawn",
+        "name": "Glacial Ridge Ingress",
+        "coordinates": {
+          "x": 82,
+          "y": 22
+        }
+      },
+      {
+        "id": "stella_extract_summit_pad",
+        "name": "Summit Helipad Extraction",
+        "coordinates": {
+          "x": 48,
+          "y": 12
+        }
+      },
+      {
+        "id": "stella_extract_lower_depot",
+        "name": "Lower Cargo Lift Extract",
+        "coordinates": {
+          "x": 78,
+          "y": 80
+        }
+      }
+    ],
+    "unmappedObjectives": [
+      {
+        "questId": "quest_cold_storage",
+        "questTitle": "Cold Storage",
+        "objectiveId": "obj_cold_storage_1",
+        "objectiveDescription": "Search any J Kozma Ventures container"
+      },
+      {
+        "questId": "quest_cold_storage",
+        "questTitle": "Cold Storage",
+        "objectiveId": "obj_cold_storage_2",
+        "objectiveDescription": "Deliver the Old World Books to Shani"
+      },
+      {
+        "questId": "quest_furtive_meetings_132",
+        "questTitle": "Furtive Meetings",
+        "objectiveId": "obj_furtive_meetings_4",
+        "objectiveDescription": "Search the meeting area"
+      },
+      {
+        "questId": "quest_furtive_meetings_132",
+        "questTitle": "Furtive Meetings",
+        "objectiveId": "obj_furtive_meetings_5",
+        "objectiveDescription": "Bring the Secret Meeting Info to Shani"
+      },
+      {
+        "questId": "quest_in_my_image",
+        "questTitle": "In My Image",
+        "objectiveId": "obj_in_my_image_1",
+        "objectiveDescription": "Deploy into Stella Montis"
+      },
+      {
+        "questId": "quest_in_my_image",
+        "questTitle": "In My Image",
+        "objectiveId": "obj_in_my_image_2",
+        "objectiveDescription": "Find and search 3 Androids"
+      },
+      {
+        "questId": "quest_last_entry_133",
+        "questTitle": "Last Entry",
+        "objectiveId": "obj_last_entry_2",
+        "objectiveDescription": "Search for the hidden key in the adjacent room"
+      },
+      {
+        "questId": "quest_last_entry_133",
+        "questTitle": "Last Entry",
+        "objectiveId": "obj_last_entry_5",
+        "objectiveDescription": "Bring the Official Shutdown Documentation to Shani"
+      },
+      {
+        "questId": "quest_snap_and_salvage",
+        "questTitle": "Snap And Salvage",
+        "objectiveId": "obj_snap_and_salvage_3",
+        "objectiveDescription": "Deliver a Flow Controller to Tian Wen"
+      },
+      {
+        "questId": "quest_snap_and_salvage",
+        "questTitle": "Snap And Salvage",
+        "objectiveId": "obj_snap_and_salvage_4",
+        "objectiveDescription": "Deliver a Magnetron to Tian Wen"
+      },
+      {
+        "questId": "quest_stable_housing",
+        "questTitle": "Stable Housing",
+        "objectiveId": "obj_stable_housing_5",
+        "objectiveDescription": "Search for alternate ways into the safe"
+      },
+      {
+        "questId": "quest_stable_housing",
+        "questTitle": "Stable Housing",
+        "objectiveId": "obj_stable_housing_6",
+        "objectiveDescription": "Retrieve the contents of the safe"
+      },
+      {
+        "questId": "quest_stable_housing",
+        "questTitle": "Stable Housing",
+        "objectiveId": "obj_stable_housing_7",
+        "objectiveDescription": "Deliver the Project Heartwood Blueprints to Tian Wen"
+      },
+      {
+        "questId": "quest_with_a_view_140",
+        "questTitle": "With a View",
+        "objectiveId": "obj_with_a_view_1",
+        "objectiveDescription": "Obtain a Rotary Encoder"
+      },
+      {
+        "questId": "quest_with_a_view_140",
+        "questTitle": "With a View",
+        "objectiveId": "obj_with_a_view_3",
+        "objectiveDescription": "Use the Rotary Encoder to activate the server switch"
+      },
+      {
+        "questId": "quest_with_a_view_140",
+        "questTitle": "With a View",
+        "objectiveId": "obj_with_a_view_4",
+        "objectiveDescription": "Interact with a nearby computer to help identify the correct paths"
+      },
+      {
+        "questId": "quest_with_a_view_140",
+        "questTitle": "With a View",
+        "objectiveId": "obj_with_a_view_5",
+        "objectiveDescription": "Deliver an Ion Sputter to Shani"
+      }
+    ]
+  },
+  "pendola_pass": {
+    "mapId": "pendola_pass",
+    "mapName": "Pendola Pass",
+    "existingPois": [
+      {
+        "id": "pendola_observatory",
+        "name": "Cielo Sereno Observatory",
+        "coordinates": {
+          "x": 62,
+          "y": 22
+        }
+      },
+      {
+        "id": "pendola_old_town",
+        "name": "Old Town & Church",
+        "coordinates": {
+          "x": 42,
+          "y": 45
+        }
+      },
+      {
+        "id": "pendola_emperor_carcass",
+        "name": "The Emperor (Harvester Carcass)",
+        "coordinates": {
+          "x": 52,
+          "y": 58
+        }
+      },
+      {
+        "id": "pendola_railyard_station",
+        "name": "Almatera Station & Railyard",
+        "coordinates": {
+          "x": 35,
+          "y": 68
+        }
+      },
+      {
+        "id": "pendola_weather_dispatch",
+        "name": "Weather Station & Dispatch",
+        "coordinates": {
+          "x": 75,
+          "y": 42
+        }
+      },
+      {
+        "id": "pendola_commissary",
+        "name": "Commissary Supermarket",
+        "coordinates": {
+          "x": 48,
+          "y": 38
+        }
+      },
+      {
+        "id": "pendola_northern_tracks",
+        "name": "Northern Tracks & Destroyed Station",
+        "coordinates": {
+          "x": 40,
+          "y": 25
+        }
+      },
+      {
+        "id": "pendola_gorge_approach_spawn",
+        "name": "South Gorge Ingress",
+        "coordinates": {
+          "x": 15,
+          "y": 75
+        }
+      },
+      {
+        "id": "pendola_north_tunnel_spawn",
+        "name": "North Tunnel Mouth Ingress",
+        "coordinates": {
+          "x": 70,
+          "y": 15
+        }
+      },
+      {
+        "id": "pendola_extract_pass",
+        "name": "High Pass Extraction Beacon",
+        "coordinates": {
+          "x": 85,
+          "y": 60
+        }
+      },
+      {
+        "id": "pendola_extract_ravine",
+        "name": "Dry Ravine Extraction Flare",
+        "coordinates": {
+          "x": 40,
+          "y": 85
+        }
+      }
+    ],
+    "unmappedObjectives": [
+      {
+        "questId": "quest_bait_fetch_blast_125",
+        "questTitle": "Bait, Fetch, Blast",
+        "objectiveId": "obj_bait_fetch_blast_1",
+        "objectiveDescription": "Destroy a Bully"
+      },
+      {
+        "questId": "quest_bait_fetch_blast_125",
+        "questTitle": "Bait, Fetch, Blast",
+        "objectiveId": "obj_bait_fetch_blast_2",
+        "objectiveDescription": "Destroy the head of a Bully"
+      },
+      {
+        "questId": "quest_bait_fetch_blast_125",
+        "questTitle": "Bait, Fetch, Blast",
+        "objectiveId": "obj_bait_fetch_blast_3",
+        "objectiveDescription": "Destroy 4 Bully legs"
+      },
+      {
+        "questId": "quest_clean_hands_116",
+        "questTitle": "Clean Hands",
+        "objectiveId": "obj_clean_hands_2",
+        "objectiveDescription": "Search the polluted item in the Nomad camp"
+      },
+      {
+        "questId": "quest_exploring_pendola_pass_115",
+        "questTitle": "Exploring Pendola Pass",
+        "objectiveId": "obj_exploring_pendola_pass_1",
+        "objectiveDescription": "Destroy 20 ARC enemies"
+      },
+      {
+        "questId": "quest_exploring_pendola_pass_115",
+        "questTitle": "Exploring Pendola Pass",
+        "objectiveId": "obj_exploring_pendola_pass_3",
+        "objectiveDescription": "Use 1 Wires"
+      },
+      {
+        "questId": "quest_ruins_and_reverberations_122",
+        "questTitle": "Ruins And Reverberations",
+        "objectiveId": "obj_ruins_and_reverberations_2",
+        "objectiveDescription": "Weld the wires in the crawlspace under the control room to redirect power"
+      },
+      {
+        "questId": "quest_ruins_and_reverberations_122",
+        "questTitle": "Ruins And Reverberations",
+        "objectiveId": "obj_ruins_and_reverberations_3",
+        "objectiveDescription": "Activate the Spotter Relay at the antenna again"
+      },
+      {
+        "questId": "quest_sizing_things_up_118",
+        "questTitle": "Sizing Things Up",
+        "objectiveId": "obj_sizing_things_up_3",
+        "objectiveDescription": "Inspect the circuitry in the probe"
+      },
+      {
+        "questId": "quest_tracks_of_the_beast_119",
+        "questTitle": "Tracks Of The Beast",
+        "objectiveId": "obj_tracks_of_the_beast_3",
+        "objectiveDescription": "Ping a Bully"
+      },
+      {
+        "questId": "quest_tracks_of_the_beast_119",
+        "questTitle": "Tracks Of The Beast",
+        "objectiveId": "obj_tracks_of_the_beast_4",
+        "objectiveDescription": "Ping a Skulker"
+      },
+      {
+        "questId": "quest_tracks_of_the_beast_119",
+        "questTitle": "Tracks Of The Beast",
+        "objectiveId": "obj_tracks_of_the_beast_5",
+        "objectiveDescription": "(Optional) Destroy 3 Skulkers"
+      },
+      {
+        "questId": "quest_tracks_of_the_beast_119",
+        "questTitle": "Tracks Of The Beast",
+        "objectiveId": "obj_tracks_of_the_beast_6",
+        "objectiveDescription": "(Optional) Deliver a Skulker Targeter to Shani"
+      }
+    ]
+  },
+  "practice_range": {
+    "mapId": "practice_range",
+    "mapName": "Practice Range",
+    "existingPois": [
+      {
+        "id": "practice_ballistic_range",
+        "name": "Ballistic Target Range A",
+        "coordinates": {
+          "x": 45,
+          "y": 40
+        }
+      },
+      {
+        "id": "practice_combat_simulator",
+        "name": "ARC Tactical Combat Simulator",
+        "coordinates": {
+          "x": 60,
+          "y": 55
+        }
+      },
+      {
+        "id": "practice_obstacle_course",
+        "name": "Raider Obstacle Course",
+        "coordinates": {
+          "x": 30,
+          "y": 65
+        }
+      },
+      {
+        "id": "practice_armory_workshop",
+        "name": "Armory & Munitions Depot",
+        "coordinates": {
+          "x": 35,
+          "y": 30
+        }
+      },
+      {
+        "id": "practice_control_booth",
+        "name": "Master Range Control Booth",
+        "coordinates": {
+          "x": 50,
+          "y": 20
+        }
+      },
+      {
+        "id": "practice_exit_airlock",
+        "name": "Speranza Departure Airlock",
+        "coordinates": {
+          "x": 50,
+          "y": 85
+        }
+      }
+    ],
+    "unmappedObjectives": []
+  }
+}

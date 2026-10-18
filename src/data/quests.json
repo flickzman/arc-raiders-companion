@@ -1,5 +1,39 @@
 [
   {
+    "id": "quest_distract_and_destroy_arc_enemies",
+    "title": {
+      "en": "Distract and Destroy ARC Enemies",
+      "es": "Distraer y Destruir Enemigos ARC"
+    },
+    "description": {
+      "en": "Engage ARC machines in combat, cause diversions and neutralize hostile machines.",
+      "es": "Entabla combate contra máquinas ARC, crea distracciones y neutralízalas."
+    },
+    "vendor": "Other",
+    "requiredLevel": 1,
+    "isTrial": true,
+    "objectives": [
+      {
+        "id": "obj_distract_and_destroy_1",
+        "description": {
+          "en": "Distract and destroy ARC enemies",
+          "es": "Distrae y destruye enemigos ARC"
+        },
+        "type": "combat",
+        "mapId": "any",
+        "alternativePoiIds": [],
+        "inOneRound": false,
+        "count": 5
+      }
+    ],
+    "itemsToBring": [],
+    "rewards": {
+      "xp": 1000,
+      "currency": 2500,
+      "items": []
+    }
+  },
+  {
     "id": "quest_a_bad_feeling",
     "title": {
       "en": "A Bad Feeling",
@@ -40,7 +74,7 @@
     "id": "quest_a_balanced_harvest",
     "title": {
       "en": "A Balanced Harvest",
-      "es": "A Balanced Harvest"
+      "es": "Una Cosecha Equilibrada"
     },
     "description": {
       "en": "Our food production is finally enough to meet our basic needs, but what we really need now is variety. I have a lead on some agricultural research from before the First Wave. Are you in?",
@@ -59,7 +93,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_research_admin"
       },
       {
         "id": "obj_a_balanced_harvest_2",
@@ -71,7 +106,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_research_admin"
       },
       {
         "id": "obj_a_balanced_harvest_3",
@@ -83,7 +119,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_research_admin"
       }
     ],
     "itemsToBring": [],
@@ -150,7 +187,7 @@
     "id": "quest_a_dead_end",
     "title": {
       "en": "A Dead End",
-      "es": "A Dead End"
+      "es": "Un Callejón sin Salida"
     },
     "description": {
       "en": "I... I don't get it. One day they were trying to stave off the Collapse, and then, suddenly... Nothing. That earthquake-resistant housing project was shut down by a group called MANTIKOR. Think you could find out more?",
@@ -169,7 +206,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_maintenance_bunker"
       },
       {
         "id": "obj_a_dead_end_2",
@@ -181,7 +219,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_maintenance_bunker"
       },
       {
         "id": "obj_a_dead_end_3",
@@ -193,7 +232,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_maintenance_bunker"
       },
       {
         "id": "obj_a_dead_end_4",
@@ -205,7 +245,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_maintenance_bunker"
       }
     ],
     "itemsToBring": [],
@@ -222,7 +263,7 @@
     "id": "quest_a_first_foothold",
     "title": {
       "en": "A First Foothold",
-      "es": "A First Foothold"
+      "es": "Un Primer Punto de Apoyo"
     },
     "description": {
       "en": "We’ve only just finished expanding the Tube network towards the Blue Gate, and we’re still laboring away at the rest. My crew’s been building new infrastructure around the valley to safeguard our Raiders, but the constant ARC threat has made it difficult to get anything done.",
@@ -241,7 +282,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_mountain_watchtower"
       },
       {
         "id": "obj_a_first_foothold_2",
@@ -279,7 +321,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_trappers_glade"
       }
     ],
     "itemsToBring": [],
@@ -297,7 +340,7 @@
     "id": "quest_a_lay_of_the_land",
     "title": {
       "en": "A Lay Of The Land",
-      "es": "A Lay Of The Land"
+      "es": "Reconocimiento del Terreno"
     },
     "description": {
       "en": "Those distant rumbles are getting less distant with each passing day. I have a lead on some LiDAR scanners that may help us monitor the tremors. You do want to keep a roof over your head, don't you?",
@@ -329,7 +372,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_arrival_terminal"
       },
       {
         "id": "obj_a_lay_of_the_land_3",
@@ -354,7 +398,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_control_tower_a6"
       }
     ],
     "itemsToBring": [],
@@ -372,7 +417,7 @@
     "id": "quest_a_new_type_of_plant",
     "title": {
       "en": "A New Type Of Plant",
-      "es": "A New Type Of Plant"
+      "es": "Un Nuevo Tipo de Planta"
     },
     "description": {
       "en": "Some scouts have been bringing back reports of these weird plants spreading into the area. Now, this makes your old pal Lance think it may have some interesting uses.",
@@ -391,7 +436,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_old_battleground"
       },
       {
         "id": "obj_a_new_type_of_plant_2",
@@ -403,7 +449,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_old_battleground"
       }
     ],
     "itemsToBring": [],
@@ -420,7 +467,7 @@
     "id": "quest_a_path_not_yours_128",
     "title": {
       "en": "A Path Not Yours",
-      "es": "A Path Not Yours"
+      "es": "Un Camino Ajeno"
     },
     "description": {
       "en": "Before our paths changed, we lingered by the Blue Gate for some time. We believe there is an old trail from those days, and something belonging to us may still lie at its end.",
@@ -465,7 +512,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_collapsed_highway"
       }
     ],
     "itemsToBring": [],
@@ -484,7 +532,7 @@
     "id": "quest_a_prime_specimen_143",
     "title": {
       "en": "A Prime Specimen",
-      "es": "A Prime Specimen"
+      "es": "Un Espécimen de Primera"
     },
     "description": {
       "en": "That Deforester by the Blue Gate may have caused some real devastation, but a pristine husk like that is also an invaluable sample for our research.",
@@ -503,7 +551,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_barren_clearing"
       },
       {
         "id": "obj_a_prime_specimen_2",
@@ -515,7 +564,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_barren_clearing"
       },
       {
         "id": "obj_a_prime_specimen_3",
@@ -527,7 +577,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_barren_clearing"
       }
     ],
     "itemsToBring": [],
@@ -563,7 +614,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_galleria"
       },
       {
         "id": "obj_a_reveal_in_ruins_2",
@@ -575,7 +627,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_piazza_roma"
       }
     ],
     "itemsToBring": [],
@@ -659,7 +712,7 @@
     "id": "quest_a_symbol_of_unification",
     "title": {
       "en": "A Symbol of Unification",
-      "es": "A Symbol of Unification"
+      "es": "Un Símbolo de Unificación"
     },
     "description": {
       "en": "Y'Know, back in the day we actually used to have a flag - well , a scrap of cloth more than anything. Still, you know, seeing it meant you knew you had allies nearby, that you were on your own home turf. So, I was thinking...",
@@ -678,7 +731,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_formicai_outpost"
       },
       {
         "id": "obj_a_symbol_of_unification_2",
@@ -690,7 +744,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_formicai_outpost"
       },
       {
         "id": "obj_a_symbol_of_unification_3",
@@ -702,7 +757,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_north_ridge"
       }
     ],
     "itemsToBring": [],
@@ -720,7 +776,7 @@
     "id": "quest_a_toxic_trail_151",
     "title": {
       "en": "A Toxic Trail",
-      "es": "A Toxic Trail"
+      "es": "Un Rastro Tóxico"
     },
     "description": {
       "en": "We've got clean water again, but we can't risk people falling ill if the saboteurs return. We need to root them out once and for all.",
@@ -739,7 +795,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_water_treatment"
       },
       {
         "id": "obj_a_toxic_trail_2",
@@ -751,7 +808,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_south_swamp"
       },
       {
         "id": "obj_a_toxic_trail_3",
@@ -763,7 +821,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_water_treatment"
       },
       {
         "id": "obj_a_toxic_trail_4",
@@ -775,7 +834,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_water_treatment"
       }
     ],
     "itemsToBring": [],
@@ -794,7 +854,7 @@
     "id": "quest_a_warm_place_to_rest",
     "title": {
       "en": "A Warm Place To Rest",
-      "es": "A Warm Place To Rest"
+      "es": "Un Lugar Cálido para Descansar"
     },
     "description": {
       "en": "A customer of mine saw a family taking cover in an old encampment in Buried City. I'll pay anyone who manages to find them and escort them back to safety.",
@@ -813,7 +873,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_highway_overpass"
       },
       {
         "id": "obj_a_warm_place_to_rest_2",
@@ -825,7 +886,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_highway_overpass"
       },
       {
         "id": "obj_a_warm_place_to_rest_3",
@@ -837,7 +899,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_highway_overpass"
       },
       {
         "id": "obj_a_warm_place_to_rest_4",
@@ -849,7 +912,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_highway_overpass"
       }
     ],
     "itemsToBring": [],
@@ -868,7 +932,7 @@
     "id": "quest_a_wrench_in_the_works",
     "title": {
       "en": "A Wrench in the Works",
-      "es": "A Wrench in the Works"
+      "es": "Un Palo en las Ruedas"
     },
     "description": {
       "en": "Looks like the resentment ended up reaching the ground staff of the Spaceport itself. A mutiny brewing, right in the heart of the Exodus.",
@@ -887,7 +951,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_terminal_spawn"
       },
       {
         "id": "obj_a_wrench_in_the_works_2",
@@ -899,7 +964,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_control_tower_a6"
       }
     ],
     "itemsToBring": [],
@@ -917,7 +983,7 @@
     "id": "quest_after_rain_comes",
     "title": {
       "en": "After Rain Comes",
-      "es": "After Rain Comes"
+      "es": "Tras la Lluvia Viene..."
     },
     "description": {
       "en": "I know, I know! The power's down in sector— Hey. A flash flood took out some of our solar panels in Buried City, and the generators only hold on for so long. Do us all a solid when you're up there, OK?",
@@ -949,7 +1015,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_grandioso_apartments"
       }
     ],
     "itemsToBring": [],
@@ -1001,7 +1068,7 @@
     "id": "quest_armored_transports",
     "title": {
       "en": "Armored Transports",
-      "es": "Armored Transports"
+      "es": "Transportes Blindados"
     },
     "description": {
       "en": "Ever since we expanded the tunnels to the Blue Gate, some rare pieces have started appearing on the black market. Meanwhile, I'm stuck here peddling battered old Rattlers. If I don't find new supply lines, I'll be left in the dust.",
@@ -1137,7 +1204,7 @@
     "id": "quest_bait_fetch_blast_125",
     "title": {
       "en": "Bait, Fetch, Blast",
-      "es": "Bait, Fetch, Blast"
+      "es": "Cebo, Recogida y Explosión"
     },
     "description": {
       "en": "Tough nuts to crack, those Bullies. But you know, nothing's indestructible. I've heard of a few tricks that might just work, care to put them to a test?",
@@ -1156,7 +1223,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_emperor_carcass"
       },
       {
         "id": "obj_bait_fetch_blast_2",
@@ -1168,7 +1236,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_emperor_carcass"
       },
       {
         "id": "obj_bait_fetch_blast_3",
@@ -1180,7 +1249,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_emperor_carcass"
       }
     ],
     "itemsToBring": [],
@@ -1197,7 +1267,7 @@
     "id": "quest_battening_down",
     "title": {
       "en": "Battening Down",
-      "es": "Battening Down"
+      "es": "Cerrando Escotillas"
     },
     "description": {
       "en": "We'd hoped the seawalls at Riven Tides might offer us some protection from the elements, but it seems the hurricanes were not kind to this place, either.",
@@ -1216,7 +1286,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_extract_pier"
       },
       {
         "id": "obj_battening_down_2",
@@ -1241,7 +1312,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_lighthouse_promontory"
       }
     ],
     "itemsToBring": [],
@@ -1258,7 +1330,7 @@
     "id": "quest_bees",
     "title": {
       "en": "Bees!",
-      "es": "Bees!"
+      "es": "¡Abejas!"
     },
     "description": {
       "en": "Bees! There are bees still around! While I'm no expert, our greenhouse crew desperately wants some.",
@@ -1308,7 +1380,7 @@
     "id": "quest_belly_of_the_beast_126",
     "title": {
       "en": "Belly Of The Beast",
-      "es": "Belly Of The Beast"
+      "es": "En la Boca del Lobo"
     },
     "description": {
       "en": "ARC's been swarming that fallen Emperor like flies on honey. I'm picking up signals from far beyond the Rust Belt, and they're not slowing down.",
@@ -1396,7 +1468,7 @@
     "id": "quest_boarding_the_frigate_123",
     "title": {
       "en": "Boarding The Frigate",
-      "es": "Boarding The Frigate"
+      "es": "Abordar la Fragata"
     },
     "description": {
       "en": "None of our old tactics work, facing those Frigates. We can't run. We can't hide. And there's no waiting them out. We need to take bold action, and we need to do it now.",
@@ -1469,7 +1541,7 @@
     "id": "quest_bombing_run_146",
     "title": {
       "en": "Bombing Run",
-      "es": "Bombing Run"
+      "es": "Bombardeo"
     },
     "description": {
       "en": "Now, time to see if that recon paid off. If we can teach Raiders to effectively counter Bombardiers up there, we'd be a lot safer down here.",
@@ -1536,7 +1608,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_scrap_yard"
       },
       {
         "id": "obj_broken_monument_2",
@@ -1548,7 +1621,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_scrap_yard"
       },
       {
         "id": "obj_broken_monument_3",
@@ -1560,7 +1634,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_scrap_yard"
       },
       {
         "id": "obj_broken_monument_4",
@@ -1572,7 +1647,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_scrap_yard"
       },
       {
         "id": "obj_broken_monument_5",
@@ -1584,7 +1660,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_scrap_yard"
       },
       {
         "id": "obj_broken_monument_6",
@@ -1596,7 +1673,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_scrap_yard"
       },
       {
         "id": "obj_broken_monument_7",
@@ -1608,7 +1686,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_scrap_yard"
       }
     ],
     "itemsToBring": [],
@@ -1626,7 +1705,7 @@
     "id": "quest_building_a_library",
     "title": {
       "en": "Building A Library",
-      "es": "Building A Library"
+      "es": "Construyendo una Biblioteca"
     },
     "description": {
       "en": "Our library selection has grown pretty stale. Could you head out to Buried City, and find something more for us to read? Make sure you bring something for everyone.",
@@ -1645,7 +1724,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_library"
       },
       {
         "id": "obj_building_a_library_2",
@@ -1657,7 +1737,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_library"
       },
       {
         "id": "obj_building_a_library_3",
@@ -1669,7 +1750,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_library"
       },
       {
         "id": "obj_building_a_library_4",
@@ -1681,7 +1763,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_library"
       },
       {
         "id": "obj_building_a_library_5",
@@ -1693,7 +1776,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_library"
       }
     ],
     "itemsToBring": [],
@@ -1710,7 +1794,7 @@
     "id": "quest_celeste_s_childhood_drawings_120",
     "title": {
       "en": "Celeste's Childhood Drawings",
-      "es": "Celeste's Childhood Drawings"
+      "es": "Dibujos de Infancia de Celeste"
     },
     "description": {
       "en": "Say, pal, has Celeste seemed a bit down, to you? Listen, I think I know something that might brighten her day. Do you know the hotel around Riven Tides?",
@@ -1729,7 +1813,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_hotel_beach"
       },
       {
         "id": "obj_celeste_s_childhood_drawings_2",
@@ -1741,7 +1826,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_hotel_beach"
       },
       {
         "id": "obj_celeste_s_childhood_drawings_3",
@@ -1753,7 +1839,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_customs_house"
       },
       {
         "id": "obj_celeste_s_childhood_drawings_4",
@@ -1765,7 +1852,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_quay"
       }
     ],
     "itemsToBring": [],
@@ -1782,7 +1870,7 @@
     "id": "quest_celeste_s_journals",
     "title": {
       "en": "Celeste's Journals",
-      "es": "Celeste's Journals"
+      "es": "Diarios de Celeste"
     },
     "description": {
       "en": "Okay, so this is awkward... I lost two of my journals during some outpost inspections last time I went topside. Could you head out there and try to find them back before someone else stumbles on them?",
@@ -1814,7 +1902,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_north_ridge"
       },
       {
         "id": "obj_celeste_s_journals_3",
@@ -1826,7 +1915,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_south_swamp"
       }
     ],
     "itemsToBring": [],
@@ -1844,7 +1934,7 @@
     "id": "quest_celeste_s_teenage_rebellion_127",
     "title": {
       "en": "Celeste's Teenage Rebellion",
-      "es": "Celeste's Teenage Rebellion"
+      "es": "La Rebeldía Adolescente de Celeste"
     },
     "description": {
       "en": "Those Frigates looming in the sky... It made me feel shivers I haven't felt since I was a girl. We need to adapt, I know. But the lessons we learned then? They're more relevant now than ever.",
@@ -1863,7 +1953,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_harbor_control"
       },
       {
         "id": "obj_celeste_s_teenage_rebellion_2",
@@ -1875,7 +1966,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_harbor_control"
       },
       {
         "id": "obj_celeste_s_teenage_rebellion_4",
@@ -1900,7 +1992,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_hotel_beach"
       },
       {
         "id": "obj_celeste_s_teenage_rebellion_6",
@@ -1925,7 +2018,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_hotel_beach"
       },
       {
         "id": "obj_celeste_s_teenage_rebellion_8",
@@ -1937,7 +2031,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_hotel_beach"
       }
     ],
     "itemsToBring": [],
@@ -1954,7 +2049,7 @@
     "id": "quest_clamoring_for_attention_135",
     "title": {
       "en": "Clamoring for Attention",
-      "es": "Clamoring for Attention"
+      "es": "Clamando por Atención"
     },
     "description": {
       "en": "I think I've found something we might exploit. When bigger ARC machines are just far enough from each other, a well-timed distraction could pull one out of position. You want to test that idea?",
@@ -2018,7 +2113,7 @@
     "id": "quest_clean_hands_116",
     "title": {
       "en": "Clean Hands",
-      "es": "Clean Hands"
+      "es": "Manos Limpias"
     },
     "description": {
       "en": "A matter remains at Pendola Pass which should have been settled by our own hands. That path is no longer open to us, so we must ask another.",
@@ -2050,7 +2145,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_nomad_camp"
       },
       {
         "id": "obj_clean_hands_3",
@@ -2143,7 +2239,7 @@
     "id": "quest_cold_storage",
     "title": {
       "en": "Cold Storage",
-      "es": "Cold Storage"
+      "es": "Cámara Frigorífica"
     },
     "description": {
       "en": "Reports about Stella Montis keep coming in, and it's unlike anything we've seen before. There may be records or relics from the past in there, and if so, I want them.",
@@ -2162,7 +2258,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_extract_lower_depot"
       },
       {
         "id": "obj_cold_storage_2",
@@ -2174,7 +2271,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_cultural_archives"
       }
     ],
     "itemsToBring": [],
@@ -2191,7 +2289,7 @@
     "id": "quest_collision_course",
     "title": {
       "en": "Collision Course",
-      "es": "Collision Course"
+      "es": "Rumbo de Colisión"
     },
     "description": {
       "en": "Many Raiders have learned how to dodge a Comet, but far too few know how to bring them down and get at their inner parts.",
@@ -2240,7 +2338,7 @@
     "id": "quest_combat_recon_142",
     "title": {
       "en": "Combat Recon",
-      "es": "Combat Recon"
+      "es": "Reconocimiento de Combate"
     },
     "description": {
       "en": "With those Bombardiers roaming around, ARC has found an entirely new way to flush Raiders out of cover. If you're hoping to take one down, you'll need to sharpen your skills and your strategy.",
@@ -2259,7 +2357,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_parking_garage"
       },
       {
         "id": "obj_combat_recon_2",
@@ -2271,7 +2370,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_marano_park"
       },
       {
         "id": "obj_combat_recon_3",
@@ -2283,7 +2383,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_main_street"
       },
       {
         "id": "obj_combat_recon_4",
@@ -2295,7 +2396,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_marano_park"
       },
       {
         "id": "obj_combat_recon_5",
@@ -2307,7 +2409,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_marano_park"
       }
     ],
     "itemsToBring": [],
@@ -2325,7 +2428,7 @@
     "id": "quest_communication_hideout",
     "title": {
       "en": "Communication Hideout",
-      "es": "Communication Hideout"
+      "es": "Escondite de Comunicaciones"
     },
     "description": {
       "en": "We've been losing signals in some areas of Buried City - my guess is that our equipment is acting up. You're quite skilled with repairs, aren't you? Could you check it out?",
@@ -2344,7 +2447,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_red_tower"
       },
       {
         "id": "obj_communication_hideout_2",
@@ -2356,7 +2460,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_red_tower"
       },
       {
         "id": "obj_communication_hideout_3",
@@ -2368,7 +2473,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_red_tower"
       },
       {
         "id": "obj_communication_hideout_4",
@@ -2380,7 +2486,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_red_tower"
       },
       {
         "id": "obj_communication_hideout_5",
@@ -2392,7 +2499,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_red_tower"
       }
     ],
     "itemsToBring": [],
@@ -2410,7 +2518,7 @@
     "id": "quest_deciphering_the_data_148",
     "title": {
       "en": "Deciphering The Data",
-      "es": "Deciphering The Data"
+      "es": "Descifrando los Datos"
     },
     "description": {
       "en": "If the data you found can keep the ceiling from collapsing, we have no time to spare. I know of a few magnetic decryptors around Acerra Spaceport, from back during the Exodus. They might still be working.",
@@ -2473,7 +2581,7 @@
     "id": "quest_digging_up_dirt",
     "title": {
       "en": "Digging Up Dirt",
-      "es": "Digging Up Dirt"
+      "es": "Buscando Trapos Sucios"
     },
     "description": {
       "en": "We caught a break. One of our scouts saw a member of the Tubes Management make a dead drop inside the Santa Maria Houses in Buried City. Now this might be our chance to dig up some dirt on them for a change. You in?",
@@ -2492,7 +2600,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_santa_maria_houses"
       },
       {
         "id": "obj_digging_up_dirt_2",
@@ -2504,7 +2613,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_santa_maria_houses"
       }
     ],
     "itemsToBring": [],
@@ -2521,7 +2631,7 @@
     "id": "quest_divided_129",
     "title": {
       "en": "Divided",
-      "es": "Divided"
+      "es": "Divididos"
     },
     "description": {
       "en": "So. Speranza knows what happened at Pendola Pass. What was done there has cost your people dearly. Ours have not been spared the consequence.",
@@ -2768,7 +2878,7 @@
     "id": "quest_dust_on_the_wires_130",
     "title": {
       "en": "Dust on the Wires",
-      "es": "Dust on the Wires"
+      "es": "Polvo en los Cables"
     },
     "description": {
       "en": "I sent a scout team to the Spaceport a while ago. Routine work — cataloging security, see if there's anything we could re-purpose. But I've heard nothing for two days.",
@@ -2787,7 +2897,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_radar_dish"
       },
       {
         "id": "obj_dust_on_the_wires_2",
@@ -2799,7 +2910,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_north_trench_spawn"
       },
       {
         "id": "obj_dust_on_the_wires_3",
@@ -2837,7 +2949,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_north_trench_spawn"
       },
       {
         "id": "obj_dust_on_the_wires_6",
@@ -2849,7 +2962,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_north_trench_spawn"
       }
     ],
     "itemsToBring": [],
@@ -2865,7 +2979,7 @@
     "id": "quest_echoes_of_victory_ridge",
     "title": {
       "en": "Echoes Of Victory Ridge",
-      "es": "Echoes Of Victory Ridge"
+      "es": "Ecos de la Cresta de la Victoria"
     },
     "description": {
       "en": "Did you feel any tremors last night? Me neither. But apparently the ground shifted at some point, and in the process it unearthed an old First Wave outpost that'd been blocked by debris. I'd like you to get in there quick, before anyone else does.",
@@ -2884,7 +2998,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_north_ridge"
       },
       {
         "id": "obj_echoes_of_victory_ridge_2",
@@ -2896,7 +3011,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_victory_ridge"
       },
       {
         "id": "obj_echoes_of_victory_ridge_3",
@@ -2908,7 +3024,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_victory_ridge"
       }
     ],
     "itemsToBring": [],
@@ -2925,7 +3042,7 @@
     "id": "quest_espresso",
     "title": {
       "en": "Espresso",
-      "es": "Espresso"
+      "es": "Café Expreso"
     },
     "description": {
       "en": "A Raider came into my shop earlier, to trade some grenades for a machine she found in Buried City. She said it makes coffee, but it seems to be missing a few parts. Up for a job?",
@@ -2973,7 +3090,7 @@
     "id": "quest_exploring_pendola_pass_115",
     "title": {
       "en": "Exploring Pendola Pass",
-      "es": "Exploring Pendola Pass"
+      "es": "Explorando el Paso de Péndola"
     },
     "description": {
       "en": "ARC's always been drawn to gunfire and commotion, but we've never seen them quite converge on a place like they have at Pendola Pass.",
@@ -2992,7 +3109,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_old_town"
       },
       {
         "id": "obj_exploring_pendola_pass_2",
@@ -3017,7 +3135,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_railyard_station"
       },
       {
         "id": "obj_exploring_pendola_pass_4",
@@ -3048,7 +3167,7 @@
     "id": "quest_eyes_in_the_sky",
     "title": {
       "en": "Eyes in the Sky",
-      "es": "Eyes in the Sky"
+      "es": "Ojos en el Cielo"
     },
     "description": {
       "en": "Those LiDAR scanners you found work best when put in high locations. I've identified a few good spots around the Rust Belt; hope you're surefooted.",
@@ -3112,7 +3231,7 @@
     "id": "quest_eyes_on_the_prize",
     "title": {
       "en": "Eyes On The Prize",
-      "es": "Eyes On The Prize"
+      "es": "Ojos en el Premio"
     },
     "description": {
       "en": "Everything's been calm around my drop-offs since you helped out, but that doesn't mean it'll stay that way for long. I've set up surveillance at one of my most used spots in Buried City, to prevent future tampering. Only problem is, it needs power to go live.",
@@ -3131,7 +3250,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_perimeter_dunes"
       },
       {
         "id": "obj_eyes_on_the_prize_2",
@@ -3143,7 +3263,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_piazza_roma"
       }
     ],
     "itemsToBring": [],
@@ -3160,7 +3281,7 @@
     "id": "quest_flickering_threat",
     "title": {
       "en": "Flickering Threat",
-      "es": "Flickering Threat"
+      "es": "Amenaza Parpadeante"
     },
     "description": {
       "en": "My usual engineer is still healing from his wounds, and has been loopy for days. We can't afford to be at half-grid until he heals; so I need someone to pick up his wrench in the mean time.",
@@ -3179,7 +3300,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_power_plant"
       },
       {
         "id": "obj_flickering_threat_2",
@@ -3191,7 +3313,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_power_plant"
       },
       {
         "id": "obj_flickering_threat_3",
@@ -3203,7 +3326,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_power_plant"
       },
       {
         "id": "obj_flickering_threat_4",
@@ -3215,7 +3339,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_power_plant"
       }
     ],
     "itemsToBring": [],
@@ -3233,7 +3358,7 @@
     "id": "quest_fragmented_logs_131",
     "title": {
       "en": "Fragmented Logs",
-      "es": "Fragmented Logs"
+      "es": "Registros Fragmentados"
     },
     "description": {
       "en": "Do you remember the information you dug up about Project Heartwood? I've been looking over it, and it all seems to lead back to Stella Montis.",
@@ -3296,7 +3421,7 @@
     "id": "quest_furtive_meetings_132",
     "title": {
       "en": "Furtive Meetings",
-      "es": "Furtive Meetings"
+      "es": "Encuentros Furtivos"
     },
     "description": {
       "en": "I'm still sorting through the data you found in Stella Montis, but something's caught my eye. So, I'd like you to look into it.",
@@ -3354,7 +3479,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_central_atrium"
       },
       {
         "id": "obj_furtive_meetings_5",
@@ -3366,7 +3492,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_central_atrium"
       }
     ],
     "itemsToBring": [],
@@ -3402,7 +3529,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_water_treatment"
       },
       {
         "id": "obj_greasing_her_palms_2",
@@ -3427,7 +3555,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_galleria"
       }
     ],
     "itemsToBring": [],
@@ -3445,7 +3574,7 @@
     "id": "quest_groundbreaking_149",
     "title": {
       "en": "Groundbreaking",
-      "es": "Groundbreaking"
+      "es": "Inauguración"
     },
     "description": {
       "en": "Data or no data: we'll learn how to make this place earthquake-proof. With a research this in-depth, there's bound to be a paper trail somewhere.",
@@ -3490,7 +3619,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_warehouse_complex"
       },
       {
         "id": "obj_groundbreaking_4",
@@ -3502,7 +3632,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_abandoned_housing"
       },
       {
         "id": "obj_groundbreaking_5",
@@ -3514,7 +3645,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_abandoned_housing"
       }
     ],
     "itemsToBring": [],
@@ -3584,7 +3716,7 @@
     "id": "quest_in_my_image",
     "title": {
       "en": "In My Image",
-      "es": "In My Image"
+      "es": "A Mi Imagen"
     },
     "description": {
       "en": "I just treated one of the first Raiders who visited Stella Montis, and she said that she saw... others. Androids, very much like me.",
@@ -3603,7 +3735,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_alpine_pass_spawn"
       },
       {
         "id": "obj_in_my_image_2",
@@ -3615,7 +3748,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_robotic_sandbox"
       }
     ],
     "itemsToBring": [],
@@ -3651,7 +3785,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_outskirts_gas_station"
       },
       {
         "id": "obj_industrial_espionage_2",
@@ -3663,7 +3798,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_outskirts_gas_station"
       },
       {
         "id": "obj_industrial_espionage_3",
@@ -3675,7 +3811,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_outskirts_gas_station"
       }
     ],
     "itemsToBring": [],
@@ -3693,7 +3830,7 @@
     "id": "quest_into_the_fray",
     "title": {
       "en": "Into The Fray",
-      "es": "Into The Fray"
+      "es": "A la Batalla"
     },
     "description": {
       "en": "It used to be their world, up there. Nobody to challenge their claim. Yet here we are. More outposts. More intel. More firepower. If I didn't know better, I'd say we've got quite a bit of a fight left in us.",
@@ -3743,7 +3880,7 @@
     "id": "quest_keeping_an_eye_out",
     "title": {
       "en": "Keeping an Eye Out",
-      "es": "Keeping an Eye Out"
+      "es": "Estar al Loro"
     },
     "description": {
       "en": "I'm looking for someone. Bilguun. You might've seen him around, but chances are you haven't. He's... not the most sociable person around, you see. He spends a lot of time Topside, but usually returns to Speranza regularly to check in.",
@@ -3775,7 +3912,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_collapsed_highway"
       }
     ],
     "itemsToBring": [],
@@ -3792,7 +3930,7 @@
     "id": "quest_keeping_the_memory",
     "title": {
       "en": "Keeping The Memory",
-      "es": "Keeping The Memory"
+      "es": "Mantener el Recuerdo"
     },
     "description": {
       "en": "Look, I lost my cool a bit when I sent you after that trap. I don't usually lose my temper, but the First Wave... We went through a lot, back then. Lost a lot of people. It's still a bit of a raw wound for me, but I want you to understand.",
@@ -3811,7 +3949,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_formicai_hills"
       },
       {
         "id": "obj_keeping_the_memory_2",
@@ -3823,7 +3962,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_formicai_hills"
       },
       {
         "id": "obj_keeping_the_memory_3",
@@ -3835,7 +3975,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_formicai_hills"
       }
     ],
     "itemsToBring": [],
@@ -3853,7 +3994,7 @@
     "id": "quest_last_entry_133",
     "title": {
       "en": "Last Entry",
-      "es": "Last Entry"
+      "es": "Última Entrada"
     },
     "description": {
       "en": "More mentions of Mantikor, and more clear signs of dissent among the researchers. I suspect tensions eventually escalated.",
@@ -3885,7 +4026,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_medical_research"
       },
       {
         "id": "obj_last_entry_3",
@@ -3923,7 +4065,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_medical_research"
       }
     ],
     "itemsToBring": [],
@@ -3939,7 +4082,7 @@
     "id": "quest_life_of_a_pharmacist",
     "title": {
       "en": "Life Of A Pharmacist",
-      "es": "Life Of A Pharmacist"
+      "es": "Vida de Farmacéutico"
     },
     "description": {
       "en": "This place could use a makeover, but I don't want it looking like your raggedy Raider Dens. See if you can find out how my fellow medical greats used to live.",
@@ -3958,7 +4101,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_highway_overpass"
       },
       {
         "id": "obj_life_of_a_pharmacist_2",
@@ -3970,7 +4114,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_pharmacy"
       },
       {
         "id": "obj_life_of_a_pharmacist_3",
@@ -3982,7 +4127,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_pharmacy"
       },
       {
         "id": "obj_life_of_a_pharmacist_4",
@@ -3994,7 +4140,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_pharmacy"
       },
       {
         "id": "obj_life_of_a_pharmacist_5",
@@ -4006,7 +4153,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_pharmacy"
       }
     ],
     "itemsToBring": [],
@@ -4024,7 +4172,7 @@
     "id": "quest_line_in_the_sand",
     "title": {
       "en": "Line in the Sand",
-      "es": "Line in the Sand"
+      "es": "Línea en la Arena"
     },
     "description": {
       "en": "That Stella Montis hard drive container more than just the shutdown documentation - it also had the transport schedules of some pretty critical Exodus components.",
@@ -4043,7 +4191,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_marano_station"
       },
       {
         "id": "obj_line_in_the_sand_2",
@@ -4055,7 +4204,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_marano_station"
       },
       {
         "id": "obj_line_in_the_sand_3",
@@ -4067,7 +4217,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_marano_station"
       },
       {
         "id": "obj_line_in_the_sand_4",
@@ -4079,7 +4230,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_marano_station"
       }
     ],
     "itemsToBring": [],
@@ -4097,7 +4249,7 @@
     "id": "quest_lost_in_transmission",
     "title": {
       "en": "Lost In Transmission",
-      "es": "Lost In Transmission"
+      "es": "Perdido en la Transmisión"
     },
     "description": {
       "en": "I have equipment set up at the Spaceport, to monitor ARC's movements. My connection broke down just now, I need you to head to the Control Towers and help me retrieve my logs.",
@@ -4142,7 +4294,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_control_tower_a6"
       }
     ],
     "itemsToBring": [],
@@ -4177,7 +4330,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_galleria"
       },
       {
         "id": "obj_marked_for_death_2",
@@ -4189,7 +4343,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_warehouses"
       },
       {
         "id": "obj_marked_for_death_3",
@@ -4201,7 +4356,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_warehouses"
       }
     ],
     "itemsToBring": [],
@@ -4237,7 +4393,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_marano_station"
       },
       {
         "id": "obj_market_correction_2",
@@ -4249,7 +4406,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_marano_station"
       }
     ],
     "itemsToBring": [],
@@ -4299,7 +4457,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_galleria"
       },
       {
         "id": "obj_medical_merchandise_3",
@@ -4311,7 +4470,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_research_admin"
       }
     ],
     "itemsToBring": [],
@@ -4329,7 +4489,7 @@
     "id": "quest_mixed_signals",
     "title": {
       "en": "Mixed Signals",
-      "es": "Mixed Signals"
+      "es": "Señales Mixtas"
     },
     "description": {
       "en": "Have you spotted any Surveyors; the big round ones? They seem to be transmitting data back into orbit, and I can't help but think it's tied to that signal we picked up. Will you break one open, so we can try to decipher the data?",
@@ -4377,7 +4537,7 @@
     "id": "quest_movie_night_144",
     "title": {
       "en": "Movie Night",
-      "es": "Movie Night"
+      "es": "Noche de Cine"
     },
     "description": {
       "en": "Everyone's been on edge ever since rumors of that ARC signal spread. I was thinking a movie night would be a great distraction, but I'm missing some crucial supplies. Help me out, yeah?",
@@ -4478,7 +4638,7 @@
     "id": "quest_on_deaf_ears_141",
     "title": {
       "en": "On Deaf Ears",
-      "es": "On Deaf Ears"
+      "es": "En Oídos Sordos"
     },
     "description": {
       "en": "Seems like every other Raider here has some serious hearing damage. I heard rumors they developed some next-generation hearing aids at Stella Montis. If you can track them down, we might be able to use our indoor voices, for once.",
@@ -4510,7 +4670,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_medical_research"
       },
       {
         "id": "obj_on_deaf_ears_3",
@@ -4555,7 +4716,7 @@
     "id": "quest_on_the_map_145",
     "title": {
       "en": "On The Map",
-      "es": "On The Map"
+      "es": "En el Mapa"
     },
     "description": {
       "en": "We know the coordinates for those hearing aids, but I'll have to cross-reference them with a paper map of the Spaceport. Those legs of yours aren't too tired, are they?",
@@ -4600,7 +4761,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_terminal_spawn"
       },
       {
         "id": "obj_on_the_map_4",
@@ -4612,7 +4774,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_departure_terminal"
       },
       {
         "id": "obj_on_the_map_5",
@@ -4624,7 +4787,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_hangar"
       }
     ],
     "itemsToBring": [],
@@ -4642,7 +4806,7 @@
     "id": "quest_our_presence_up_there",
     "title": {
       "en": "Our Presence up There",
-      "es": "Our Presence up There"
+      "es": "Nuestra Presencia Allá Arriba"
     },
     "description": {
       "en": "ARC may be changing, but we're finally changing with it. Let's finish up those outposts so we track them, flank them; smash them to bits.",
@@ -4674,7 +4838,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_power_plant"
       },
       {
         "id": "obj_our_presence_up_there_3",
@@ -4686,7 +4851,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_pattern_house"
       }
     ],
     "itemsToBring": [],
@@ -4704,7 +4870,7 @@
     "id": "quest_out_of_the_shadows",
     "title": {
       "en": "Out of the Shadows",
-      "es": "Out of the Shadows"
+      "es": "Fuera de las Sombras"
     },
     "description": {
       "en": "Did you see the flags? The time for cowering is over. You've been more than battle-tested, from what I hear; think you can take on a Rocketeer?",
@@ -4752,7 +4918,7 @@
     "id": "quest_outstanding_balance_134",
     "title": {
       "en": "Outstanding Balance",
-      "es": "Outstanding Balance"
+      "es": "Saldo Pendiente"
     },
     "description": {
       "en": "I had a deal for a Bastion Cell lined up with a Raider called Dodger, but he's gone quiet. I need someone to track down his stash before some scavenger stumbles into it. Interested?",
@@ -4797,7 +4963,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_warehouse_complex"
       }
     ],
     "itemsToBring": [],
@@ -4815,7 +4982,7 @@
     "id": "quest_paving_the_way_147",
     "title": {
       "en": "Paving The Way",
-      "es": "Paving The Way"
+      "es": "Allanando el Camino"
     },
     "description": {
       "en": "For an entire sector to collapse like that... No wonder people are scared. We need to reinforce beyond anything we've done before, and we can't do it alone.",
@@ -4937,7 +5104,7 @@
     "id": "quest_power_out",
     "title": {
       "en": "Power Out",
-      "es": "Power Out"
+      "es": "Corte de Energía"
     },
     "description": {
       "en": "This goes beyond bad luck. Something—or someone—has knocked out some of our electrical substations. The engineer I sent out to fix it hasn't returned, so I need all available Raiders to look into it. That includes you.",
@@ -4956,7 +5123,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_radar_dish"
       },
       {
         "id": "obj_power_out_2",
@@ -4968,7 +5136,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_fuel_control"
       },
       {
         "id": "obj_power_out_3",
@@ -4980,7 +5149,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_fuel_control"
       },
       {
         "id": "obj_power_out_4",
@@ -4992,7 +5162,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_fuel_control"
       }
     ],
     "itemsToBring": [],
@@ -5010,7 +5181,7 @@
     "id": "quest_prescriptions_of_the_past",
     "title": {
       "en": "Prescriptions of the Past",
-      "es": "Prescriptions of the Past"
+      "es": "Recetas del Pasado"
     },
     "description": {
       "en": "I've been curious about the medical area in the Spaceport for a while now. Wanna do me a solid and see what records you can dig up from that place?",
@@ -5055,7 +5226,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_departure_terminal"
       }
     ],
     "itemsToBring": [],
@@ -5123,7 +5295,7 @@
     "id": "quest_reduced_to_rubble",
     "title": {
       "en": "Reduced to Rubble",
-      "es": "Reduced to Rubble"
+      "es": "Reducido a Escombros"
     },
     "description": {
       "en": "That collapsed highway worries me; it looks to be recent. Much of Topside may be in ruins, but most of it is from ages ago.",
@@ -5181,7 +5353,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_barren_clearing"
       }
     ],
     "itemsToBring": [],
@@ -5199,7 +5372,7 @@
     "id": "quest_ruins_and_reverberations_122",
     "title": {
       "en": "Ruins And Reverberations",
-      "es": "Ruins And Reverberations"
+      "es": "Ruinas y Resonancias"
     },
     "description": {
       "en": "That Emperor didn't just trip and fall... It was brought down. And I have a leading theory about how that happened.",
@@ -5231,7 +5404,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_weather_dispatch"
       },
       {
         "id": "obj_ruins_and_reverberations_3",
@@ -5243,7 +5417,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_weather_dispatch"
       }
     ],
     "itemsToBring": [],
@@ -5262,7 +5437,7 @@
     "id": "quest_safe_harbor",
     "title": {
       "en": "Safe Harbor",
-      "es": "Safe Harbor"
+      "es": "Puerto Seguro"
     },
     "description": {
       "en": "Seems like news of the train derailment spread fast... And drove many workers to stash some very tasty technology away from prying eyes.",
@@ -5294,7 +5469,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_harbor_control"
       },
       {
         "id": "obj_safe_harbor_3",
@@ -5306,7 +5482,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_harbor_control"
       },
       {
         "id": "obj_safe_harbor_4",
@@ -5318,7 +5495,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_harbor_control"
       }
     ],
     "itemsToBring": [],
@@ -5336,7 +5514,7 @@
     "id": "quest_safe_passage",
     "title": {
       "en": "Safe Passage",
-      "es": "Safe Passage"
+      "es": "Paso Seguro"
     },
     "description": {
       "en": "I heard rumors about some signal Shani picked up. ARC is constantly adapting, and I'm sure this won't be their last warning sign. Well, if it's an arms race they want, they can get one.",
@@ -5373,7 +5551,7 @@
     "id": "quest_settled_in_full_138",
     "title": {
       "en": "Settled in Full",
-      "es": "Settled in Full"
+      "es": "Saldado por Completo"
     },
     "description": {
       "en": "Lucky for you, Dodger's debt can still be settled. Bring me a Bastion Cell. A real one, pulled from a real Bastion. Consider what Dodger owed me transferred to credit for you. Okay?",
@@ -5420,7 +5598,7 @@
     "id": "quest_shoring_up_defenses",
     "title": {
       "en": "Shoring Up Defenses",
-      "es": "Shoring Up Defenses"
+      "es": "Reforzando Defensas"
     },
     "description": {
       "en": "The wide-open coastline used to mean danger, but now it's the only place we can spot new threats moving into the Rust Belt. So we'll have to make our own cover, and reinforce what few defenses we can find.",
@@ -5439,7 +5617,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_stacking_yard"
       },
       {
         "id": "obj_shoring_up_defenses_2",
@@ -5451,7 +5630,8 @@
         "mapId": "riven_tides",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "riven_stacking_yard"
       },
       {
         "id": "obj_shoring_up_defenses_3",
@@ -5495,7 +5675,7 @@
     "id": "quest_sizing_things_up_118",
     "title": {
       "en": "Sizing Things Up",
-      "es": "Sizing Things Up"
+      "es": "Tomando Medidas"
     },
     "description": {
       "en": "Those Emperors were imposing enough from a distance, but to be able to get so up close... If there was ever a time to tread carefully, this would be it.",
@@ -5527,7 +5707,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_observatory"
       },
       {
         "id": "obj_sizing_things_up_4",
@@ -5585,7 +5766,7 @@
     "id": "quest_snap_and_salvage",
     "title": {
       "en": "Snap And Salvage",
-      "es": "Snap And Salvage"
+      "es": "Foto y Desguace"
     },
     "description": {
       "en": "All of Speranza is buzzing about Stella Montis right now, and I admit it's caught my attention. Let the others sort the whats and hows; I'm interested in the tech inside.",
@@ -5630,7 +5811,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_assembly_workshops"
       },
       {
         "id": "obj_snap_and_salvage_4",
@@ -5642,7 +5824,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_assembly_workshops"
       }
     ],
     "itemsToBring": [],
@@ -5661,7 +5844,7 @@
     "id": "quest_source_of_the_contamination",
     "title": {
       "en": "Source Of The Contamination",
-      "es": "Source Of The Contamination"
+      "es": "Origen de la Contaminación"
     },
     "description": {
       "en": "I'm not saying our water's been tampered with, but based on your samples, I can't rule out the possibility either. Would you return to the Dam and see what's wrong?",
@@ -5680,7 +5863,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_water_treatment"
       },
       {
         "id": "obj_source_of_the_contamination_2",
@@ -5692,7 +5876,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_south_swamp"
       },
       {
         "id": "obj_source_of_the_contamination_3",
@@ -5704,7 +5889,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_water_treatment"
       }
     ],
     "itemsToBring": [],
@@ -5758,7 +5944,7 @@
     "id": "quest_stable_housing",
     "title": {
       "en": "Stable Housing",
-      "es": "Stable Housing"
+      "es": "Alojamiento Estable"
     },
     "description": {
       "en": "You like a certain amount of uncertainty, right? A client wants the contents of a locked safe in Stella Montis. It's intact, so whatever's inside has been there since before the Exodus. Interested?",
@@ -5829,7 +6015,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_security_bridge"
       },
       {
         "id": "obj_stable_housing_6",
@@ -5841,7 +6028,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_security_bridge"
       },
       {
         "id": "obj_stable_housing_7",
@@ -5853,7 +6041,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_security_bridge"
       }
     ],
     "itemsToBring": [],
@@ -5890,7 +6079,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_north_ridge"
       },
       {
         "id": "obj_straight_record_2",
@@ -5902,7 +6092,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_victory_ridge"
       },
       {
         "id": "obj_straight_record_3",
@@ -5914,7 +6105,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_power_plant"
       },
       {
         "id": "obj_straight_record_4",
@@ -5926,7 +6118,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_power_plant"
       },
       {
         "id": "obj_straight_record_5",
@@ -5938,7 +6131,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_power_plant"
       },
       {
         "id": "obj_straight_record_6",
@@ -5950,7 +6144,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_victory_ridge"
       }
     ],
     "itemsToBring": [],
@@ -6011,7 +6206,7 @@
     "id": "quest_switching_the_supply",
     "title": {
       "en": "Switching The Supply",
-      "es": "Switching The Supply"
+      "es": "Cambiando el Suministro"
     },
     "description": {
       "en": "There is a reservoir beneath the Spaceport; if we manage to route that water here, that should buy us time to deal with the contamination.",
@@ -6030,7 +6225,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_radar_dish"
       },
       {
         "id": "obj_switching_the_supply_2",
@@ -6061,7 +6257,7 @@
     "id": "quest_taking_stock_121",
     "title": {
       "en": "Taking Stock",
-      "es": "Taking Stock"
+      "es": "Haciendo Balance"
     },
     "description": {
       "en": "On the surface, our paths seldom cross by design. After all, your presence draws more eyes than ours can afford.",
@@ -6093,7 +6289,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_radar_dish"
       },
       {
         "id": "obj_taking_stock_3",
@@ -6105,7 +6302,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_controlled_access"
       },
       {
         "id": "obj_taking_stock_4",
@@ -6117,7 +6315,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_galleria"
       }
     ],
     "itemsToBring": [],
@@ -6134,7 +6333,7 @@
     "id": "quest_test_case_137",
     "title": {
       "en": "Test Case",
-      "es": "Test Case"
+      "es": "Caso de Prueba"
     },
     "description": {
       "en": "Hey, question for you. What do you get if you cross a Hornet and Fireball? If your answer is 'a Firefly'. then we're on the same page.",
@@ -6207,7 +6406,7 @@
     "id": "quest_the_clean_dream_150",
     "title": {
       "en": "The Clean Dream",
-      "es": "The Clean Dream"
+      "es": "El Sueño Limpio"
     },
     "description": {
       "en": "You know what I've been dreaming of lately? A talking water distiller! Crazy, huh? But seriously, with purer compounds I could make explosives with more oumph! Would be something, right?",
@@ -6294,7 +6493,7 @@
     "id": "quest_the_league_139",
     "title": {
       "en": "The League",
-      "es": "The League"
+      "es": "La Liga"
     },
     "description": {
       "en": "Kids around here have been kicking empty grenade casings around. It's only a matter of time before they're not so empty. So here's the plan: You help me with some prep work, and I'll set up an actual football team for the young ones.",
@@ -6337,7 +6536,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_water_towers"
       },
       {
         "id": "obj_the_league_4",
@@ -6349,7 +6549,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "city_galleria"
       },
       {
         "id": "obj_the_league_5",
@@ -6410,7 +6611,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_north_ridge"
       },
       {
         "id": "obj_the_major_s_footlocker_2",
@@ -6422,7 +6624,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_research_admin"
       }
     ],
     "itemsToBring": [],
@@ -6499,7 +6702,7 @@
     "id": "quest_the_root_of_the_matter",
     "title": {
       "en": "The Root of the Matter",
-      "es": "The Root of the Matter"
+      "es": "La Raíz del Problema"
     },
     "description": {
       "en": "We're in luck. The notes you found last time were written by the lead researcher. When the project went under, it seems she took some of the seed samples and sealed them away in a secure location.",
@@ -6518,7 +6721,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_research_building"
       },
       {
         "id": "obj_the_root_of_the_matter_2",
@@ -6530,7 +6734,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_research_building"
       },
       {
         "id": "obj_the_root_of_the_matter_3",
@@ -6542,7 +6747,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_research_building"
       }
     ],
     "itemsToBring": [],
@@ -6559,7 +6765,7 @@
     "id": "quest_the_stench_of_corruption_152",
     "title": {
       "en": "The Stench Of Corruption",
-      "es": "The Stench Of Corruption"
+      "es": "El Hedor de la Corrupción"
     },
     "description": {
       "en": "That key you found in the barrel truck... I won't jump to accusations just yet, but this certainly reeks of an inside job. Could you investigate a hunch I have?",
@@ -6591,7 +6797,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_departure_terminal"
       },
       {
         "id": "obj_the_stench_of_corruption_3",
@@ -6603,7 +6810,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_departure_terminal"
       },
       {
         "id": "obj_the_stench_of_corruption_4",
@@ -6628,7 +6836,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_fuel_control"
       }
     ],
     "itemsToBring": [],
@@ -6757,7 +6966,7 @@
     "id": "quest_to_the_skies_124",
     "title": {
       "en": "To The Skies",
-      "es": "To The Skies"
+      "es": "Hacia el Cielo"
     },
     "description": {
       "en": "Shani's content for the gondolas to get us up and down the mountain, but we have some engineers from Ferrovia more willing to take a risk. I can get behind that.",
@@ -6800,7 +7009,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_red_lakes"
       },
       {
         "id": "obj_to_the_skies_4",
@@ -6812,7 +7022,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_farmlands"
       },
       {
         "id": "obj_to_the_skies_5",
@@ -6824,7 +7035,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_east_plains"
       },
       {
         "id": "obj_to_the_skies_6",
@@ -6836,7 +7048,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_dried_riverbed"
       },
       {
         "id": "obj_to_the_skies_7",
@@ -6848,7 +7061,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_red_lakes"
       },
       {
         "id": "obj_to_the_skies_8",
@@ -6860,7 +7074,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_red_lakes"
       },
       {
         "id": "obj_to_the_skies_9",
@@ -6872,7 +7087,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_red_lakes"
       },
       {
         "id": "obj_to_the_skies_10",
@@ -6884,7 +7100,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_red_lakes"
       },
       {
         "id": "obj_to_the_skies_11",
@@ -6896,7 +7113,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_red_lakes"
       }
     ],
     "itemsToBring": [],
@@ -6914,7 +7132,7 @@
     "id": "quest_tracks_of_the_beast_119",
     "title": {
       "en": "Tracks Of The Beast",
-      "es": "Tracks Of The Beast"
+      "es": "Huellas de la Bestia"
     },
     "description": {
       "en": "The stretch from the Northern tracks to the Emperor is crawling with unfamiliar ARC units. I need eyes on them, or we might be stepping into a death trap before we can even begin to breach the Emperor.",
@@ -6959,7 +7177,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_emperor_carcass"
       },
       {
         "id": "obj_tracks_of_the_beast_4",
@@ -6971,7 +7190,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_northern_tracks"
       },
       {
         "id": "obj_tracks_of_the_beast_5",
@@ -6983,7 +7203,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_northern_tracks"
       },
       {
         "id": "obj_tracks_of_the_beast_6",
@@ -6995,7 +7216,8 @@
         "mapId": "pendola_pass",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "pendola_northern_tracks"
       }
     ],
     "itemsToBring": [],
@@ -7060,7 +7282,7 @@
     "id": "quest_tribute_to_toledo",
     "title": {
       "en": "Tribute To Toledo",
-      "es": "Tribute To Toledo"
+      "es": "Tributo a Toledo"
     },
     "description": {
       "en": "So, the Official Toledo Tubes Management is demanding one of our Power Rods for usage of \"their\" Slingshot tubes. Hey, don't let the name fool you, they're in no way official; just thugs with lots of power. Could you help me with this?",
@@ -7097,7 +7319,7 @@
     "id": "quest_turnabout",
     "title": {
       "en": "Turnabout",
-      "es": "Turnabout"
+      "es": "Giro Inesperado"
     },
     "description": {
       "en": "I got a plan. If we recover the evidence against the Tubes Management before they get to it, we might get them off our backs once and for all.",
@@ -7116,7 +7338,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_control_tower_a6"
       },
       {
         "id": "obj_turnabout_2",
@@ -7128,7 +7351,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_north_trench_spawn"
       }
     ],
     "itemsToBring": [],
@@ -7145,7 +7369,7 @@
     "id": "quest_unexpected_initiative",
     "title": {
       "en": "Unexpected Initiative",
-      "es": "Unexpected Initiative"
+      "es": "Iniciativa Inesperada"
     },
     "description": {
       "en": "I'm setting up a greenhouse, to help boost our food production. I'm doing Celeste a solid, alright? That's all. But enough about that. I've got all the details worked out, but I'll need supplies, and I'm not hauling them alone.",
@@ -7216,7 +7440,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_grandioso_apartments"
       },
       {
         "id": "obj_unexpected_initiative_6",
@@ -7228,7 +7453,8 @@
         "mapId": "buried_city",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "city_piazza_roma"
       }
     ],
     "itemsToBring": [],
@@ -7246,7 +7472,7 @@
     "id": "quest_untended_garden",
     "title": {
       "en": "Untended Garden",
-      "es": "Untended Garden"
+      "es": "Jardín Descuidado"
     },
     "description": {
       "en": "According to the files you found in the lab, the cultivation researchers were actually the ones who set up the hydroponic domes out in the swamp. Sounds like the most obvious place to search next, don't you think?",
@@ -7278,7 +7504,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_controlled_access"
       },
       {
         "id": "obj_untended_garden_3",
@@ -7290,7 +7517,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_hydroponic_dome"
       }
     ],
     "itemsToBring": [],
@@ -7308,7 +7536,7 @@
     "id": "quest_waking_the_grid_136",
     "title": {
       "en": "Waking the Grid",
-      "es": "Waking the Grid"
+      "es": "Despertando la Red"
     },
     "description": {
       "en": "There's a problem with our sensor coverage at the Spaceport. The security grid is old, so maybe it's just acting up. If you could get it running again, it'd save me a lot of sleepless nights.",
@@ -7327,7 +7555,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_control_tower_a6"
       },
       {
         "id": "obj_waking_the_grid_2",
@@ -7371,7 +7600,7 @@
     "id": "quest_water_troubles",
     "title": {
       "en": "Water Troubles",
-      "es": "Water Troubles"
+      "es": "Problemas de Agua"
     },
     "description": {
       "en": "If you're here to complain about the water, join the club. I've been fielding complaints all day. Something is definitely up with it, and I need some help to sort it out.",
@@ -7390,7 +7619,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_controlled_access"
       },
       {
         "id": "obj_water_troubles_2",
@@ -7402,7 +7632,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_water_treatment"
       },
       {
         "id": "obj_water_troubles_3",
@@ -7414,7 +7645,8 @@
         "mapId": "dam_battlegrounds",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "dam_water_treatment"
       }
     ],
     "itemsToBring": [],
@@ -7432,7 +7664,7 @@
     "id": "quest_what_goes_around",
     "title": {
       "en": "What Goes Around",
-      "es": "What Goes Around"
+      "es": "Todo Vuelve"
     },
     "description": {
       "en": "We can't build ARC tech from scratch, but there's plenty I can tinker with from the pieces you salvage. I'm currently trying to repurpose different ARC parts. Would you mind running some experiments for me?",
@@ -7521,7 +7753,7 @@
     "id": "quest_wires_crossed_117",
     "title": {
       "en": "Wires Crossed",
-      "es": "Wires Crossed"
+      "es": "Cables Cruzados"
     },
     "description": {
       "en": "That contraption you found at the Observatory... There wasn't much data left to read, but the signature was undeniably ARC's.",
@@ -7586,7 +7818,7 @@
     "id": "quest_with_a_trace",
     "title": {
       "en": "With A Trace",
-      "es": "With A Trace"
+      "es": "Con una Pista"
     },
     "description": {
       "en": "That downed machine... We weren't the ones who did that. We know that there are still stray survivors out there, but this? This goes far beyond a single person.",
@@ -7618,7 +7850,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_barren_clearing"
       },
       {
         "id": "obj_with_a_trace_3",
@@ -7643,7 +7876,8 @@
         "mapId": "the_blue_gate",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "blue_gate_barren_clearing"
       }
     ],
     "itemsToBring": [],
@@ -7660,7 +7894,7 @@
     "id": "quest_with_a_view_140",
     "title": {
       "en": "With a View",
-      "es": "With a View"
+      "es": "Con Vistas"
     },
     "description": {
       "en": "Have you ever noticed those streaks of light darting across the skies? I've seen too much to believe they're natural, but it'll take more than a hunch to convince Celeste.",
@@ -7679,7 +7913,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_primary_telescope"
       },
       {
         "id": "obj_with_a_view_2",
@@ -7704,7 +7939,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_primary_telescope"
       },
       {
         "id": "obj_with_a_view_4",
@@ -7716,7 +7952,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_primary_telescope"
       },
       {
         "id": "obj_with_a_view_5",
@@ -7728,7 +7965,8 @@
         "mapId": "stella_montis",
         "alternativePoiIds": [],
         "inOneRound": false,
-        "count": 1
+        "count": 1,
+        "poiId": "stella_primary_telescope"
       }
     ],
     "itemsToBring": [],
@@ -7804,7 +8042,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_rocket_assembly"
       },
       {
         "id": "obj_worth_your_salt_5",
@@ -7816,7 +8055,8 @@
         "mapId": "the_spaceport",
         "alternativePoiIds": [],
         "inOneRound": true,
-        "count": 1
+        "count": 1,
+        "poiId": "spaceport_rocket_assembly"
       }
     ],
     "itemsToBring": [],

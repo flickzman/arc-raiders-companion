@@ -20,9 +20,14 @@ export interface PlayerState {
   // Visión por IA (opcional)
   geminiApiKey: string;
 
+  // Calibraciones dinámicas de POI por objetivo
+  objectivePoiOverrides: Record<string, string>;
+
   // Acciones
   setLanguage: (lang: 'es' | 'en') => void;
   setGeminiApiKey: (key: string) => void;
+  setObjectivePoiOverride: (objectiveId: string, poiId: string) => void;
+  clearObjectivePoiOverride: (objectiveId: string) => void;
   toggleActiveQuest: (questId: string) => void;
   addActiveQuests: (questIds: string[]) => void;
   addCustomQuest: (title: string, vendor?: Vendor, mapId?: MapId) => Quest;
@@ -52,9 +57,25 @@ export const usePlayerStore = create<PlayerState>()(
       spawnPoiId: 'dam_south_swamp',
       routeMode: 'rat',
       geminiApiKey: '',
+      objectivePoiOverrides: {},
 
       setLanguage: (language) => set({ language }),
       setGeminiApiKey: (geminiApiKey) => set({ geminiApiKey }),
+
+      setObjectivePoiOverride: (objectiveId: string, poiId: string) =>
+        set((state) => ({
+          objectivePoiOverrides: {
+            ...state.objectivePoiOverrides,
+            [objectiveId]: poiId,
+          },
+        })),
+
+      clearObjectivePoiOverride: (objectiveId: string) =>
+        set((state) => {
+          const updated = { ...state.objectivePoiOverrides };
+          delete updated[objectiveId];
+          return { objectivePoiOverrides: updated };
+        }),
 
       toggleActiveQuest: (questId) =>
         set((state) => {
@@ -82,6 +103,7 @@ export const usePlayerStore = create<PlayerState>()(
           },
           vendor: vendor || 'Other',
           requiredLevel: 1,
+          isTrial: false,
           objectives: [
             {
               id: `${id}_obj_1`,
