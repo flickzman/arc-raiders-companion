@@ -119,12 +119,12 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
   };
 
   return (
-    <div className="bg-neutral-950 border border-neutral-800 rounded-2xl p-4 overflow-hidden relative shadow-2xl space-y-4">
+    <div className="bg-zinc-950 border border-zinc-800 rounded-2xl p-4 overflow-hidden relative shadow-2xl space-y-4">
       {/* HUD Header */}
-      <div className="flex flex-wrap items-center justify-between pb-3 border-b border-neutral-800/80 gap-2">
+      <div className="flex flex-wrap items-center justify-between pb-3 border-b border-zinc-800/80 gap-2">
         <div className="flex items-center gap-2">
           <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
-          <span className="text-xs font-mono font-bold tracking-wider uppercase text-neutral-200">
+          <span className="text-xs font-mono font-bold tracking-wider uppercase text-zinc-200">
             {language === 'es' ? 'Sector Táctico Real' : 'Live Sector Radar'} • {getLocalized(map.name, language)}
           </span>
         </div>
@@ -139,8 +139,8 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
             }}
             className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold uppercase flex items-center gap-1.5 transition-all ${
               isCalibratorMode
-                ? 'bg-amber-500 text-neutral-950 shadow-md ring-2 ring-amber-400'
-                : 'bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800'
+                ? 'bg-amber-500 text-zinc-950 shadow-md ring-2 ring-amber-400'
+                : 'bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800'
             }`}
             title={language === 'es' ? 'Activar modo calibración de coordenadas' : 'Toggle coordinate calibrator'}
           >
@@ -149,24 +149,24 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
           </button>
 
           {/* Zoom controls */}
-          <div className="flex items-center bg-neutral-900 border border-neutral-800 rounded-lg p-0.5">
+          <div className="flex items-center bg-zinc-900 border border-zinc-800 rounded-lg p-0.5">
             <button
               onClick={() => setZoomLevel((z) => Math.max(1, z - 0.25))}
-              className="p-1 text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 rounded transition-colors"
+              className="p-1 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 rounded transition-colors"
               title="Zoom out"
             >
               <ZoomOut className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={resetView}
-              className="px-1.5 text-[10px] font-mono text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 rounded transition-colors"
+              className="px-1.5 text-[10px] font-mono text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 rounded transition-colors"
               title="Reset view"
             >
               <RotateCcw className="w-3 h-3" />
             </button>
             <button
               onClick={() => setZoomLevel((z) => Math.min(3, z + 0.25))}
-              className="p-1 text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 rounded transition-colors"
+              className="p-1 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 rounded transition-colors"
               title="Zoom in"
             >
               <ZoomIn className="w-3.5 h-3.5" />
@@ -193,7 +193,7 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
 
       {/* Main Map Canvas with Zoom & Pan */}
       <div
-        className={`relative w-full aspect-[3/2] bg-[#070b12] rounded-xl border border-neutral-800/80 overflow-hidden shadow-inner select-none ${
+        className={`relative w-full aspect-[3/2] bg-[#070b12] rounded-xl border border-zinc-800/80 overflow-hidden shadow-inner select-none ${
           isCalibratorMode ? 'cursor-crosshair' : isPanning ? 'cursor-grabbing' : 'cursor-grab'
         }`}
         onMouseDown={handleMouseDown}
@@ -280,20 +280,20 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
             const leftPercent = `${poi.coordinates.x}%`;
             const topPercent = `${poi.coordinates.y}%`;
 
-            let nodeColor = 'bg-neutral-900/90 text-neutral-300 border-neutral-600 shadow-md';
+            let nodeColor = 'bg-zinc-900/90 text-zinc-300 border-zinc-600 shadow-md';
             let ringColor = '';
 
             if (isBlocked) {
               nodeColor = 'bg-red-950 text-red-500 border-red-800 line-through opacity-50';
             } else if (inRoute) {
               if (inRoute.type === 'spawn') {
-                nodeColor = 'bg-cyan-500 text-neutral-950 border-white font-black shadow-lg shadow-cyan-500/50';
+                nodeColor = 'bg-cyan-500 text-zinc-950 border-white font-black shadow-lg shadow-cyan-500/50';
                 ringColor = 'ring-4 ring-cyan-500/30';
               } else if (inRoute.type === 'extraction') {
-                nodeColor = 'bg-purple-500 text-neutral-950 border-white font-black shadow-lg shadow-purple-500/50';
+                nodeColor = 'bg-purple-500 text-zinc-950 border-white font-black shadow-lg shadow-purple-500/50';
                 ringColor = 'ring-4 ring-purple-500/30';
               } else {
-                nodeColor = 'bg-amber-500 text-neutral-950 border-white font-black shadow-lg shadow-amber-500/50';
+                nodeColor = 'bg-amber-500 text-zinc-950 border-white font-black shadow-lg shadow-amber-500/50';
                 ringColor = 'ring-4 ring-amber-500/30';
               }
             } else if (poi.dangerLevel === 'high') {
@@ -326,15 +326,15 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
 
                 {/* Always visible minimal tag if in route */}
                 {inRoute && (
-                  <span className="absolute top-full left-1/2 -translate-x-1/2 mt-1 px-1.5 py-0.5 rounded bg-black/90 border border-neutral-700 text-[8px] font-mono text-neutral-200 whitespace-nowrap pointer-events-none">
+                  <span className="absolute top-full left-1/2 -translate-x-1/2 mt-1 px-1.5 py-0.5 rounded bg-black/90 border border-zinc-700 text-[8px] font-mono text-zinc-200 whitespace-nowrap pointer-events-none">
                     {getLocalized(poi.name, language)}
                   </span>
                 )}
 
                 {/* Tooltip on Hover */}
-                <div className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-neutral-950/95 border border-neutral-700 px-2.5 py-1 rounded text-[10px] font-mono text-neutral-200 shadow-xl z-40">
+                <div className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-zinc-950/95 border border-zinc-700 px-2.5 py-1 rounded text-[10px] font-mono text-zinc-200 shadow-xl z-40">
                   <div className="font-bold">{getLocalized(poi.name, language)}</div>
-                  <div className="text-[9px] text-neutral-400">
+                  <div className="text-[9px] text-zinc-400">
                     {poi.isSpawnPoint
                       ? (language === 'es' ? 'Punto de Infiltración' : 'Infiltration Point')
                       : poi.isExtractionPoint
@@ -354,7 +354,7 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
               style={{ left: `${calibratorPoint.x}%`, top: `${calibratorPoint.y}%` }}
               className="absolute -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none animate-bounce"
             >
-              <div className="w-7 h-7 rounded-full bg-amber-500 border-2 border-white flex items-center justify-center text-neutral-950 shadow-2xl font-bold">
+              <div className="w-7 h-7 rounded-full bg-amber-500 border-2 border-white flex items-center justify-center text-zinc-950 shadow-2xl font-bold">
                 <Crosshair className="w-4 h-4" />
               </div>
             </div>
@@ -362,14 +362,14 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
         </div>
 
         {/* Compass Rose */}
-        <div className="absolute top-3 right-3 bg-neutral-950/80 border border-neutral-800 px-2 py-1.5 rounded-lg flex items-center gap-1.5 text-[10px] font-mono text-neutral-400 pointer-events-none">
+        <div className="absolute top-3 right-3 bg-zinc-950/80 border border-zinc-800 px-2 py-1.5 rounded-lg flex items-center gap-1.5 text-[10px] font-mono text-zinc-400 pointer-events-none">
           <Compass className="w-3.5 h-3.5 text-cyan-400" />
           <span>N ▲</span>
         </div>
 
         {/* Calibrator Mode Floating Banner */}
         {isCalibratorMode && (
-          <div className="absolute top-3 left-3 bg-neutral-950/95 border border-amber-500/80 rounded-xl p-2.5 shadow-2xl z-40 max-w-xs space-y-2 animate-in fade-in">
+          <div className="absolute top-3 left-3 bg-zinc-950/95 border border-amber-500/80 rounded-xl p-2.5 shadow-2xl z-40 max-w-xs space-y-2 animate-in fade-in">
             <div className="flex items-center justify-between text-xs font-mono font-bold text-amber-400">
               <span className="flex items-center gap-1.5">
                 <Crosshair className="w-3.5 h-3.5" />
@@ -380,19 +380,19 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
                   setIsCalibratorMode(false);
                   setCalibratorPoint(null);
                 }}
-                className="text-neutral-400 hover:text-white"
+                className="text-zinc-400 hover:text-white"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
             </div>
-            <p className="text-[10px] font-mono text-neutral-300">
+            <p className="text-[10px] font-mono text-zinc-300">
               {language === 'es'
                 ? 'Haz clic sobre el mapa para obtener el porcentaje exacto (X, Y) de cualquier zona:'
                 : 'Click anywhere on the map to pinpoint exact coordinates:'}
             </p>
 
             {calibratorPoint ? (
-              <div className="bg-neutral-900 border border-neutral-800 rounded-lg p-2 space-y-1.5">
+              <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-2 space-y-1.5">
                 <div className="text-xs font-mono text-cyan-300 font-bold">
                   X: {calibratorPoint.x}% | Y: {calibratorPoint.y}%
                 </div>
@@ -401,7 +401,7 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
                     onClick={() =>
                       handleCopyCoord(`"coordinates": { "x": ${calibratorPoint.x}, "y": ${calibratorPoint.y} }`)
                     }
-                    className="flex-1 py-1 rounded bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold text-[10px] font-mono uppercase flex items-center justify-center gap-1"
+                    className="flex-1 py-1 rounded bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-[10px] font-mono uppercase flex items-center justify-center gap-1"
                   >
                     {copiedCoord ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
                     <span>{copiedCoord ? '✓ Copiado' : 'Copiar Coordenada'}</span>
@@ -419,15 +419,15 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
 
       {/* Selected POI Intel Drawer */}
       {selectedPoi && (
-        <div className="bg-neutral-900/90 border border-neutral-700/80 rounded-xl p-3.5 space-y-2.5 transition-all animate-in fade-in">
+        <div className="bg-zinc-900/90 border border-zinc-700/80 rounded-xl p-3.5 space-y-2.5 transition-all animate-in fade-in">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-amber-400" />
               <div>
-                <h4 className="font-bold text-xs uppercase text-neutral-100">
+                <h4 className="font-bold text-xs uppercase text-zinc-100">
                   {getLocalized(selectedPoi.name, language)}
                 </h4>
-                <p className="text-[10px] font-mono text-neutral-400">
+                <p className="text-[10px] font-mono text-zinc-400">
                   {language === 'es' ? 'Sector:' : 'Sector:'} {getLocalized(map.name, language)} • (X: {selectedPoi.coordinates.x}%, Y: {selectedPoi.coordinates.y}%)
                 </p>
               </div>
@@ -450,12 +450,12 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
 
           {/* Objectives at this POI */}
           {selectedPoiObjectives.length > 0 && (
-            <div className="bg-neutral-950/80 rounded-lg p-2.5 space-y-1.5 border border-neutral-800">
+            <div className="bg-zinc-950/80 rounded-lg p-2.5 space-y-1.5 border border-zinc-800">
               <span className="text-[10px] font-mono uppercase text-amber-400 font-bold block">
                 {language === 'es' ? 'Objetivos en esta ubicación:' : 'Objectives at this location:'}
               </span>
               {selectedPoiObjectives.map(({ quest, objective }) => (
-                <div key={objective.id} className="text-xs text-neutral-300 flex items-start gap-1.5">
+                <div key={objective.id} className="text-xs text-zinc-300 flex items-start gap-1.5">
                   <span className="text-amber-500 font-mono">▸</span>
                   <span>
                     <strong>[{quest.vendor}]</strong> {getLocalized(objective.description, language)}
@@ -466,7 +466,7 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
           )}
 
           {/* Quick Action Buttons */}
-          <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-neutral-800">
+          <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-zinc-800">
             {selectedPoi.isSpawnPoint && (
               <button
                 onClick={() => onSetSpawn(selectedPoi.id)}
@@ -497,7 +497,7 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
 
             <button
               onClick={() => onSelectPoi(null)}
-              className="text-xs text-neutral-400 hover:text-neutral-200 font-mono ml-auto py-1 px-2"
+              className="text-xs text-zinc-400 hover:text-zinc-200 font-mono ml-auto py-1 px-2"
             >
               {language === 'es' ? 'Cerrar' : 'Close'}
             </button>
@@ -506,7 +506,7 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
       )}
 
       {/* Legend & Telemetry stats */}
-      <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono text-neutral-400 pt-2 border-t border-neutral-900">
+      <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono text-zinc-400 pt-2 border-t border-zinc-900">
         <div className="flex items-center gap-4">
           <span>
             {language === 'es' ? 'Distancia Estimada:' : 'Estimated Dist:'}{' '}
@@ -536,7 +536,7 @@ export const TacticalMapViewer: React.FC<TacticalMapViewerProps> = ({
           </span>
         </div>
 
-        <span className="text-[10px] text-neutral-500">
+        <span className="text-[10px] text-zinc-500">
           {route.mode === 'rat'
             ? (language === 'es' ? 'Perfil: Máxima Supervivencia' : 'Profile: Maximum Survival')
             : (language === 'es' ? 'Perfil: Limpieza Total (XP)' : 'Profile: Full Map Sweep')}

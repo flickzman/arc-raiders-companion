@@ -165,16 +165,16 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
     : [];
 
   return (
-    <div className={`bg-neutral-950 border border-neutral-800 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col ${className}`}>
+    <div className={`bg-zinc-950 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl relative flex flex-col ${className}`}>
       {/* Tactical Top Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 bg-neutral-900/90 border-b border-neutral-800 text-xs font-mono select-none">
+      <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 bg-zinc-900/90 border-b border-zinc-800 text-xs font-mono select-none">
         {/* Left: Map Title & Status */}
         <div className="flex items-center gap-2.5">
           <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shadow-sm shadow-cyan-400/50" />
-          <span className="font-bold uppercase tracking-wider text-neutral-100">
+          <span className="font-bold uppercase tracking-wider text-zinc-100">
             {getLocalized(currentMap.name, language)}
           </span>
-          <span className="text-[10px] text-neutral-400 px-2 py-0.5 rounded bg-neutral-950 border border-neutral-800">
+          <span className="text-[10px] text-zinc-400 px-2 py-0.5 rounded bg-zinc-950 border border-zinc-800">
             {visiblePois.length} POIs
           </span>
           <span className="text-[10px] text-amber-400 px-2 py-0.5 rounded bg-amber-950/60 border border-amber-800">
@@ -190,7 +190,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
             className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-mono transition-all ${
               showOnlyActiveQuests
                 ? 'bg-amber-500/20 border-amber-500 text-amber-300 font-bold shadow-sm'
-                : 'bg-neutral-950 border-neutral-800 text-neutral-400 hover:text-neutral-200 hover:border-neutral-700'
+                : 'bg-zinc-950 border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:border-zinc-700'
             }`}
             title={
               showOnlyActiveQuests
@@ -212,7 +212,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
             className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border text-xs font-mono transition-all ${
               calibrationMode
                 ? 'bg-rose-500/20 border-rose-500 text-rose-300 font-bold shadow-sm ring-1 ring-rose-500/40'
-                : 'bg-neutral-950 border-neutral-800 text-neutral-400 hover:text-neutral-200 hover:border-neutral-700'
+                : 'bg-zinc-950 border-zinc-800 text-zinc-400 hover:text-zinc-200 hover:border-zinc-700'
             }`}
             title="Herramienta de desarrollo para calibrar coordenadas de edificios sobre el mapa"
           >
@@ -243,25 +243,25 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
           {({ zoomIn, zoomOut, resetTransform }) => (
             <>
               {/* Floating Zoom / Pan Controls Overlay */}
-              <div className="absolute top-3 left-3 z-30 flex flex-col gap-1.5 bg-neutral-950/85 backdrop-blur border border-neutral-800 p-1.5 rounded-xl shadow-xl">
+              <div className="absolute top-3 left-3 z-30 flex flex-col gap-1.5 bg-zinc-950/85 backdrop-blur border border-zinc-800 p-1.5 rounded-xl shadow-xl">
                 <button
                   onClick={() => zoomIn(0.25)}
-                  className="p-1.5 text-neutral-300 hover:text-cyan-300 hover:bg-neutral-800/80 rounded-lg transition-colors"
+                  className="p-1.5 text-zinc-300 hover:text-cyan-300 hover:bg-zinc-800/80 rounded-lg transition-colors"
                   title={language === 'es' ? 'Acercar (+)' : 'Zoom In (+)'}
                 >
                   <ZoomIn className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => zoomOut(0.25)}
-                  className="p-1.5 text-neutral-300 hover:text-cyan-300 hover:bg-neutral-800/80 rounded-lg transition-colors"
+                  className="p-1.5 text-zinc-300 hover:text-cyan-300 hover:bg-zinc-800/80 rounded-lg transition-colors"
                   title={language === 'es' ? 'Alejar (-)' : 'Zoom Out (-)'}
                 >
                   <ZoomOut className="w-4 h-4" />
                 </button>
-                <div className="h-px bg-neutral-800 my-0.5" />
+                <div className="h-px bg-zinc-800 my-0.5" />
                 <button
                   onClick={() => resetTransform()}
-                  className="p-1.5 text-neutral-300 hover:text-amber-300 hover:bg-neutral-800/80 rounded-lg transition-colors"
+                  className="p-1.5 text-zinc-300 hover:text-amber-300 hover:bg-zinc-800/80 rounded-lg transition-colors"
                   title={language === 'es' ? 'Centrar / Restablecer (1:1)' : 'Reset Zoom (1:1)'}
                 >
                   <RotateCcw className="w-4 h-4" />
@@ -269,7 +269,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
               </div>
 
               {/* Compass Rose */}
-              <div className="absolute top-3 right-3 z-30 bg-neutral-950/85 backdrop-blur border border-neutral-800 px-2.5 py-1.5 rounded-xl flex items-center gap-1.5 text-[11px] font-mono text-neutral-300 shadow-xl pointer-events-none">
+              <div className="absolute top-3 right-3 z-30 bg-zinc-950/85 backdrop-blur border border-zinc-800 px-2.5 py-1.5 rounded-xl flex items-center gap-1.5 text-[11px] font-mono text-zinc-300 shadow-xl pointer-events-none">
                 <Compass className="w-4 h-4 text-cyan-400" />
                 <span>N ▲</span>
               </div>
@@ -288,7 +288,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
 
               {/* Calibration Copied Toast */}
               {copiedCoordsToast && lastCalibratedCoords && (
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-40 bg-neutral-950 border border-emerald-500 text-emerald-300 px-4 py-2 rounded-xl text-xs font-mono flex items-center gap-2 shadow-2xl animate-in fade-in slide-in-from-bottom-2">
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-40 bg-zinc-950 border border-emerald-500 text-emerald-300 px-4 py-2 rounded-xl text-xs font-mono flex items-center gap-2 shadow-2xl animate-in fade-in slide-in-from-bottom-2">
                   <Check className="w-4 h-4 text-emerald-400" />
                   <span>
                     Copiado:{' '}
@@ -499,10 +499,10 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
                             <div
                               className={`absolute -bottom-2 -left-1.5 px-1 py-0.2 rounded-full font-mono text-[9px] font-black shadow-md border ${
                                 inRoute.type === 'spawn'
-                                  ? 'bg-cyan-400 text-neutral-950 border-cyan-200'
+                                  ? 'bg-cyan-400 text-zinc-950 border-cyan-200'
                                   : inRoute.type === 'extraction'
-                                  ? 'bg-purple-400 text-neutral-950 border-purple-200'
-                                  : 'bg-amber-400 text-neutral-950 border-amber-200'
+                                  ? 'bg-purple-400 text-zinc-950 border-purple-200'
+                                  : 'bg-amber-400 text-zinc-950 border-amber-200'
                               }`}
                             >
                               {inRoute.type === 'spawn'
@@ -514,8 +514,8 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
                           )}
 
                           {/* Quick Tooltip on Hover */}
-                          <div className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-neutral-950/95 border border-neutral-700 px-2.5 py-1.5 rounded-lg text-[10px] font-mono text-neutral-200 shadow-2xl z-50">
-                            <div className="font-bold text-neutral-100">
+                          <div className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap bg-zinc-950/95 border border-zinc-700 px-2.5 py-1.5 rounded-lg text-[10px] font-mono text-zinc-200 shadow-2xl z-50">
+                            <div className="font-bold text-zinc-100">
                               {getLocalized(poi.name, language)}
                             </div>
                             {objectives.length > 0 ? (
@@ -523,7 +523,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
                                 {objectives.length} {language === 'es' ? 'misión(es) activa(s)' : 'active quest(s)'}
                               </div>
                             ) : (
-                              <div className="text-[9px] text-neutral-400">
+                              <div className="text-[9px] text-zinc-400">
                                 {poi.isSpawnPoint
                                   ? (language === 'es' ? 'Punto de Infiltración' : 'Infiltration Point')
                                   : poi.isExtractionPoint
@@ -545,15 +545,15 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
 
       {/* Selected POI Intel Drawer & Interactive Objective Checklist */}
       {selectedPoi && (
-        <div className="bg-neutral-900/95 border-t border-neutral-800 p-4 space-y-3 transition-all animate-in fade-in slide-in-from-bottom-2 select-text">
+        <div className="bg-zinc-900/95 border-t border-zinc-800 p-4 space-y-3 transition-all animate-in fade-in slide-in-from-bottom-2 select-text">
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-start gap-2.5">
               <MapPin className="w-5 h-5 text-amber-400 mt-0.5" />
               <div>
-                <h4 className="font-black text-sm uppercase text-neutral-100 tracking-wide">
+                <h4 className="font-black text-sm uppercase text-zinc-100 tracking-wide">
                   {getLocalized(selectedPoi.name, language)}
                 </h4>
-                <p className="text-[11px] font-mono text-neutral-400">
+                <p className="text-[11px] font-mono text-zinc-400">
                   {getLocalized(currentMap.name, language)} • (X: {selectedPoi.coordinates.x}%, Y: {selectedPoi.coordinates.y}%)
                 </p>
               </div>
@@ -576,7 +576,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
 
               <button
                 onClick={() => onSelectPoi(null)}
-                className="text-neutral-400 hover:text-neutral-200 p-1 rounded-lg hover:bg-neutral-800 transition-colors"
+                className="text-zinc-400 hover:text-zinc-200 p-1 rounded-lg hover:bg-zinc-800 transition-colors"
                 title="Cerrar panel"
               >
                 <X className="w-4 h-4" />
@@ -586,13 +586,13 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
 
           {/* Interactive Objectives Checklist at this POI */}
           {selectedPoiObjectives.length > 0 ? (
-            <div className="bg-neutral-950/90 rounded-xl p-3 border border-neutral-800 space-y-2">
-              <div className="flex items-center justify-between pb-1.5 border-b border-neutral-800/80">
+            <div className="bg-zinc-950/90 rounded-xl p-3 border border-zinc-800 space-y-2">
+              <div className="flex items-center justify-between pb-1.5 border-b border-zinc-800/80">
                 <span className="text-[11px] font-mono uppercase text-amber-400 font-bold flex items-center gap-1.5">
                   <Layers className="w-3.5 h-3.5" />
                   <span>{language === 'es' ? 'Objetivos Activos en esta Ubicación' : 'Active Objectives at Location'}</span>
                 </span>
-                <span className="text-[10px] font-mono text-neutral-400">
+                <span className="text-[10px] font-mono text-zinc-400">
                   {selectedPoiObjectives.filter((item) => completedObjectiveIds.includes(item.objective.id)).length} / {selectedPoiObjectives.length} {language === 'es' ? 'completados' : 'done'}
                 </span>
               </div>
@@ -607,15 +607,15 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
                       onClick={() => onToggleCompletedObjective(objective.id)}
                       className={`flex items-start gap-3 p-2.5 rounded-lg border cursor-pointer transition-all ${
                         isDone
-                          ? 'bg-neutral-900/40 border-neutral-800/60 opacity-60'
-                          : 'bg-neutral-900 border-neutral-700/80 hover:border-amber-500/60'
+                          ? 'bg-zinc-900/40 border-zinc-800/60 opacity-60'
+                          : 'bg-zinc-900 border-zinc-700/80 hover:border-amber-500/60'
                       }`}
                     >
                       <button className="mt-0.5 flex-shrink-0">
                         {isDone ? (
                           <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                         ) : (
-                          <Circle className="w-4 h-4 text-neutral-500 hover:text-amber-400" />
+                          <Circle className="w-4 h-4 text-zinc-500 hover:text-amber-400" />
                         )}
                       </button>
 
@@ -624,11 +624,11 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
                           <span className="text-[10px] font-mono font-bold text-amber-400 bg-amber-950/70 border border-amber-800 px-1.5 py-0.2 rounded">
                             {quest.vendor}
                           </span>
-                          <span className={`text-xs font-bold ${isDone ? 'line-through text-neutral-400' : 'text-neutral-200'}`}>
+                          <span className={`text-xs font-bold ${isDone ? 'line-through text-zinc-400' : 'text-zinc-200'}`}>
                             {getLocalized(quest.title, language)}
                           </span>
                         </div>
-                        <p className={`text-[11px] leading-relaxed ${isDone ? 'line-through text-neutral-500' : 'text-neutral-300'}`}>
+                        <p className={`text-[11px] leading-relaxed ${isDone ? 'line-through text-zinc-500' : 'text-zinc-300'}`}>
                           {getLocalized(objective.description, language)}
                         </p>
                       </div>
@@ -638,7 +638,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
               </div>
             </div>
           ) : (
-            <p className="text-xs font-mono text-neutral-400 italic">
+            <p className="text-xs font-mono text-zinc-400 italic">
               {language === 'es'
                 ? 'No hay misiones activas asignadas directamente a este punto de interés.'
                 : 'No active quest objectives assigned directly to this point of interest.'}
@@ -646,7 +646,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({
           )}
 
           {/* Quick Action Buttons */}
-          <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-neutral-800">
+          <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-zinc-800">
             {selectedPoi.isSpawnPoint && onSetSpawn && (
               <button
                 onClick={() => onSetSpawn(selectedPoi.id)}

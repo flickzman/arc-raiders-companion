@@ -205,26 +205,26 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
-      <div className="bg-neutral-900 border border-neutral-800 rounded-2xl w-full max-w-2xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
+      <div className="bg-zinc-900 border border-zinc-800 rounded-2xl w-full max-w-2xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
         {/* Modal Header */}
-        <div className="flex items-center justify-between p-4 border-b border-neutral-800 bg-neutral-950/40">
+        <div className="flex items-center justify-between p-4 border-b border-zinc-800 bg-zinc-950/40">
           <div className="flex items-center gap-2">
             <Camera className="w-5 h-5 text-amber-400" />
-            <h3 className="font-bold text-sm uppercase tracking-wider text-neutral-100">
+            <h3 className="font-bold text-sm uppercase tracking-wider text-zinc-100">
               {language === 'es' ? 'Ingesta Visual de Misiones (Logbook OCR)' : 'Quest Visual Ingestion (Logbook OCR)'}
             </h3>
           </div>
           <button
             onClick={handleClose}
-            className="p-1 rounded-lg text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800 transition-colors"
+            className="p-1 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Engine Switcher Bar */}
-        <div className="flex items-center justify-between px-4 py-2.5 border-b border-neutral-800 bg-neutral-950/80 text-xs font-mono">
-          <span className="text-neutral-400 font-bold uppercase text-[11px]">
+        <div className="flex items-center justify-between px-4 py-2.5 border-b border-zinc-800 bg-zinc-950/80 text-xs font-mono">
+          <span className="text-zinc-400 font-bold uppercase text-[11px]">
             {language === 'es' ? 'Motor de Análisis:' : 'Analysis Engine:'}
           </span>
           <div className="flex items-center gap-2">
@@ -235,8 +235,8 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
               }}
               className={`px-3 py-1 rounded-lg font-bold uppercase transition-all flex items-center gap-1.5 ${
                 engineMode === 'ai'
-                  ? 'bg-amber-500 text-neutral-950 shadow-sm'
-                  : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800'
+                  ? 'bg-amber-500 text-zinc-950 shadow-sm'
+                  : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800'
               }`}
             >
               <Sparkles className="w-3.5 h-3.5" />
@@ -250,8 +250,8 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
               }}
               className={`px-3 py-1 rounded-lg font-bold uppercase transition-all flex items-center gap-1.5 ${
                 engineMode === 'tesseract'
-                  ? 'bg-amber-500 text-neutral-950 shadow-sm'
-                  : 'text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800'
+                  ? 'bg-amber-500 text-zinc-950 shadow-sm'
+                  : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800'
               }`}
             >
               <ClipboardPaste className="w-3.5 h-3.5" />
@@ -264,9 +264,9 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
         <div className="p-4 overflow-y-auto space-y-4 flex-1">
           {/* Gemini API Key Configuration Section (Collapsible or Shown when needed) */}
           {(showKeyInput || engineMode === 'ai') && (
-            <div className="bg-neutral-950 border border-neutral-800/80 rounded-xl p-3 space-y-2">
+            <div className="bg-zinc-950 border border-zinc-800/80 rounded-xl p-3 space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-neutral-300 font-bold flex items-center gap-1.5">
+                <span className="text-xs font-mono text-zinc-300 font-bold flex items-center gap-1.5">
                   <KeyRound className="w-3.5 h-3.5 text-amber-400" />
                   <span>Google Gemini API Key {geminiApiKey ? '(Configurada ✓)' : '(Requerida para IA)'}</span>
                 </span>
@@ -286,7 +286,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                   value={tempApiKey}
                   onChange={(e) => setTempApiKey(e.target.value)}
                   placeholder="AIzaSy..."
-                  className="flex-1 bg-neutral-900 border border-neutral-800 rounded-lg px-2.5 py-1.5 text-xs text-neutral-200 font-mono focus:border-amber-500 focus:outline-none"
+                  className="flex-1 bg-zinc-900 border border-zinc-800 rounded-lg px-2.5 py-1.5 text-xs text-zinc-200 font-mono focus:border-amber-500 focus:outline-none"
                 />
                 <button
                   onClick={() => {
@@ -298,7 +298,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                       runGeminiScan(currentBlob, tempApiKey);
                     }
                   }}
-                  className="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold text-xs font-mono transition-colors"
+                  className="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-xs font-mono transition-colors"
                 >
                   {isKeySaved ? '✓ Guardada' : (language === 'es' ? 'Guardar y Usar' : 'Save & Use')}
                 </button>
@@ -317,7 +317,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                 }
               }}
               onClick={() => fileInputRef.current?.click()}
-              className="border-2 border-dashed border-neutral-700 hover:border-amber-500/80 rounded-xl p-8 text-center cursor-pointer transition-colors bg-neutral-950/40 hover:bg-neutral-950/80 space-y-3"
+              className="border-2 border-dashed border-zinc-700 hover:border-amber-500/80 rounded-xl p-8 text-center cursor-pointer transition-colors bg-zinc-950/40 hover:bg-zinc-950/80 space-y-3"
             >
               <input
                 ref={fileInputRef}
@@ -336,10 +336,10 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
               </div>
 
               <div>
-                <p className="text-xs sm:text-sm font-bold text-neutral-200 uppercase">
+                <p className="text-xs sm:text-sm font-bold text-zinc-200 uppercase">
                   {language === 'es' ? 'Pulsa Ctrl+V o haz clic para cargar captura de pantalla' : 'Press Ctrl+V or click to load screenshot'}
                 </p>
-                <p className="text-[11px] font-mono text-neutral-500 mt-1">
+                <p className="text-[11px] font-mono text-zinc-500 mt-1">
                   {language === 'es'
                     ? 'Captura con Win+Shift+S la lista de misiones minimizadas en Arc Raiders'
                     : 'Use Win+Shift+S on your Arc Raiders minimized quests logbook'}
@@ -351,7 +351,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
           {/* Image Preview & Scanner Progress */}
           {imagePreview && (
             <div className="space-y-3">
-              <div className="relative rounded-xl overflow-hidden border border-neutral-800 max-h-48 bg-neutral-950 flex items-center justify-center">
+              <div className="relative rounded-xl overflow-hidden border border-zinc-800 max-h-48 bg-zinc-950 flex items-center justify-center">
                 <img
                   src={imagePreview}
                   alt="Screenshot preview"
@@ -360,7 +360,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                 <div className="absolute top-2 right-2 flex items-center gap-1.5">
                   <button
                     onClick={() => fileInputRef.current?.click()}
-                    className="px-2.5 py-1 rounded-lg bg-black/80 hover:bg-black border border-neutral-700 text-[10px] font-mono text-amber-400 flex items-center gap-1"
+                    className="px-2.5 py-1 rounded-lg bg-black/80 hover:bg-black border border-zinc-700 text-[10px] font-mono text-amber-400 flex items-center gap-1"
                   >
                     <PlusCircle className="w-3 h-3" />
                     <span>{language === 'es' ? '+ Añadir 2ª captura' : '+ Add 2nd screenshot'}</span>
@@ -370,7 +370,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                       setImagePreview(null);
                       setCurrentBlob(null);
                     }}
-                    className="px-2 py-1 rounded-lg bg-black/80 border border-neutral-700 text-[10px] font-mono text-neutral-300 hover:text-white"
+                    className="px-2 py-1 rounded-lg bg-black/80 border border-zinc-700 text-[10px] font-mono text-zinc-300 hover:text-white"
                   >
                     {language === 'es' ? 'Quitar' : 'Remove'}
                   </button>
@@ -390,15 +390,15 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
 
               {/* Progress Bar when Scanning */}
               {isScanning && (
-                <div className="bg-neutral-950 border border-neutral-800 rounded-xl p-4 space-y-2">
+                <div className="bg-zinc-950 border border-zinc-800 rounded-xl p-4 space-y-2">
                   <div className="flex items-center justify-between text-xs font-mono">
                     <span className="flex items-center gap-2 text-amber-400 font-bold">
                       <Loader2 className="w-4 h-4 animate-spin" />
                       <span>{scanStatusText}</span>
                     </span>
-                    <span className="text-neutral-400">{scanProgress}%</span>
+                    <span className="text-zinc-400">{scanProgress}%</span>
                   </div>
-                  <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+                  <div className="w-full bg-zinc-800 h-2 rounded-full overflow-hidden">
                     <div
                       className="bg-amber-500 h-full transition-all duration-300"
                       style={{ width: `${scanProgress}%` }}
@@ -412,7 +412,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => (engineMode === 'ai' ? runGeminiScan() : runTesseractScan(currentBlob!))}
-                    className="flex-1 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold text-xs font-mono uppercase flex items-center justify-center gap-2 shadow-md shadow-amber-500/20"
+                    className="flex-1 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-xs font-mono uppercase flex items-center justify-center gap-2 shadow-md shadow-amber-500/20"
                   >
                     {engineMode === 'ai' ? <Sparkles className="w-4 h-4" /> : <ClipboardPaste className="w-4 h-4" />}
                     <span>{language === 'es' ? 'Volver a escanear captura' : 'Re-scan capture'}</span>
@@ -432,10 +432,10 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
 
           {/* Raw OCR Text Toggle (Useful for debugging/transparency) */}
           {rawOcrText && (
-            <div className="border border-neutral-800 rounded-xl overflow-hidden bg-neutral-950/60">
+            <div className="border border-zinc-800 rounded-xl overflow-hidden bg-zinc-950/60">
               <button
                 onClick={() => setShowRawText(!showRawText)}
-                className="w-full px-3 py-2 flex items-center justify-between text-[11px] font-mono text-neutral-400 hover:text-neutral-200 transition-colors"
+                className="w-full px-3 py-2 flex items-center justify-between text-[11px] font-mono text-zinc-400 hover:text-zinc-200 transition-colors"
               >
                 <span className="flex items-center gap-1.5">
                   <FileText className="w-3.5 h-3.5" />
@@ -444,7 +444,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                 {showRawText ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
               </button>
               {showRawText && (
-                <pre className="p-3 text-[10px] font-mono text-neutral-300 whitespace-pre-wrap bg-neutral-950 border-t border-neutral-800 max-h-36 overflow-y-auto">
+                <pre className="p-3 text-[10px] font-mono text-zinc-300 whitespace-pre-wrap bg-zinc-950 border-t border-zinc-800 max-h-36 overflow-y-auto">
                   {rawOcrText}
                 </pre>
               )}
@@ -453,7 +453,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
 
           {/* Detected Matches List */}
           {matches.length > 0 && (
-            <div className="space-y-2.5 pt-2 border-t border-neutral-800">
+            <div className="space-y-2.5 pt-2 border-t border-zinc-800">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-mono uppercase text-amber-400 font-bold flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
@@ -487,7 +487,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                           : matches.map((m) => m.quest.id)
                       )
                     }
-                    className="text-[10px] font-mono text-neutral-400 hover:text-neutral-200"
+                    className="text-[10px] font-mono text-zinc-400 hover:text-zinc-200"
                   >
                     {selectedQuestIds.length === matches.length
                       ? (language === 'es' ? 'Deseleccionar todas' : 'Deselect all')
@@ -506,20 +506,20 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                       onClick={() => toggleSelectQuest(quest.id)}
                       className={`p-3 rounded-xl border cursor-pointer flex items-center justify-between transition-all ${
                         isChecked
-                          ? 'bg-neutral-950 border-amber-500/80 ring-1 ring-amber-500/30'
-                          : 'bg-neutral-950/60 border-neutral-800 hover:border-neutral-700'
+                          ? 'bg-zinc-950 border-amber-500/80 ring-1 ring-amber-500/30'
+                          : 'bg-zinc-950/60 border-zinc-800 hover:border-zinc-700'
                       }`}
                     >
                       <div className="flex items-center gap-3">
                         <div
                           className={`w-5 h-5 rounded flex items-center justify-center transition-all ${
-                            isChecked ? 'bg-amber-500 text-neutral-950' : 'border border-neutral-700 bg-neutral-900'
+                            isChecked ? 'bg-amber-500 text-zinc-950' : 'border border-zinc-700 bg-zinc-900'
                           }`}
                         >
                           {isChecked && <Check className="w-3.5 h-3.5 stroke-[3]" />}
                         </div>
                         <div>
-                          <div className="text-xs font-bold text-neutral-100 flex items-center gap-1.5">
+                          <div className="text-xs font-bold text-zinc-100 flex items-center gap-1.5">
                             <span>{getLocalized(quest.title, language)}</span>
                             {quest.isTrial && (
                               <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-800 font-bold uppercase">
@@ -527,7 +527,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                               </span>
                             )}
                           </div>
-                          <div className="text-[10px] font-mono text-neutral-400">
+                          <div className="text-[10px] font-mono text-zinc-400">
                             [{quest.vendor}] • {quest.objectives.length} {language === 'es' ? 'objetivos' : 'objectives'}
                           </div>
                         </div>
@@ -558,7 +558,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                   {language === 'es' ? 'Títulos adicionales detectados en pantalla:' : 'Additional titles detected on screen:'}
                 </span>
               </div>
-              <p className="text-[10px] font-mono text-neutral-400">
+              <p className="text-[10px] font-mono text-zinc-400">
                 {language === 'es'
                   ? 'Si alguna no está en el catálogo oficial, añádela como misión con un solo clic:'
                   : 'If any is a new or uncataloged contract, click to add it instantly:'}
@@ -573,7 +573,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                       mergeNewMatches([{ quest: newQ, confidence: 100, matchedText: line }]);
                       setUnmatchedLines((prev) => prev.filter((l) => l !== line));
                     }}
-                    className="px-2.5 py-1 rounded-lg bg-neutral-900 border border-neutral-700 hover:border-amber-500 text-xs font-mono text-neutral-200 hover:text-amber-300 flex items-center gap-1.5 transition-all shadow-sm"
+                    className="px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-700 hover:border-amber-500 text-xs font-mono text-zinc-200 hover:text-amber-300 flex items-center gap-1.5 transition-all shadow-sm"
                   >
                     <PlusCircle className="w-3 h-3 text-amber-400" />
                     <span>+ {line}</span>
@@ -584,8 +584,8 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
           )}
 
           {/* Manual Add by Title fallback in Capture Modal */}
-          <div className="pt-3 border-t border-neutral-800 space-y-2">
-            <span className="text-[11px] font-mono text-neutral-400">
+          <div className="pt-3 border-t border-zinc-800 space-y-2">
+            <span className="text-[11px] font-mono text-zinc-400">
               {language === 'es'
                 ? '¿Falta alguna misión? Añádela directamente por título:'
                 : 'Missing any quest? Add it directly by title:'}
@@ -611,7 +611,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                     ? 'Escribe el título de la misión...'
                     : 'Type quest title...'
                 }
-                className="flex-1 bg-neutral-950 border border-neutral-800 rounded-lg px-3 py-1.5 text-xs text-neutral-200 placeholder:text-neutral-500 font-mono focus:border-amber-500 focus:outline-none"
+                className="flex-1 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-1.5 text-xs text-zinc-200 placeholder:text-zinc-500 font-mono focus:border-amber-500 focus:outline-none"
               />
               <button
                 type="button"
@@ -627,7 +627,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
                     setManualTitle('');
                   }
                 }}
-                className="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:opacity-40 text-neutral-950 font-bold text-xs font-mono uppercase transition-all shadow-sm"
+                className="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:opacity-40 text-zinc-950 font-bold text-xs font-mono uppercase transition-all shadow-sm"
               >
                 + {language === 'es' ? 'Añadir' : 'Add'}
               </button>
@@ -636,15 +636,15 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        <div className="p-4 border-t border-neutral-800 bg-neutral-950 flex items-center justify-between">
-          <span className="text-[11px] font-mono text-neutral-400">
+        <div className="p-4 border-t border-zinc-800 bg-zinc-950 flex items-center justify-between">
+          <span className="text-[11px] font-mono text-zinc-400">
             {selectedQuestIds.length} {language === 'es' ? 'seleccionadas' : 'selected'}
           </span>
 
           <div className="flex items-center gap-2">
             <button
               onClick={handleClose}
-              className="px-3.5 py-1.5 rounded-lg border border-neutral-800 hover:bg-neutral-900 text-xs font-mono text-neutral-300 transition-colors"
+              className="px-3.5 py-1.5 rounded-lg border border-zinc-800 hover:bg-zinc-900 text-xs font-mono text-zinc-300 transition-colors"
             >
               {language === 'es' ? 'Cancelar' : 'Cancel'}
             </button>
@@ -652,7 +652,7 @@ export const CaptureModal: React.FC<CaptureModalProps> = ({
             <button
               disabled={selectedQuestIds.length === 0}
               onClick={handleApplyQuests}
-              className="px-4 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 disabled:opacity-40 text-neutral-950 font-bold text-xs font-mono uppercase transition-all shadow-md shadow-amber-500/20"
+              className="px-4 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 disabled:opacity-40 text-zinc-950 font-bold text-xs font-mono uppercase transition-all shadow-md shadow-amber-500/20"
             >
               {language === 'es' ? '✓ Activar Misiones' : '✓ Activate Quests'}
             </button>

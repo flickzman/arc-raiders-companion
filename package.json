@@ -12,7 +12,13 @@
     "scrape": "node scrape_wiki_quests.cjs"
   },
   "dependencies": {
+    "@formkit/auto-animate": "^0.10.0",
+    "@radix-ui/react-dialog": "^1.3.1",
+    "@radix-ui/react-tabs": "^1.2.1",
+    "@radix-ui/react-tooltip": "^1.4.1",
+    "@tanstack/react-virtual": "^3.14.21",
     "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
     "fuse.js": "^7.5.0",
     "lucide-react": "^1.16.0",
     "react": "^19.0.0",

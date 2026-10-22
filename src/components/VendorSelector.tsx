@@ -2,7 +2,9 @@ import React, { useState, useMemo } from 'react';
 import { usePlayerStore } from '../store/usePlayerStore';
 import { allQuests, allMaps } from '../data/db';
 import { type Vendor, type MapId } from '../data/schemas';
-import { Search, X, Trash2, Filter, Camera, Plus, Sparkles } from 'lucide-react';
+import { Search, X, Plus, Layers, MapPin, CheckSquare } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 interface VendorSelectorProps {
   selectedVendor: Vendor | 'ALL';
@@ -11,17 +13,19 @@ interface VendorSelectorProps {
   setSelectedMapFilter: (m: MapId | 'ALL') => void;
   searchQuery: string;
   setSearchQuery: (q: string) => void;
-  onOpenCaptureModal?: () => void;
+  showActiveOnly: boolean;
+  setShowActiveOnly: (val: boolean) => void;
+  onOpenCommandBar: () => void;
 }
 
-const vendors: { id: Vendor; role: { en: string; es: string } }[] = [
-  { id: 'Tian Wen', role: { en: 'Scavenger & Recon', es: 'Chatarrero y Reconocimiento' } },
-  { id: 'Shani', role: { en: 'Field Medic & Supplies', es: 'Médico de Campo y Suministros' } },
-  { id: 'Lance', role: { en: 'Tactical Vanguard', es: 'Vanguardia Táctica' } },
-  { id: 'Celeste', role: { en: 'Heavy ARC Hunter', es: 'Cazadora ARC Pesada' } },
-  { id: 'Apollo', role: { en: 'Energy Grid Engineer', es: 'Ingeniero de Red Eléctrica' } },
-  { id: 'Nomadic Envoys', role: { en: 'Nomadic Envoys', es: 'Enviados Nómadas' } },
-  { id: 'Other', role: { en: 'Custom / Other', es: 'Personalizadas / Otros' } },
+const vendors: { id: Vendor; name: string }[] = [
+  { id: 'Tian Wen', name: 'Tian Wen' },
+  { id: 'Shani', name: 'Shani' },
+  { id: 'Lance', name: 'Lance' },
+  { id: 'Celeste', name: 'Celeste' },
+  { id: 'Apollo', name: 'Apollo' },
+  { id: 'Nomadic Envoys', name: 'Nomadic' },
+  { id: 'Other', name: 'Other' },
 ];
 
 export const VendorSelector: React.FC<VendorSelectorProps> = ({
@@ -31,11 +35,14 @@ export const VendorSelector: React.FC<VendorSelectorProps> = ({
   setSelectedMapFilter,
   searchQuery,
   setSearchQuery,
-  onOpenCaptureModal,
+  showActiveOnly,
+  setShowActiveOnly,
+  onOpenCommandBar,
 }) => {
-  const { language, activeQuestIds, clearAllActiveQuests, customQuests, addCustomQuest } =
+  const { language, activeQuestIds, customQuests, addCustomQuest } =
     usePlayerStore();
 
+  const [filterPillsRef] = useAutoAnimate();
   const [showAddModal, setShowAddModal] = useState(false);
   const [newTitle, setNewTitle] = useState('');
   const [newVendor, setNewVendor] = useState<Vendor>('Other');
@@ -43,355 +50,283 @@ export const VendorSelector: React.FC<VendorSelectorProps> = ({
 
   const allAvailableQuests = useMemo(() => [...customQuests, ...allQuests], [customQuests]);
 
-  const getVendorActiveCount = (v: Vendor) => {
-    return allAvailableQuests
-      .filter((q) => q.vendor === v)
-      .filter((q) => activeQuestIds.includes(q.id)).length;
-  };
+  // Compute map quest counts
+  const mapCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    counts['ALL'] = allAvailableQuests.length;
 
-  const getMapQuestCount = (m: MapId) => {
-    return allAvailableQuests.filter((q) =>
-      q.objectives.some((obj) => obj.mapId === m || obj.mapId === 'any')
+    allMaps.forEach((m) => {
+      counts[m.id] = allAvailableQuests.filter((q) =>
+        q.objectives.some((obj) => obj.mapId === m.id || obj.mapId === 'any')
+      ).length;
+    });
+
+    counts['any'] = allAvailableQuests.filter((q) =>
+      q.objectives.every((obj) => obj.mapId === 'any')
     ).length;
-  };
 
-  const handleQuickAdd = (title: string, vendor?: Vendor, map?: MapId) => {
-    if (!title.trim()) return;
-    addCustomQuest(
-      title.trim(),
-      vendor || (selectedVendor === 'ALL' ? 'Other' : selectedVendor),
-      map || (selectedMapFilter === 'ALL' ? 'any' : selectedMapFilter)
-    );
+    return counts;
+  }, [allAvailableQuests]);
+
+  const handleQuickAdd = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newTitle.trim()) return;
+    addCustomQuest(newTitle.trim(), newVendor, newMap);
     setNewTitle('');
     setShowAddModal(false);
   };
 
-  const hasExactMatch = useMemo(() => {
-    if (!searchQuery.trim()) return true;
-    const q = searchQuery.trim().toLowerCase();
-    return allAvailableQuests.some(
-      (quest) =>
-        quest.title.en.toLowerCase() === q ||
-        (quest.title.es && quest.title.es.toLowerCase() === q)
-    );
-  }, [searchQuery, allAvailableQuests]);
+  const hasActiveFilters =
+    selectedVendor !== 'ALL' || selectedMapFilter !== 'ALL' || searchQuery.trim() !== '' || showActiveOnly;
 
   return (
-    <div className="bg-neutral-900/60 border border-neutral-800 rounded-xl p-4 space-y-4">
-      {/* Search and Quick Actions Bar */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-        {/* Search Input */}
+    <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-3.5 space-y-3">
+      {/* 1. Fast Search and Global Command Shortcut Bar */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
         <div className="relative flex-1">
-          <Search className="w-4 h-4 text-neutral-500 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-3.5 h-3.5 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={
               language === 'es'
-                ? 'Buscar misión, objetivo, POI o ítem...'
-                : 'Search quest, objective, POI or item...'
+                ? 'Buscar misión por nombre, mapa o ítem...'
+                : 'Search quest, objective, map or item...'
             }
-            className="w-full bg-neutral-950 border border-neutral-800 rounded-lg pl-9 pr-8 py-2 text-xs sm:text-sm text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/30 transition-all"
+            className="w-full bg-zinc-950 border border-zinc-800 rounded-lg pl-8 pr-16 py-2 text-xs sm:text-sm text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/30"
           />
-          {searchQuery && (
+          {searchQuery ? (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-neutral-200"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-200"
             >
-              <X className="w-4 h-4" />
+              <X className="w-3.5 h-3.5" />
             </button>
-          )}
-        </div>
-
-        {/* Map Filter Selector & Quick Actions */}
-        <div className="flex items-center gap-2">
-          {/* Quick Add Quest Button (Title Only) */}
-          <button
-            onClick={() => {
-              setNewTitle(searchQuery.trim());
-              setShowAddModal(true);
-            }}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/30 hover:border-emerald-500/60 hover:bg-emerald-500/20 text-emerald-400 text-xs font-mono font-semibold transition-all whitespace-nowrap shadow-sm shadow-emerald-500/5"
-            title={language === 'es' ? 'Añadir misión solo con el título' : 'Add quest with title only'}
-          >
-            <Plus className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">{language === 'es' ? 'Añadir' : 'Add'}</span>
-          </button>
-
-          {onOpenCaptureModal && (
+          ) : (
             <button
-              onClick={onOpenCaptureModal}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 hover:border-amber-500/60 hover:bg-amber-500/20 text-amber-400 text-xs font-mono font-semibold transition-all whitespace-nowrap shadow-sm shadow-amber-500/5"
-              title={
-                language === 'es'
-                  ? 'Pegar captura con Ctrl+V o escanear con cámara'
-                  : 'Paste screenshot with Ctrl+V or scan with camera'
-              }
+              onClick={onOpenCommandBar}
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] font-mono px-1.5 py-0.5 rounded bg-zinc-800/80 text-zinc-400 hover:text-zinc-200 border border-zinc-700/60 hidden sm:inline-block"
+              title="Open Command Palette (Ctrl+K)"
             >
-              <Camera className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">
-                {language === 'es' ? 'OCR / Captura' : 'OCR / Capture'}
-              </span>
-              <span className="text-[10px] px-1 py-0.2 rounded bg-neutral-900 text-amber-300 border border-neutral-700 font-mono hidden md:inline">
-                Ctrl+V
-              </span>
-            </button>
-          )}
-
-          <Filter className="w-4 h-4 text-neutral-500 hidden sm:inline" />
-          <select
-            value={selectedMapFilter}
-            onChange={(e) => setSelectedMapFilter(e.target.value as MapId | 'ALL')}
-            className="bg-neutral-950 border border-neutral-800 text-xs rounded-lg px-2.5 py-2 text-neutral-300 focus:outline-none focus:border-amber-500"
-          >
-            <option value="ALL">{language === 'es' ? 'Todos los Mapas' : 'All Maps'}</option>
-            {allMaps.map((m) => (
-              <option key={m.id} value={m.id}>
-                {m.name[language === 'es' ? 'es' : 'en']}
-              </option>
-            ))}
-            <option value="any">
-              {language === 'es' ? 'Cualquier Sector' : 'Any Sector'}
-            </option>
-          </select>
-
-          {/* Clear All Button */}
-          {activeQuestIds.length > 0 && (
-            <button
-              onClick={clearAllActiveQuests}
-              className="flex items-center gap-1.5 px-2.5 py-2 rounded-lg bg-neutral-950 border border-neutral-800 hover:border-red-900/50 hover:bg-red-950/20 text-neutral-400 hover:text-red-400 text-xs transition-colors"
-              title={language === 'es' ? 'Deseleccionar todas las misiones' : 'Clear all active quests'}
-            >
-              <Trash2 className="w-3.5 h-3.5" />
-              <span className="hidden md:inline">{language === 'es' ? 'Limpiar' : 'Clear'}</span>
+              Ctrl+K
             </button>
           )}
         </div>
-      </div>
 
-      {/* Instant 1-Click Add Banner when searching an unlisted title */}
-      {searchQuery.trim().length > 0 && !hasExactMatch && (
-        <div className="flex items-center justify-between p-2.5 rounded-lg bg-emerald-950/40 border border-emerald-800/60 text-xs font-mono animate-in fade-in">
-          <span className="text-emerald-200 truncate mr-2">
-            {language === 'es'
-              ? `¿Misión nueva? Añade "${searchQuery.trim()}" con solo el título:`
-              : `New quest? Add "${searchQuery.trim()}" with just the title:`}
-          </span>
+        {/* Action Buttons */}
+        <div className="flex items-center gap-1.5 shrink-0">
           <button
-            onClick={() => {
-              handleQuickAdd(searchQuery);
-              setSearchQuery('');
-            }}
-            className="shrink-0 flex items-center gap-1 px-3 py-1 rounded bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold uppercase transition-all shadow-sm"
-          >
-            <Plus className="w-3.5 h-3.5" />
-            <span>{language === 'es' ? '+ Añadir y Activar' : '+ Add & Activate'}</span>
-          </button>
-        </div>
-      )}
-
-      {/* Vendor Chips (10-second fast selection flow) */}
-      <div>
-        <div className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-2 flex items-center justify-between">
-          <span>{language === 'es' ? 'Comerciantes / Facciones' : 'Vendors / Factions'}</span>
-          <span className="text-amber-500/80 font-bold">
-            {activeQuestIds.length} {language === 'es' ? 'activas seleccionadas' : 'active selected'}
-          </span>
-        </div>
-
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-          {/* ALL Chip */}
-          <button
-            onClick={() => setSelectedVendor('ALL')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all border ${
-              selectedVendor === 'ALL'
-                ? 'bg-amber-500/20 text-amber-300 border-amber-500/60 shadow-sm shadow-amber-500/10'
-                : 'bg-neutral-950/80 text-neutral-400 border-neutral-800 hover:border-neutral-700 hover:text-neutral-200'
+            onClick={() => setShowActiveOnly(!showActiveOnly)}
+            className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold font-mono transition-colors ${
+              showActiveOnly
+                ? 'bg-amber-500 text-zinc-950 font-bold shadow-xs'
+                : 'bg-zinc-950 border border-zinc-800 text-zinc-300 hover:border-zinc-700'
             }`}
           >
-            {language === 'es' ? 'Todos' : 'All'}
+            <CheckSquare className="w-3.5 h-3.5" />
+            <span>{language === 'es' ? 'Solo Activas' : 'Active Only'}</span>
+            <span
+              className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                showActiveOnly ? 'bg-zinc-950 text-amber-400' : 'bg-zinc-800 text-zinc-300'
+              }`}
+            >
+              {activeQuestIds.length}
+            </span>
           </button>
 
-          {/* Each Vendor Chip */}
-          {vendors.map((v) => {
-            const activeCount = getVendorActiveCount(v.id);
-            const isSelected = selectedVendor === v.id;
+          <button
+            onClick={() => setShowAddModal(true)}
+            className="flex items-center gap-1 px-3 py-2 rounded-lg bg-zinc-950 border border-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-zinc-100 text-xs font-mono transition-colors"
+            title={language === 'es' ? 'Añadir misión personalizada' : 'Add custom quest'}
+          >
+            <Plus className="w-3.5 h-3.5 text-amber-400" />
+            <span className="hidden md:inline">{language === 'es' ? 'Misión' : 'Quest'}</span>
+          </button>
 
-            return (
-              <button
-                key={v.id}
-                onClick={() => setSelectedVendor(isSelected ? 'ALL' : v.id)}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all border ${
-                  isSelected
-                    ? 'bg-amber-500/20 text-amber-300 border-amber-500/60 shadow-sm shadow-amber-500/10'
-                    : 'bg-neutral-950/80 text-neutral-400 border-neutral-800 hover:border-neutral-700 hover:text-neutral-200'
-                }`}
-              >
-                <span>{v.id}</span>
-                {activeCount > 0 && (
-                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded-full bg-amber-500 text-neutral-950 font-bold">
-                    {activeCount}
-                  </span>
-                )}
-              </button>
-            );
-          })}
+          {hasActiveFilters && (
+            <button
+              onClick={() => {
+                setSelectedVendor('ALL');
+                setSelectedMapFilter('ALL');
+                setSearchQuery('');
+                setShowActiveOnly(false);
+              }}
+              className="p-2 rounded-lg bg-zinc-950 border border-zinc-800 text-zinc-400 hover:text-amber-400 transition-colors"
+              title={language === 'es' ? 'Limpiar filtros' : 'Reset filters'}
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          )}
         </div>
       </div>
 
-      {/* Map Sector Chips (1-click fast sector filtering) */}
-      <div>
-        <div className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-2 flex items-center justify-between">
-          <span>{language === 'es' ? 'Sectores / Mapas' : 'Sectors / Maps'}</span>
-          <span className="text-cyan-400 font-mono text-[10px]">
-            {selectedMapFilter === 'ALL'
-              ? (language === 'es' ? 'Todos los sectores visibles' : 'All sectors visible')
-              : `${allMaps.find((s) => s.id === selectedMapFilter)?.name[language === 'es' ? 'es' : 'en']}`}
+      {/* 2. Instant Map/Sector Quick Pills (Solves the 18-quest clutter problem) */}
+      <div className="space-y-1.5 pt-1">
+        <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-zinc-500 font-semibold px-0.5">
+          <span className="flex items-center gap-1">
+            <Layers className="w-3 h-3 text-zinc-400" />
+            {language === 'es' ? 'Sectores / Mapas de Incursión' : 'Raid Sectors / Maps'}
           </span>
+          {selectedMapFilter !== 'ALL' && (
+            <button
+              onClick={() => setSelectedMapFilter('ALL')}
+              className="text-amber-400 hover:underline"
+            >
+              {language === 'es' ? 'Ver todos' : 'Show all'}
+            </button>
+          )}
         </div>
 
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-          {/* ALL Maps Chip */}
+        <div ref={filterPillsRef} className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none text-[11px] font-mono">
           <button
             onClick={() => setSelectedMapFilter('ALL')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all border ${
+            className={`px-2.5 py-1 rounded-md transition-colors shrink-0 ${
               selectedMapFilter === 'ALL'
-                ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/60 shadow-sm shadow-cyan-500/10'
-                : 'bg-neutral-950/80 text-neutral-400 border-neutral-800 hover:border-neutral-700 hover:text-neutral-200'
+                ? 'bg-amber-500 text-zinc-950 font-bold shadow-xs'
+                : 'bg-zinc-950 text-zinc-400 border border-zinc-800 hover:text-zinc-200 hover:border-zinc-700'
             }`}
           >
-            {language === 'es' ? 'Todos los Mapas' : 'All Maps'}
+            {language === 'es' ? 'Todos los Sectores' : 'All Sectors'} ({mapCounts['ALL'] || 0})
           </button>
 
-          {/* Each Sector Chip */}
           {allMaps.map((map) => {
-            const count = getMapQuestCount(map.id);
+            const count = mapCounts[map.id] || 0;
             const isSelected = selectedMapFilter === map.id;
-
             return (
               <button
                 key={map.id}
-                onClick={() => setSelectedMapFilter(isSelected ? 'ALL' : map.id)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all border ${
+                onClick={() => setSelectedMapFilter(map.id)}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-md transition-colors shrink-0 ${
                   isSelected
-                    ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/60 shadow-sm shadow-cyan-500/10'
-                    : 'bg-neutral-950/80 text-neutral-400 border-neutral-800 hover:border-neutral-700 hover:text-neutral-200'
+                    ? 'bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/50'
+                    : 'bg-zinc-950 text-zinc-400 border border-zinc-800 hover:text-zinc-200 hover:border-zinc-700'
                 }`}
               >
-                <span>{map.name[language === 'es' ? 'es' : 'en']}</span>
-                <span
-                  className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full font-bold ${
-                    isSelected
-                      ? 'bg-cyan-500 text-neutral-950'
-                      : 'bg-neutral-800 text-neutral-400'
-                  }`}
-                >
-                  {count}
-                </span>
+                <MapPin className="w-3 h-3 text-cyan-400" />
+                <span>{map.name.en}</span>
+                <span className="text-[10px] opacity-75">({count})</span>
               </button>
             );
           })}
         </div>
       </div>
 
-      {/* Quick Add Quest Modal (Title Only) */}
-      {showAddModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
-          <div className="bg-neutral-900 border border-neutral-800 rounded-2xl w-full max-w-md p-5 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-neutral-800">
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-emerald-400" />
-                <h3 className="font-bold text-sm uppercase tracking-wider text-neutral-100">
-                  {language === 'es' ? 'Añadir Misión (Solo con Título)' : 'Add Quest (Title Only)'}
-                </h3>
-              </div>
-              <button
-                onClick={() => setShowAddModal(false)}
-                className="p-1 rounded text-neutral-400 hover:text-neutral-100 transition-colors"
-              >
-                <X className="w-4 h-4" />
-              </button>
+      {/* 3. Vendor Filter Chips */}
+      <div className="flex items-center gap-1 overflow-x-auto scrollbar-none text-[11px] font-mono pt-0.5">
+        <span className="text-zinc-500 text-[10px] uppercase font-semibold mr-1 shrink-0">
+          {language === 'es' ? 'Comerciante:' : 'Vendor:'}
+        </span>
+        <button
+          onClick={() => setSelectedVendor('ALL')}
+          className={`px-2 py-0.5 rounded text-[10px] transition-colors shrink-0 ${
+            selectedVendor === 'ALL'
+              ? 'bg-zinc-800 text-zinc-100 font-bold border border-zinc-700'
+              : 'text-zinc-400 hover:text-zinc-200'
+          }`}
+        >
+          {language === 'es' ? 'Todos' : 'All'}
+        </button>
+        {vendors.map((v) => (
+          <button
+            key={v.id}
+            onClick={() => setSelectedVendor(v.id)}
+            className={`px-2 py-0.5 rounded text-[10px] transition-colors shrink-0 ${
+              selectedVendor === v.id
+                ? 'bg-zinc-800 text-zinc-100 font-bold border border-zinc-700'
+                : 'text-zinc-400 hover:text-zinc-200'
+            }`}
+          >
+            {v.name}
+          </button>
+        ))}
+      </div>
+
+      {/* Modal: Quick Add Custom Quest using shadcn Dialog */}
+      <Dialog open={showAddModal} onOpenChange={setShowAddModal}>
+        <DialogContent className="max-w-md bg-zinc-900 border-zinc-800 text-zinc-100">
+          <DialogHeader>
+            <DialogTitle className="text-sm font-bold text-zinc-100">
+              {language === 'es' ? 'Añadir Misión Personalizada' : 'Add Custom Quest'}
+            </DialogTitle>
+            <DialogDescription className="text-xs text-zinc-400">
+              {language === 'es'
+                ? 'Agrega una misión rápida que no aparezca en la base de datos oficial.'
+                : 'Quickly track any custom or newly released quest.'}
+            </DialogDescription>
+          </DialogHeader>
+
+          <form onSubmit={handleQuickAdd} className="space-y-3 pt-1">
+            <div>
+              <label className="text-[11px] font-mono text-zinc-400 block mb-1">
+                {language === 'es' ? 'Título de la Misión' : 'Quest Title'}
+              </label>
+              <input
+                type="text"
+                value={newTitle}
+                onChange={(e) => setNewTitle(e.target.value)}
+                placeholder="e.g. Scavenge Medical Vault"
+                autoFocus
+                className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-xs text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:border-amber-500"
+              />
             </div>
 
-            <div className="space-y-3.5">
+            <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-mono text-neutral-300 block mb-1 font-bold">
-                  {language === 'es' ? 'Título de la Misión *' : 'Quest Title *'}
+                <label className="text-[11px] font-mono text-zinc-400 block mb-1">
+                  {language === 'es' ? 'Comerciante' : 'Vendor'}
                 </label>
-                <input
-                  type="text"
-                  autoFocus
-                  value={newTitle}
-                  onChange={(e) => setNewTitle(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') handleQuickAdd(newTitle, newVendor, newMap);
-                  }}
-                  placeholder={
-                    language === 'es'
-                      ? 'Ej: Reconocimiento del Búnker Subterráneo...'
-                      : 'e.g. Underground Bunker Recon...'
-                  }
-                  className="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-3 py-2 text-xs sm:text-sm text-neutral-100 placeholder:text-neutral-500 focus:outline-none focus:border-emerald-500"
-                />
+                <select
+                  value={newVendor}
+                  onChange={(e) => setNewVendor(e.target.value as Vendor)}
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-2.5 py-1.5 text-xs text-zinc-200 focus:outline-none focus:border-amber-500"
+                >
+                  {vendors.map((v) => (
+                    <option key={v.id} value={v.id}>
+                      {v.name}
+                    </option>
+                  ))}
+                </select>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="text-xs font-mono text-neutral-400 block mb-1">
-                    {language === 'es' ? 'Comerciante' : 'Vendor'}
-                  </label>
-                  <select
-                    value={newVendor}
-                    onChange={(e) => setNewVendor(e.target.value as Vendor)}
-                    className="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-2.5 py-1.5 text-xs text-neutral-300 focus:outline-none focus:border-emerald-500"
-                  >
-                    {vendors.map((v) => (
-                      <option key={v.id} value={v.id}>
-                        {v.id}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="text-xs font-mono text-neutral-400 block mb-1">
-                    {language === 'es' ? 'Sector / Mapa' : 'Sector / Map'}
-                  </label>
-                  <select
-                    value={newMap}
-                    onChange={(e) => setNewMap(e.target.value as MapId)}
-                    className="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-2.5 py-1.5 text-xs text-neutral-300 focus:outline-none focus:border-emerald-500"
-                  >
-                    <option value="any">{language === 'es' ? 'Cualquier Sector' : 'Any Sector'}</option>
-                    {allMaps.map((m) => (
-                      <option key={m.id} value={m.id}>
-                        {m.name[language === 'es' ? 'es' : 'en']}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+              <div>
+                <label className="text-[11px] font-mono text-zinc-400 block mb-1">
+                  {language === 'es' ? 'Sector / Mapa' : 'Sector / Map'}
+                </label>
+                <select
+                  value={newMap}
+                  onChange={(e) => setNewMap(e.target.value as MapId)}
+                  className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-2.5 py-1.5 text-xs text-zinc-200 focus:outline-none focus:border-amber-500"
+                >
+                  <option value="any">Any Sector</option>
+                  {allMaps.map((m) => (
+                    <option key={m.id} value={m.id}>
+                      {m.name.en}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
 
-            <div className="flex items-center justify-end gap-2 pt-3 border-t border-neutral-800">
+            <div className="flex justify-end gap-2 pt-2">
               <button
+                type="button"
                 onClick={() => setShowAddModal(false)}
-                className="px-3 py-1.5 rounded-lg border border-neutral-800 text-xs font-mono text-neutral-300 hover:bg-neutral-800 transition-colors"
+                className="px-3 py-1.5 rounded-lg text-xs font-mono text-zinc-400 hover:text-zinc-200"
               >
-                {language === 'es' ? 'Cancelar' : 'Cancel'}
+                Cancel
               </button>
               <button
+                type="submit"
                 disabled={!newTitle.trim()}
-                onClick={() => handleQuickAdd(newTitle, newVendor, newMap)}
-                className="px-4 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:opacity-40 text-neutral-950 font-bold text-xs font-mono uppercase transition-all shadow-md shadow-emerald-500/20"
+                className="px-4 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-xs font-mono transition-colors disabled:opacity-50"
               >
-                {language === 'es' ? '✓ Añadir y Activar' : '✓ Add & Activate'}
+                {language === 'es' ? 'Crear Misión' : 'Create Quest'}
               </button>
             </div>
-          </div>
-        </div>
-      )}
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

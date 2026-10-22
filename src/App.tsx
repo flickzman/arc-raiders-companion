@@ -9,27 +9,32 @@ import { LoadoutChecklist } from './components/LoadoutChecklist';
 import { RaidPlannerView } from './components/RaidPlannerView';
 import { AboutView } from './components/AboutView';
 import { CaptureModal } from './components/CaptureModal';
+import { CommandBar } from './components/CommandBar';
 import { matchesQuestSearch } from './services/search/questSearch';
 import { Compass } from 'lucide-react';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 export function App() {
-  const { language, customQuests } = usePlayerStore();
+  const { language, activeQuestIds, customQuests } = usePlayerStore();
   const [currentTab, setCurrentTab] = useState<'quests' | 'planner' | 'about'>('quests');
 
-  // Estado del Modal de Ingesta Visual (OCR / Visión IA)
+  // Command Bar & Visual Capture Modal States
+  const [isCommandBarOpen, setIsCommandBarOpen] = useState(false);
   const [isCaptureModalOpen, setIsCaptureModalOpen] = useState(false);
   const [pastedBlob, setPastedBlob] = useState<Blob | null>(null);
 
-  // Pool completo de misiones disponibles (base de datos wiki + misiones personalizadas añadidas)
+  // Animated quest list container
+  const [questListRef] = useAutoAnimate();
+
+  // Full pool of available quests
   const allAvailableQuests = useMemo(
     () => [...customQuests, ...allQuests],
     [customQuests]
   );
 
-  // Listener global de pegado (Ctrl+V) para capturas de pantalla de Windows (Win+Shift+S)
+  // Global paste handler for screenshots (Ctrl+V)
   useEffect(() => {
     const handlePaste = (e: ClipboardEvent) => {
-      // Ignorar si el usuario está escribiendo en un input o textarea
       const target = e.target as HTMLElement | null;
       if (
         target &&
@@ -59,20 +64,26 @@ export function App() {
     return () => window.removeEventListener('paste', handlePaste);
   }, []);
 
-  // Filtros de búsqueda
+  // Filter States
   const [selectedVendor, setSelectedVendor] = useState<Vendor | 'ALL'>('ALL');
   const [selectedMapFilter, setSelectedMapFilter] = useState<MapId | 'ALL'>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
+  const [showActiveOnly, setShowActiveOnly] = useState(false);
 
-  // Filtrado reactivo de misiones
+  // Reactive Quest Filtering
   const filteredQuests = useMemo(() => {
     return allAvailableQuests.filter((quest) => {
-      // 1. Filtro por comerciante
+      // 1. Active Only filter
+      if (showActiveOnly && !activeQuestIds.includes(quest.id)) {
+        return false;
+      }
+
+      // 2. Vendor filter
       if (selectedVendor !== 'ALL' && quest.vendor !== selectedVendor) {
         return false;
       }
 
-      // 2. Filtro por mapa
+      // 3. Map filter
       if (selectedMapFilter !== 'ALL') {
         const hasObjectiveInMap = quest.objectives.some(
           (obj) => obj.mapId === selectedMapFilter || obj.mapId === 'any'
@@ -80,27 +91,28 @@ export function App() {
         if (!hasObjectiveInMap) return false;
       }
 
-      // 3. Filtro por búsqueda inteligente multi-criterio y tolerancia de alias de mapa
+      // 4. Multi-criteria search
       if (searchQuery.trim()) {
         if (!matchesQuestSearch(quest, searchQuery)) return false;
       }
 
       return true;
     });
-  }, [selectedVendor, selectedMapFilter, searchQuery]);
+  }, [allAvailableQuests, activeQuestIds, showActiveOnly, selectedVendor, selectedMapFilter, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col font-sans selection:bg-amber-500/30 selection:text-amber-200">
       <Navbar
         currentTab={currentTab}
         setCurrentTab={setCurrentTab}
         onOpenCaptureModal={() => setIsCaptureModalOpen(true)}
+        onOpenCommandBar={() => setIsCommandBarOpen(true)}
       />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-5 lg:p-6">
         {currentTab === 'quests' && (
-          <div className="space-y-6">
-            {/* Top Filter and Search Bar */}
+          <div className="space-y-4">
+            {/* Top Quick Sector & Filter Bar */}
             <VendorSelector
               selectedVendor={selectedVendor}
               setSelectedVendor={setSelectedVendor}
@@ -108,28 +120,31 @@ export function App() {
               setSelectedMapFilter={setSelectedMapFilter}
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
-              onOpenCaptureModal={() => setIsCaptureModalOpen(true)}
+              showActiveOnly={showActiveOnly}
+              setShowActiveOnly={setShowActiveOnly}
+              onOpenCommandBar={() => setIsCommandBarOpen(true)}
             />
 
-            {/* Main 2-Column Responsive Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-              {/* Left Column: Quest Cards List (7 cols) */}
-              <div className="lg:col-span-7 space-y-4">
-                <div className="flex items-center justify-between pb-2 border-b border-neutral-800">
+            {/* 2-Column Responsive Layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+              {/* Left Column: Streamlined Quest Cards List (7 cols) */}
+              <div className="lg:col-span-7 space-y-3">
+                <div className="flex items-center justify-between pb-2 border-b border-zinc-800">
                   <div className="flex items-center gap-2">
                     <Compass className="w-4 h-4 text-amber-400" />
-                    <h2 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-100">
-                      {language === 'es' ? 'Misiones Disponibles' : 'Available Quests'} ({filteredQuests.length})
+                    <h2 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-zinc-100">
+                      {language === 'es' ? 'Misiones' : 'Quests'}{' '}
+                      <span className="text-zinc-500 font-normal">({filteredQuests.length})</span>
                     </h2>
                   </div>
-                  <span className="text-[11px] font-mono text-neutral-400">
-                    {language === 'es' ? 'Toca para activar/desactivar' : 'Tap to toggle active state'}
+                  <span className="text-[11px] font-mono text-zinc-400">
+                    {language === 'es' ? '1 clic para activar/desactivar' : '1-click to toggle active status'}
                   </span>
                 </div>
 
                 {filteredQuests.length === 0 ? (
-                  <div className="bg-neutral-900/40 border border-neutral-800/80 rounded-xl p-8 text-center space-y-2">
-                    <p className="text-sm text-neutral-400 font-mono">
+                  <div className="bg-zinc-900 border border-zinc-800 rounded-xl p-8 text-center space-y-3">
+                    <p className="text-xs sm:text-sm text-zinc-400 font-mono">
                       {language === 'es'
                         ? 'No se encontraron misiones con los filtros actuales.'
                         : 'No quests match the selected filters.'}
@@ -139,14 +154,15 @@ export function App() {
                         setSelectedVendor('ALL');
                         setSelectedMapFilter('ALL');
                         setSearchQuery('');
+                        setShowActiveOnly(false);
                       }}
                       className="text-xs text-amber-400 hover:underline font-mono"
                     >
-                      {language === 'es' ? 'Restablecer filtros' : 'Reset filters'}
+                      {language === 'es' ? 'Restablecer todos los filtros' : 'Reset all filters'}
                     </button>
                   </div>
                 ) : (
-                  <div className="space-y-3">
+                  <div ref={questListRef} className="space-y-2.5">
                     {filteredQuests.map((quest) => (
                       <QuestCard
                         key={quest.id}
@@ -158,8 +174,8 @@ export function App() {
                 )}
               </div>
 
-              {/* Right Column: Loadout & Stash HUD (5 cols) */}
-              <div className="lg:col-span-5 lg:sticky lg:top-20 space-y-4">
+              {/* Right Column: Tactical Loadout & Salvage Guide (5 cols) */}
+              <div className="lg:col-span-5 lg:sticky lg:top-16 space-y-4">
                 <LoadoutChecklist />
               </div>
             </div>
@@ -171,7 +187,16 @@ export function App() {
         {currentTab === 'about' && <AboutView />}
       </main>
 
-      {/* Modal de Ingesta Visual */}
+      {/* Global Command Bar (cmdk) */}
+      <CommandBar
+        isOpen={isCommandBarOpen}
+        setIsOpen={setIsCommandBarOpen}
+        onSelectMap={(m) => setSelectedMapFilter(m)}
+        onNavigateTab={(t) => setCurrentTab(t)}
+        onOpenCaptureModal={() => setIsCaptureModalOpen(true)}
+      />
+
+      {/* OCR Visual Ingestion Modal */}
       <CaptureModal
         isOpen={isCaptureModalOpen}
         onClose={() => {
@@ -181,11 +206,11 @@ export function App() {
         initialImageBlob={pastedBlob}
       />
 
-      {/* Footer */}
-      <footer className="border-t border-neutral-900 bg-neutral-950 py-4 px-6 text-center text-xs font-mono text-neutral-500">
+      {/* Tactical Footer */}
+      <footer className="border-t border-zinc-900 bg-zinc-950 py-3 px-6 text-center text-xs font-mono text-zinc-500">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>ARC Raiders Tactical Companion • GNU AGPLv3 License</span>
-          <span>Open Source Project by Flickzman</span>
+          <span>RAPPO • Arc Raiders Tactical Companion</span>
+          <span>Open Source AGPLv3 • Press <kbd className="text-zinc-400">Ctrl+K</kbd> for quick command search</span>
         </div>
       </footer>
     </div>
